@@ -1,0 +1,116 @@
+[
+  {
+    "category": "sna",
+    "name": "retained_stores_min",
+    "value": 67.0,
+    "passed": true,
+    "expected": 40
+  },
+  {
+    "category": "sna",
+    "name": "promo_freq",
+    "value": 0.34126254347739177,
+    "passed": true,
+    "expected": [
+      0.05,
+      0.4
+    ]
+  },
+  {
+    "category": "sna",
+    "name": "promo_depth",
+    "value": 0.16650232174552237,
+    "passed": true,
+    "expected": [
+      0.05,
+      0.4
+    ]
+  },
+  {
+    "category": "sna",
+    "name": "resid_sd",
+    "value": 0.46507264157411954,
+    "passed": true,
+    "expected": [
+      0.2,
+      1.0
+    ]
+  },
+  {
+    "category": "sna",
+    "name": "profit_mean",
+    "value": 24.29354935433574,
+    "passed": true,
+    "expected": [
+      10,
+      45
+    ]
+  },
+  {
+    "category": "sna",
+    "name": "beta_reference",
+    "value": -3.159570873246531,
+    "passed": false,
+    "expected": [
+      -2.59,
+      -0.79
+    ]
+  },
+  {
+    "category": "tti",
+    "name": "retained_stores_min",
+    "value": 67.0,
+    "passed": true,
+    "expected": 40
+  },
+  {
+    "category": "tti",
+    "name": "promo_freq",
+    "value": 0.23894373545228348,
+    "passed": true,
+    "expected": [
+      0.05,
+      0.4
+    ]
+  },
+  {
+    "category": "tti",
+    "name": "promo_depth",
+    "value": 0.11005672489004659,
+    "passed": true,
+    "expected": [
+      0.05,
+      0.4
+    ]
+  },
+  {
+    "category": "tti",
+    "name": "resid_sd",
+    "value": 0.5043886348762083,
+    "passed": true,
+    "expected": [
+      0.2,
+      1.0
+    ]
+  },
+  {
+    "category": "tti",
+    "name": "profit_mean",
+    "value": 10.248270326671483,
+    "passed": true,
+    "expected": [
+      10,
+      45
+    ]
+  },
+  {
+    "category": "tti",
+    "name": "beta_reference",
+    "value": -3.84815906022416,
+    "passed": false,
+    "expected": [
+      -2.59,
+      -0.79
+    ]
+  }
+]

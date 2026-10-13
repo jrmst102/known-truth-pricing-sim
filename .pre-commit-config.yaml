@@ -1,0 +1,14 @@
+repos:
+  - repo: local
+    hooks:
+      - id: block-raw-data
+        name: Block staged raw Dominick's data
+        entry: python scripts/check_raw_staging.py
+        language: system
+        pass_filenames: false
+        always_run: true
+      - id: ruff
+        name: Ruff
+        entry: ruff check
+        language: system
+        types: [python]

@@ -60,14 +60,14 @@ class DGMConfig:
     comp_index: dict = field(default_factory=lambda: {"rho": 0.8})
     cost_shifter: dict = field(default_factory=lambda: {"rho": 0.8, "sd": 0.05})
     zone_drift: dict = field(default_factory=lambda: {"rho": 0.9})
-    kappa_levels: dict = field(default_factory=lambda: {"none": 0., "pos": .05, "neg": -.05})
+    kappa_levels: dict = field(default_factory=lambda: {"none": 0.0, "pos": 0.05, "neg": -0.05})
     exploration: dict = field(default_factory=lambda: {"decay_power": -0.25})
     censoring: dict = field(default_factory=lambda: {"multiplier": 1.5})
     history_weeks: int = 52
     cycles: int = 104
-    rho_m_levels: list = field(default_factory=lambda: [0., .5])
-    eta_levels: dict = field(default_factory=lambda: {"low": -.8, "med": -1.06, "high": -2.5})
-    phi_levels: list = field(default_factory=lambda: [0., .5, 1.])
+    rho_m_levels: list = field(default_factory=lambda: [0.0, 0.5])
+    eta_levels: dict = field(default_factory=lambda: {"low": -0.8, "med": -1.06, "high": -2.5})
+    phi_levels: list = field(default_factory=lambda: [0.0, 0.5, 1.0])
     store_zones: dict[int, int] = field(default_factory=dict)
     calendar: object = None
 

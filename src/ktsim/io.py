@@ -12,16 +12,20 @@ def load_table(path: str | Path) -> pd.DataFrame:
     path = Path(path)
     if path.suffix.lower() == ".zip":
         with zipfile.ZipFile(path) as archive:
-            names = [name for name in archive.namelist()
-                     if Path(name).suffix.lower() in {".csv", ".sas7bdat"}]
+            names = [
+                name
+                for name in archive.namelist()
+                if Path(name).suffix.lower() in {".csv", ".sas7bdat"}
+            ]
             if len(names) != 1:
                 raise ValueError(f"{path}: expected exactly one CSV or SAS dataset")
             with archive.open(names[0]) as stream:
                 if names[0].lower().endswith(".csv"):
                     frame = pd.read_csv(stream, low_memory=False)
                 else:
-                    frame = pd.read_sas(io.BytesIO(stream.read()), format="sas7bdat",
-                                        encoding="latin1")
+                    frame = pd.read_sas(
+                        io.BytesIO(stream.read()), format="sas7bdat", encoding="latin1"
+                    )
     elif path.suffix.lower() == ".sas7bdat":
         frame = pd.read_sas(path, encoding="latin1")
     else:

@@ -6,9 +6,23 @@ import pandas as pd
 
 
 def test_synthetic_cli_and_resume(tmp_path):
-    command = [sys.executable, "scripts/run_pilot.py", "--cells", "P0", "--synthetic",
-               "--reps", "1", "--cycles", "1", "--estimators", "M1", "--run-id", "cli-smoke",
-               "--output-root", str(tmp_path)]
+    command = [
+        sys.executable,
+        "scripts/run_pilot.py",
+        "--cells",
+        "P0",
+        "--synthetic",
+        "--reps",
+        "1",
+        "--cycles",
+        "1",
+        "--estimators",
+        "M1",
+        "--run-id",
+        "cli-smoke",
+        "--output-root",
+        str(tmp_path),
+    ]
     subprocess.run(command, check=True, capture_output=True, text=True)
     output = tmp_path / "cli-smoke"
     first = pd.read_parquet(output / "estimates.parquet")

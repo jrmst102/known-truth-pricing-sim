@@ -20,5 +20,9 @@ class OLS:
             inputs["price_centered"] = np.asarray(price) - cal.p_bar
             return np.exp(fit.predict(inputs))
 
-        return finalize(coefficient * cal.p_bar, float(interval.iloc[0]), float(interval.iloc[1]),
-                        predict=predict)
+        return finalize(
+            coefficient * cal.p_bar,
+            float(interval.iloc[0]),
+            float(interval.iloc[1]),
+            predict=predict,
+        )

@@ -16,8 +16,9 @@ class CleanResult:
     log: list[str]
 
 
-def clean_category(movement: pd.DataFrame, upc: pd.DataFrame, stores: pd.DataFrame,
-                   cfg: CalibrationConfig) -> CleanResult:
+def clean_category(
+    movement: pd.DataFrame, upc: pd.DataFrame, stores: pd.DataFrame, cfg: CalibrationConfig
+) -> CleanResult:
     frame = movement.copy()
     log = []
 
@@ -30,9 +31,13 @@ def clean_category(movement: pd.DataFrame, upc: pd.DataFrame, stores: pd.DataFra
     retain(frame.ok.eq(1), "1 OK == 1")
     retain(frame.price.gt(0) & frame.qty.gt(0) & frame.move.ge(0), "2 valid price/qty/move")
     if not {"store", "zone", "price_tier"}.issubset(stores):
-        raise ValueError("Store metadata requires store, zone, price_tier; use the codebook importer")
+        raise ValueError(
+            "Store metadata requires store, zone, price_tier; use the codebook importer"
+        )
     metadata = stores.dropna(subset=["zone", "price_tier"])
-    retain(frame.store.isin(metadata.store) & frame.upc.isin(upc.upc), "3 known UPC and zoned store")
+    retain(
+        frame.store.isin(metadata.store) & frame.upc.isin(upc.upc), "3 known UPC and zoned store"
+    )
     for column in ("store", "upc", "week"):
         if frame[column].isna().any() or not np.equal(frame[column], np.floor(frame[column])).all():
             raise ValueError(f"Invalid noninteger identifiers in {column}")
@@ -57,9 +62,11 @@ def clean_category(movement: pd.DataFrame, upc: pd.DataFrame, stores: pd.DataFra
     eligible = presence[presence >= cfg.upc_coverage_min].index
     retain(frame.upc.isin(eligible), "5 UPC coverage")
     if frame.empty:
-        raise ValueError(f"No UPC satisfies coverage threshold {cfg.upc_coverage_min:.0%}; "
-                         f"best UPC coverage {presence.max():.1%}, {len(coverage)} stores, "
-                         f"{n_weeks} weeks. No automatic threshold change.")
+        raise ValueError(
+            f"No UPC satisfies coverage threshold {cfg.upc_coverage_min:.0%}; "
+            f"best UPC coverage {presence.max():.1%}, {len(coverage)} stores, "
+            f"{n_weeks} weeks. No automatic threshold change."
+        )
     candidates = [int(code) for code in sales.index if code in eligible]
     focal = None
     zero_share = np.nan
@@ -75,7 +82,9 @@ def clean_category(movement: pd.DataFrame, upc: pd.DataFrame, stores: pd.DataFra
     if competing.empty:
         raise ValueError("No competing UPC remains for the competing-price index")
     competing["log_unit_price"] = np.log(competing.price / competing.qty)
-    competing["centered"] = competing.log_unit_price - competing.groupby("upc").log_unit_price.transform("mean")
+    competing["centered"] = competing.log_unit_price - competing.groupby(
+        "upc"
+    ).log_unit_price.transform("mean")
     comp_index = competing.groupby("week").centered.mean()
     retain(frame.upc.eq(focal), "6 focal UPC selection and zero-share substitution")
     frame["log_comp_index"] = frame.week.map(comp_index)
@@ -87,5 +96,11 @@ def clean_category(movement: pd.DataFrame, upc: pd.DataFrame, stores: pd.DataFra
     retain(frame.q.gt(0), "7 remove zero sales before log regression")
     frame["log_q"] = np.log(frame.q)
     frame["promo"] = frame.sale.fillna("").astype(str).str.strip().ne("").astype(float)
-    return CleanResult(frame.sort_values(["store", "week"]).reset_index(drop=True), focal,
-                       sorted(int(store) for store in frame.store.unique()), zero_share, focal != initial, log)
+    return CleanResult(
+        frame.sort_values(["store", "week"]).reset_index(drop=True),
+        focal,
+        sorted(int(store) for store in frame.store.unique()),
+        zero_share,
+        focal != initial,
+        log,
+    )

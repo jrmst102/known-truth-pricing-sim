@@ -8,8 +8,9 @@ from ktsim.io import load_movement, load_table, sha256
 
 def test_movement_csv_and_zip(tmp_path):
     csv = tmp_path / "movement.csv"
-    csv.write_text("STORE,UPC,WEEK,MOVE,QTY,PRICE,SALE,PROFIT,OK,PRICE_HEX\n"
-                   "2,123,1,10,1,2.5,,20,1,ABCD\n")
+    csv.write_text(
+        "STORE,UPC,WEEK,MOVE,QTY,PRICE,SALE,PROFIT,OK,PRICE_HEX\n2,123,1,10,1,2.5,,20,1,ABCD\n"
+    )
     zipped = tmp_path / "movement.zip"
     with zipfile.ZipFile(zipped, "w") as archive:
         archive.write(csv, csv.name)

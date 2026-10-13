@@ -3,15 +3,22 @@ import pandas as pd
 
 
 def controls(cal, dgm, stores, zones, t, promo, comp_index):
-    frame = pd.DataFrame({"store": stores, "zone": zones, "t": t,
-                          "promo": float(promo), "log_comp_index": float(comp_index),
-                          "week_of_year": (t - 1) % 52 + 1})
+    frame = pd.DataFrame(
+        {
+            "store": stores,
+            "zone": zones,
+            "t": t,
+            "promo": float(promo),
+            "log_comp_index": float(comp_index),
+            "week_of_year": (t - 1) % 52 + 1,
+        }
+    )
     for index in range(1, len(cal.season["g"]) + 1):
         week = cal.weeks[0] + t - 1
         frame[f"sin_{index}"] = np.sin(2 * np.pi * index * week / 52)
         frame[f"cos_{index}"] = np.cos(2 * np.pi * index * week / 52)
     for name in cal.holiday:
-        value = 0.
+        value = 0.0
         if dgm.calendar is not None:
             week = cal.weeks[0] + t - 1
             lookup = dgm.calendar.set_index("week")
@@ -41,8 +48,7 @@ def draw_sales(cal, dgm, x, price, eta, xi, eps, censor):
     return sales
 
 
-def legacy_log_price(cal, dgm, t, zone, cost_t, nu_zt, promo_t, depth_t,
-                     pass_through=0.2):
+def legacy_log_price(cal, dgm, t, zone, cost_t, nu_zt, promo_t, depth_t, pass_through=0.2):
     base = np.array([cal.mu_z[int(value)] for value in zone])
     return base + pass_through * cost_t + nu_zt + promo_t * np.log1p(-depth_t)
 
@@ -51,16 +57,22 @@ def deployed_log_price(rec_log_price, legacy_log_price, D_s, kappa_scaled, xi_st
     return np.where(D_s, rec_log_price, legacy_log_price) + kappa_scaled * xi_st + delta_t * u_st
 
 
-def instruments(cal, dgm, t, legacy_log_price_all_stores, zone, cost_t=0.):
+def instruments(cal, dgm, t, legacy_log_price_all_stores, zone, cost_t=0.0):
     prices = np.asarray(legacy_log_price_all_stores)
-    other = np.array([np.mean(prices[np.asarray(zone) != value])
-                      if np.any(np.asarray(zone) != value) else np.nan for value in zone])
+    other = np.array(
+        [
+            np.mean(prices[np.asarray(zone) != value])
+            if np.any(np.asarray(zone) != value)
+            else np.nan
+            for value in zone
+        ]
+    )
     return {"cost_shifter": np.full(len(zone), cost_t), "other_zone_price": other}
 
 
 def kappa_scaled(level, sigma_xi):
     if sigma_xi == 0:
         if level == 0:
-            return 0.
+            return 0.0
         raise ValueError("Nonzero kappa requires positive latent demand variance")
     return level / sigma_xi

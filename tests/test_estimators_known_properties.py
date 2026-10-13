@@ -12,12 +12,20 @@ def observable_data(cal, dgm):
     frames = []
     for t in range(1, 251):
         stores = np.array(sorted(cal.alpha_s))
-        frame = controls(cal, dgm, stores, [dgm.store_zones[store] for store in stores], t,
-                         rng.binomial(1, .15), rng.normal(0, .1))
-        frame["cost_shifter"] = rng.normal(0, .1)
-        frame["price"] = cal.p_bar + 2 * frame.cost_shifter + rng.normal(0, .03, len(stores))
+        frame = controls(
+            cal,
+            dgm,
+            stores,
+            [dgm.store_zones[store] for store in stores],
+            t,
+            rng.binomial(1, 0.15),
+            rng.normal(0, 0.1),
+        )
+        frame["cost_shifter"] = rng.normal(0, 0.1)
+        frame["price"] = cal.p_bar + 2 * frame.cost_shifter + rng.normal(0, 0.03, len(stores))
         frame["log_q"] = expected_log_demand(cal, dgm, frame, frame.price, -1.06) + rng.normal(
-            0, .1, len(stores))
+            0, 0.1, len(stores)
+        )
         frames.append(frame)
     return pd.concat(frames, ignore_index=True)
 
@@ -34,8 +42,8 @@ def test_known_property(name, observable_data, cal):
 
 @pytest.mark.parametrize("name", ["M2", "M4_plr", "M4_pliv"])
 def test_ml_fits_observable_data(name, observable_data, cal):
-    params = {"n_estimators": 30, "learning_rate": .05, "num_leaves": 10, "min_child_samples": 20}
-    cfg = dict(params, nuisance_params=params, n_folds=2, fd_window_weeks=4, fd_step=.01)
+    params = {"n_estimators": 30, "learning_rate": 0.05, "num_leaves": 10, "min_child_samples": 20}
+    cfg = dict(params, nuisance_params=params, n_folds=2, fd_window_weeks=4, fd_step=0.01)
     est = get_estimator(name).fit(observable_data, cal, cfg)
     assert est["converged"]
     assert est["eta_hat"] <= 0

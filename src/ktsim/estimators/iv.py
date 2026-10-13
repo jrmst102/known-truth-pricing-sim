@@ -32,5 +32,10 @@ class IV:
             baseline = design(frame, columns).to_numpy() @ params[columns].to_numpy()
             return np.exp(baseline + params.price_centered * (np.asarray(price) - cal.p_bar))
 
-        return finalize(float(params.price_centered * cal.p_bar), float(interval.iloc[0]),
-                        float(interval.iloc[1]), first_stage, predict)
+        return finalize(
+            float(params.price_centered * cal.p_bar),
+            float(interval.iloc[0]),
+            float(interval.iloc[1]),
+            first_stage,
+            predict,
+        )

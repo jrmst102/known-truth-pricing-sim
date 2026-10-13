@@ -41,16 +41,21 @@ def worker(cell, rep, ss, cal, dgm, est_cfg, output, save_data, key):
     simulated = result.attrs.pop("simulated_data")
     result["run_id"] = output.name
     if save_data:
-        frames = [pd.DataFrame(frame).assign(arm=arm, cell=cell.label, rep=rep, run_id=output.name)
-                  for arm, frame in simulated.items()]
-        atomic_parquet(pd.concat(frames, ignore_index=True), output / "simulated" / f"{key}.parquet")
+        frames = [
+            pd.DataFrame(frame).assign(arm=arm, cell=cell.label, rep=rep, run_id=output.name)
+            for arm, frame in simulated.items()
+        ]
+        atomic_parquet(
+            pd.concat(frames, ignore_index=True), output / "simulated" / f"{key}.parquet"
+        )
     atomic_parquet(result, output / "replications" / f"{key}.parquet")
     logging.info("Finish %s replication %s; %.2f seconds", cell.label, rep, result.seconds.sum())
     return key
 
 
-def run_pilot(cells, cal, dgm, est_cfg, master_seed, output, manifest, n_jobs=1,
-              resume=False, save_data=False):
+def run_pilot(
+    cells, cal, dgm, est_cfg, master_seed, output, manifest, n_jobs=1, resume=False, save_data=False
+):
     output = Path(output)
     if n_jobs < 1:
         raise ValueError("n_jobs must be positive")
@@ -65,7 +70,9 @@ def run_pilot(cells, cal, dgm, est_cfg, master_seed, output, manifest, n_jobs=1,
     if resume:
         previous = json.loads(manifest_path.read_text())
         if previous["fingerprint"] != manifest["fingerprint"]:
-            raise ValueError("Resume inputs differ from stored calibration/config/commit/environment")
+            raise ValueError(
+                "Resume inputs differ from stored calibration/config/commit/environment"
+            )
     else:
         atomic_json(manifest, manifest_path)
     state_path = output / "states.parquet"
@@ -80,15 +87,24 @@ def run_pilot(cells, cal, dgm, est_cfg, master_seed, output, manifest, n_jobs=1,
             if key in lookup and lookup[key]["status"] == "finished" and path.exists():
                 continue
             ss = streams[rep]
-            state = dict(key=key, run_id=output.name, cell=cell.label, rep=rep, entropy=ss.entropy,
-                         spawn_key=json.dumps(ss.spawn_key), started_at=now(), finished_at=None,
-                         status="running")
+            state = dict(
+                key=key,
+                run_id=output.name,
+                cell=cell.label,
+                rep=rep,
+                entropy=ss.entropy,
+                spawn_key=json.dumps(ss.spawn_key),
+                started_at=now(),
+                finished_at=None,
+                status="running",
+            )
             lookup[key] = state
             pending.append((cell, rep, ss, key))
     atomic_parquet(pd.DataFrame(lookup.values()), state_path)
     completed = Parallel(n_jobs=n_jobs, return_as="generator_unordered")(
         delayed(worker)(cell, rep, ss, cal, dgm, est_cfg, output, save_data, key)
-        for cell, rep, ss, key in pending)
+        for cell, rep, ss, key in pending
+    )
     for key in completed:
         lookup[key]["status"] = "finished"
         lookup[key]["finished_at"] = now()

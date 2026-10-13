@@ -6,8 +6,14 @@ from ktsim.estimators.base import control_columns, finalize
 
 
 def learner(params):
-    return LGBMRegressor(**params, verbosity=-1, n_jobs=1, random_state=20261013,
-                         deterministic=True, force_col_wise=True)
+    return LGBMRegressor(
+        **params,
+        verbosity=-1,
+        n_jobs=1,
+        random_state=20261013,
+        deterministic=True,
+        force_col_wise=True,
+    )
 
 
 class GBM:
@@ -18,17 +24,18 @@ class GBM:
         categories = sorted(df.store.unique())
 
         def features(frame, price):
-            inputs = frame[columns].copy()
-            inputs["price"] = price
+            inputs = frame.assign(price=price)[columns].copy()
             inputs["store"] = pd.Categorical(inputs.store, categories=categories)
             return inputs
 
-        params = {key: cfg[key] for key in ("n_estimators", "learning_rate", "num_leaves",
-                                            "min_child_samples")}
+        params = {
+            key: cfg[key]
+            for key in ("n_estimators", "learning_rate", "num_leaves", "min_child_samples")
+        }
         model = learner(params)
         model.fit(features(df, df.price), df.log_q, categorical_feature=["store"])
         last = df[df.t > df.t.max() - cfg.get("fd_window_weeks", 4)]
-        step = cfg.get("fd_step", .01)
+        step = cfg.get("fd_step", 0.01)
         upper = model.predict(features(last, cal.p_bar * (1 + step)))
         lower = model.predict(features(last, cal.p_bar * (1 - step)))
         eta = float(np.mean(upper - lower) / (np.log1p(step) - np.log1p(-step)))

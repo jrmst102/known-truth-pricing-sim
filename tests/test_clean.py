@@ -9,8 +9,12 @@ def test_clean_rules():
     frame = load_movement("data/fixtures/movement_small.csv")
     frame["store"] = frame.store.astype(float)
     stores = pd.DataFrame({"store": [1, 2, 3], "zone": [1, 2, 1], "price_tier": ["L"] * 3})
-    result = clean_category(frame, pd.DataFrame({"upc": [123, 456, 999]}), stores,
-                            CalibrationConfig(plausibility={"retained_stores_min": 2}))
+    result = clean_category(
+        frame,
+        pd.DataFrame({"upc": [123, 456, 999]}),
+        stores,
+        CalibrationConfig(plausibility={"retained_stores_min": 2}),
+    )
     assert result.store_ids == [1, 2]
     assert result.focal_upc == 456
     assert len(result.frame) == 8

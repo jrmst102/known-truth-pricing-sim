@@ -64,17 +64,17 @@ files, including with `git add -f`.
 
 ## Protocol v1.1 implementation
 
-Deliverable 1 is an implementation draft. The authoritative design is
+Deliverable 1 was accepted by Jose Mendoza on 2026-10-14, and Deliverable 2
+(S2 full-horizon diagnostics) is authorized. The authoritative design is
 [PROTOCOL_v1.1.md](docs/PROTOCOL_v1.1.md), with requirements in
-[SPEC_v1.1.md](docs/SPEC_v1.1.md). A1–A7, the tuna window (weeks 1–341), and the 150-hour/2,000-replication
-limits are approved. Final protocol review, the full metadata audit, and
-retained-environment acceptance remain pending. See
-[VALIDATION_v1.1.md](docs/VALIDATION_v1.1.md) for evidence and outstanding work.
+[SPEC_v1.1.md](docs/SPEC_v1.1.md). A1–A7, the tuna window (weeks 1–341), and the
+150-hour/2,000-replication limits remain approved. See
+[VALIDATION_v1.1.md](docs/VALIDATION_v1.1.md) for local evidence and historical
+metadata limitations; acceptance records the author's explicit confirmation.
 
-Scientific runs are blocked until protocol approval and Deliverable 1 acceptance
-are recorded by the author. The precision pilot additionally requires accepted
-Deliverable 2 diagnostics. A main experiment needs an approved precision decision
-and unchanged scientific settings. Implementation never supplies these approvals.
+Deliverable 2 remains pending. The precision pilot requires accepted Deliverable 2
+diagnostics. A main experiment additionally needs an approved precision decision
+and unchanged scientific settings. M4 inference coverage remains withheld.
 
 ## Development validation
 

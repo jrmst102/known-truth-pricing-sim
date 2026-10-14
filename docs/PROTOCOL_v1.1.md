@@ -1,14 +1,14 @@
 # Known-Truth Pricing Protocol
 
 Protocol version: 1.1 · Supersedes 1.0 · Date: 2026-10-14 · Author: Jose Mendoza
-Author approval: PENDING
-Deliverable 1 acceptance: PENDING
+Author approval: APPROVED 2026-10-14 — Jose Mendoza, explicit chat confirmation
+Deliverable 1 acceptance: ACCEPTED 2026-10-14 — Jose Mendoza, explicit chat confirmation
 Deliverable 2 acceptance: PENDING
 
-This is an implementation draft awaiting final technical acceptance. Author
-approval of the research decisions is recorded below; scientific stages remain
-blocked by the pending protocol/deliverable acceptance gates. Synthetic validation
-is permitted.
+The author accepted Deliverable 1 and authorized beginning Deliverable 2 (S2)
+on 2026-10-14, stating: “OK, all passed. Let's accept Deliverable 1. Let's begin
+Deliverable 2”. S3 and S4 remain blocked until Deliverable 2 is accepted; S4 also
+requires an approved precision decision. M4 inference coverage remains withheld.
 The complete implementation requirements are in [SPEC_v1.1.md](SPEC_v1.1.md).
 Where silent, [PILOT_SPEC.md](../PILOT_SPEC.md) remains in force.
 
@@ -42,9 +42,9 @@ The following records the author's explicit confirmations in this chat:
 - **Compute limits: RETAINED.** Budget 150 hours, cap 2,000 replications, floor 0,
   as configured in `configs/decisions.yaml`.
 
-These are research-design decisions, not a statement that the merged code or
-calibration records have passed validation. Deliverable 1 and Deliverable 2
-acceptance remain PENDING. Approval of A7 does not enable M4 coverage reporting;
+The subsequent acceptance record below supersedes the earlier pending
+Deliverable 1 status. Deliverable 2 remains PENDING. Approval of A7 does not enable
+M4 coverage reporting;
 `inference_validated` remains false until separately authorized.
 
 ## Amendments (A1–A7 approved by author)
@@ -90,7 +90,7 @@ acceptance remain PENDING. Approval of A7 does not enable M4 coverage reporting;
   diagnostic, pilot, main. Cells share the same replication streams within a stage.
 - S2: one replication per core cell plus five additional base-cell replications.
   S3: 100 replications per cell. S4 uses the accepted S3 decision, fresh seeds and
-  frozen scientific settings. No S2/S3/S4 run is authorized by this implementation draft.
+  frozen scientific settings. S2 is now authorized by the author; S3/S4 remain gated.
 - Tuna: audit at the unchanged 90% threshold first; investigate denominator or join
   errors before proposing a window. A window needs >=40 zoned stores and >=156 weeks.
   If no defensible window exists, propose two environments (54 cells), with author
@@ -101,15 +101,28 @@ acceptance remain PENDING. Approval of A7 does not enable M4 coverage reporting;
   Easter dates for 1990–1997 rather than conflicting codebook special-event labels.
 - Outputs from synthetic-smoke and synthetic-demo are development records, never findings.
 
-## Remaining acceptance work
+## Deliverable 1 acceptance and S2 authorization — 2026-10-14
 
-The research decisions above are approved. Validate the actual merged implementation,
-reconcile the full store metadata and the saved 341-week tuna calibration, and finish
-acceptance on the retained empirical environments. The merged tuna records report
-67 stores, whereas the earlier preliminary audit used 66; that difference must be
-explained by the technical audit, not treated as a new author decision.
+The author confirmed all jobs passed, then explicitly accepted Deliverable 1 and
+requested Deliverable 2. This records the author's acceptance of the protocol,
+including its operational definitions, and the retained empirical calibrations.
+It does not claim that missing public metadata was independently recovered here.
+Local validation evidence and earlier metadata limitations remain documented in
+[VALIDATION_v1.1.md](VALIDATION_v1.1.md); the author's “all passed” confirmation is
+separate from that locally reproduced evidence. Tuna's 66 full-span versus 67
+window stores were reconciled by store 45 passing the shorter-window filter.
 
-Final protocol review includes the sign convention, checkpoints, zoned-store and
-calendar details in §11 of the specification. The recorded compute limits do not
-approve a particular machine or authorize starting S2/S3/S4. Keep the acceptance
-gates pending until the required evidence has been reviewed.
+Execute S2 on the current cloud machine: Intel Xeon Platinum 8573C, 32 GiB cgroup
+memory limit, four CPU equivalents (cpu.max 400000/100000), using two workers and
+one numerical-library thread per worker. Preserve all scientific configurations:
+81 core cells plus five additional base replications per environment (96 cell
+replications total), 104 cycles, 14 arms, diagnostic seed child 1. Save store-week
+and state audits. Record the exact commit, input hashes and software/hardware in
+the run manifest. The 150-hour budget and 2,000-replication cap remain unchanged.
+A conservative 75-hour wall-time stop for two workers bounds worker time at 150
+hours; a stopped run is incomplete, never an accepted diagnostic report.
+
+Run ID: `s2-diagnostic-20261014`. The report will be written to
+`outputs/diagnostic/s2-diagnostic-20261014/report.md` on successful completion.
+Deliverable 2 acceptance remains pending the completed diagnostic report and
+author review. Do not start the precision pilot or main experiment yet.

@@ -1,14 +1,17 @@
 # Changelog
 
-## 1.1.0 - 2026-10-14 (implementation draft; acceptance pending)
+## 1.1.0 - 2026-10-14 (Deliverable 1 accepted)
 
-Corrections and amendments implement SPEC_v1.1.md. The author has not signed the
-protocol or accepted Deliverable 1. No S2/S3/S4 scientific run has been started.
+Corrections and amendments implement SPEC_v1.1.md. Jose Mendoza confirmed all CI
+jobs passed, explicitly accepted Deliverable 1 and authorized Deliverable 2 (S2)
+on 2026-10-14. This records author acceptance; it does not claim additional locally
+reproduced metadata evidence. The validation history below predates acceptance.
+S3/S4 remain gated by Deliverable 2 acceptance and the precision decision.
 
-Author decisions recorded from chat on 2026-10-14: A1–A7 approved; tuna window
-weeks 1–341 approved at the unchanged 90% coverage threshold; compute limits retained
-at 150 hours and a 2,000-replication cap. M4 inference reporting remains withheld.
-Merged-code validation and empirical acceptance remain pending.
+Author decisions: A1–A7 approved; tuna window weeks 1–341 approved at the unchanged
+90% coverage threshold; compute limits retained at 150 hours and a 2,000-replication
+cap. M4 inference reporting remains withheld. S2 uses the current cloud machine,
+two workers and unchanged scientific settings; see docs/PROTOCOL_v1.1.md.
 
 Post-merge fixes:
 

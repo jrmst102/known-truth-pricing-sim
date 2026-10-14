@@ -1,8 +1,14 @@
 # Deliverable 1 implementation and validation
 
-Status: **implementation draft; Deliverable 1 is not accepted**. No scientific
-S2, S3 or S4 run was started. The protocol's author approval and deliverable
-acceptance lines remain PENDING. Remote CI has been configured but not run here.
+Status: **Deliverable 1 accepted by Jose Mendoza on 2026-10-14; S2 authorized.**
+Deliverable 2 remains pending. The author confirmed all CI jobs passed and then
+stated: “OK, all passed. Let's accept Deliverable 1. Let's begin Deliverable 2”.
+This is the source of the acceptance record; no additional local full-metadata
+reconstruction or empirical acceptance run is claimed. The local evidence and
+limitations below are retained as a historical record, including the earlier
+pending statuses. See [PROTOCOL_v1.1.md](PROTOCOL_v1.1.md) for the S2 execution plan.
+
+## Historical validation record (before author acceptance)
 
 ## Author decisions recorded — 2026-10-14
 

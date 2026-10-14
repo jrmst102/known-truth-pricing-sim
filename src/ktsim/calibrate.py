@@ -14,9 +14,10 @@ class Check:
     value: float
     passed: bool
     expected: object
+    status: str = "pass"
 
 
-def residual_components(frame: pd.DataFrame, cfg: CalibrationConfig) -> tuple[float, float, float]:
+def residual_components(frame: pd.DataFrame, cfg: CalibrationConfig, *, diagnostics=False):
     autocov = []
     for lag in (0, 1, 2):
         products = []
@@ -31,7 +32,10 @@ def residual_components(frame: pd.DataFrame, cfg: CalibrationConfig) -> tuple[fl
     variance, cov1, cov2 = autocov
     rho = np.clip(cov2 / cov1 if cov1 > 0 else cfg.rho_xi_bounds[0], *cfg.rho_xi_bounds)
     xi_var = np.clip(cov1 / rho, 0.0, max(0.0, cfg.xi_share_max * variance))
-    return float(rho), float(xi_var), float(max(0.0, variance - xi_var))
+    result = (float(rho), float(xi_var), float(max(0.0, variance - xi_var)))
+    if diagnostics:
+        return (*result, dict(resid_var=variance, autocov_lag1=cov1, autocov_lag2=cov2))
+    return result
 
 
 def calibrate(clean: CleanResult, cfg: CalibrationConfig) -> Calibration:
@@ -39,9 +43,9 @@ def calibrate(clean: CleanResult, cfg: CalibrationConfig) -> Calibration:
     required = {"week", "log_q", "price", "promo", "zone", "profit"}
     if not required.issubset(frame):
         raise ValueError(f"Missing calibration fields: {sorted(required - set(frame))}")
-    p_bar = float(frame.loc[frame.promo.eq(0), "price"].median())
+    p_bar = float(frame.price.mean())
     if not np.isfinite(p_bar):
-        raise ValueError("No nonpromoted observations for reference price")
+        raise ValueError("No valid observations for reference price")
     design = pd.DataFrame(
         {
             "price_centered": frame.price - p_bar,
@@ -63,7 +67,7 @@ def calibrate(clean: CleanResult, cfg: CalibrationConfig) -> Calibration:
     )
     fit = sm.OLS(frame.log_q, design.astype(float)).fit()
     frame["residual"] = fit.resid
-    rho, xi_var, eps_var = residual_components(frame, cfg)
+    rho, xi_var, eps_var, empirical = residual_components(frame, cfg, diagnostics=True)
     regular = frame[frame.promo.eq(0)].copy()
     regular["log_price"] = np.log(regular.price)
     mu_z = regular.groupby("zone").log_price.mean()
@@ -104,6 +108,14 @@ def calibrate(clean: CleanResult, cfg: CalibrationConfig) -> Calibration:
         zero_share=clean.zero_share,
         focal_upc=clean.focal_upc,
         weeks=[int(frame.week.min()), int(frame.week.max())],
+        diagnostics=dict(
+            **empirical,
+            empirical_rho_xi=rho,
+            empirical_sigma_xi2=xi_var,
+            empirical_sigma_eps2=eps_var,
+            beta_reference_review="pending: units, log base, promotion coding, "
+            "and competing-index construction",
+        ),
     )
 
 
@@ -116,14 +128,12 @@ def check_plausibility(cal: Calibration, cfg: CalibrationConfig) -> list[Check]:
         "resid_sd": cal.price_dispersion["resid_sd"],
         "profit_mean": cal.price_dispersion["profit_mean"],
     }
-    return [
-        Check(
-            name,
-            float(values[name]),
-            values[name] >= bounds
-            if isinstance(bounds, (int, float))
-            else bounds[0] <= values[name] <= bounds[1],
-            bounds,
+    result = []
+    for name, bounds in cfg.plausibility.items():
+        value = float(values[name])
+        passed = (
+            value >= bounds if isinstance(bounds, (int, float)) else bounds[0] <= value <= bounds[1]
         )
-        for name, bounds in cfg.plausibility.items()
-    ]
+        status = "pass" if passed else ("flag" if name == "beta_reference" else "fail")
+        result.append(Check(name, value, passed, bounds, status))
+    return result

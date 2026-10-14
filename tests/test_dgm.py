@@ -13,7 +13,7 @@ def test_elasticity_and_censoring(cal, dgm):
     np.testing.assert_allclose((upper - lower) / (2 * step), -1.06)
     mean = expected_log_demand(cal, dgm, x, cal.p_bar, -1.06)
     sales = draw_sales(cal, dgm, x, cal.p_bar, -1.06, 5, 0, True)
-    np.testing.assert_allclose(sales, 1.5 * np.exp(mean))
+    np.testing.assert_allclose(sales, 1.5 * np.exp(mean + cal.resid_var / 2))
     assert np.isclose(kappa_scaled(0.05, 0.2) * 0.2, 0.05)
 
 
@@ -22,6 +22,6 @@ def test_replay_and_common_variance(cal, dgm):
     first = draw_shocks(ss, 8, 10000, cal, dgm)
     second = draw_shocks(ss, 8, 10000, cal, dgm)
     np.testing.assert_array_equal(first.omega, second.omega)
-    xi = latent_demand(first, cal, 0.5)
+    xi = latent_demand(first, cal, 0.5, dgm)
     assert abs(np.var(xi) - cal.sigma_xi2) < 0.003
     assert abs(np.corrcoef(xi)[0, 1] - 0.5) < 0.04

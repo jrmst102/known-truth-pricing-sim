@@ -1,8 +1,10 @@
+"""Demand forecasts use exp(log prediction) times Duan mean(exp(training residual))."""
+
 import numpy as np
 import pandas as pd
 from lightgbm import LGBMRegressor
 
-from ktsim.estimators.base import control_columns, finalize
+from ktsim.estimators.base import control_columns, finalize, smearing_factor
 
 
 def learner(params):
@@ -40,7 +42,9 @@ class GBM:
         lower = model.predict(features(last, cal.p_bar * (1 - step)))
         eta = float(np.mean(upper - lower) / (np.log1p(step) - np.log1p(-step)))
 
-        def predict(frame, price):
-            return np.exp(model.predict(features(frame, price)))
+        smear = smearing_factor(df.log_q - model.predict(features(df, df.price)))
 
-        return finalize(eta, predict=predict)
+        def predict(frame, price):
+            return np.exp(model.predict(features(frame, price))) * smear
+
+        return finalize(eta, predict=predict, smearing=smear)

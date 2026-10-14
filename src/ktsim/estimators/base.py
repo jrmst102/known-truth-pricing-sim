@@ -13,6 +13,13 @@ class Estimate(TypedDict):
     first_stage_F: float | None
     converged: bool
     failure_reason: str | None
+    numerical_failure: bool
+    predictions_unavailable: bool
+    extreme_estimate: bool
+    positive_slope: bool
+    smearing_factor: float
+    coverage_status: str
+    fold_assignment: dict
     predict: Callable[[pd.DataFrame, np.ndarray], np.ndarray] | None
 
 
@@ -45,32 +52,43 @@ def design(frame, columns=None):
     return result
 
 
-def finalize(eta, low=None, high=None, first_stage=None, predict=None):
-    failure = None
-    if not np.isfinite(eta) or any(
-        value is not None and not np.isfinite(value) for value in (low, high)
-    ):
-        failure = "nonfinite"
-    elif abs(eta) > 10:
-        failure = "abs_eta_gt_10"
+def smearing_factor(residuals):
+    return float(np.mean(np.exp(np.asarray(residuals))))
+
+
+def finalize(
+    eta,
+    low=None,
+    high=None,
+    first_stage=None,
+    predict=None,
+    *,
+    smearing=1.0,
+    coverage_status="available",
+    fold_assignment=None,
+):
+    numerical_failure = not np.isfinite(eta)
+    if any(value is not None and not np.isfinite(value) for value in (low, high)):
+        low = high = None
     return Estimate(
-        eta_hat=float(eta) if failure is None else np.nan,
-        ci_low=low if failure is None else None,
-        ci_high=high if failure is None else None,
+        eta_hat=float(eta) if not numerical_failure else np.nan,
+        ci_low=low,
+        ci_high=high,
         first_stage_F=first_stage,
-        converged=failure is None,
-        failure_reason=failure,
-        predict=predict if failure is None else None,
+        converged=not numerical_failure,
+        failure_reason="nonfinite" if numerical_failure else None,
+        numerical_failure=numerical_failure,
+        predictions_unavailable=predict is None,
+        extreme_estimate=bool(np.isfinite(eta) and abs(eta) > 10),
+        positive_slope=bool(np.isfinite(eta) and eta > 0),
+        smearing_factor=smearing,
+        coverage_status=coverage_status,
+        fold_assignment=fold_assignment or {},
+        predict=predict,
     )
 
 
 def failed(reason="nonconvergence"):
-    return Estimate(
-        eta_hat=np.nan,
-        ci_low=None,
-        ci_high=None,
-        first_stage_F=None,
-        converged=False,
-        failure_reason=reason,
-        predict=None,
-    )
+    result = finalize(np.nan, predict=None, smearing=np.nan)
+    result["failure_reason"] = reason
+    return result

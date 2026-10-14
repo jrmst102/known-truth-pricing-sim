@@ -1,8 +1,10 @@
+"""Demand forecasts use exp(log prediction) times Duan mean(exp(training residual))."""
+
 import numpy as np
 import statsmodels.api as sm
 from linearmodels.iv import IV2SLS
 
-from ktsim.estimators.base import design, finalize
+from ktsim.estimators.base import design, finalize, smearing_factor
 
 
 class IV:
@@ -27,10 +29,13 @@ class IV:
             fit = iv_fit
             interval = fit.conf_int().loc["price_centered"] * cal.p_bar
         params = fit.params
+        smear = smearing_factor(fit.resid if self.control_function else fit.resids)
 
         def predict(frame, price):
             baseline = design(frame, columns).to_numpy() @ params[columns].to_numpy()
-            return np.exp(baseline + params.price_centered * (np.asarray(price) - cal.p_bar))
+            return (
+                np.exp(baseline + params.price_centered * (np.asarray(price) - cal.p_bar)) * smear
+            )
 
         return finalize(
             float(params.price_centered * cal.p_bar),
@@ -38,4 +43,5 @@ class IV:
             float(interval.iloc[1]),
             first_stage,
             predict,
+            smearing=smear,
         )

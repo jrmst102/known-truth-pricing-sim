@@ -9,17 +9,27 @@ from pathlib import Path
 
 import yaml
 
+from ktsim.audit import coverage_audit
 from ktsim.calibrate import calibrate, check_plausibility
 from ktsim.clean import clean_category
-from ktsim.config import Calibration, CalibrationConfig, CellConfig, DGMConfig
+from ktsim.config import Calibration, CalibrationConfig, DGMConfig
+from ktsim.config_validation import validate_config
 from ktsim.io import find_input, load_movement, load_table, sha256, week_table
 from ktsim.pilot import atomic_json, run_pilot
+from ktsim.protocol import (
+    PROTOCOL_VERSION,
+    SPEC_VERSION,
+    extension_cell,
+    scenario_cells,
+    validate_protocol,
+)
 from ktsim.report import environment, make_report
+from ktsim.rng import STAGES
 
 
 def read_config(path):
     with Path(path).open() as stream:
-        return yaml.safe_load(stream)
+        return validate_config(yaml.safe_load(stream))
 
 
 def calibration_main():
@@ -59,16 +69,29 @@ def calibration_main():
     if log_path.exists():
         log = log_path.read_text().splitlines() + ["", "## Calibration invocation", ""]
     files.update(stores=args.stores, week_decode=args.week_decode)
-    checksums = {str(path): sha256(path) for path in files.values()}
+    checksums_path = output / "checksums.json"
+    checksums = json.loads(checksums_path.read_text()) if checksums_path.exists() else {}
+    checksums.update({str(path): sha256(path) for path in files.values()})
     for path, digest in checksums.items():
         log.append(f"- SHA-256 {path}: {digest}")
     atomic_json(checksums, output / "checksums.json")
     for category in args.categories:
         logging.info("Calibrating %s", category)
         try:
+            movement = load_movement(files["w" + category])
+            upc = load_table(files["upc" + category])
+            audit = coverage_audit(movement, upc, stores, cfg, calendar)
+            audit["metadata_source"] = str(args.stores)
+            audit["metadata_sha256"] = sha256(args.stores)
+            audit["metadata_scope"] = (
+                "retained-store table"
+                if "calibration" in args.stores.parts
+                else "full store metadata"
+            )
+            atomic_json(audit, output / f"coverage_audit_{category}.json")
             clean = clean_category(
-                load_movement(files["w" + category]),
-                load_table(files["upc" + category]),
+                movement,
+                upc,
                 stores,
                 cfg,
             )
@@ -79,6 +102,15 @@ def calibration_main():
             if clean.frame[holidays].isna().any().any():
                 raise ValueError("Movement weeks outside the codebook")
             cal = calibrate(clean, cfg)
+            previous_calibration = output / f"calibration_{category}.json"
+            if previous_calibration.exists():
+                previous = Calibration.load(previous_calibration)
+                cal.diagnostics["previous_beta_reference"] = previous.diagnostics.get(
+                    "previous_beta_reference", previous.beta_reference
+                )
+                cal.diagnostics["previous_p_bar"] = previous.diagnostics.get(
+                    "previous_p_bar", previous.p_bar
+                )
         except ValueError as error:
             failures[category] = str(error)
             log.extend(["", f"## {category}", f"BLOCKED: {error}"])
@@ -101,7 +133,7 @@ def calibration_main():
         for check in cal_checks:
             log.append(
                 f"{check.name}: {check.value:.4f}; expected {check.expected}; "
-                f"{'PASS' if check.passed else 'FAIL - author review required; no silent fallback'}"
+                f"{check.status.upper()}"
             )
         (output / "calibration_log.md").write_text("\n".join(log) + "\n")
         atomic_json(checks, output / "checks.json")
@@ -117,64 +149,47 @@ def calibration_main():
         )
 
 
-def expand_cells(raw, dgm, selected, reps=None, estimators=None):
-    cells = []
-    for name in selected:
-        entry = raw["cells"][name]
-        base = dict(
-            name=name,
-            eta=dgm.eta_levels[entry["eta"]],
-            kappa=dgm.kappa_levels[entry["kappa"]],
-            phi=entry["phi"],
-            delta=0.0,
-            reps=reps or entry["reps"],
-            estimators=estimators or entry.get("estimators", []),
-            policies=entry.get("policies", []),
-            data_only=entry.get("data_only", False),
+def resolve_calibration(environment, root=Path("data/calibration")):
+    failures = root / "calibration_failures.json"
+    if failures.exists() and environment in json.loads(failures.read_text()):
+        raise ValueError(
+            f"{environment} calibration blocked; review coverage audit and calibration log"
         )
-        if name == "P4":
-            cells.extend(
-                CellConfig(**base, pass_through=value) for value in entry["pass_through_grid"]
-            )
-        elif name == "P5":
-            cells.extend(
-                CellConfig(**base, multiplier=value) for value in entry["censoring_multipliers"]
-            )
-        elif isinstance(entry["delta"], list):
-            for delta in entry["delta"]:
-                values = dict(
-                    base, delta=delta, policies=["greedy"] if delta == 0 else ["greedy_rps"]
-                )
-                cells.append(CellConfig(**values))
-        else:
-            cells.append(CellConfig(**dict(base, delta=entry["delta"])))
-    return cells
+    path = root / f"calibration_{environment}.json"
+    if not path.exists():
+        raise ValueError(f"Missing calibration: {path}")
+    return path
 
 
 def pilot_main():
-    parser = argparse.ArgumentParser(description="Run known-truth pilot cells")
-    parser.add_argument("--cells", nargs="+", default=["P0"])
+    parser = argparse.ArgumentParser(description="Run protocol v1.1 simulation stages")
+    parser.add_argument("--cells", nargs="+", default=["all"])
+    parser.add_argument("--stage", choices=STAGES, default="validation")
+    parser.add_argument("--extension")
     parser.add_argument("--n-jobs", type=int, default=1)
-    parser.add_argument("--config", default="configs/pilot_cells.yaml")
+    parser.add_argument("--config", default="configs/scenarios.yaml")
     parser.add_argument("--dgm-config", default="configs/dgm_base.yaml")
     parser.add_argument("--estimator-config", default="configs/estimators.yaml")
-    parser.add_argument("--calibration", type=Path)
-    parser.add_argument("--stores", type=Path)
+    parser.add_argument("--decision-config", default="configs/decisions.yaml")
+    parser.add_argument("--decision", type=Path)
+    parser.add_argument("--calibration-dir", type=Path, default=Path("data/calibration"))
     parser.add_argument("--week-decode", type=Path, default=Path("data/fixtures/week_decode.csv"))
-    parser.add_argument("--output-root", type=Path, default=Path("outputs/pilot"))
+    parser.add_argument("--output-root", type=Path)
     parser.add_argument("--run-id")
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--save-data", action="store_true")
+    parser.add_argument("--save-storeweek", action="store_true")
     parser.add_argument("--synthetic", action="store_true")
     parser.add_argument("--reps", type=int)
     parser.add_argument("--cycles", type=int)
     parser.add_argument("--estimators", nargs="+", choices=["M1", "M2", "M3", "M4_plr", "M4_pliv"])
     args = parser.parse_args()
-    if not args.synthetic and any(
-        value is not None for value in (args.reps, args.cycles, args.estimators)
-    ):
-        parser.error("Smoke overrides (--reps/--cycles/--estimators) require --synthetic")
-    if args.reps is not None and args.reps < 1 or args.cycles is not None and args.cycles < 1:
+    scientific = args.stage != "validation"
+    if args.synthetic and scientific:
+        parser.error("Synthetic fixtures are restricted to validation, not scientific stages")
+    if scientific and any(value is not None for value in (args.reps, args.cycles, args.estimators)):
+        parser.error("Scientific stages cannot use smoke overrides")
+    if (args.reps is not None and args.reps < 1) or (args.cycles is not None and args.cycles < 1):
         parser.error("reps and cycles must be positive")
     if args.resume and not args.run_id:
         parser.error("--resume requires --run-id")
@@ -182,81 +197,139 @@ def pilot_main():
         parser.error("run-id must be a directory name, not a path")
     commit = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
     dirty = bool(subprocess.check_output(["git", "status", "--porcelain"], text=True).strip())
-    if dirty and not args.synthetic:
-        parser.error("Working tree is dirty; commit reviewed code before running a real-data pilot")
+    if dirty and scientific:
+        parser.error("Working tree is dirty; scientific stages require a reviewed clean commit")
     raw = read_config(args.config)
-    selected = list(raw["cells"]) if args.cells == ["all"] else args.cells
-    if any(name not in raw["cells"] for name in selected):
-        parser.error("Unknown cell; expected P0-P5 or all")
+    try:
+        version_raw = (
+            raw
+            if "protocol_version" in raw
+            else dict(protocol_version=PROTOCOL_VERSION, spec_version=SPEC_VERSION)
+        )
+        validate_protocol(version_raw, scientific=scientific, stage=args.stage)
+    except ValueError as error:
+        parser.error(str(error))
     dgm = DGMConfig(**read_config(args.dgm_config))
     if args.cycles is not None:
         dgm.cycles = args.cycles
     est_cfg = read_config(args.estimator_config)
-    checksums, checks = {}, []
-    if args.synthetic:
-        cal_path = Path("data/fixtures/calibration_synthetic.json")
-        cal = Calibration.load(cal_path)
-        dgm.store_zones = {store: 1 if store <= 4 else 2 for store in cal.alpha_s}
+    decisions_config = read_config(args.decision_config)
+    decision = json.loads(args.decision.read_text()) if args.decision else {}
+    if args.stage == "main" and (not decision.get("approved") or not decision.get("n_sim")):
+        parser.error("Main requires an explicitly approved pilot decision")
+    if args.extension:
+        cells, instrument = extension_cell(
+            raw, dgm, args.extension, args.stage, args.reps, args.estimators, decision.get("n_sim")
+        )
+        est_cfg["M3_iv"]["instrument"] = instrument
+        est_cfg["M4_dml"]["instrument"] = instrument
     else:
-        cal_path = args.calibration or Path("data/calibration/calibration_tna.json")
-        failures_path = cal_path.parent / "calibration_failures.json"
-        if failures_path.exists() and "tna" in json.loads(failures_path.read_text()):
-            parser.error(
-                "Tuna calibration is blocked; resolve calibration_log.md before running the pilot"
-            )
-        if not cal_path.exists():
-            parser.error("Tuna calibration missing; run scripts/run_calibration.py first")
-        cal = Calibration.load(cal_path)
-        store_path = args.stores or cal_path.parent / "stores_tna.csv"
-        if not store_path.exists():
-            parser.error(f"Missing {store_path}")
-        stores = load_table(store_path)
-        dgm.store_zones = dict(zip(stores.store.astype(int), stores.zone.astype(int)))
-        dgm.calendar = week_table(args.week_decode)
-        checks_path = cal_path.parent / "checks.json"
-        if checks_path.exists():
-            checks = json.loads(checks_path.read_text())
-        checksums_path = cal_path.parent / "checksums.json"
-        if checksums_path.exists():
-            checksums = json.loads(checksums_path.read_text())
+        cells = scenario_cells(
+            raw,
+            dgm,
+            args.stage,
+            None if args.cells == ["all"] else args.cells,
+            args.reps,
+            args.estimators,
+            decision.get("n_sim"),
+        )
+    if not cells:
+        parser.error("No matching scenario cells")
+    if scientific and args.cells != ["all"]:
+        parser.error("Scientific stages require every retained core cell")
+    checksums, checks, audits, calibrations = {}, [], {}, {}
+    for env in sorted({cell.environment for cell in cells}):
+        if args.synthetic:
+            path = Path("data/fixtures/calibration_synthetic.json")
+            cal = Calibration.load(path)
+            dgm.store_zones.update({store: 1 if store <= 4 else 2 for store in cal.alpha_s})
         else:
-            parser.error("Calibration checksums.json is missing")
-        checksums[str(store_path)] = sha256(store_path)
+            try:
+                path = resolve_calibration(env, args.calibration_dir)
+            except ValueError as error:
+                parser.error(str(error))
+            cal = Calibration.load(path)
+            store_path = args.calibration_dir / f"stores_{env}.csv"
+            stores = load_table(store_path)
+            dgm.store_zones.update(dict(zip(stores.store.astype(int), stores.zone.astype(int))))
+            checksums[str(store_path)] = sha256(store_path)
+            audit_path = args.calibration_dir / f"coverage_audit_{env}.json"
+            if not audit_path.exists():
+                parser.error(f"Missing coverage audit: {audit_path}")
+            audits[env] = json.loads(audit_path.read_text())
+        calibrations[env] = cal
+        checksums[str(path)] = sha256(path)
+    if not args.synthetic:
+        dgm.calendar = week_table(args.week_decode)
         checksums[str(args.week_decode)] = sha256(args.week_decode)
-    checksums[str(cal_path)] = sha256(cal_path)
-    cells = expand_cells(raw, dgm, selected, args.reps, args.estimators)
+        check_path = args.calibration_dir / "checks.json"
+        checks = json.loads(check_path.read_text()) if check_path.exists() else []
+        raw_checksums = args.calibration_dir / "checksums.json"
+        if not raw_checksums.exists():
+            parser.error("Calibration checksums.json is missing")
+        checksums.update(json.loads(raw_checksums.read_text()))
     effective = asdict(dgm)
     effective.pop("calendar")
+    config_checksums = {
+        path: sha256(path)
+        for path in (args.config, args.dgm_config, args.estimator_config, args.decision_config)
+    }
+    source_checksums = {
+        str(path): sha256(path)
+        for directory in ("src", "scripts")
+        for path in sorted(Path(directory).rglob("*.py"))
+    }
+    frozen = dict(
+        configs=config_checksums,
+        sources=source_checksums,
+        calibrations=checksums,
+        extension=args.extension,
+        effective_estimators=est_cfg,
+    )
+    frozen_hash = hashlib.sha256(json.dumps(frozen, sort_keys=True).encode()).hexdigest()
+    if args.stage == "main" and decision.get("scientific_fingerprint") != frozen_hash:
+        parser.error("Settings changed since the precision pilot; protocol amendment required")
     manifest = dict(
         commit=commit,
         dirty=dirty,
         synthetic=args.synthetic,
         master_seed=raw["master_seed"],
+        protocol_version=PROTOCOL_VERSION,
+        spec_version=SPEC_VERSION,
+        stage=args.stage,
+        seed_child_index=STAGES.index(args.stage),
         cells=[asdict(cell) for cell in cells],
         dgm=effective,
         estimators=est_cfg,
-        calibration=asdict(cal),
+        calibration={k: asdict(v) for k, v in calibrations.items()},
+        calibration_ids={
+            env: sha256(Path("data/fixtures/calibration_synthetic.json"))
+            if args.synthetic
+            else sha256(args.calibration_dir / f"calibration_{env}.json")
+            for env in calibrations
+        },
+        scenario_file_sha256=sha256(args.config),
+        figures=[],
         checksums=checksums,
         calibration_checks=checks,
+        coverage_audits=audits,
         environment=environment(),
         n_jobs=args.n_jobs,
         save_data=args.save_data,
-        config_checksums={
-            path: sha256(path) for path in (args.config, args.dgm_config, args.estimator_config)
-        },
-        source_checksums={
-            str(path): sha256(path)
-            for directory in ("src", "scripts")
-            for path in sorted(Path(directory).rglob("*.py"))
-        },
+        save_storeweek=args.save_storeweek,
+        config_checksums=config_checksums,
+        source_checksums=source_checksums,
+        decisions_config=decisions_config,
+        scientific_fingerprint=frozen_hash,
     )
-    fingerprint = hashlib.sha256(json.dumps(manifest, sort_keys=True).encode()).hexdigest()
-    manifest["fingerprint"] = fingerprint
+    manifest["fingerprint"] = hashlib.sha256(
+        json.dumps(manifest, sort_keys=True).encode()
+    ).hexdigest()
     run_id = args.run_id or datetime.now().strftime("%Y%m%d-%H%M-") + commit[:7]
-    output = args.output_root / run_id
+    output = (args.output_root or Path("outputs") / args.stage) / run_id
     run_pilot(
         cells,
-        cal,
+        calibrations,
         dgm,
         est_cfg,
         raw["master_seed"],
@@ -265,6 +338,7 @@ def pilot_main():
         args.n_jobs,
         args.resume,
         args.save_data,
+        args.save_storeweek,
     )
     logging.info("Report: %s", make_report(output))
 

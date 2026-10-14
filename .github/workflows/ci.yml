@@ -1,15 +1,39 @@
-name: Synthetic Pilot Checks
+name: Protocol v1.1 Validation
 on: [push, pull_request]
 jobs:
-  test:
+  unit:
     runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           cache: pip
-      - run: pip install -e '.[dev]'
+      - run: pip install -e '.[dev,data]'
       - run: ruff check src scripts tests
       - run: pytest -m 'not slow' --ignore=tests/test_loop_smoke.py
+  full-horizon-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -e '.[dev,data]'
       - run: pytest tests/test_loop_smoke.py
+      - run: python scripts/validate_v11.py --run-id ci-synthetic --n-jobs 2
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v11-synthetic-acceptance
+          path: outputs/validation/

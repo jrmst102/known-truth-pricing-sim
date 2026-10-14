@@ -62,69 +62,103 @@ Review the generated store and calendar tables before using them in scientific
 analyses. Raw data is ignored by Git, and the pre-commit hook blocks staging raw
 files, including with `git add -f`.
 
-## Run the pilot
+## Protocol v1.1 implementation
 
-Run calibration, the pilot, and report generation from the repository root:
+Deliverable 1 is an implementation draft. The authoritative design is
+[PROTOCOL_v1.1.md](docs/PROTOCOL_v1.1.md), with requirements in
+[SPEC_v1.1.md](docs/SPEC_v1.1.md). Author approval, the full tuna metadata audit,
+and retained-environment acceptance are pending. See
+[VALIDATION_v1.1.md](docs/VALIDATION_v1.1.md) for evidence and outstanding work.
+
+Scientific runs are blocked until protocol approval and Deliverable 1 acceptance
+are recorded by the author. The precision pilot additionally requires accepted
+Deliverable 2 diagnostics. A main experiment needs an approved precision decision
+and unchanged scientific settings. Implementation never supplies these approvals.
+
+## Development validation
+
+From the repository root, use a fresh run ID for a small synthetic check:
 
 ```bash
+python scripts/run_pilot.py --stage validation --synthetic \
+  --cells sna:med:pos:phi=0.5 --reps 2 --cycles 2 --estimators M1 M3 \
+  --n-jobs 2 --save-data --save-storeweek --run-id v11-smoke
+```
+
+Synthetic fixtures can be used only for validation; they never replace a blocked
+empirical calibration. The environment tag names the scenario whose mechanics
+are exercised, not a claim that synthetic results use that environment's data.
+
+Run reproducible mechanical acceptance across all estimators and policies,
+three adoption settings, two replications, and 104 cycles:
+
+```bash
+python scripts/validate_v11.py --run-id v11-acceptance --n-jobs 2
+```
+
+This uses small nuisance learners for mechanical validation and records the
+actual parameters. It is not the S2 diagnostic or a statistical acceptance study.
+Results, report, manifest and checks are under `outputs/validation/<run-id>/`.
+Use `--check-only` to recheck already-generated acceptance artifacts; `--resume`
+requires identical source, calibration, configuration, environment and worker count.
+
+`--save-data` writes simulated histories, forecasts and realized sales.
+`--save-storeweek` writes per-store prices, assignments, fallback flags and true
+expected revenue triplets to `storeweek.parquet`. Ratios are stored as fractions;
+percentages are a report presentation choice. Model-store measures are null
+when phi is zero. Failures remain in policy comparisons, with fallback rates.
+
+The historical `outputs/pilot/synthetic-smoke` and `synthetic-demo` reports are
+**v1.0 development records**, preserved for provenance. They are not scientific
+results and must not be cited as such.
+
+## Calibration and staged runs
+
+Audit eligibility before proposing any sample change:
+
+```bash
+python scripts/audit_coverage.py --category tna --search-window
 python scripts/run_calibration.py --config configs/calibration.yaml --categories sna tna tti
-python scripts/run_pilot.py --cells all --n-jobs 8
-python scripts/make_report.py --run-id YYYYMMDD-HHMM-COMMIT
 ```
 
-Calibration results, checksums, and the run log are written under
-`data/calibration/`. If a category does not meet the protocol's coverage
-requirements, that category is stopped without relaxing the thresholds; other
-requested categories are still checked. A blocked tuna calibration prevents a
-real-data pilot from running.
+The first command needs the full public zoned-store table, normally imported to
+`data/raw/stores.csv`. Audit results identify the metadata source and scope.
+The checked-in preliminary audits used the previously retained store table;
+they do not certify the original full-metadata tuna sample. A candidate window
+is a proposal, never an automatic eligibility change. Keep the 90% threshold.
+Benchmark observational elasticities are review flags, not exclusion criteria;
+see [the investigation draft](docs/BETA_REFERENCE_REVIEW.md).
 
-Before starting a real-data pilot, commit the reviewed implementation,
-configuration, and calibration results. The pilot refuses to run from a dirty
-worktree and generates its report automatically.
-
-For a quick run that does not need Dominick's data:
+After the required author acceptance, stages use `configs/scenarios.yaml`:
 
 ```bash
-python scripts/run_pilot.py --cells all --synthetic --reps 2 --cycles 2 \
-  --estimators M1 M3 --n-jobs 2 --save-data --run-id synthetic-smoke
+python scripts/run_pilot.py --stage diagnostic --cells all --n-jobs 2 --run-id s2-diagnostic
+python scripts/run_pilot.py --stage pilot --cells all --n-jobs 2 --run-id s3-precision
+python scripts/run_pilot.py --stage main --cells all --decision outputs/pilot/s3-precision/decisions.json \
+  --n-jobs 2 --run-id s4-main
 ```
 
-This shortened synthetic run checks that the pipeline works; it does not test
-statistical acceptance. Omit `--estimators` to include LightGBM and both
-DoubleML variants. Full pilot configurations can take substantially longer,
-since each cycle refits every estimator and cross-fitting learner.
+The core has 81 cells; the two-environment 54-cell alternative requires author
+approval and a protocol/chapter amendment. Named extensions vary one factor from
+a base cell, for example `--extension censored` during validation. No extension
+is silently mixed into the core. Stage seeds are separate; cells within a stage
+share replication streams. The diagnostic's five extra base replications use
+new streams, separate from its first base replication.
 
-The pilot writes estimate and state Parquet files, replication shards, runtime
-and performance CSV files, a manifest, a decisions JSON file, a Markdown
-report, and five diagnostic plots. With `--save-data`, it also saves simulated
-observations, forecasts, and realized sales. The latent arrays can be
-regenerated from each state's `entropy` and `spawn_key`, together with the
-frozen calibration and configuration.
-
-To resume a run, repeat the same pilot command with `--resume` and the existing
-run ID:
-
-```bash
-python scripts/run_pilot.py --cells all --n-jobs 8 --resume \
-  --run-id <existing-run-id>
-```
-
-The resume check rejects changes to code, calibration, settings, environment,
-or worker count. Use a new run ID for a new experiment; existing output
-directories are never overwritten.
+The precision decision reports per-cell/arm SDs, the bounding measure, planned
+paired comparisons, targets, explicit floor/cap, achieved precision at the cap,
+and projected runtime against the budget. It appears only for the pilot stage.
 
 ## Validate
 
-Run the linter and the standard test suite with:
-
 ```bash
 ruff check src scripts tests
-pytest -m 'not slow'
+pytest -m 'not slow' --ignore=tests/test_loop_smoke.py
 pytest tests/test_loop_smoke.py
+RUN_DML_INFERENCE=1 pytest tests/test_dml_inference.py
 ```
 
-Tests cover data ingestion and cleaning, calibration, elasticity and censoring,
-oracle bounds, estimator recovery, Monte Carlo standard errors, parallel
-checkpoints, saved data, report generation, CLI resume, and reproducible
-scientific replay. CI uses synthetic fixtures and does not read movement
-archives or `data/raw/`.
+The last command explicitly runs 200 independent draws for each DML variant.
+Passing never changes `M4_dml.inference_validated`: author opt-in is separate.
+CI runs the unit and full-horizon smoke jobs with synthetic data; it never reads
+movement archives or `data/raw/`.

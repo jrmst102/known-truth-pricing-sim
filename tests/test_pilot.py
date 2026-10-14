@@ -26,7 +26,7 @@ def test_checkpoint_resume_report_and_replay(tmp_path, cal, dgm):
     )
     path = make_report(output)
     assert "Synthetic fixture" in path.read_text()
-    assert (output / "figures/p0_elasticity.png").exists()
+    assert (output / "figures/elasticity.png").exists()
     assert len(list((output / "simulated").glob("*.parquet"))) == 2
     with pytest.raises(ValueError, match="Resume inputs differ"):
         run_pilot(

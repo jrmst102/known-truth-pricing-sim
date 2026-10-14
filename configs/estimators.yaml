@@ -1,8 +1,8 @@
 M1_ols: {robust_se: HC1}
 M2_gbm: {n_estimators: 500, learning_rate: 0.05, num_leaves: 31, min_child_samples: 20, fd_step: 0.01, fd_window_weeks: 4}
-M3_iv: {instrument: cost_shifter, variants: [tsls, control_function], report_first_stage_F: true}
+M3_iv: {instrument: cost_shifter}
 M4_dml:
   n_folds: 5
-  nuisance: lightgbm
+  instrument: cost_shifter
   nuisance_params: {n_estimators: 500, learning_rate: 0.05, num_leaves: 31, min_child_samples: 20}
-  variants: [plr_controls, pliv_cost_shifter]
+  inference_validated: false

@@ -40,6 +40,7 @@ class Calibration:
     zero_share: float
     focal_upc: int
     weeks: list[int]
+    diagnostics: dict = field(default_factory=dict)
 
     @classmethod
     def load(cls, path: str | Path) -> Calibration:
@@ -58,14 +59,21 @@ class DGMConfig:
     ladder_step: float = 0.05
     cross_price_coef: float = 0.2
     comp_index: dict = field(default_factory=lambda: {"rho": 0.8})
-    cost_shifter: dict = field(default_factory=lambda: {"rho": 0.8, "sd": 0.05})
+    cost_shifter: dict = field(
+        default_factory=lambda: {"structure": "iid_store_week", "rho": 0.8, "sd": 0.05}
+    )
     zone_drift: dict = field(default_factory=lambda: {"rho": 0.9})
     kappa_levels: dict = field(default_factory=lambda: {"none": 0.0, "pos": 0.05, "neg": -0.05})
-    exploration: dict = field(default_factory=lambda: {"decay_power": -0.25})
+    exploration: dict = field(default_factory=lambda: {"delta": 0.03, "decay_power": -0.25})
     censoring: dict = field(default_factory=lambda: {"multiplier": 1.5})
     history_weeks: int = 52
     cycles: int = 104
-    rho_m_levels: list = field(default_factory=lambda: [0.0, 0.5])
+    rho_m: float = 0.0
+    rho_xi: float = 0.5
+    xi_share: float = 0.5
+    shock_split: str = "design"
+    sales_process: str = "latent"
+    reliability: dict = field(default_factory=lambda: {"tau": 0.02, "window": 26})
     eta_levels: dict = field(default_factory=lambda: {"low": -0.8, "med": -1.06, "high": -2.5})
     phi_levels: list = field(default_factory=lambda: [0.0, 0.5, 1.0])
     store_zones: dict[int, int] = field(default_factory=dict)
@@ -86,6 +94,12 @@ class CellConfig:
     multiplier: float = 1.5
     rho_m: float = 0.0
     data_only: bool = False
+    environment: str = "sna"
+    sales_process: str = "latent"
+    cost_structure: str = "iid_store_week"
+    shock_split: str = "design"
+    references: bool = False
+    instrument: str = "cost_shifter"
 
     @property
     def label(self) -> str:

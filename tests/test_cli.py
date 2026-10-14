@@ -11,6 +11,8 @@ def test_synthetic_cli_and_resume(tmp_path):
         "scripts/run_pilot.py",
         "--cells",
         "P0",
+        "--config",
+        "configs/pilot_cells.yaml",
         "--synthetic",
         "--reps",
         "1",
@@ -32,7 +34,14 @@ def test_synthetic_cli_and_resume(tmp_path):
 
 
 def test_real_data_requires_clean_commit(tmp_path):
-    command = [sys.executable, "scripts/run_pilot.py", "--output-root", str(tmp_path)]
+    command = [
+        sys.executable,
+        "scripts/run_pilot.py",
+        "--stage",
+        "diagnostic",
+        "--output-root",
+        str(tmp_path),
+    ]
     result = subprocess.run(command, capture_output=True, text=True)
     assert result.returncode != 0
     assert "dirty" in result.stderr or "calibration" in result.stderr.lower()

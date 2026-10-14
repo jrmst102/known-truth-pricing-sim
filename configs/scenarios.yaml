@@ -1,0 +1,23 @@
+protocol_version: '1.1'
+spec_version: '1.1'
+master_seed: 20261013
+core:
+  environments: [sna, tna, tti]
+  eta: [low, med, high]
+  kappa: [neg, none, pos]
+  phi: [0.0, 0.5, 1.0]
+  estimators: [M1, M2, M3, M4_plr, M4_pliv]
+  policies: [greedy, greedy_rps]
+  references: true
+  pass_through: 0.2
+stages:
+  validation: {reps: 2}
+  diagnostic: {reps: 1, base_reps: 5}
+  pilot: {reps: 100}
+  main: {decision_file: null}
+extensions:
+  censored: {base: tna:med:pos:0.5, sales_process: censored}
+  weak_instrument: {base: tna:med:pos:0.5, pass_through: 0.05}
+  other_zone: {base: tna:med:pos:0.5, instrument: other_zone_price}
+  empirical: {base: tna:med:pos:0.5, shock_split: empirical}
+  chainwide: {base: tna:med:pos:0.5, cost_structure: chainwide_ar1}

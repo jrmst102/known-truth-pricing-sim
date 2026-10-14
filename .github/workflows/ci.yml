@@ -1,5 +1,9 @@
-name: Synthetic Pilot Checks
+name: V1.1 validation
 on: [push, pull_request]
+env:
+  OPENBLAS_NUM_THREADS: '1'
+  OMP_NUM_THREADS: '1'
+  MPLCONFIGDIR: /tmp/ktsim-mpl
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -11,5 +15,14 @@ jobs:
           cache: pip
       - run: pip install -e '.[dev]'
       - run: ruff check src scripts tests
-      - run: pytest -m 'not slow' --ignore=tests/test_loop_smoke.py
+      - run: pytest -m 'not slow'
+  full-horizon:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -e '.[dev]'
       - run: pytest tests/test_loop_smoke.py

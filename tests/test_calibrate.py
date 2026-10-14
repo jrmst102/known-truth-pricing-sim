@@ -56,3 +56,4 @@ def test_calibration_float_ids_serializes(tmp_path):
     cal.save(tmp_path / "calibration.json")
     assert set(cal.alpha_s) == {1, 2}
     assert cal.beta_reference < 0
+    assert cal.p_bar == frame.price.mean()

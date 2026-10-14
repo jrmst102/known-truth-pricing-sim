@@ -26,7 +26,7 @@ def test_two_replications(cal, dgm):
             "nonfinite",
             "abs_eta_gt_10",
         }
-        assert (result[result.arm.str.endswith(":oracle")].regret_rec == 0).all()
+        assert (result[result.arm.str.endswith(":oracle")].regret_rec_all == 0).all()
         assert result.oracle_at_bound.eq("interior").all()
         assert {"forecast", "realized"}.issubset(result.attrs["simulated_data"]["M1:greedy"])
         assert {78, 104, 156}.issubset(result.week.unique())
@@ -62,7 +62,7 @@ def test_ml_loop(cal, dgm):
     assert np.isfinite(result.forecast_mape).all()
 
 
-def test_failed_fit_carries_recommendation(cal, dgm, monkeypatch):
+def test_failed_fit_uses_legacy_fallback(cal, dgm, monkeypatch):
     from ktsim.estimators.ols import OLS
 
     class FailSecondFit:
@@ -82,4 +82,4 @@ def test_failed_fit_carries_recommendation(cal, dgm, monkeypatch):
     result = run_replication(cell, 0, shocks, cal, dgm, {"M1_ols": {}})
     assert result.converged.tolist() == [True, False]
     assert result.failure_reason.iloc[1] == "nonconvergence"
-    assert result.p_rec.iloc[0] == result.p_rec.iloc[1]
+    assert result.fallback_used.tolist() == [0.0, 1.0]

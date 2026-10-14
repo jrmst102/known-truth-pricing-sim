@@ -110,3 +110,86 @@ def censoring_multiplier(summary_P5):
     means = summary_P5.groupby("cell").censored_share.mean()
     closest = (means - 0.05).abs().idxmin()
     return float(closest.split("=")[-1])
+
+
+def choose_n_required(perf_pilot, cfg, replication_data=None):
+    """Use fraction-scale regret and every cell/arm; expose caps and paired Ns."""
+    inputs, missing = [], []
+    for (cell, arm), group in perf_pilot.groupby(["cell", "arm"]):
+        if not arm.startswith(("M1:", "M2:", "M3:", "M4_")):
+            continue
+        for measure, checkpoint, target in [
+            ("bias", "104", cfg["targets"]["elasticity"]),
+            ("norm_cum_regret_all", "horizon", cfg["targets"]["regret"]),
+        ]:
+            selected = group[
+                group.measure.eq(measure) & group.cycle_or_horizon.astype(str).eq(checkpoint)
+            ]
+            if selected.empty or not np.isfinite(selected.mcse.iloc[0]):
+                missing.append(dict(cell=cell, arm=arm, measure=measure))
+                continue
+            row = selected.iloc[0]
+            sd = float(row.mcse * np.sqrt(row.n_reps))
+            inputs.append(
+                dict(
+                    cell=cell,
+                    arm=arm,
+                    measure=measure,
+                    sd=sd,
+                    target=target,
+                    required=int(np.ceil((sd / target) ** 2)),
+                )
+            )
+    paired = []
+    if replication_data is not None:
+        for cell, group in replication_data.groupby("cell"):
+            pivot = group.pivot(index="rep", columns="arm", values="norm_cum_regret_all")
+            comparisons = []
+            for policy in ("greedy", "greedy_rps"):
+                comparisons += [(f"{name}:{policy}", f"M1:{policy}") for name in ("M3", "M4_pliv")]
+            comparisons += [
+                (f"{name}:greedy_rps", f"{name}:greedy")
+                for name in ("M1", "M2", "M3", "M4_plr", "M4_pliv")
+            ]
+            for left, right in comparisons:
+                if left not in pivot or right not in pivot:
+                    continue
+                difference = (pivot[left] - pivot[right]).dropna()
+                if len(difference) < 2:
+                    continue
+                sd = float(difference.std(ddof=1))
+                target = cfg["targets"]["paired_regret"]
+                paired.append(
+                    dict(
+                        cell=cell,
+                        comparison=f"{left} vs {right}",
+                        n_pairs=len(difference),
+                        sd=sd,
+                        required=int(np.ceil((sd / target) ** 2)),
+                    )
+                )
+    bound = max(inputs, key=lambda row: row["required"]) if inputs else None
+    required = max(cfg["floor"], bound["required"]) if bound and not missing else None
+    selected = min(required, cfg["cap"]) if required is not None else None
+    return dict(
+        N_required=required,
+        n_selected=selected,
+        bounding=bound,
+        inputs=inputs,
+        missing=missing,
+        paired=paired,
+        targets=cfg["targets"],
+        floor=cfg["floor"],
+        cap=cfg["cap"],
+        budget_hours=cfg["budget_hours"],
+        shortfall=bool(required is not None and required > cfg["cap"]),
+        achieved_mcse_at_cap=[
+            dict(
+                cell=r["cell"],
+                arm=r["arm"],
+                measure=r["measure"],
+                mcse=r["sd"] / np.sqrt(cfg["cap"]),
+            )
+            for r in inputs
+        ],
+    )

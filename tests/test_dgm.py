@@ -13,7 +13,7 @@ def test_elasticity_and_censoring(cal, dgm):
     np.testing.assert_allclose((upper - lower) / (2 * step), -1.06)
     mean = expected_log_demand(cal, dgm, x, cal.p_bar, -1.06)
     sales = draw_sales(cal, dgm, x, cal.p_bar, -1.06, 5, 0, True)
-    np.testing.assert_allclose(sales, 1.5 * np.exp(mean))
+    np.testing.assert_allclose(sales, 1.5 * np.exp(mean + (cal.sigma_xi2 + cal.sigma_eps2) / 2))
     assert np.isclose(kappa_scaled(0.05, 0.2) * 0.2, 0.05)
 
 

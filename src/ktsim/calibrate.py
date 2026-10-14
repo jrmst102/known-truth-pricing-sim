@@ -14,9 +14,10 @@ class Check:
     value: float
     passed: bool
     expected: object
+    status: str = "pass"
 
 
-def residual_components(frame: pd.DataFrame, cfg: CalibrationConfig) -> tuple[float, float, float]:
+def residual_autocovariances(frame):
     autocov = []
     for lag in (0, 1, 2):
         products = []
@@ -28,6 +29,11 @@ def residual_components(frame: pd.DataFrame, cfg: CalibrationConfig) -> tuple[fl
             ).dropna()
             products.extend((paired.iloc[:, 0] * paired.iloc[:, 1]).tolist())
         autocov.append(float(np.mean(products)) if products else 0.0)
+    return autocov
+
+
+def residual_components(frame: pd.DataFrame, cfg: CalibrationConfig) -> tuple[float, float, float]:
+    autocov = residual_autocovariances(frame)
     variance, cov1, cov2 = autocov
     rho = np.clip(cov2 / cov1 if cov1 > 0 else cfg.rho_xi_bounds[0], *cfg.rho_xi_bounds)
     xi_var = np.clip(cov1 / rho, 0.0, max(0.0, cfg.xi_share_max * variance))
@@ -39,9 +45,11 @@ def calibrate(clean: CleanResult, cfg: CalibrationConfig) -> Calibration:
     required = {"week", "log_q", "price", "promo", "zone", "profit"}
     if not required.issubset(frame):
         raise ValueError(f"Missing calibration fields: {sorted(required - set(frame))}")
-    p_bar = float(frame.loc[frame.promo.eq(0), "price"].median())
+    p_bar = (
+        clean.reference_price if clean.reference_price is not None else float(frame.price.mean())
+    )
     if not np.isfinite(p_bar):
-        raise ValueError("No nonpromoted observations for reference price")
+        raise ValueError("No valid prices for reference price")
     design = pd.DataFrame(
         {
             "price_centered": frame.price - p_bar,
@@ -104,6 +112,14 @@ def calibrate(clean: CleanResult, cfg: CalibrationConfig) -> Calibration:
         zero_share=clean.zero_share,
         focal_upc=clean.focal_upc,
         weeks=[int(frame.week.min()), int(frame.week.max())],
+        diagnostics=dict(
+            resid_var=xi_var + eps_var,
+            empirical_rho_xi=rho,
+            empirical_sigma_xi2=xi_var,
+            empirical_sigma_eps2=eps_var,
+            autocovariances=residual_autocovariances(frame),
+            elasticity_review="pending: units, natural log, promotion and competing index",
+        ),
     )
 
 
@@ -116,7 +132,7 @@ def check_plausibility(cal: Calibration, cfg: CalibrationConfig) -> list[Check]:
         "resid_sd": cal.price_dispersion["resid_sd"],
         "profit_mean": cal.price_dispersion["profit_mean"],
     }
-    return [
+    checks = [
         Check(
             name,
             float(values[name]),
@@ -127,3 +143,9 @@ def check_plausibility(cal: Calibration, cfg: CalibrationConfig) -> list[Check]:
         )
         for name, bounds in cfg.plausibility.items()
     ]
+
+    for check in checks:
+        check.status = (
+            "pass" if check.passed else "flag" if check.name == "beta_reference" else "fail"
+        )
+    return checks

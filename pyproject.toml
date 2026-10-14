@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ktsim"
-version = "0.1.0"
-description = "Known-truth price optimization pilot"
+version = "1.1.0"
+description = "Known-truth price optimization simulation"
 requires-python = ">=3.11,<3.12"
 dependencies = [
   "numpy==2.2.3", "pandas==2.2.3", "pyarrow==19.0.1", "scipy==1.15.2",

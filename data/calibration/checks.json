@@ -4,7 +4,8 @@
     "name": "retained_stores_min",
     "value": 67.0,
     "passed": true,
-    "expected": 40
+    "expected": 40,
+    "status": "pass"
   },
   {
     "category": "sna",
@@ -14,27 +15,30 @@
     "expected": [
       0.05,
       0.4
-    ]
+    ],
+    "status": "pass"
   },
   {
     "category": "sna",
     "name": "promo_depth",
-    "value": 0.16650232174552237,
+    "value": 0.13012049453024782,
     "passed": true,
     "expected": [
       0.05,
       0.4
-    ]
+    ],
+    "status": "pass"
   },
   {
     "category": "sna",
     "name": "resid_sd",
-    "value": 0.46507264157411954,
+    "value": 0.4650726415741196,
     "passed": true,
     "expected": [
       0.2,
       1.0
-    ]
+    ],
+    "status": "pass"
   },
   {
     "category": "sna",
@@ -44,24 +48,90 @@
     "expected": [
       10,
       45
-    ]
+    ],
+    "status": "pass"
   },
   {
     "category": "sna",
     "name": "beta_reference",
-    "value": -3.159570873246531,
+    "value": -2.945603607800594,
     "passed": false,
     "expected": [
       -2.59,
       -0.79
-    ]
+    ],
+    "status": "flag"
+  },
+  {
+    "category": "tna",
+    "name": "retained_stores_min",
+    "value": 67.0,
+    "passed": true,
+    "expected": 40,
+    "status": "pass"
+  },
+  {
+    "category": "tna",
+    "name": "promo_freq",
+    "value": 0.23809294485913798,
+    "passed": true,
+    "expected": [
+      0.05,
+      0.4
+    ],
+    "status": "pass"
+  },
+  {
+    "category": "tna",
+    "name": "promo_depth",
+    "value": 0.1767249142503761,
+    "passed": true,
+    "expected": [
+      0.05,
+      0.4
+    ],
+    "status": "pass"
+  },
+  {
+    "category": "tna",
+    "name": "resid_sd",
+    "value": 0.7537267063793045,
+    "passed": true,
+    "expected": [
+      0.2,
+      1.0
+    ],
+    "status": "pass"
+  },
+  {
+    "category": "tna",
+    "name": "profit_mean",
+    "value": 28.77458704550927,
+    "passed": true,
+    "expected": [
+      10,
+      45
+    ],
+    "status": "pass"
+  },
+  {
+    "category": "tna",
+    "name": "beta_reference",
+    "value": -4.434526692233034,
+    "passed": false,
+    "expected": [
+      -2.59,
+      -0.79
+    ],
+    "status": "flag"
   },
   {
     "category": "tti",
     "name": "retained_stores_min",
     "value": 67.0,
     "passed": true,
-    "expected": 40
+    "expected": 40,
+    "status": "pass"
   },
   {
     "category": "tti",
@@ -71,17 +141,19 @@
     "expected": [
       0.05,
       0.4
-    ]
+    ],
+    "status": "pass"
   },
   {
     "category": "tti",
     "name": "promo_depth",
-    "value": 0.11005672489004659,
+    "value": 0.11025512944260955,
     "passed": true,
     "expected": [
       0.05,
       0.4
-    ]
+    ],
+    "status": "pass"
   },
   {
     "category": "tti",
@@ -91,7 +163,8 @@
     "expected": [
       0.2,
       1.0
-    ]
+    ],
+    "status": "pass"
   },
   {
     "category": "tti",
@@ -101,16 +174,18 @@
     "expected": [
       10,
       45
-    ]
+    ],
+    "status": "pass"
   },
   {
     "category": "tti",
     "name": "beta_reference",
-    "value": -3.84815906022416,
+    "value": -3.8578167610971565,
     "passed": false,
     "expected": [
       -2.59,
       -0.79
-    ]
+    ],
+    "status": "flag"
   }
 ]

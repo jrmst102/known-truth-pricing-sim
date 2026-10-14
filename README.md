@@ -1,14 +1,16 @@
 # Known-Truth Pricing Simulation
 
-This project provides the Python pilot implementation for the book chapter
+This project provides the Python simulation implementation for the book chapter
 *Data and Machine-Learning Foundations for AI-Enhanced Price Optimization: From
 Prediction to Prescription and Decision Reliability*, by Dr. Jose Mendoza,
 Clinical Associate Professor at New York University.
 
 The pilot supports the chapter's work on evaluating machine-learning methods for
 price optimization using reproducible, known-truth simulations calibrated with
-Dominick's data. Its implementation and protocol are described in the
-[pilot specification](PILOT_SPEC.md).
+Dominick's data. V1.1 is described in the
+[implementation specification](docs/SPEC_v1.1.md) and
+[protocol](docs/PROTOCOL_v1.1.md). The protocol is prepared for author signature;
+implementation does not imply scientific approval.
 
 The software is provided under the [MIT License](LICENSE). This license applies
 to the code, not to the data; see the [Data section](#data) for the applicable
@@ -62,69 +64,101 @@ Review the generated store and calendar tables before using them in scientific
 analyses. Raw data is ignored by Git, and the pre-commit hook blocks staging raw
 files, including with `git add -f`.
 
-## Run the pilot
-
-Run calibration, the pilot, and report generation from the repository root:
+## Calibrate and audit
 
 ```bash
+python scripts/audit_coverage.py --category tna
 python scripts/run_calibration.py --config configs/calibration.yaml --categories sna tna tti
-python scripts/run_pilot.py --cells all --n-jobs 8
-python scripts/make_report.py --run-id YYYYMMDD-HHMM-COMMIT
 ```
 
-Calibration results, checksums, and the run log are written under
-`data/calibration/`. If a category does not meet the protocol's coverage
-requirements, that category is stopped without relaxing the thresholds; other
-requested categories are still checked. A blocked tuna calibration prevents a
-real-data pilot from running.
+Coverage audits record the calendar denominator, retained stores, top UPCs, best
+coverage across all UPCs, missing-row causes, duplicates and calendar alignment.
+Tuna's full 399-week sample fails the unchanged 90% UPC rule. The documented
+weeks 1–341 calibration window retains 67 zoned stores and eligible competitors;
+`data/calibration/calibration_windows.json` controls that window. Its focal rows
+end at week 331, with missing weeks still counted in the denominator. This proposed
+step-2 resolution awaits protocol acceptance; all 81 core cells remain configured.
+`python scripts/evaluate_calibration_window.py --category tna` reproduces the search.
 
-Before starting a real-data pilot, commit the reviewed implementation,
-configuration, and calibration results. The pilot refuses to run from a dirty
-worktree and generates its report automatically.
+Calibration uses the mean valid focal-UPC unit price including promotion weeks.
+Empirical shock persistence and variance decomposition remain diagnostics; core
+simulations impose persistence 0.5 and an equal variance split. Observational
+elasticity benchmarks are review flags; see the [open review record](docs/issues/elasticity-benchmark.md).
 
-For a quick run that does not need Dominick's data:
+## Run V1.1
+
+A small synthetic mechanical check:
 
 ```bash
-python scripts/run_pilot.py --cells all --synthetic --reps 2 --cycles 2 \
-  --estimators M1 M3 --n-jobs 2 --save-data --run-id synthetic-smoke
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python scripts/run_pilot.py \
+  --stage validation --cells sna:med:pos:0.5 --synthetic --reps 2 --cycles 2 \
+  --estimators M1 M3 --save-data --save-storeweek --run-id synthetic-v11-smoke
+python scripts/check_validation.py outputs/validation/synthetic-v11-smoke
 ```
 
-This shortened synthetic run checks that the pipeline works; it does not test
-statistical acceptance. Omit `--estimators` to include LightGBM and both
-DoubleML variants. Full pilot configurations can take substantially longer,
-since each cycle refits every estimator and cross-fitting learner.
+Omit the cycle/estimator overrides for a full-horizon check. The default scenario
+file crosses three environments, three elasticities, three managerial adjustments,
+and three adoption shares. Every cell runs greedy and greedy-RPS policies plus
+separate oracle and legacy reference arms. `M3_cf` is stored alongside M3.
+Named extensions (`censored`, `weak_instrument`, `other_zone`, `empirical`,
+`chainwide`) each vary one factor from a documented base cell.
 
-The pilot writes estimate and state Parquet files, replication shards, runtime
-and performance CSV files, a manifest, a decisions JSON file, a Markdown
-report, and five diagnostic plots. With `--save-data`, it also saves simulated
-observations, forecasts, and realized sales. The latent arrays can be
-regenerated from each state's `entropy` and `spawn_key`, together with the
-frozen calibration and configuration.
+The four stages have separate seed streams and output directories:
 
-To resume a run, repeat the same pilot command with `--resume` and the existing
-run ID:
+| Stage | Replications | Output |
+| --- | --- | --- |
+| `validation` (S1) | configurable mechanical checks | `outputs/validation/` |
+| `diagnostic` (S2) | 1 per core cell; 5 total for med/pos/0.5 per environment | `outputs/diagnostic/` |
+| `pilot` (S3) | 100 per core cell | `outputs/pilot/` |
+| `main` (S4) | S3 precision decision | `outputs/main/` |
+
+After author signature and committing reviewed code/configuration/calibration:
 
 ```bash
-python scripts/run_pilot.py --cells all --n-jobs 8 --resume \
-  --run-id <existing-run-id>
+python scripts/run_pilot.py --stage diagnostic --cells all --n-jobs 8
 ```
 
-The resume check rejects changes to code, calibration, settings, environment,
-or worker count. Use a new run ID for a new experiment; existing output
-directories are never overwritten.
+S3/S4 additionally require `Deliverables 1 and 2 accepted: yes` in the signed
+protocol. S4 reads `stages.main.decision_file` in `configs/scenarios.yaml`; it
+rejects changes to scientific settings or source code since S3. Replication
+streams are fresh for each stage. Targets, floor, cap and budget are explicit in
+`configs/decisions.yaml`; only S3 reports an N-required decision and paired Ns.
+No scientific stage has been executed or approved by implementing this version.
+
+The manifest freezes effective configs, calibration hashes, raw checksums, code,
+protocol version, stage, seed child, environment and generated figures. Scientific
+runs require a clean worktree. Validation allows development changes and records
+them. `--synthetic` is limited to validation and appears in output provenance.
+Existing `outputs/pilot/synthetic-*` reports are **development records**, preserved
+for reference and never cited as empirical or scientific results.
+
+Outputs include estimates, assignment/fold states, per-replication metrics,
+performance summaries, runtime, report, figures and decisions. `--save-data`
+retains history and cycle observations; `--save-storeweek` retains deployed prices,
+per-store fallback flags and the expected-revenue triplets. All regret ratios in
+data files are fractions, with percentages used only when rendering reports.
+M4 coverage stays withheld until the author enables the validated-inference flag.
+
+Resume with exactly the same command plus `--resume --run-id <existing-run-id>`.
+Input changes are rejected; existing runs are never overwritten. To re-render:
+
+```bash
+python scripts/make_report.py --output-root outputs/validation --run-id synthetic-v11-smoke
+```
 
 ## Validate
 
-Run the linter and the standard test suite with:
-
 ```bash
 ruff check src scripts tests
-pytest -m 'not slow'
-pytest tests/test_loop_smoke.py
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 pytest -m 'not slow'
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 pytest tests/test_loop_smoke.py
+# Optional, 200 independent panels; does not automatically lift coverage withholding:
+KTSIM_VALIDATE_INFERENCE=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 \
+  pytest tests/test_dml_inference.py
 ```
 
-Tests cover data ingestion and cleaning, calibration, elasticity and censoring,
-oracle bounds, estimator recovery, Monte Carlo standard errors, parallel
-checkpoints, saved data, report generation, CLI resume, and reproducible
-scientific replay. CI uses synthetic fixtures and does not read movement
-archives or `data/raw/`.
+CI runs standard tests and a separate full-horizon job using synthetic fixtures.
+Tests cover deployment and exploration, cost independence, zone assignment,
+closed-form censored revenue, weighted regret, failure/fallback denominators,
+smearing, grouped DML, calibration audits, stage seeds, resume and exact replay.
+See [implementation notes](docs/IMPLEMENTATION_NOTES.md) for acceptance evidence.

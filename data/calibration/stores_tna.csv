@@ -1,0 +1,68 @@
+store,city,price_tier,zone
+2,River Forest,High,1
+5,Palatine,Medium,2
+8,Oak Lawn,Low,5
+9,Morton Grove,Medium,2
+12,Chicago,High,7
+14,Glenview,High,1
+18,River Grove,Low,5
+21,Hanover Park,CubFighter,6
+28,Mt. Prospect,Medium,2
+32,Park Ridge,High,1
+33,Chicago,High,7
+40,Bridgeview,CubFighter,6
+45,Wheeling,Medium,2
+47,Addison,Medium,2
+48,Schaumburg,Medium,2
+51,Palos Heights,Medium,3
+52,Northbrook,High,1
+53,Chicago,High,7
+54,Naperville,Medium,2
+56,Countryside,Medium,2
+59,Crystal Lake,CubFighter,6
+62,Northfield,High,1
+68,Chicago,High,1
+70,Joliet,CubFighter,6
+72,Lincolnwood,High,1
+73,Chicago,Low,5
+74,Norridge,Medium,2
+75,Chicago,High,7
+76,Chicago,Medium,2
+77,Vernon Hills,CubFighter,6
+81,Mt. Prospect,Medium,2
+83,Lansing,CubFighter,6
+84,Orland Park,Medium,2
+86,Chicago,Medium,2
+88,Bensenville,Medium,2
+89,Chicago,Medium,2
+90,Chicago,Medium,10
+91,Oak Lawn,Medium,2
+92,Hazel Crest,Medium,2
+93,Evanston,High,1
+94,Bloomingdale,Low,5
+95,Chicago,High,1
+98,Chicago,Medium,12
+100,Chicago,High,11
+101,Des Plaines,Medium,12
+103,Bolingbrook,Low,15
+104,St. Charles,High,8
+106,Montgomery,High,8
+107,Westchester,Medium,2
+109,Bannockburn,High,7
+110,East Dundee,Medium,2
+111,Chicago,High,1
+112,Buffalo Grove,Low,14
+113,Chicago,Medium,2
+114,Calumet City,Medium,12
+115,Naperville,Medium,12
+116,Elmhurst,Medium,2
+117,Schaumburg,Medium,2
+119,Buffalo Grove,Medium,2
+121,Willowbrook,Medium,12
+123,Chicago,High,1
+124,Oak Park,High,1
+126,Wheaton,Medium,12
+128,Chicago,High,11
+129,Lake Zurich,Medium,12
+130,Chicago,High,1
+132,Matteson,Low,15

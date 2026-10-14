@@ -1,0 +1,10 @@
+{
+  "tna": {
+    "week_range": [
+      1,
+      341
+    ],
+    "length": 341,
+    "reason": "Full-span best coverage 83.6%; step 2 retains 67 zoned stores, 341 weeks, >=90% focal and competitor coverage. Pending protocol author acceptance."
+  }
+}

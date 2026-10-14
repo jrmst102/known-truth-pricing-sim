@@ -1,0 +1,78 @@
+{
+  "week_range": [
+    1,
+    341
+  ],
+  "length": 341,
+  "n_stores": 67,
+  "focal_upc": 8660000033,
+  "log": [
+    "1 OK == 1: 3354113 -> 3276148",
+    "2 valid price/qty/move: 3276148 -> 2157434",
+    "3 known UPC and zoned store: 2157434 -> 1881535",
+    "4 store coverage: 1881535 -> 1728596",
+    "5 UPC coverage: 1728596 -> 61944",
+    "6 focal UPC selection and zero-share substitution: 61944 -> 20765",
+    "Coverage denominator: weeks 1\u2013341; span 341; retained stores 67; focal rows 20765",
+    "7 remove zero sales before log regression: 20765 -> 20765"
+  ],
+  "rule": "Longest candidate under full-file retained-store screening, earliest start ties; all cleaning rules and store retention rechecked inside the candidate window. Not a proof of the global longest window under changing store sets.",
+  "prior_rejected": [
+    {
+      "week_range": [
+        1,
+        344
+      ],
+      "reason": "No competing UPC remains for the competing-price index"
+    },
+    {
+      "week_range": [
+        1,
+        343
+      ],
+      "reason": "No competing UPC remains for the competing-price index"
+    },
+    {
+      "week_range": [
+        2,
+        344
+      ],
+      "reason": "No competing UPC remains for the competing-price index"
+    },
+    {
+      "week_range": [
+        3,
+        345
+      ],
+      "reason": "No competing UPC remains for the competing-price index"
+    },
+    {
+      "week_range": [
+        1,
+        342
+      ],
+      "reason": "No competing UPC remains for the competing-price index"
+    },
+    {
+      "week_range": [
+        2,
+        343
+      ],
+      "reason": "No competing UPC remains for the competing-price index"
+    },
+    {
+      "week_range": [
+        3,
+        344
+      ],
+      "reason": "No competing UPC remains for the competing-price index"
+    },
+    {
+      "week_range": [
+        4,
+        345
+      ],
+      "reason": "No competing UPC remains for the competing-price index"
+    }
+  ]
+}

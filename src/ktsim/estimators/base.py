@@ -11,6 +11,11 @@ class Estimate(TypedDict):
     ci_low: float | None
     ci_high: float | None
     first_stage_F: float | None
+    numerical_failure: bool
+    predictions_unavailable: bool
+    extreme_estimate: bool
+    positive_slope: bool
+    smearing_factor: float
     converged: bool
     failure_reason: str | None
     predict: Callable[[pd.DataFrame, np.ndarray], np.ndarray] | None
@@ -45,32 +50,30 @@ def design(frame, columns=None):
     return result
 
 
-def finalize(eta, low=None, high=None, first_stage=None, predict=None):
-    failure = None
-    if not np.isfinite(eta) or any(
-        value is not None and not np.isfinite(value) for value in (low, high)
-    ):
-        failure = "nonfinite"
-    elif abs(eta) > 10:
-        failure = "abs_eta_gt_10"
+def smearing_factor(residuals):
+    return float(np.mean(np.exp(np.asarray(residuals))))
+
+
+def finalize(eta, low=None, high=None, first_stage=None, predict=None, smearing=1.0):
+    finite = bool(np.isfinite(eta))
+    interval = finite and all(v is not None and np.isfinite(v) for v in (low, high))
     return Estimate(
-        eta_hat=float(eta) if failure is None else np.nan,
-        ci_low=low if failure is None else None,
-        ci_high=high if failure is None else None,
+        eta_hat=float(eta) if finite else np.nan,
+        ci_low=float(low) if interval else None,
+        ci_high=float(high) if interval else None,
         first_stage_F=first_stage,
-        converged=failure is None,
-        failure_reason=failure,
-        predict=predict if failure is None else None,
+        converged=finite,
+        failure_reason=None if finite else "nonfinite",
+        predict=predict,
+        numerical_failure=not finite,
+        predictions_unavailable=predict is None,
+        extreme_estimate=finite and abs(eta) > 10,
+        positive_slope=finite and eta > 0,
+        smearing_factor=smearing,
     )
 
 
 def failed(reason="nonconvergence"):
-    return Estimate(
-        eta_hat=np.nan,
-        ci_low=None,
-        ci_high=None,
-        first_stage_F=None,
-        converged=False,
-        failure_reason=reason,
-        predict=None,
-    )
+    result = finalize(np.nan, smearing=np.nan)
+    result["failure_reason"] = reason
+    return result

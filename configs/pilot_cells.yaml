@@ -1,9 +1,90 @@
 master_seed: 20261013
-environment: tuna
 cells:
-  P0: {eta: med, kappa: none, phi: 0.0, delta: 0.0, reps: 20, estimators: [M1, M2, M3, M4_plr, M4_pliv], policies: [greedy, oracle]}
-  P1: {eta: med, kappa: pos, phi: 0.5, delta: [0.0, 0.03], reps: 100, estimators: [M1, M2, M3, M4_plr, M4_pliv], policies: [greedy, greedy_rps]}
-  P2: {eta: low, kappa: pos, phi: 0.5, delta: 0.0, reps: 20, estimators: [M1, M3], policies: [greedy]}
-  P3: {eta: high, kappa: pos, phi: 0.5, delta: 0.0, reps: 20, estimators: [M1, M3], policies: [greedy]}
-  P4: {eta: med, kappa: pos, phi: 0.0, delta: 0.0, reps: 20, estimators: [M3], policies: [legacy], pass_through_grid: [0.05, 0.10, 0.20, 0.50, 1.00]}
-  P5: {eta: med, kappa: none, phi: 0.0, delta: 0.0, reps: 5, data_only: true, censoring_multipliers: [1.25, 1.5, 2.0]}
+  P0:
+    eta: med
+    kappa: none
+    phi: 0.0
+    delta: 0.0
+    reps: 20
+    estimators:
+    - M1
+    - M2
+    - M3
+    - M4_plr
+    - M4_pliv
+    policies:
+    - greedy
+    - oracle
+    environment: tna
+  P1:
+    eta: med
+    kappa: pos
+    phi: 0.5
+    delta: 0.03
+    reps: 100
+    estimators:
+    - M1
+    - M2
+    - M3
+    - M4_plr
+    - M4_pliv
+    policies:
+    - greedy
+    - greedy_rps
+    environment: tna
+  P2:
+    eta: low
+    kappa: pos
+    phi: 0.5
+    delta: 0.0
+    reps: 20
+    estimators:
+    - M1
+    - M3
+    policies:
+    - greedy
+    environment: tna
+  P3:
+    eta: high
+    kappa: pos
+    phi: 0.5
+    delta: 0.0
+    reps: 20
+    estimators:
+    - M1
+    - M3
+    policies:
+    - greedy
+    environment: tna
+  P4:
+    eta: med
+    kappa: pos
+    phi: 0.0
+    delta: 0.0
+    reps: 20
+    estimators:
+    - M3
+    policies:
+    - legacy
+    pass_through_grid:
+    - 0.05
+    - 0.1
+    - 0.2
+    - 0.5
+    - 1.0
+    environment: tna
+  P5:
+    eta: med
+    kappa: none
+    phi: 0.0
+    delta: 0.0
+    reps: 5
+    data_only: true
+    censoring_multipliers:
+    - 1.25
+    - 1.5
+    - 2.0
+    environment: tna
+    sales_process: censored
+protocol_version: '1.1'
+spec_version: '1.1'

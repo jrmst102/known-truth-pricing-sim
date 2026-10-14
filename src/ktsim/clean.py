@@ -14,6 +14,7 @@ class CleanResult:
     zero_share: float
     substituted_focal: bool
     log: list[str]
+    reference_price: float | None = None
 
 
 def clean_category(
@@ -64,7 +65,7 @@ def clean_category(
     if frame.empty:
         raise ValueError(
             f"No UPC satisfies coverage threshold {cfg.upc_coverage_min:.0%}; "
-            f"best UPC coverage {presence.max():.1%}, {len(coverage)} stores, "
+            f"best UPC coverage {presence.max():.1%}, {frame.store.nunique() if not frame.empty else int((coverage >= threshold).sum())} retained stores, "
             f"{n_weeks} weeks. No automatic threshold change."
         )
     candidates = [int(code) for code in sales.index if code in eligible]
@@ -92,6 +93,11 @@ def clean_category(
         raise ValueError("Missing competitor index weeks; author-approved fallback required")
     frame = frame.merge(metadata, on="store", validate="many_to_one")
     frame["price"] = frame.price / frame.qty
+    reference_price = float(frame.price.mean())
+    log.append(
+        f"Coverage denominator: weeks {int(movement.week.min())}–{int(movement.week.max())}; "
+        f"span {n_weeks}; retained stores {frame.store.nunique()}; focal rows {len(frame)}"
+    )
     frame["q"] = frame.move
     retain(frame.q.gt(0), "7 remove zero sales before log regression")
     frame["log_q"] = np.log(frame.q)
@@ -103,4 +109,5 @@ def clean_category(
         zero_share,
         focal != initial,
         log,
+        reference_price,
     )

@@ -66,8 +66,9 @@ files, including with `git add -f`.
 
 Deliverable 1 is an implementation draft. The authoritative design is
 [PROTOCOL_v1.1.md](docs/PROTOCOL_v1.1.md), with requirements in
-[SPEC_v1.1.md](docs/SPEC_v1.1.md). Author approval, the full tuna metadata audit,
-and retained-environment acceptance are pending. See
+[SPEC_v1.1.md](docs/SPEC_v1.1.md). A1–A7, the tuna window (weeks 1–341), and the 150-hour/2,000-replication
+limits are approved. Final protocol review, the full metadata audit, and
+retained-environment acceptance remain pending. See
 [VALIDATION_v1.1.md](docs/VALIDATION_v1.1.md) for evidence and outstanding work.
 
 Scientific runs are blocked until protocol approval and Deliverable 1 acceptance
@@ -99,6 +100,9 @@ python scripts/validate_v11.py --run-id v11-acceptance --n-jobs 2
 This uses small nuisance learners for mechanical validation and records the
 actual parameters. It is not the S2 diagnostic or a statistical acceptance study.
 Results, report, manifest and checks are under `outputs/validation/<run-id>/`.
+Both validation commands use the same saved-run checker. For a short run, use
+`python scripts/check_validation.py <run-directory>`; add `--full-horizon` to
+require the complete 104-cycle, two-replication, all-arm adoption matrix.
 Use `--check-only` to recheck already-generated acceptance artifacts; `--resume`
 requires identical source, calibration, configuration, environment and worker count.
 
@@ -121,11 +125,23 @@ python scripts/audit_coverage.py --category tna --search-window
 python scripts/run_calibration.py --config configs/calibration.yaml --categories sna tna tti
 ```
 
+Recalibration reads approved selections from
+`<data-dir>/calibration/calibration_windows.json`, or an explicit `--windows` file.
+Tuna uses the approved inclusive range 1–341 without changing the 90% threshold.
+The full-span audit is preserved in `coverage_audit_tna.json`; the applied-window
+audit is written to `coverage_audit_tna_window.json`. Calibration diagnostics and
+checksums record the selected window and its configuration hash. A category
+without a window selection keeps its full sample. Invalid/too-short windows fail
+before calibration outputs are changed; selected windows must retain at least 40 stores.
+The observed focal-UPC range (currently weeks 1–331 for tuna) is separate from the
+approved 341-week denominator, which includes missing boundary weeks.
+
 The first command needs the full public zoned-store table, normally imported to
 `data/raw/stores.csv`. Audit results identify the metadata source and scope.
 The checked-in preliminary audits used the previously retained store table;
-they do not certify the original full-metadata tuna sample. A candidate window
-is a proposal, never an automatic eligibility change. Keep the 90% threshold.
+they do not certify the original full-metadata tuna sample. A search result alone
+never changes the selected window; author approval is recorded separately. Keep
+the 90% threshold.
 Benchmark observational elasticities are review flags, not exclusion criteria;
 see [the investigation draft](docs/BETA_REFERENCE_REVIEW.md).
 

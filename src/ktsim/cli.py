@@ -11,6 +11,7 @@ import yaml
 
 from ktsim.audit import coverage_audit
 from ktsim.calibrate import calibrate, check_plausibility
+from ktsim.calibration_windows import load_calibration_windows
 from ktsim.clean import clean_category
 from ktsim.config import Calibration, CalibrationConfig, DGMConfig
 from ktsim.config_validation import validate_config
@@ -40,9 +41,18 @@ def calibration_main():
     )
     parser.add_argument("--data-dir", type=Path, default=Path("data"))
     parser.add_argument("--stores", type=Path, default=Path("data/raw/stores.csv"))
+    parser.add_argument(
+        "--windows",
+        type=Path,
+        help="Window JSON; defaults to <data-dir>/calibration/calibration_windows.json",
+    )
     parser.add_argument("--week-decode", type=Path, default=Path("data/fixtures/week_decode.csv"))
     args = parser.parse_args()
     cfg = CalibrationConfig(**read_config(args.config))
+    windows_path = args.windows or args.data_dir / "calibration/calibration_windows.json"
+    if args.windows is not None and not windows_path.exists():
+        parser.error(f"Missing calibration window configuration: {windows_path}")
+    windows = load_calibration_windows(windows_path)
     files, missing = {}, []
     for category in args.categories:
         for stem in ("w" + category, "upc" + category):
@@ -69,6 +79,8 @@ def calibration_main():
     if log_path.exists():
         log = log_path.read_text().splitlines() + ["", "## Calibration invocation", ""]
     files.update(stores=args.stores, week_decode=args.week_decode)
+    if windows_path.exists():
+        files["calibration_windows"] = windows_path
     checksums_path = output / "checksums.json"
     checksums = json.loads(checksums_path.read_text()) if checksums_path.exists() else {}
     checksums.update({str(path): sha256(path) for path in files.values()})
@@ -80,21 +92,44 @@ def calibration_main():
         try:
             movement = load_movement(files["w" + category])
             upc = load_table(files["upc" + category])
-            audit = coverage_audit(movement, upc, stores, cfg, calendar)
-            audit["metadata_source"] = str(args.stores)
-            audit["metadata_sha256"] = sha256(args.stores)
-            audit["metadata_scope"] = (
-                "retained-store table"
+            audit_metadata = dict(
+                metadata_source=str(args.stores),
+                metadata_sha256=sha256(args.stores),
+                metadata_scope="retained-store table"
                 if "calibration" in args.stores.parts
-                else "full store metadata"
+                else "full store metadata",
+                input_checksums={
+                    str(path): checksums[str(path)]
+                    for path in (files["w" + category], files["upc" + category], args.stores)
+                },
             )
+            # Preserve the full-span eligibility audit before applying an approved window.
+            audit = coverage_audit(movement, upc, stores, cfg, calendar)
+            audit.update(audit_metadata)
             atomic_json(audit, output / f"coverage_audit_{category}.json")
-            clean = clean_category(
-                movement,
-                upc,
-                stores,
-                cfg,
-            )
+            window = windows.get(category)
+            bounds = window["week_range"] if window else None
+            if window:
+                movement = movement[movement.week.between(*bounds)].copy()
+                if movement.empty:
+                    raise ValueError(f"No movement rows in approved window {bounds}")
+                log.append(
+                    f"{category}: applying approved calibration window {bounds}; "
+                    f"configuration SHA-256 {sha256(windows_path)}"
+                )
+                window_audit = coverage_audit(
+                    movement, upc, stores, cfg, calendar, week_range=bounds
+                )
+                window_audit.update(audit_metadata)
+                window_audit["calibration_window"] = window
+                atomic_json(window_audit, output / f"coverage_audit_{category}_window.json")
+            clean = clean_category(movement, upc, stores, cfg, week_range=bounds)
+            if window and len(clean.store_ids) < max(
+                40, cfg.plausibility.get("retained_stores_min", 40)
+            ):
+                raise ValueError(
+                    "Approved calibration window retains fewer than the required stores"
+                )
             holidays = [column for column in calendar if column.startswith("holiday_")]
             clean.frame = clean.frame.merge(
                 calendar[["week", *holidays]], on="week", validate="many_to_one"
@@ -102,6 +137,14 @@ def calibration_main():
             if clean.frame[holidays].isna().any().any():
                 raise ValueError("Movement weeks outside the codebook")
             cal = calibrate(clean, cfg)
+            if window:
+                cal.diagnostics["calibration_window"] = dict(
+                    week_range=bounds,
+                    length=bounds[1] - bounds[0] + 1,
+                    configuration_path=str(windows_path),
+                    configuration_sha256=sha256(windows_path),
+                    observed_week_range=cal.weeks,
+                )
             previous_calibration = output / f"calibration_{category}.json"
             if previous_calibration.exists():
                 previous = Calibration.load(previous_calibration)
@@ -257,6 +300,10 @@ def pilot_main():
             if not audit_path.exists():
                 parser.error(f"Missing coverage audit: {audit_path}")
             audits[env] = json.loads(audit_path.read_text())
+            window_audit_path = args.calibration_dir / f"coverage_audit_{env}_window.json"
+            if window_audit_path.exists():
+                audits[env]["calibration_window_audit"] = json.loads(window_audit_path.read_text())
+                checksums[str(window_audit_path)] = sha256(window_audit_path)
         calibrations[env] = cal
         checksums[str(path)] = sha256(path)
     if not args.synthetic:

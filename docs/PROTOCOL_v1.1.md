@@ -5,8 +5,10 @@ Author approval: PENDING
 Deliverable 1 acceptance: PENDING
 Deliverable 2 acceptance: PENDING
 
-This is an implementation draft for author review. Scientific stages are blocked
-until the author records approval here. Synthetic validation is permitted.
+This is an implementation draft awaiting final technical acceptance. Author
+approval of the research decisions is recorded below; scientific stages remain
+blocked by the pending protocol/deliverable acceptance gates. Synthetic validation
+is permitted.
 The complete implementation requirements are in [SPEC_v1.1.md](SPEC_v1.1.md).
 Where silent, [PILOT_SPEC.md](../PILOT_SPEC.md) remains in force.
 
@@ -29,7 +31,23 @@ Where silent, [PILOT_SPEC.md](../PILOT_SPEC.md) remains in force.
 | Estimators | M1 OLS, M2 GBM, M3 2SLS (with M3_cf stored separately), M4 DML (PLR and PLIV) | Same; M4 inference changes → A7 |
 | Policies | Greedy; greedy plus random price shocks; oracle and legacy as reference arms | Same |
 
-## Amendments (pending author approval)
+## Recorded author decisions — 2026-10-14
+
+The following records the author's explicit confirmations in this chat:
+
+- **A1–A7: APPROVED.** All seven methodology amendments below are approved.
+- **Tuna calibration window: APPROVED, weeks 1–341 inclusive.** The 90% coverage
+  threshold is unchanged; this does not approve a synthetic substitute or a
+  reduction to two environments. Retain the three-environment, 81-cell design.
+- **Compute limits: RETAINED.** Budget 150 hours, cap 2,000 replications, floor 0,
+  as configured in `configs/decisions.yaml`.
+
+These are research-design decisions, not a statement that the merged code or
+calibration records have passed validation. Deliverable 1 and Deliverable 2
+acceptance remain PENDING. Approval of A7 does not enable M4 coverage reporting;
+`inference_validated` remains false until separately authorized.
+
+## Amendments (A1–A7 approved by author)
 
 | ID | Protocol v1.0 section | v1.0 text (summary) | v1.1 text (summary) | Reason | Motivating evidence |
 |---|---|---|---|---|---|
@@ -83,10 +101,15 @@ Where silent, [PILOT_SPEC.md](../PILOT_SPEC.md) remains in force.
   Easter dates for 1990–1997 rather than conflicting codebook special-event labels.
 - Outputs from synthetic-smoke and synthetic-demo are development records, never findings.
 
-## Pending author decisions
+## Remaining acceptance work
 
-Approve A1–A7; approve the tuna sample decision; confirm sign convention, checkpoint
-interpretation, zoned-store restriction and calendar; approve the S2–S4 machine and
-compute budget (configured draft: 150 hours, cap 2000 replications, no positive floor).
-The author must record their own name/date with approval. Implementation does not sign
-on the author's behalf.
+The research decisions above are approved. Validate the actual merged implementation,
+reconcile the full store metadata and the saved 341-week tuna calibration, and finish
+acceptance on the retained empirical environments. The merged tuna records report
+67 stores, whereas the earlier preliminary audit used 66; that difference must be
+explained by the technical audit, not treated as a new author decision.
+
+Final protocol review includes the sign convention, checkpoints, zoned-store and
+calendar details in §11 of the specification. The recorded compute limits do not
+approve a particular machine or authorize starting S2/S3/S4. Keep the acceptance
+gates pending until the required evidence has been reviewed.

@@ -17,7 +17,12 @@ class CleanResult:
 
 
 def clean_category(
-    movement: pd.DataFrame, upc: pd.DataFrame, stores: pd.DataFrame, cfg: CalibrationConfig
+    movement: pd.DataFrame,
+    upc: pd.DataFrame,
+    stores: pd.DataFrame,
+    cfg: CalibrationConfig,
+    *,
+    week_range=None,
 ) -> CleanResult:
     frame = movement.copy()
     log = []
@@ -46,7 +51,10 @@ def clean_category(
         raise ValueError("Duplicate store-UPC-week observations")
     if frame.empty:
         raise ValueError("No valid movement rows")
-    n_weeks = int(frame.week.max() - frame.week.min() + 1)
+    low, high = week_range or (int(frame.week.min()), int(frame.week.max()))
+    if not frame.week.between(low, high).all():
+        raise ValueError("Movement rows outside the selected calibration window")
+    n_weeks = high - low + 1
     coverage = frame.groupby("store").week.nunique() / n_weeks
     threshold = cfg.store_coverage_min
     minimum = cfg.plausibility.get("retained_stores_min", 40)
@@ -57,7 +65,7 @@ def clean_category(
     if frame.empty:
         raise ValueError("No stores satisfy coverage threshold")
     log.append(
-        f"Coverage denominator: weeks {int(frame.week.min())}-{int(frame.week.max())}; "
+        f"Coverage denominator: weeks {low}-{high}; "
         f"span {n_weeks}; retained stores {frame.store.nunique()}"
     )
     n_retained = frame.store.nunique()

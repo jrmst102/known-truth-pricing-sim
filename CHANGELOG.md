@@ -5,6 +5,28 @@
 Corrections and amendments implement SPEC_v1.1.md. The author has not signed the
 protocol or accepted Deliverable 1. No S2/S3/S4 scientific run has been started.
 
+Author decisions recorded from chat on 2026-10-14: A1–A7 approved; tuna window
+weeks 1–341 approved at the unchanged 90% coverage threshold; compute limits retained
+at 150 hours and a 2,000-replication cap. M4 inference reporting remains withheld.
+Merged-code validation and empirical acceptance remain pending.
+
+Post-merge fixes:
+
+- The dirty-worktree test explicitly targets the diagnostic stage with controlled
+  Git state and fails if it reaches configuration or simulation. CLI integration
+  tests have timeouts; the unit CI job has a 15-minute bound.
+- Both saved-run validation commands share the current manifest/state/store-week
+  checker. It verifies artifact completeness, revenue balances, assignments and
+  fold hashes; missing artifacts and shortened runs cannot pass full acceptance.
+- Recalibration reads `calibration_windows.json` (or `--windows`), applies approved
+  bounds before cleaning, preserves the full-span audit, and records a separate
+  selected-window audit and configuration hash. Denominators include missing
+  boundary weeks. Actual-archive reproduction matches the saved tuna sample:
+  67 stores, 20,765 observations, p_bar 0.7931355646520587; fitted coefficients agree
+  to floating-point precision. Store 45 passes coverage in the shorter window,
+  explaining 67 window stores versus 66 over the full span. No coverage threshold
+  was changed and no scientific stage was started.
+
 | ID | Change | Files |
 | --- | --- | --- |
 | C1 | One deployment function, final ladder projection and downward ties; remove dead exploration helper | dgm.py, oracle.py, loop.py, policies.py |

@@ -3,5 +3,6 @@ M2_gbm: {n_estimators: 500, learning_rate: 0.05, num_leaves: 31, min_child_sampl
 M3_iv: {instrument: cost_shifter}
 M4_dml:
   n_folds: 5
+  instrument: cost_shifter
   nuisance_params: {n_estimators: 500, learning_rate: 0.05, num_leaves: 31, min_child_samples: 20}
   inference_validated: false

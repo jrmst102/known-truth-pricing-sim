@@ -1,58 +1,45 @@
+from dataclasses import replace
+
 import numpy as np
-import pandas as pd
 
 from ktsim.config import CellConfig
-from ktsim.estimators.base import failed
+from ktsim.estimators.base import finalize
 from ktsim.loop import run_replication
 from ktsim.rng import draw_shocks, replication_streams
 
 
 def test_legacy_fallback(cal, dgm, monkeypatch):
-    class NoPrediction:
+    class Missing:
         def fit(self, *args):
-            return failed()
+            return finalize(-1, predict=None)
 
-    monkeypatch.setattr("ktsim.loop.get_estimator", lambda name: NoPrediction())
-    dgm.cycles = 2
-    cell = CellConfig("check", -1.06, 0.05, 1, 0, 1, ["M1"], ["greedy", "legacy"])
-    shocks = draw_shocks(replication_streams(14, 1)[0], cal.n_stores, 54, cal, dgm)
-    result = run_replication(cell, 0, shocks, cal, dgm, {"M1_ols": {}}, save_data=True)
-    greedy = pd.DataFrame(result.attrs["simulated_data"]["M1:greedy"])
-    legacy = pd.DataFrame(result.attrs["simulated_data"]["M1:legacy"])
-    np.testing.assert_array_equal(greedy.price, legacy.price)
-    assert greedy[greedy.cycle > 0].fallback_used.all()
-    assert result[result.arm.eq("M1:greedy")].fallback_used.eq(1).all()
-    assert result.R_dep_all.gt(0).all()
-
-
-def test_partial_predictions_fall_back_per_store(cal, dgm, monkeypatch):
-    from ktsim.estimators.base import finalize
-
-    class PartialPrediction:
-        def fit(self, *args):
-            def predict(frame, price):
-                return np.where(frame.store.to_numpy() == 1, np.nan, np.exp(-0.1 * price))
-
-            return finalize(-0.3, predict=predict)
-
-    monkeypatch.setattr("ktsim.loop.get_estimator", lambda name: PartialPrediction())
-    dgm.cycles = 1
-    cell = CellConfig("case", -1.06, 0.05, 1, 0, 1, ["M1"], ["greedy"])
-    shocks = draw_shocks(replication_streams(14, 1)[0], cal.n_stores, 53, cal, dgm)
-    result = run_replication(cell, 0, shocks, cal, dgm, {"M1_ols": {}}, save_storeweek=True)
-    audit = result.attrs["storeweek"]
-    assert audit.fallback_used.sum() == 1
-    assert result.fallback_used.iloc[0] == 1 / cal.n_stores
+    monkeypatch.setattr("ktsim.loop.get_estimator", lambda name: Missing())
+    cell = CellConfig("base", -1.06, 0.05, 1, 0, 1, ["M1"], ["greedy"])
+    shocks = draw_shocks(replication_streams(42, 1)[0], cal.n_stores, 53, cal, dgm)
+    result = run_replication(
+        cell, 0, shocks, cal, replace(dgm, cycles=1), {"M1_ols": {}}, save_storeweek=True
+    )
+    model = result[result.arm.eq("M1:greedy")].iloc[0]
+    legacy = result[result.arm.eq("legacy:legacy")].iloc[0]
+    assert model.fallback_used == 1
+    assert model.predictions_unavailable
+    assert model.R_dep_all == legacy.R_dep_all
+    frame = result.attrs["storeweek"]
+    assert frame[frame.arm.eq("M1:greedy")].fallback_used.all()
 
 
-def test_failed_dml_still_withholds_coverage(cal, dgm, monkeypatch):
-    class NoFit:
-        def fit(self, *args):
-            raise ValueError("planted DML failure")
-
-    monkeypatch.setattr("ktsim.loop.get_estimator", lambda name: NoFit())
-    dgm.cycles = 1
-    cell = CellConfig("case", -1.06, 0.05, 1, 0, 1, ["M4_plr"], ["greedy"])
-    shocks = draw_shocks(replication_streams(14, 1)[0], cal.n_stores, 53, cal, dgm)
-    result = run_replication(cell, 0, shocks, cal, dgm, {"M4_dml": {"inference_validated": False}})
-    assert result.coverage_status.str.startswith("withheld").all()
+def test_oracle_regret_and_empty_model_set(cal, dgm):
+    for kappa in (0, 0.05):
+        cell = CellConfig("base", -1.06, kappa, 0, 0, 1, [], [], pass_through=0)
+        shocks = draw_shocks(replication_streams(42, 1)[0], cal.n_stores, 54, cal, dgm)
+        result = run_replication(
+            cell, 0, shocks, cal, replace(dgm, cycles=2), {}, save_storeweek=True
+        )
+        oracle = result[result.arm.eq("oracle:oracle")]
+        assert oracle.regret_rec_all.eq(0).all()
+        assert oracle.regret_dep_model.isna().all()
+        if kappa == 0:
+            assert oracle.regret_dep_all.eq(0).all()
+        else:
+            assert oracle.regret_dep_all.ge(0).all()
+        assert np.isfinite(oracle.R_star_all).all()

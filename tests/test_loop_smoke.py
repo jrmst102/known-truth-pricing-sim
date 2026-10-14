@@ -18,13 +18,12 @@ def test_two_replications(cal, dgm):
         result = run_replication(
             cell, rep, shocks, cal, dgm, {"M1_ols": {}, "M3_iv": {}}, save_data=True
         )
-        assert len(result) == 6 * dgm.cycles
+        assert len(result) == 5 * dgm.cycles
         assert result.loc[result.arm.str.startswith("M1:"), "converged"].all()
         assert result.failure_reason.notna().equals(~result.converged)
         assert set(result.failure_reason.dropna()) <= {
             "nonconvergence",
             "nonfinite",
-            "abs_eta_gt_10",
         }
         assert (result[result.arm.str.endswith(":oracle")].regret_rec_all == 0).all()
         assert result.oracle_at_bound.eq("interior").all()
@@ -57,7 +56,7 @@ def test_ml_loop(cal, dgm):
     }
     shocks = draw_shocks(replication_streams(42, 1)[0], cal.n_stores, 53, cal, dgm)
     result = run_replication(cell, 0, shocks, cal, dgm, cfg)
-    assert len(result) == 3
+    assert len(result) == 5
     assert result.converged.all()
     assert np.isfinite(result.forecast_mape).all()
 
@@ -80,6 +79,8 @@ def test_failed_fit_uses_legacy_fallback(cal, dgm, monkeypatch):
     cell = CellConfig("P1", -1.06, 0.05, 0.5, 0.0, 1, ["M1"], ["greedy"])
     shocks = draw_shocks(replication_streams(42, 1)[0], cal.n_stores, 54, cal, dgm)
     result = run_replication(cell, 0, shocks, cal, dgm, {"M1_ols": {}})
+    result = result[result.arm.eq("M1:greedy")]
     assert result.converged.tolist() == [True, False]
     assert result.failure_reason.iloc[1] == "nonconvergence"
-    assert result.fallback_used.tolist() == [0.0, 1.0]
+    assert result.fallback_used.iloc[1] == 1
+    assert result.predictions_unavailable.iloc[1]

@@ -6,5 +6,6 @@
   "data/wtti.zip": "6dd3b03925a2ee3e3e1831da127a0240ee0e00ecb0f118e2578d2f629d2c0b95",
   "data/upctti.csv": "944a03a81ee106f89f11f272bf05e78393a1cc294ea28918db53c0f7f1d31e43",
   "data/raw/stores.csv": "07fbd8ff19673e83f81aea4e29cae7167be3b262a9f50ae3ac73def4833b89ce",
-  "data/fixtures/week_decode.csv": "d7def12e3b0e629ef177e82457eff64ef60fc15c8f253018ea4729756e17ee73"
+  "data/fixtures/week_decode.csv": "d7def12e3b0e629ef177e82457eff64ef60fc15c8f253018ea4729756e17ee73",
+  "data/calibration/stores_sna.csv": "964fc9e7bfbc05a55dbeaaa5762d3556d8939f8584e051dd5fb8ccb09777972f"
 }

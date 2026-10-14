@@ -1,4 +1,4 @@
-targets: {elasticity: 0.02, regret: 0.0025, paired_regret: 0.0025}
-floor: 1
+targets: {elasticity: 0.02, regret: 0.0025, paired: 0.0025}
+floor: 0
 cap: 2000
 budget_hours: 150.0

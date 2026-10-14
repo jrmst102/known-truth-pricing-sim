@@ -56,4 +56,26 @@ def test_calibration_float_ids_serializes(tmp_path):
     cal.save(tmp_path / "calibration.json")
     assert set(cal.alpha_s) == {1, 2}
     assert cal.beta_reference < 0
-    assert cal.p_bar == frame.price.mean()
+
+
+def test_reference_price_mean():
+    from ktsim.clean import clean_category
+    from ktsim.io import load_movement
+
+    frame = load_movement("data/fixtures/movement_small.csv")
+    stores = pd.DataFrame({"store": [1, 2, 3], "zone": [1, 2, 1], "price_tier": ["L"] * 3})
+    cfg = CalibrationConfig(plausibility={"retained_stores_min": 2})
+    clean = clean_category(frame, pd.DataFrame({"upc": [123, 456, 999]}), stores, cfg)
+    result = calibrate(clean, cfg)
+    assert result.p_bar == clean.frame.price.mean()
+    assert result.diagnostics["resid_var"] >= 0
+
+
+def test_beta_reference_is_review_flag(cal):
+    from ktsim.calibrate import check_plausibility
+
+    cal.beta_reference = -3.16
+    result = check_plausibility(
+        cal, CalibrationConfig(plausibility={"beta_reference": [-2.59, -0.79]})
+    )
+    assert result[0].status == "flag"

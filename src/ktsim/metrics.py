@@ -37,81 +37,77 @@ def mcse_coverage(covered):
     return float(np.sqrt(rate * (1 - rate) / len(values)))
 
 
-def revenue_summary(frame, suffix="all", kind="dep"):
-    star = frame[f"R_star_{suffix}"].sum(min_count=1)
-    loss = (frame[f"R_star_{suffix}"] - frame[f"R_{kind}_{suffix}"]).sum(min_count=1)
-    return {"cum_loss": loss, "norm_cum_regret": loss / star}
-
-
-def reliability(frame, tau=0.02, window=26):
-    last = frame.sort_values("cycle").tail(window)
-    complete = len(last) == window and last.cycle.nunique() == window
-    regret = complete and bool((last.regret_dep_all <= tau).all())
-    sign = complete and bool((np.isfinite(last.eta_hat) & (last.eta_hat < 0)).all())
-    return dict(reliable_regret=regret, reliable_sign=sign, reliable=regret and sign)
-
-
-def replication_measures(estimates, reliability_cfg=None):
-    cfg = reliability_cfg or {"tau": 0.02, "window": 26}
+def replication_summary(estimates, reliability=None):
+    reliability = reliability or {"tau": 0.02, "window": 26}
     rows = []
     for (cell, arm, rep), group in estimates.groupby(["cell", "arm", "rep"]):
-        final = group.sort_values("cycle").iloc[-1]
+        group = group.sort_values("cycle")
         row = dict(
             cell=cell,
             arm=arm,
             rep=rep,
-            terminal_cycle=int(final.cycle),
-            terminal_error=final.eta_hat - final.eta_true,
+            terminal_error=group.eta_hat.iloc[-1] - group.eta_true.iloc[-1],
         )
         for suffix in ("all", "model"):
             for kind in ("dep", "rec"):
-                measures = revenue_summary(group, suffix, kind)
-                for name, value in measures.items():
-                    row[f"{name}{'_rec' if kind == 'rec' else ''}_{suffix}"] = value
-        row.update(reliability(group, **cfg))
-        for source, target in [
-            ("fallback_used", "fallback_rate"),
-            ("extreme_estimate", "extreme_rate"),
-            ("positive_slope", "positive_slope_rate"),
-            ("numerical_failure", "failure_share"),
-            ("censored_share", "censored_share"),
+                star = group[f"R_star_{suffix}"].sum(min_count=1)
+                loss = (group[f"R_star_{suffix}"] - group[f"R_{kind}_{suffix}"]).sum(min_count=1)
+                ending = "" if kind == "dep" else "_rec"
+                row[f"cum_loss_{suffix}{ending}"] = loss
+                row[f"norm_cum_regret_{suffix}{ending}"] = loss / star if star > 0 else np.nan
+        last = group.tail(reliability["window"])
+        complete = len(last) == reliability["window"]
+        row["reliable_regret"] = (
+            float(complete and last.regret_dep_all.le(reliability["tau"]).all())
+            if complete
+            else np.nan
+        )
+        row["reliable_sign"] = (
+            float(complete and np.isfinite(last.eta_hat).all() and last.eta_hat.lt(0).all())
+            if complete
+            else np.nan
+        )
+        row["reliable"] = (
+            float(row["reliable_regret"] == 1 and row["reliable_sign"] == 1) if complete else np.nan
+        )
+        for measure, column in (
+            ("fallback_rate", "fallback_used"),
+            ("extreme_rate", "extreme_estimate"),
+            ("positive_slope_rate", "positive_slope"),
+            ("failure_share", "numerical_failure"),
             ("forecast_mape", "forecast_mape"),
-        ]:
-            row[target] = group[source].mean()
+            ("censored_share", "censored_share"),
+        ):
+            row[measure] = group[column].mean()
         row["forecast_rmse"] = np.sqrt(np.mean(group.forecast_rmse**2))
         row["seconds"] = group.seconds.sum()
+        row["price_sd_26"] = group.price_sd_26.iloc[-1]
         rows.append(row)
     return pd.DataFrame(rows)
 
 
-def performance(
-    estimates: pd.DataFrame, truth: dict | None = None, *, stage="validation", reliability_cfg=None
-) -> pd.DataFrame:
+def performance(estimates: pd.DataFrame, truth=None, *, reliability=None, stage="validation"):
     rows = []
-    rep_measures = replication_measures(estimates, reliability_cfg)
+    horizons = replication_summary(estimates, reliability)
     for (run_id, cell, arm), group in estimates.groupby(["run_id", "cell", "arm"], dropna=False):
         eta = group.eta_true.iloc[0] if truth is None else truth.get(cell, group.eta_true.iloc[0])
-        status = (
-            "withheld: inference not validated"
-            if arm.startswith("M4") and group.coverage_status.str.startswith("withheld").any()
-            else "available"
-        )
-        at = group[group.cycle.eq(group.cycle.max())]
+        status = group.coverage_status.iloc[0]
 
-        def emit(checkpoint, measure, values, mcse=mcse_mean, transform=None):
+        def emit(checkpoint, measure, values, at, mcse=mcse_mean, transform=None):
             values = finite(values)
+            n_total = len(at)
             n_estimated = int(np.isfinite(at.eta_hat).sum())
-            intervals = (
-                np.isfinite(at.eta_hat)
-                & np.isfinite(at.ci_low.astype(float))
-                & np.isfinite(at.ci_high.astype(float))
+            n_interval = int(
+                (np.isfinite(at.eta_hat) & np.isfinite(at.ci_low) & np.isfinite(at.ci_high)).sum()
             )
-            value = (
+            estimate = (
                 (np.mean(values) if transform is None else transform(values))
                 if len(values)
                 else np.nan
             )
-            withheld = measure == "coverage" and status.startswith("withheld")
+            if measure == "coverage" and status.startswith("withheld"):
+                estimate = np.nan
+                values = np.array([])
             rows.append(
                 dict(
                     run_id=run_id,
@@ -120,49 +116,53 @@ def performance(
                     stage=stage,
                     cycle_or_horizon=checkpoint,
                     measure=measure,
-                    estimate=np.nan if withheld else float(value),
-                    mcse=np.nan if withheld or not len(values) else float(mcse(values)),
+                    estimate=float(estimate),
+                    mcse=float(mcse(values)),
                     n_reps=len(values),
-                    n_total=len(at),
+                    n_total=n_total,
                     n_estimated=n_estimated,
-                    n_with_interval=int(intervals.sum()),
+                    n_with_interval=n_interval,
                     coverage_status=status,
-                    denominator="n_with_interval"
-                    if measure == "coverage"
-                    else "n_estimated"
-                    if measure in {"bias", "empirical_se", "rmse"}
-                    else "n_total",
                 )
             )
 
-        for cycle in (26, 52, 104):
-            at = group[group.cycle.eq(cycle)]
-            if at.empty:
-                continue
-            values = at.eta_hat.to_numpy(dtype=float)
-            emit(cycle, "bias", values - eta)
-            emit(
-                cycle,
-                "empirical_se",
-                values,
-                mcse_empse,
-                lambda v: np.std(v, ddof=1) if len(v) > 1 else np.nan,
-            )
-            emit(
-                cycle,
-                "rmse",
-                values - eta,
-                lambda v: mcse_mean(v**2) / (2 * np.sqrt(np.mean(v**2))) if np.mean(v**2) else 0,
-                lambda v: np.sqrt(np.mean(v**2)),
-            )
-            valid = at[
-                np.isfinite(at.eta_hat)
-                & np.isfinite(at.ci_low.astype(float))
-                & np.isfinite(at.ci_high.astype(float))
-            ]
-            emit(cycle, "coverage", (valid.ci_low <= eta) & (valid.ci_high >= eta), mcse_coverage)
-        at = group[group.cycle.eq(group.cycle.max())]
-        reps = rep_measures[rep_measures.cell.eq(cell) & rep_measures.arm.eq(arm)]
-        for column in reps.columns.difference(["cell", "arm", "rep", "terminal_cycle"]):
-            emit("horizon", column, reps[column])
+        if not arm.startswith(("oracle:", "legacy:", "data:")):
+            for week in (78, 104, 156):
+                at = group[group.week.eq(week)]
+                if at.empty:
+                    continue
+                values = at.eta_hat.to_numpy(dtype=float)
+                emit(week, "bias", values - eta, at)
+                emit(
+                    week,
+                    "empirical_se",
+                    values,
+                    at,
+                    mcse_empse,
+                    lambda v: np.std(v, ddof=1) if len(v) > 1 else np.nan,
+                )
+                emit(
+                    week,
+                    "rmse",
+                    values - eta,
+                    at,
+                    lambda v: mcse_mean(v**2) / (2 * np.sqrt(np.mean(v**2)))
+                    if np.mean(v**2) > 0
+                    else 0.0,
+                    lambda v: np.sqrt(np.mean(v**2)),
+                )
+                valid = at[
+                    np.isfinite(at.eta_hat) & np.isfinite(at.ci_low) & np.isfinite(at.ci_high)
+                ]
+                emit(
+                    week,
+                    "coverage",
+                    (valid.ci_low <= eta) & (valid.ci_high >= eta),
+                    at,
+                    mcse_coverage,
+                )
+        horizon = horizons[horizons.cell.eq(cell) & horizons.arm.eq(arm)]
+        final = group[group.cycle.eq(group.cycle.max())]
+        for column in horizon.columns.difference(["cell", "arm", "rep", "terminal_error"]):
+            emit("horizon", column, horizon[column], final)
     return pd.DataFrame(rows)

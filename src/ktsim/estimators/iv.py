@@ -1,4 +1,4 @@
-"""Demand predictions use exp(log prediction) times mean(exp(training residual))."""
+"""Demand forecasts use exp(log prediction) times Duan mean(exp(training residual))."""
 
 import numpy as np
 import statsmodels.api as sm
@@ -29,7 +29,6 @@ class IV:
             fit = iv_fit
             interval = fit.conf_int().loc["price_centered"] * cal.p_bar
         params = fit.params
-
         smear = smearing_factor(fit.resid if self.control_function else fit.resids)
 
         def predict(frame, price):

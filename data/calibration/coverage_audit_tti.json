@@ -4,37 +4,9 @@
     399
   ],
   "calendar_span": 399,
-  "equals_399": true,
-  "store_coverage_threshold": 0.8,
-  "store_steps": [
-    {
-      "rule": "raw",
-      "stores": 93,
-      "rows": 1627284
-    },
-    {
-      "rule": "OK == 1",
-      "stores": 93,
-      "rows": 1600398
-    },
-    {
-      "rule": "valid price/qty/move",
-      "stores": 93,
-      "rows": 1149973
-    },
-    {
-      "rule": "known UPC and zoned store",
-      "stores": 75,
-      "rows": 993280
-    },
-    {
-      "rule": "store coverage",
-      "stores": 67,
-      "rows": 917126
-    }
-  ],
-  "n_retained_stores": 67,
-  "retained_stores": [
+  "equals_399_weeks": true,
+  "retained_stores": 67,
+  "store_ids": [
     2,
     5,
     8,
@@ -103,6 +75,42 @@
     132,
     137
   ],
+  "store_coverage_threshold": 0.8,
+  "retained_after_rules": [
+    {
+      "rule": "OK == 1",
+      "stores_before": 93,
+      "stores_after": 93,
+      "rows_after": 1600398
+    },
+    {
+      "rule": "valid price/qty/move",
+      "stores_before": 93,
+      "stores_after": 93,
+      "rows_after": 1149973
+    },
+    {
+      "rule": "known UPC and zoned store",
+      "stores_before": 93,
+      "stores_after": 67,
+      "rows_after": 917126
+    },
+    {
+      "rule": "store coverage",
+      "stores_before": 67,
+      "stores_after": 67,
+      "rows_after": 917126
+    }
+  ],
+  "duplicate_rows": 0,
+  "date_alignment": {
+    "week_min": 1,
+    "week_max": 399,
+    "all_weeks_in_calendar": true,
+    "start_date": "1989-09-14 00:00:00",
+    "end_date": "1997-05-01 00:00:00",
+    "date_basis": "week joined to authoritative codebook calendar; movement supplies week IDs, not independent dates"
+  },
   "top_upcs": [
     {
       "upc": 5400041500,
@@ -110,12 +118,10 @@
       "rows_present": 24918,
       "expected_rows": 26733,
       "coverage": 0.9321063853664011,
-      "missing_by_cause": {
-        "store_absent": 938,
-        "upc_absent": 0,
-        "ok_zero": 570,
-        "price_qty_rule": 307
-      }
+      "missing_store_absent": 938,
+      "missing_upc_absent": 0,
+      "dropped_ok": 570,
+      "dropped_price_qty_move": 307
     },
     {
       "upc": 3700060511,
@@ -123,12 +129,10 @@
       "rows_present": 24999,
       "expected_rows": 26733,
       "coverage": 0.9351363483335203,
-      "missing_by_cause": {
-        "store_absent": 938,
-        "upc_absent": 0,
-        "ok_zero": 570,
-        "price_qty_rule": 226
-      }
+      "missing_store_absent": 938,
+      "missing_upc_absent": 0,
+      "dropped_ok": 570,
+      "dropped_price_qty_move": 226
     },
     {
       "upc": 5400046550,
@@ -136,12 +140,10 @@
       "rows_present": 22096,
       "expected_rows": 26733,
       "coverage": 0.8265439718699734,
-      "missing_by_cause": {
-        "store_absent": 938,
-        "upc_absent": 0,
-        "ok_zero": 570,
-        "price_qty_rule": 3129
-      }
+      "missing_store_absent": 938,
+      "missing_upc_absent": 0,
+      "dropped_ok": 570,
+      "dropped_price_qty_move": 3129
     },
     {
       "upc": 5400046510,
@@ -149,12 +151,10 @@
       "rows_present": 22375,
       "expected_rows": 26733,
       "coverage": 0.8369805109789399,
-      "missing_by_cause": {
-        "store_absent": 938,
-        "upc_absent": 0,
-        "ok_zero": 570,
-        "price_qty_rule": 2850
-      }
+      "missing_store_absent": 938,
+      "missing_upc_absent": 0,
+      "dropped_ok": 570,
+      "dropped_price_qty_move": 2850
     },
     {
       "upc": 5400046520,
@@ -162,12 +162,10 @@
       "rows_present": 22465,
       "expected_rows": 26733,
       "coverage": 0.8403471364979613,
-      "missing_by_cause": {
-        "store_absent": 938,
-        "upc_absent": 0,
-        "ok_zero": 570,
-        "price_qty_rule": 2760
-      }
+      "missing_store_absent": 938,
+      "missing_upc_absent": 0,
+      "dropped_ok": 570,
+      "dropped_price_qty_move": 2760
     },
     {
       "upc": 4200013100,
@@ -175,12 +173,10 @@
       "rows_present": 24972,
       "expected_rows": 26733,
       "coverage": 0.934126360677814,
-      "missing_by_cause": {
-        "store_absent": 938,
-        "upc_absent": 0,
-        "ok_zero": 570,
-        "price_qty_rule": 253
-      }
+      "missing_store_absent": 938,
+      "missing_upc_absent": 0,
+      "dropped_ok": 570,
+      "dropped_price_qty_move": 253
     },
     {
       "upc": 3700060571,
@@ -188,12 +184,10 @@
       "rows_present": 22759,
       "expected_rows": 26733,
       "coverage": 0.851344779860098,
-      "missing_by_cause": {
-        "store_absent": 938,
-        "upc_absent": 0,
-        "ok_zero": 570,
-        "price_qty_rule": 2466
-      }
+      "missing_store_absent": 938,
+      "missing_upc_absent": 0,
+      "dropped_ok": 570,
+      "dropped_price_qty_move": 2466
     },
     {
       "upc": 5400046530,
@@ -201,12 +195,10 @@
       "rows_present": 22556,
       "expected_rows": 26733,
       "coverage": 0.8437511689671942,
-      "missing_by_cause": {
-        "store_absent": 938,
-        "upc_absent": 0,
-        "ok_zero": 570,
-        "price_qty_rule": 2669
-      }
+      "missing_store_absent": 938,
+      "missing_upc_absent": 0,
+      "dropped_ok": 570,
+      "dropped_price_qty_move": 2669
     },
     {
       "upc": 3828111217,
@@ -214,12 +206,10 @@
       "rows_present": 24827,
       "expected_rows": 26733,
       "coverage": 0.9287023528971683,
-      "missing_by_cause": {
-        "store_absent": 938,
-        "upc_absent": 0,
-        "ok_zero": 570,
-        "price_qty_rule": 398
-      }
+      "missing_store_absent": 938,
+      "missing_upc_absent": 0,
+      "dropped_ok": 570,
+      "dropped_price_qty_move": 398
     },
     {
       "upc": 4200013700,
@@ -227,67 +217,20 @@
       "rows_present": 24891,
       "expected_rows": 26733,
       "coverage": 0.9310963977106946,
-      "missing_by_cause": {
-        "store_absent": 938,
-        "upc_absent": 0,
-        "ok_zero": 570,
-        "price_qty_rule": 334
-      }
+      "missing_store_absent": 938,
+      "missing_upc_absent": 0,
+      "dropped_ok": 570,
+      "dropped_price_qty_move": 334
     }
   ],
-  "best_upc": {
-    "upc": 3700060511,
-    "volume": 4538834.0,
-    "rows_present": 24999,
-    "expected_rows": 26733,
-    "coverage": 0.9351363483335203,
-    "missing_by_cause": {
-      "store_absent": 938,
-      "upc_absent": 0,
-      "ok_zero": 570,
-      "price_qty_rule": 226
-    }
-  },
-  "duplicates": [],
-  "date_alignment": {
-    "missing_weeks": [],
-    "first": [
-      {
-        "week": "1",
-        "date": "1989-09-14",
-        "end": "1989-09-20",
-        "special_event": "nan",
-        "lent": "False",
-        "holiday_easter": "0",
-        "holiday_lent": "0",
-        "holiday_halloween": "0",
-        "holiday_thanksgiving": "0",
-        "holiday_christmas": "0",
-        "holiday_new_year": "0",
-        "holiday_presidents_day": "0",
-        "holiday_memorial_day": "0",
-        "holiday_4th_of_july": "0",
-        "holiday_labor_day": "0"
-      }
-    ],
-    "last": [
-      {
-        "week": "399",
-        "date": "1997-05-01",
-        "end": "1997-05-07",
-        "special_event": "nan",
-        "lent": "False",
-        "holiday_easter": "0",
-        "holiday_lent": "0",
-        "holiday_halloween": "0",
-        "holiday_thanksgiving": "0",
-        "holiday_christmas": "0",
-        "holiday_new_year": "0",
-        "holiday_presidents_day": "0",
-        "holiday_memorial_day": "0",
-        "holiday_4th_of_july": "0",
-        "holiday_labor_day": "0"
-      }
-    ]
+  "best_coverage": 0.9351363483335203,
+  "threshold": 0.9,
+  "metadata_source": "data/calibration/stores_sna.csv",
+  "metadata_sha256": "964fc9e7bfbc05a55dbeaaa5762d3556d8939f8584e051dd5fb8ccb09777972f",
+  "metadata_scope": "retained-store table",
+  "input_checksums": {
+    "data/wtti.zip": "6dd3b03925a2ee3e3e1831da127a0240ee0e00ecb0f118e2578d2f629d2c0b95",
+    "data/upctti.csv": "944a03a81ee106f89f11f272bf05e78393a1cc294ea28918db53c0f7f1d31e43",
+    "data/calibration/stores_sna.csv": "964fc9e7bfbc05a55dbeaaa5762d3556d8939f8584e051dd5fb8ccb09777972f"
   }
 }

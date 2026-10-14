@@ -1,43 +1,34 @@
-import numpy as np
-import pandas as pd
+from dataclasses import replace
 
+from ktsim.config import CellConfig
 from ktsim.estimators.dml import DML
+from ktsim.loop import run_replication
+from ktsim.metrics import performance
+from ktsim.rng import draw_shocks, replication_streams
 
 
-def panel(cal, seed=47, n_stores=12, weeks=70):
-    rng = np.random.default_rng(seed)
-    stores = np.repeat(np.arange(n_stores), weeks)
-    t = np.tile(np.arange(weeks), n_stores)
-    z = rng.normal(size=len(t))
-    price = cal.p_bar + 0.15 * z + rng.normal(0, 0.1, len(t))
-    promo = rng.binomial(1, 0.2, len(t))
-    from ktsim.rng import ar1
-
-    xi = ar1(rng.normal(size=(n_stores, weeks)), 0.5, 0.15).ravel()
-    return pd.DataFrame(
-        dict(
-            store=stores,
-            t=t,
-            week_of_year=t % 52 + 1,
-            promo=promo,
-            log_comp_index=rng.normal(0, 0.1, len(t)),
-            cost_shifter=z,
-            price=price,
-            log_q=3 + stores * 0.1 - 0.4 * (price - cal.p_bar) + 0.2 * promo + xi,
-        )
+def test_grouped_folds_and_features(cal, dgm):
+    params = dict(n_estimators=10, learning_rate=0.05, num_leaves=10, min_child_samples=10)
+    cfg = dict(nuisance_params=params, n_folds=5, inference_validated=False)
+    shocks = draw_shocks(replication_streams(42, 1)[0], cal.n_stores, 53, cal, dgm)
+    cell = CellConfig("base", -1.06, 0.05, 0.5, 0.03, 1, ["M4_pliv"], ["greedy"])
+    result = run_replication(
+        cell, 0, shocks, cal, replace(dgm, cycles=1), {"M4_dml": cfg}, save_data=True
     )
+    import pandas as pd
 
-
-def test_grouped_folds_and_features(cal):
-    frame = panel(cal)
-    cfg = dict(n_folds=5, nuisance_params=dict(n_estimators=10, min_child_samples=15))
-    for pliv in (False, True):
-        result = DML(pliv).fit(frame, cal, cfg)
-        assert result["converged"]
-        assert set(result["fold_assignment"]) == set(frame.store)
-        assert len(set(result["fold_assignment"].values())) == 5
-        assert "store" not in result["nuisance_features"]
-        assert result["variance_method"] == "cluster:store"
-        assert result["coverage_status"] == "withheld: inference not validated"
-        assert len(result["fold_hash"]) == 64
-        assert np.isfinite(result["predict"](frame, frame.price)).all()
+    frame = pd.DataFrame(result.attrs["simulated_data"]["M4_pliv:greedy"])
+    est = DML(pliv=True).fit(frame, cal, cfg)
+    assert est["cluster_variance"]
+    assert "store" not in est["nuisance_features"]
+    assert len(est["fold_assignment"]) == cal.n_stores
+    assert set(est["fold_assignment"].values()) == set(range(5))
+    assert est["coverage_status"] == "withheld: inference not validated"
+    records = result.attrs["fold_records"]
+    assert records[0]["assignment"]
+    # Even checkpoint output with intervals must withhold nominal coverage.
+    result["week"] = 78
+    perf = performance(result)
+    m4 = perf[perf.arm.str.startswith("M4")]
+    assert m4.coverage_status.str.startswith("withheld").all()
+    assert m4[m4.measure.eq("coverage")].estimate.isna().all()

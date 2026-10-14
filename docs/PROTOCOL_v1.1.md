@@ -1,12 +1,16 @@
-# Known-truth pricing protocol
+# Known-Truth Pricing Protocol
 
-Protocol version: 1.1 · Supersedes 1.0 · Date: October 14, 2026 · Author: Jose Mendoza
+Protocol version: 1.1 · Supersedes 1.0 · Date: 2026-10-14 · Author: Jose Mendoza
+Author approval: PENDING
+Deliverable 1 acceptance: PENDING
+Deliverable 2 acceptance: PENDING
 
-Approval status: pending author signature
-Author signature:
-Scientific stages S2–S4 require a signed protocol and a clean committed worktree.
+This is an implementation draft for author review. Scientific stages are blocked
+until the author records approval here. Synthetic validation is permitted.
+The complete implementation requirements are in [SPEC_v1.1.md](SPEC_v1.1.md).
+Where silent, [PILOT_SPEC.md](../PILOT_SPEC.md) remains in force.
 
-## Authoritative baseline
+## Baseline
 
 | Component | Required specification | Status vs. v1.0 protocol / current code |
 |---|---|---|
@@ -25,8 +29,7 @@ Scientific stages S2–S4 require a signed protocol and a clean committed worktr
 | Estimators | M1 OLS, M2 GBM, M3 2SLS (with M3_cf stored separately), M4 DML (PLR and PLIV) | Same; M4 inference changes → A7 |
 | Policies | Greedy; greedy plus random price shocks; oracle and legacy as reference arms | Same |
 
-
-## Amendments
+## Amendments (pending author approval)
 
 | ID | Protocol v1.0 section | v1.0 text (summary) | v1.1 text (summary) | Reason | Motivating evidence |
 |---|---|---|---|---|---|
@@ -38,86 +41,52 @@ Scientific stages S2–S4 require a signed protocol and a clean committed worktr
 | A6 | §9.3 | \|η̂\| > 10 counted as failure; previous recommendation carried forward | Extreme estimates and positive slopes retained with flags; legacy fallback only when predictions are unavailable; explicit denominators; smearing retransformation | Discarding extreme estimates hides the failure the chapter studies | Same |
 | A7 | §6.1 (M4) | Five-fold cross-fitting, unspecified fold structure | Within-store transformation, store-grouped folds, cluster-robust variance, cross-fitted predictions; coverage withheld until validated | Row-level shuffling with store and serial dependence invalidates nominal coverage | Same |
 
-
-| A1-window | §3 calibration eligibility | Full tuna calendar span fails 90% UPC coverage | Propose weeks 1–341, 67 zoned stores, unchanged 90% threshold | Retain empirical tuna and the 81-cell grid | Full and window coverage audits; author acceptance pending |
-
 ## Implementation corrections (no design change)
 
-- C1: project every deployed price after all adjustments; nearest ties go downward.
-- C2: cost enters once for every store through deployment.
-- C3: record realized adoption and the assignment vector.
-- C4: apply deployment constraints to initial history, with exploration disabled.
-- C5: latent sales in core; fixed reference-price capacity and a censored oracle in the extension.
-- C6: revenue-weighted fractional regret; cumulative dollar loss and normalized cumulative regret.
-- C7: mean valid focal-UPC unit price, including promotions; explicit coverage denominators.
-- C8: resolve environments per cell and read every effective configuration setting.
+- C1. Project every deployed price onto the ladder, after every adjustment
+- C2. Apply the cost shifter to all stores, exactly once, through the deployment function
+- C3 / A4. Assign model adoption within zones and record it
+- C4. Apply the same constraints to the initial history
+- C5. Make stockouts a separate extension with its own oracle
+- C6 / A5. Replace the regret calculations with revenue-weighted measures
+- C7. Reference price and calibration denominators
+- C8. Configuration hygiene
 
 ## Operational definitions
 
-The sign convention is beta < 0 for downward-sloping demand; eta_hat = beta * p_bar.
-This equals -b_hat * p_bar when b = -beta. Checkpoints are cycles 26, 52, 104,
-at absolute weeks 78, 104, 156. Stores missing price zones are excluded.
-The committed week_decode.csv Easter dates for 1990–1997 are authoritative.
+- Eta is beta * p_bar, where beta is the coefficient of price - p_bar in log demand.
+- Checkpoints: cycles 26, 52, 104, absolute weeks 78, 104, 156.
+- Every arm and initial history uses final projection with downward ties.
+- Capacity uses current observed controls and reference price, without realized shocks.
+- Regret fractions use expected-dollar revenue sums, including store effects, controls,
+  and the lognormal expectation. Model-only quantities are null at phi = 0.
+- Reliable means deployed weekly regret <= 0.02 AND finite negative eta in every one
+  of the final 26 cycles. Missing estimates fail; short runs have null reliability.
+- Every estimator retransforms log predictions using Duan's factor, mean(exp(training
+  residuals)); DML uses out-of-fold residuals. Greedy prices use the same factor.
+- M4 first demeans outcome, treatment and instrument by store, uses five store-grouped
+  folds and DoubleMLClusterData. No separate temporal/HAC dependence model is fitted.
+  Training predictions are out of fold; new predictions average the fold learners.
+  Coverage is withheld until 200-draw inference validation and explicit author opt-in.
+- Stage streams are the four children of the master SeedSequence, ordered validation,
+  diagnostic, pilot, main. Cells share the same replication streams within a stage.
+- S2: one replication per core cell plus five additional base-cell replications.
+  S3: 100 replications per cell. S4 uses the accepted S3 decision, fresh seeds and
+  frozen scientific settings. No S2/S3/S4 run is authorized by this implementation draft.
+- Tuna: audit at the unchanged 90% threshold first; investigate denominator or join
+  errors before proposing a window. A window needs >=40 zoned stores and >=156 weeks.
+  If no defensible window exists, propose two environments (54 cells), with author
+  approval and chapter amendment. No synthetic substitute for empirical calibration.
+- Benchmark elasticity slopes are descriptive review flags, not exclusion criteria.
+  Units, log base, promotions and competitor construction remain under investigation.
+- Stores without a price zone stay excluded. The committed calendar uses factual
+  Easter dates for 1990–1997 rather than conflicting codebook special-event labels.
+- Outputs from synthetic-smoke and synthetic-demo are development records, never findings.
 
-Every estimator retransforms predicted log demand as exp(y_hat) * S, where
-S = mean(exp(training residuals)) (Duan smearing). DML uses out-of-fold
-residuals. This constant does not change the ladder argmax.
-DML demeans outcome, centered price, and instrument within store over the expanding
-training window. Controls and week of year exclude store identifiers and lagged sales.
-Five store-grouped folds feed DoubleML partialling-out and store-cluster variance.
-New-row nuisances are averaged across folds; store means restore forecast levels.
-Cluster variance does not model serial dynamics. Coverage remains withheld until the
-200-draw inference test passes and the author sets inference_validated: true.
+## Pending author decisions
 
-Censored capacity is 1.5 times expected latent demand at the reference price using
-current observed controls, integrated over shocks. The oracle observes controls and
-capacity, never realized latent state; all regret uses the same expected-sales mechanism.
-
-Reference arms recommend the oracle or legacy price chainwide and receive the common
-cost/manager adjustments. Estimator arms use model recommendations only for assigned
-stores; exploration is restricted to those stores. Assignment is shared across arms.
-Recommended regret audits recommendations separately from deployed mixture prices.
-When predictions are unavailable, model stores use the unprojected legacy base before
-the single final projection. Extreme and positive finite estimates remain available.
-
-Reliability requires all final 26 deployed weekly regrets <= 0.02 and a finite negative
-eta_hat in every cycle. Missing estimates fail; incomplete horizons cannot qualify.
-Report the regret and sign criteria separately. Empty model-store sets have null regret.
-
-## Run sequence and approval
-
-S1 validation uses synthetic fixtures or explicitly labeled mechanical checks of retained
-calibrations. S2 diagnostic requires 104 cycles, one replication of each core cell and
-five total replications of med/pos/0.5 per environment. S3 requires 100 replications per
-core cell. S4 requires the S3 decision and unchanged scientific settings. SeedSequence
-children 0, 1, 2, 3 belong to validation, diagnostic, pilot and main respectively.
-
-N_required is the maximum ceil((SD/target)^2) over every core estimator-policy arm for
-terminal elasticity error (target 0.02) and normalized cumulative deployed regret
-(target 0.0025). Paired regret comparisons use target 0.0025. The explicit computational
-floor is 1 and cap is 2000; budget is 150 core hours pending author machine/budget review.
-Caps and achieved precision are reported, never silently substituted.
-
-## Pending author acceptance
-
-Author review covers A1–A7, the tuna decision, the sign convention, checkpoints,
-unzoned-store exclusion, Easter dates, and S2–S4 compute budget/machine. Implementation
-of this document does not constitute a signature. Precision pilot and main experiment
-must wait for acceptance of Deliverables 1 and 2.
-
-## Eligibility amendment: tuna window (A1 implementation decision)
-
-The unchanged full-span audit reproduces best coverage approximately 0.836 across 399 weeks
-and 66 retained stores. No denominator/join correction was indicated by the audit.
-Step 2 selects weeks 1–341 with 67 zoned stores, retaining the 90% UPC threshold.
-The focal UPC is 8660000033 with 20,765 rows; the denominator is 67 × 341 = 22,847,
-so coverage is 0.908872. Its observed rows end at week 331; missing weeks remain in
-the denominator. Competing UPCs also pass coverage; longer screened candidates
-failed the competing-index requirement. Selection was based on coverage, not fit.
-
-The candidate search ranks contiguous spans using the full-file retained store set,
-then reruns all cleaning rules and store retention within each candidate. This is
-not a proof of the global longest window when the retained store set can change.
-See `data/calibration/window_evaluation_tna.json` for rejected candidates and
-`coverage_audit_tna_window.json` for the adopted-window counts. This proposed
-window retains three environments and 81 core cells; author acceptance is pending.
+Approve A1–A7; approve the tuna sample decision; confirm sign convention, checkpoint
+interpretation, zoned-store restriction and calendar; approve the S2–S4 machine and
+compute budget (configured draft: 150 hours, cap 2000 replications, no positive floor).
+The author must record their own name/date with approval. Implementation does not sign
+on the author's behalf.

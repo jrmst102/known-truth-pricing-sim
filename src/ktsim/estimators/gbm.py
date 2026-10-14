@@ -1,4 +1,4 @@
-"""Demand predictions use exp(log prediction) times mean(exp(training residual))."""
+"""Demand forecasts use exp(log prediction) times Duan mean(exp(training residual))."""
 
 import numpy as np
 import pandas as pd

@@ -1,3 +1,7 @@
+"""Demand and deployment. Capacity uses current observed controls at reference price,
+with expectation over shocks; it never uses realized shocks or candidate prices.
+"""
+
 import numpy as np
 import pandas as pd
 
@@ -40,21 +44,19 @@ def expected_log_demand(cal, dgm, x, price, eta):
     return value - abs(eta) / cal.p_bar * (np.asarray(price) - cal.p_bar)
 
 
-def capacity_at_reference(cal, dgm, x, eta):
-    """Set capacity from current observed controls at p_bar, with no shock information.
+def capacity(cal, dgm, x, eta):
+    from ktsim.rng import shock_parameters
 
-    This expectation integrates latent shock and noise before price selection.
-    Capacity is fixed across all candidate prices for the store-week.
-    """
-    mu = expected_log_demand(cal, dgm, x, cal.p_bar, eta)
-    return dgm.censoring["multiplier"] * np.exp(mu + (cal.sigma_xi2 + cal.sigma_eps2) / 2)
+    _, xi_var, eps_var = shock_parameters(cal, dgm)
+    return dgm.censoring["multiplier"] * np.exp(
+        expected_log_demand(cal, dgm, x, cal.p_bar, eta) + (xi_var + eps_var) / 2
+    )
 
 
-def draw_sales(cal, dgm, x, price, eta, xi, eps, censor=False, capacity=None):
+def draw_sales(cal, dgm, x, price, eta, xi, eps, censor, cap=None):
     sales = np.exp(expected_log_demand(cal, dgm, x, price, eta) + xi + eps)
     if censor:
-        cap = capacity_at_reference(cal, dgm, x, eta) if capacity is None else capacity
-        sales = np.minimum(sales, cap)
+        sales = np.minimum(sales, capacity(cal, dgm, x, eta) if cap is None else cap)
     return sales
 
 
@@ -63,22 +65,23 @@ def legacy_log_price(cal, dgm, t, zone, nu_zt, promo_t, depth_t):
     return base + nu_zt + promo_t * np.log1p(-depth_t)
 
 
-def deploy_price(base, ladder, cost, pass_through, kappa, xi, model, delta, u):
+def deploy_price(base, cost, latent, assignment, delta, exploration, pass_through, kappa, ladder):
+    """The only deployment path: adjust once, then project once (ties downward)."""
     from ktsim.oracle import project_price
 
-    adjusted = np.asarray(base) * np.exp(pass_through * cost + kappa * xi + model * delta * u)
+    adjusted = np.asarray(base) * np.exp(
+        pass_through * cost + kappa * latent + np.asarray(assignment) * delta * exploration
+    )
     return project_price(adjusted, ladder)
 
 
-def instruments(cal, dgm, t, legacy_log_price_all_stores, zone, cost_t=0.0, other_zone=False):
-    result = {"cost_shifter": np.broadcast_to(cost_t, (len(zone),))}
-    if other_zone:
-        prices = np.asarray(legacy_log_price_all_stores)
+def instruments(zone, cost, legacy=None):
+    result = {"cost_shifter": np.asarray(cost)}
+    if legacy is not None:  # explicitly requested extension only
+        zone = np.asarray(zone)
         result["other_zone_price"] = np.array(
             [
-                np.mean(prices[np.asarray(zone) != value])
-                if np.any(np.asarray(zone) != value)
-                else np.nan
+                np.mean(np.asarray(legacy)[zone != value]) if np.any(zone != value) else np.nan
                 for value in zone
             ]
         )

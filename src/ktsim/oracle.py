@@ -1,9 +1,4 @@
-"""Oracles observe current controls and pre-set capacity, never realized shocks."""
-
 import numpy as np
-from scipy.special import ndtr
-
-from ktsim.dgm import expected_log_demand
 
 
 def price_ladder(cal, dgm) -> np.ndarray:
@@ -37,19 +32,19 @@ def regret(p_rec, p_star, b, p_bar) -> np.ndarray:
     return (best - achieved) / best
 
 
-def project_price(price, ladder):
-    """Nearest feasible price; numerical midpoint ties resolve downward."""
-    prices = np.asarray(price)
-    upper = np.clip(np.searchsorted(ladder, prices), 0, len(ladder) - 1)
-    lower = np.maximum(upper - 1, 0)
-    midpoint = (ladder[lower] + ladder[upper]) / 2
-    return ladder[np.where(prices <= midpoint + 1e-12, lower, upper)]
+def project_price(prices, ladder):
+    prices = np.asarray(prices)
+    distance = np.abs(prices[..., None] - ladder)
+    # The ascending ladder and first True resolve floating-point midpoint ties downward.
+    nearest = distance.min(axis=-1, keepdims=True)
+    return ladder[np.argmax(np.isclose(distance, nearest, rtol=0, atol=1e-12), axis=-1)]
 
 
-def censored_lognormal_mean(mu, variance, cap):
-    mu, cap = np.broadcast_arrays(mu, cap)
-    if np.any(cap <= 0) or variance < 0:
-        raise ValueError("Capacity must be positive and variance nonnegative")
+def censored_mean(log_mean, variance, cap):
+    """E[min(exp(N(mu, variance)), cap)] by lognormal partial expectation."""
+    from scipy.special import ndtr
+
+    mu, cap = np.broadcast_arrays(log_mean, cap)
     if variance == 0:
         return np.minimum(np.exp(mu), cap)
     sd = np.sqrt(variance)
@@ -57,20 +52,21 @@ def censored_lognormal_mean(mu, variance, cap):
     return np.exp(mu + variance / 2) * ndtr(a - sd) + cap * ndtr(-a)
 
 
-def expected_revenue(cal, dgm, frame, price, eta, capacity=None):
-    mu = expected_log_demand(cal, dgm, frame, price, eta)
-    variance = cal.sigma_xi2 + cal.sigma_eps2
-    demand = (
-        np.exp(mu + variance / 2)
-        if capacity is None
-        else censored_lognormal_mean(mu, variance, capacity)
-    )
+def expected_revenue(cal, dgm, frame, price, eta, cap=None):
+    from ktsim.dgm import expected_log_demand
+    from ktsim.rng import shock_parameters
+
+    _, xi_var, eps_var = shock_parameters(cal, dgm)
+    mean = expected_log_demand(cal, dgm, frame, price, eta)
+    variance = xi_var + eps_var
+    demand = np.exp(mean + variance / 2) if cap is None else censored_mean(mean, variance, cap)
     return np.asarray(price) * demand
 
 
-def censored_oracle_price(cal, dgm, frame, eta, capacity):
+def censored_oracle(cal, dgm, frame, eta, cap):
+    """Observes controls and fixed capacity, never the realized latent state."""
     ladder = price_ladder(cal, dgm)
-    revenues = np.column_stack(
-        [expected_revenue(cal, dgm, frame, p, eta, capacity) for p in ladder]
+    revenue = np.column_stack(
+        [expected_revenue(cal, dgm, frame, price, eta, cap) for price in ladder]
     )
-    return ladder[np.argmax(revenues, axis=1)]
+    return ladder[np.argmax(revenue, axis=1)]

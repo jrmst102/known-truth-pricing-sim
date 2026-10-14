@@ -17,7 +17,7 @@ class Check:
     status: str = "pass"
 
 
-def residual_autocovariances(frame):
+def residual_components(frame: pd.DataFrame, cfg: CalibrationConfig, *, diagnostics=False):
     autocov = []
     for lag in (0, 1, 2):
         products = []
@@ -29,15 +29,13 @@ def residual_autocovariances(frame):
             ).dropna()
             products.extend((paired.iloc[:, 0] * paired.iloc[:, 1]).tolist())
         autocov.append(float(np.mean(products)) if products else 0.0)
-    return autocov
-
-
-def residual_components(frame: pd.DataFrame, cfg: CalibrationConfig) -> tuple[float, float, float]:
-    autocov = residual_autocovariances(frame)
     variance, cov1, cov2 = autocov
     rho = np.clip(cov2 / cov1 if cov1 > 0 else cfg.rho_xi_bounds[0], *cfg.rho_xi_bounds)
     xi_var = np.clip(cov1 / rho, 0.0, max(0.0, cfg.xi_share_max * variance))
-    return float(rho), float(xi_var), float(max(0.0, variance - xi_var))
+    result = (float(rho), float(xi_var), float(max(0.0, variance - xi_var)))
+    if diagnostics:
+        return (*result, dict(resid_var=variance, autocov_lag1=cov1, autocov_lag2=cov2))
+    return result
 
 
 def calibrate(clean: CleanResult, cfg: CalibrationConfig) -> Calibration:
@@ -45,11 +43,9 @@ def calibrate(clean: CleanResult, cfg: CalibrationConfig) -> Calibration:
     required = {"week", "log_q", "price", "promo", "zone", "profit"}
     if not required.issubset(frame):
         raise ValueError(f"Missing calibration fields: {sorted(required - set(frame))}")
-    p_bar = (
-        clean.reference_price if clean.reference_price is not None else float(frame.price.mean())
-    )
+    p_bar = float(frame.price.mean())
     if not np.isfinite(p_bar):
-        raise ValueError("No valid prices for reference price")
+        raise ValueError("No valid observations for reference price")
     design = pd.DataFrame(
         {
             "price_centered": frame.price - p_bar,
@@ -71,7 +67,7 @@ def calibrate(clean: CleanResult, cfg: CalibrationConfig) -> Calibration:
     )
     fit = sm.OLS(frame.log_q, design.astype(float)).fit()
     frame["residual"] = fit.resid
-    rho, xi_var, eps_var = residual_components(frame, cfg)
+    rho, xi_var, eps_var, empirical = residual_components(frame, cfg, diagnostics=True)
     regular = frame[frame.promo.eq(0)].copy()
     regular["log_price"] = np.log(regular.price)
     mu_z = regular.groupby("zone").log_price.mean()
@@ -113,12 +109,12 @@ def calibrate(clean: CleanResult, cfg: CalibrationConfig) -> Calibration:
         focal_upc=clean.focal_upc,
         weeks=[int(frame.week.min()), int(frame.week.max())],
         diagnostics=dict(
-            resid_var=xi_var + eps_var,
+            **empirical,
             empirical_rho_xi=rho,
             empirical_sigma_xi2=xi_var,
             empirical_sigma_eps2=eps_var,
-            autocovariances=residual_autocovariances(frame),
-            elasticity_review="pending: units, natural log, promotion and competing index",
+            beta_reference_review="pending: units, log base, promotion coding, "
+            "and competing-index construction",
         ),
     )
 
@@ -132,20 +128,12 @@ def check_plausibility(cal: Calibration, cfg: CalibrationConfig) -> list[Check]:
         "resid_sd": cal.price_dispersion["resid_sd"],
         "profit_mean": cal.price_dispersion["profit_mean"],
     }
-    checks = [
-        Check(
-            name,
-            float(values[name]),
-            values[name] >= bounds
-            if isinstance(bounds, (int, float))
-            else bounds[0] <= values[name] <= bounds[1],
-            bounds,
+    result = []
+    for name, bounds in cfg.plausibility.items():
+        value = float(values[name])
+        passed = (
+            value >= bounds if isinstance(bounds, (int, float)) else bounds[0] <= value <= bounds[1]
         )
-        for name, bounds in cfg.plausibility.items()
-    ]
-
-    for check in checks:
-        check.status = (
-            "pass" if check.passed else "flag" if check.name == "beta_reference" else "fail"
-        )
-    return checks
+        status = "pass" if passed else ("flag" if name == "beta_reference" else "fail")
+        result.append(Check(name, value, passed, bounds, status))
+    return result

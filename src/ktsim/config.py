@@ -42,6 +42,10 @@ class Calibration:
     weeks: list[int]
     diagnostics: dict = field(default_factory=dict)
 
+    @property
+    def resid_var(self):
+        return self.diagnostics.get("resid_var", self.sigma_xi2 + self.sigma_eps2)
+
     @classmethod
     def load(cls, path: str | Path) -> Calibration:
         data = json.loads(Path(path).read_text())
@@ -79,6 +83,16 @@ class DGMConfig:
     store_zones: dict[int, int] = field(default_factory=dict)
     calendar: object = None
 
+    def __post_init__(self):
+        if self.cost_shifter["structure"] not in {"iid_store_week", "chainwide_ar1"}:
+            raise ValueError("Unknown cost_shifter.structure")
+        if self.shock_split not in {"design", "empirical"}:
+            raise ValueError("Unknown shock_split")
+        if self.sales_process not in {"latent", "censored"}:
+            raise ValueError("Unknown sales_process")
+        if not 0 <= self.xi_share <= 1 or not -1 < self.rho_xi < 1:
+            raise ValueError("Invalid shock parameters")
+
 
 @dataclass
 class CellConfig:
@@ -94,12 +108,11 @@ class CellConfig:
     multiplier: float = 1.5
     rho_m: float = 0.0
     data_only: bool = False
-    environment: str = "sna"
-    sales_process: str = "latent"
-    cost_structure: str = "iid_store_week"
-    shock_split: str = "design"
-    references: bool = False
-    instrument: str = "cost_shifter"
+    seed_offset: int = 0
+    environment: str = "synthetic"
+    sales_process: str | None = None
+    cost_structure: str | None = None
+    shock_split: str | None = None
 
     @property
     def label(self) -> str:

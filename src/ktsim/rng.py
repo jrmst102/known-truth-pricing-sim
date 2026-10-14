@@ -1,6 +1,8 @@
-from dataclasses import dataclass, replace
+from dataclasses import dataclass
 
 import numpy as np
+
+STAGES = ("validation", "diagnostic", "pilot", "main")
 
 
 @dataclass
@@ -17,13 +19,9 @@ class ShockArrays:
     model_store_assignment: np.ndarray
 
 
-STAGES = {"validation": 0, "diagnostic": 1, "pilot": 2, "main": 3}
-
-
-def replication_streams(
-    master_seed: int, n_reps: int, stage="validation"
-) -> list[np.random.SeedSequence]:
-    return np.random.SeedSequence(master_seed).spawn(4)[STAGES[stage]].spawn(n_reps)
+def replication_streams(master_seed: int, n_reps: int, stage="validation"):
+    child = np.random.SeedSequence(master_seed).spawn(4)[STAGES.index(stage)]
+    return child.spawn(n_reps)
 
 
 def ar1(innovations, rho, sd):
@@ -36,23 +34,30 @@ def ar1(innovations, rho, sd):
     return result
 
 
+def shock_parameters(cal, dgm):
+    if dgm.shock_split == "design":
+        return dgm.rho_xi, dgm.xi_share * cal.resid_var, (1 - dgm.xi_share) * cal.resid_var
+    return cal.rho_xi, cal.sigma_xi2, cal.sigma_eps2
+
+
 def draw_shocks(ss, n_stores, n_weeks, cal, dgm) -> ShockArrays:
-    if dgm.cost_shifter["structure"] not in {"iid_store_week", "chainwide_ar1"}:
-        raise ValueError("Unknown cost_shifter structure")
-    cal = mechanism_calibration(cal, dgm)
     rng = np.random.Generator(np.random.PCG64(ss))
+    _, _, eps_var = shock_parameters(cal, dgm)
+    # Draw a full cost matrix in either mode to preserve other random streams.
+    omega = rng.standard_normal((n_stores, n_weeks))
+    eps = rng.normal(0, np.sqrt(eps_var), (n_stores, n_weeks))
+    u = rng.choice([-1.0, 1.0], (n_stores, n_weeks))
+    cost_innovations = rng.standard_normal((n_stores, n_weeks))
+    if dgm.cost_shifter["structure"] == "iid_store_week":
+        cost = cost_innovations * dgm.cost_shifter["sd"]
+    else:
+        chain = ar1(cost_innovations[0], dgm.cost_shifter["rho"], dgm.cost_shifter["sd"])
+        cost = np.broadcast_to(chain, (n_stores, n_weeks)).copy()
     return ShockArrays(
-        omega=rng.standard_normal((n_stores, n_weeks)),
-        eps=rng.normal(0, np.sqrt(cal.sigma_eps2), (n_stores, n_weeks)),
-        u=rng.choice([-1.0, 1.0], (n_stores, n_weeks)),
-        cost=(
-            rng.normal(0, dgm.cost_shifter["sd"], (n_stores, n_weeks))
-            if dgm.cost_shifter["structure"] == "iid_store_week"
-            else np.broadcast_to(
-                ar1(rng.standard_normal(n_weeks), dgm.cost_shifter["rho"], dgm.cost_shifter["sd"]),
-                (n_stores, n_weeks),
-            ).copy()
-        ),
+        omega=omega,
+        eps=eps,
+        u=u,
+        cost=cost,
         nu=ar1(
             rng.standard_normal((len(cal.mu_z), n_weeks)),
             dgm.zone_drift["rho"],
@@ -68,59 +73,39 @@ def draw_shocks(ss, n_stores, n_weeks, cal, dgm) -> ShockArrays:
     )
 
 
-def latent_demand(shocks, cal, rho_m):
-    if not 0 <= rho_m <= 1:
-        raise ValueError("rho_m must be in [0, 1]")
-    innovations = np.sqrt(1 - rho_m) * shocks.omega + np.sqrt(rho_m) * shocks.common_shock[None, :]
-    return ar1(innovations, cal.rho_xi, np.sqrt(cal.sigma_xi2))
-
-
-def mechanism_calibration(cal, dgm):
-    if dgm.shock_split == "empirical":
-        diag = cal.diagnostics
-        return replace(
-            cal,
-            rho_xi=diag.get("empirical_rho_xi", cal.rho_xi),
-            sigma_xi2=diag.get("empirical_sigma_xi2", cal.sigma_xi2),
-            sigma_eps2=diag.get("empirical_sigma_eps2", cal.sigma_eps2),
-        )
-    if dgm.shock_split != "design":
-        raise ValueError("Unknown shock_split")
-    variance = cal.diagnostics.get("resid_var", cal.sigma_xi2 + cal.sigma_eps2)
-    return replace(
-        cal,
-        rho_xi=dgm.rho_xi,
-        sigma_xi2=dgm.xi_share * variance,
-        sigma_eps2=(1 - dgm.xi_share) * variance,
-    )
-
-
 def assign_model_stores(permutation, zones, phi):
-    """Stratify once using shared random ranks, then balance the chain total."""
-    zones = np.asarray(zones)
+    """Round within zones, then adjust the largest zone to the rounded chain target."""
     if not 0 <= phi <= 1:
         raise ValueError("phi must be in [0, 1]")
-    assigned = np.zeros(len(zones), dtype=bool)
-    groups = sorted(np.unique(zones), key=lambda z: (-sum(zones == z), z))
-    for zone in groups:
-        candidates = permutation[zones[permutation] == zone]
-        assigned[candidates[: round(phi * len(candidates))]] = True
-    difference = round(phi * len(zones)) - assigned.sum()
-    # Distribute corrections from the largest zone while preserving a one-store bound.
-    for zone in groups:
+    zones = np.asarray(zones)
+    result = np.zeros(len(zones), dtype=bool)
+    unique, counts = np.unique(zones, return_counts=True)
+    for zone, count in zip(unique, counts):
+        order = permutation[zones[permutation] == zone]
+        result[order[: round(phi * count)]] = True
+    difference = round(phi * len(zones)) - int(result.sum())
+    # Distribute any residual across largest zones while keeping each within one store.
+    for zone in unique[np.argsort(-counts, kind="stable")]:
         if difference == 0:
             break
-        candidates = permutation[
-            (zones[permutation] == zone) & (assigned[permutation] == (difference < 0))
-        ]
+        order = permutation[zones[permutation] == zone]
+        candidates = order[~result[order]] if difference > 0 else order[result[order]][::-1]
         for index in candidates:
-            change = 1 if difference > 0 else -1
-            if abs(assigned[zones == zone].sum() + change - phi * sum(zones == zone)) > 1:
+            proposed = int(result[zones == zone].sum()) + (1 if difference > 0 else -1)
+            if abs(proposed - phi * len(order)) > 1:
                 break
-            assigned[index] = difference > 0
-            difference -= change
+            result[index] = difference > 0
+            difference += -1 if difference > 0 else 1
             if difference == 0:
                 break
     if difference:
-        raise ValueError("Cannot balance zone assignment")
-    return assigned
+        raise ValueError("Could not balance assignment")
+    return result
+
+
+def latent_demand(shocks, cal, rho_m, dgm=None):
+    if not 0 <= rho_m <= 1:
+        raise ValueError("rho_m must be in [0, 1]")
+    rho, xi_var = (cal.rho_xi, cal.sigma_xi2) if dgm is None else shock_parameters(cal, dgm)[:2]
+    innovations = np.sqrt(1 - rho_m) * shocks.omega + np.sqrt(rho_m) * shocks.common_shock[None, :]
+    return ar1(innovations, rho, np.sqrt(xi_var))

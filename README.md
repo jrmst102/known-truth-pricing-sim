@@ -1,16 +1,14 @@
 # Known-Truth Pricing Simulation
 
-This project provides the Python simulation implementation for the book chapter
+This project provides the Python pilot implementation for the book chapter
 *Data and Machine-Learning Foundations for AI-Enhanced Price Optimization: From
 Prediction to Prescription and Decision Reliability*, by Dr. Jose Mendoza,
 Clinical Associate Professor at New York University.
 
 The pilot supports the chapter's work on evaluating machine-learning methods for
 price optimization using reproducible, known-truth simulations calibrated with
-Dominick's data. V1.1 is described in the
-[implementation specification](docs/SPEC_v1.1.md) and
-[protocol](docs/PROTOCOL_v1.1.md). The protocol is prepared for author signature;
-implementation does not imply scientific approval.
+Dominick's data. Its implementation and protocol are described in the
+[pilot specification](PILOT_SPEC.md).
 
 The software is provided under the [MIT License](LICENSE). This license applies
 to the code, not to the data; see the [Data section](#data) for the applicable
@@ -64,101 +62,103 @@ Review the generated store and calendar tables before using them in scientific
 analyses. Raw data is ignored by Git, and the pre-commit hook blocks staging raw
 files, including with `git add -f`.
 
-## Calibrate and audit
+## Protocol v1.1 implementation
+
+Deliverable 1 is an implementation draft. The authoritative design is
+[PROTOCOL_v1.1.md](docs/PROTOCOL_v1.1.md), with requirements in
+[SPEC_v1.1.md](docs/SPEC_v1.1.md). Author approval, the full tuna metadata audit,
+and retained-environment acceptance are pending. See
+[VALIDATION_v1.1.md](docs/VALIDATION_v1.1.md) for evidence and outstanding work.
+
+Scientific runs are blocked until protocol approval and Deliverable 1 acceptance
+are recorded by the author. The precision pilot additionally requires accepted
+Deliverable 2 diagnostics. A main experiment needs an approved precision decision
+and unchanged scientific settings. Implementation never supplies these approvals.
+
+## Development validation
+
+From the repository root, use a fresh run ID for a small synthetic check:
 
 ```bash
-python scripts/audit_coverage.py --category tna
+python scripts/run_pilot.py --stage validation --synthetic \
+  --cells sna:med:pos:phi=0.5 --reps 2 --cycles 2 --estimators M1 M3 \
+  --n-jobs 2 --save-data --save-storeweek --run-id v11-smoke
+```
+
+Synthetic fixtures can be used only for validation; they never replace a blocked
+empirical calibration. The environment tag names the scenario whose mechanics
+are exercised, not a claim that synthetic results use that environment's data.
+
+Run reproducible mechanical acceptance across all estimators and policies,
+three adoption settings, two replications, and 104 cycles:
+
+```bash
+python scripts/validate_v11.py --run-id v11-acceptance --n-jobs 2
+```
+
+This uses small nuisance learners for mechanical validation and records the
+actual parameters. It is not the S2 diagnostic or a statistical acceptance study.
+Results, report, manifest and checks are under `outputs/validation/<run-id>/`.
+Use `--check-only` to recheck already-generated acceptance artifacts; `--resume`
+requires identical source, calibration, configuration, environment and worker count.
+
+`--save-data` writes simulated histories, forecasts and realized sales.
+`--save-storeweek` writes per-store prices, assignments, fallback flags and true
+expected revenue triplets to `storeweek.parquet`. Ratios are stored as fractions;
+percentages are a report presentation choice. Model-store measures are null
+when phi is zero. Failures remain in policy comparisons, with fallback rates.
+
+The historical `outputs/pilot/synthetic-smoke` and `synthetic-demo` reports are
+**v1.0 development records**, preserved for provenance. They are not scientific
+results and must not be cited as such.
+
+## Calibration and staged runs
+
+Audit eligibility before proposing any sample change:
+
+```bash
+python scripts/audit_coverage.py --category tna --search-window
 python scripts/run_calibration.py --config configs/calibration.yaml --categories sna tna tti
 ```
 
-Coverage audits record the calendar denominator, retained stores, top UPCs, best
-coverage across all UPCs, missing-row causes, duplicates and calendar alignment.
-Tuna's full 399-week sample fails the unchanged 90% UPC rule. The documented
-weeks 1–341 calibration window retains 67 zoned stores and eligible competitors;
-`data/calibration/calibration_windows.json` controls that window. Its focal rows
-end at week 331, with missing weeks still counted in the denominator. This proposed
-step-2 resolution awaits protocol acceptance; all 81 core cells remain configured.
-`python scripts/evaluate_calibration_window.py --category tna` reproduces the search.
+The first command needs the full public zoned-store table, normally imported to
+`data/raw/stores.csv`. Audit results identify the metadata source and scope.
+The checked-in preliminary audits used the previously retained store table;
+they do not certify the original full-metadata tuna sample. A candidate window
+is a proposal, never an automatic eligibility change. Keep the 90% threshold.
+Benchmark observational elasticities are review flags, not exclusion criteria;
+see [the investigation draft](docs/BETA_REFERENCE_REVIEW.md).
 
-Calibration uses the mean valid focal-UPC unit price including promotion weeks.
-Empirical shock persistence and variance decomposition remain diagnostics; core
-simulations impose persistence 0.5 and an equal variance split. Observational
-elasticity benchmarks are review flags; see the [open review record](docs/issues/elasticity-benchmark.md).
-
-## Run V1.1
-
-A small synthetic mechanical check:
+After the required author acceptance, stages use `configs/scenarios.yaml`:
 
 ```bash
-OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python scripts/run_pilot.py \
-  --stage validation --cells sna:med:pos:0.5 --synthetic --reps 2 --cycles 2 \
-  --estimators M1 M3 --save-data --save-storeweek --run-id synthetic-v11-smoke
-python scripts/check_validation.py outputs/validation/synthetic-v11-smoke
+python scripts/run_pilot.py --stage diagnostic --cells all --n-jobs 2 --run-id s2-diagnostic
+python scripts/run_pilot.py --stage pilot --cells all --n-jobs 2 --run-id s3-precision
+python scripts/run_pilot.py --stage main --cells all --decision outputs/pilot/s3-precision/decisions.json \
+  --n-jobs 2 --run-id s4-main
 ```
 
-Omit the cycle/estimator overrides for a full-horizon check. The default scenario
-file crosses three environments, three elasticities, three managerial adjustments,
-and three adoption shares. Every cell runs greedy and greedy-RPS policies plus
-separate oracle and legacy reference arms. `M3_cf` is stored alongside M3.
-Named extensions (`censored`, `weak_instrument`, `other_zone`, `empirical`,
-`chainwide`) each vary one factor from a documented base cell.
+The core has 81 cells; the two-environment 54-cell alternative requires author
+approval and a protocol/chapter amendment. Named extensions vary one factor from
+a base cell, for example `--extension censored` during validation. No extension
+is silently mixed into the core. Stage seeds are separate; cells within a stage
+share replication streams. The diagnostic's five extra base replications use
+new streams, separate from its first base replication.
 
-The four stages have separate seed streams and output directories:
-
-| Stage | Replications | Output |
-| --- | --- | --- |
-| `validation` (S1) | configurable mechanical checks | `outputs/validation/` |
-| `diagnostic` (S2) | 1 per core cell; 5 total for med/pos/0.5 per environment | `outputs/diagnostic/` |
-| `pilot` (S3) | 100 per core cell | `outputs/pilot/` |
-| `main` (S4) | S3 precision decision | `outputs/main/` |
-
-After author signature and committing reviewed code/configuration/calibration:
-
-```bash
-python scripts/run_pilot.py --stage diagnostic --cells all --n-jobs 8
-```
-
-S3/S4 additionally require `Deliverables 1 and 2 accepted: yes` in the signed
-protocol. S4 reads `stages.main.decision_file` in `configs/scenarios.yaml`; it
-rejects changes to scientific settings or source code since S3. Replication
-streams are fresh for each stage. Targets, floor, cap and budget are explicit in
-`configs/decisions.yaml`; only S3 reports an N-required decision and paired Ns.
-No scientific stage has been executed or approved by implementing this version.
-
-The manifest freezes effective configs, calibration hashes, raw checksums, code,
-protocol version, stage, seed child, environment and generated figures. Scientific
-runs require a clean worktree. Validation allows development changes and records
-them. `--synthetic` is limited to validation and appears in output provenance.
-Existing `outputs/pilot/synthetic-*` reports are **development records**, preserved
-for reference and never cited as empirical or scientific results.
-
-Outputs include estimates, assignment/fold states, per-replication metrics,
-performance summaries, runtime, report, figures and decisions. `--save-data`
-retains history and cycle observations; `--save-storeweek` retains deployed prices,
-per-store fallback flags and the expected-revenue triplets. All regret ratios in
-data files are fractions, with percentages used only when rendering reports.
-M4 coverage stays withheld until the author enables the validated-inference flag.
-
-Resume with exactly the same command plus `--resume --run-id <existing-run-id>`.
-Input changes are rejected; existing runs are never overwritten. To re-render:
-
-```bash
-python scripts/make_report.py --output-root outputs/validation --run-id synthetic-v11-smoke
-```
+The precision decision reports per-cell/arm SDs, the bounding measure, planned
+paired comparisons, targets, explicit floor/cap, achieved precision at the cap,
+and projected runtime against the budget. It appears only for the pilot stage.
 
 ## Validate
 
 ```bash
 ruff check src scripts tests
-OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 pytest -m 'not slow'
-OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 pytest tests/test_loop_smoke.py
-# Optional, 200 independent panels; does not automatically lift coverage withholding:
-KTSIM_VALIDATE_INFERENCE=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 \
-  pytest tests/test_dml_inference.py
+pytest -m 'not slow' --ignore=tests/test_loop_smoke.py
+pytest tests/test_loop_smoke.py
+RUN_DML_INFERENCE=1 pytest tests/test_dml_inference.py
 ```
 
-CI runs standard tests and a separate full-horizon job using synthetic fixtures.
-Tests cover deployment and exploration, cost independence, zone assignment,
-closed-form censored revenue, weighted regret, failure/fallback denominators,
-smearing, grouped DML, calibration audits, stage seeds, resume and exact replay.
-See [implementation notes](docs/IMPLEMENTATION_NOTES.md) for acceptance evidence.
+The last command explicitly runs 200 independent draws for each DML variant.
+Passing never changes `M4_dml.inference_validated`: author opt-in is separate.
+CI runs the unit and full-horizon smoke jobs with synthetic data; it never reads
+movement archives or `data/raw/`.

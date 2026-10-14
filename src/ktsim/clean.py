@@ -14,7 +14,6 @@ class CleanResult:
     zero_share: float
     substituted_focal: bool
     log: list[str]
-    reference_price: float | None = None
 
 
 def clean_category(
@@ -57,7 +56,12 @@ def clean_category(
     retain(frame.store.isin(coverage[coverage >= threshold].index), "4 store coverage")
     if frame.empty:
         raise ValueError("No stores satisfy coverage threshold")
-    presence = frame.groupby("upc").size() / (frame.store.nunique() * n_weeks)
+    log.append(
+        f"Coverage denominator: weeks {int(frame.week.min())}-{int(frame.week.max())}; "
+        f"span {n_weeks}; retained stores {frame.store.nunique()}"
+    )
+    n_retained = frame.store.nunique()
+    presence = frame.groupby("upc").size() / (n_retained * n_weeks)
     sales = frame.groupby("upc").move.sum().sort_values(ascending=False, kind="stable")
     initial = int(sales.index[0])
     eligible = presence[presence >= cfg.upc_coverage_min].index
@@ -65,7 +69,7 @@ def clean_category(
     if frame.empty:
         raise ValueError(
             f"No UPC satisfies coverage threshold {cfg.upc_coverage_min:.0%}; "
-            f"best UPC coverage {presence.max():.1%}, {frame.store.nunique() if not frame.empty else int((coverage >= threshold).sum())} retained stores, "
+            f"best UPC coverage {presence.max():.1%}, {n_retained} stores, "
             f"{n_weeks} weeks. No automatic threshold change."
         )
     candidates = [int(code) for code in sales.index if code in eligible]
@@ -88,16 +92,15 @@ def clean_category(
     ).log_unit_price.transform("mean")
     comp_index = competing.groupby("week").centered.mean()
     retain(frame.upc.eq(focal), "6 focal UPC selection and zero-share substitution")
+    log.append(
+        f"Focal UPC rows before zero removal: {len(frame)}; "
+        f"expected {frame.store.nunique() * n_weeks}"
+    )
     frame["log_comp_index"] = frame.week.map(comp_index)
     if frame.log_comp_index.isna().any():
         raise ValueError("Missing competitor index weeks; author-approved fallback required")
     frame = frame.merge(metadata, on="store", validate="many_to_one")
     frame["price"] = frame.price / frame.qty
-    reference_price = float(frame.price.mean())
-    log.append(
-        f"Coverage denominator: weeks {int(movement.week.min())}–{int(movement.week.max())}; "
-        f"span {n_weeks}; retained stores {frame.store.nunique()}; focal rows {len(frame)}"
-    )
     frame["q"] = frame.move
     retain(frame.q.gt(0), "7 remove zero sales before log regression")
     frame["log_q"] = np.log(frame.q)
@@ -109,5 +112,4 @@ def clean_category(
         zero_share,
         focal != initial,
         log,
-        reference_price,
     )

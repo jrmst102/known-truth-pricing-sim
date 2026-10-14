@@ -1,23 +1,68 @@
 # Coverage audit: tna
 
-Calendar range: [1, 399]; span 399 weeks; equals 399: True.
-Retained stores: 66. Duplicates: 0.
+Metadata scope: retained-store table; source: data/calibration/stores_sna.csv.
 
-| UPC | Rows present | Expected | Coverage | Missing by cause |
-| --- | --- | --- | --- | --- |
-| 8000000245 | 21600 | 26334 | 0.820232 | {'store_absent': 1584, 'upc_absent': 2332, 'ok_zero': 509, 'price_qty_rule': 309} |
-| 8660000033 | 21853 | 26334 | 0.829840 | {'store_absent': 1584, 'upc_absent': 2332, 'ok_zero': 510, 'price_qty_rule': 55} |
-| 4800000024 | 17549 | 26334 | 0.666401 | {'store_absent': 1584, 'upc_absent': 6292, 'ok_zero': 184, 'price_qty_rule': 725} |
-| 8000000280 | 21439 | 26334 | 0.814119 | {'store_absent': 1584, 'upc_absent': 2332, 'ok_zero': 509, 'price_qty_rule': 470} |
-| 3828105003 | 11590 | 26334 | 0.440115 | {'store_absent': 1584, 'upc_absent': 7980, 'ok_zero': 185, 'price_qty_rule': 4995} |
-| 8660000037 | 21473 | 26334 | 0.815410 | {'store_absent': 1584, 'upc_absent': 2332, 'ok_zero': 510, 'price_qty_rule': 435} |
-| 3828105005 | 10379 | 26334 | 0.394129 | {'store_absent': 1584, 'upc_absent': 7319, 'ok_zero': 438, 'price_qty_rule': 6614} |
-| 7114010110 | 21678 | 26334 | 0.823194 | {'store_absent': 1584, 'upc_absent': 2332, 'ok_zero': 510, 'price_qty_rule': 230} |
-| 1780000024 | 4638 | 26334 | 0.176122 | {'store_absent': 1584, 'upc_absent': 13829, 'ok_zero': 431, 'price_qty_rule': 5852} |
-| 7303010314 | 21278 | 26334 | 0.808005 | {'store_absent': 1584, 'upc_absent': 2332, 'ok_zero': 510, 'price_qty_rule': 630} |
+Calendar span: 399; week range: [1, 399]; retained stores: 66; duplicate rows: 0.
 
-Best coverage across every UPC: {'upc': 7242100111, 'volume': 146993.0, 'rows_present': 22009, 'expected_rows': 26334, 'coverage': 0.8357636515531253, 'missing_by_cause': {'store_absent': 1584, 'upc_absent': 0, 'ok_zero': 510, 'price_qty_rule': 2231}}
+Best coverage: 83.576365%; threshold: 90%.
 
-Store rules: [{'rule': 'raw', 'stores': 93, 'rows': 3763229}, {'rule': 'OK == 1', 'stores': 93, 'rows': 3685264}, {'rule': 'valid price/qty/move', 'stores': 93, 'rows': 2382983}, {'rule': 'known UPC and zoned store', 'stores': 75, 'rows': 2063181}, {'rule': 'store coverage', 'stores': 66, 'rows': 1877529}]
+## Store retention
 
-Date alignment: {'missing_weeks': [], 'first': [{'week': '1', 'date': '1989-09-14', 'end': '1989-09-20', 'special_event': 'nan', 'lent': 'False', 'holiday_easter': '0', 'holiday_lent': '0', 'holiday_halloween': '0', 'holiday_thanksgiving': '0', 'holiday_christmas': '0', 'holiday_new_year': '0', 'holiday_presidents_day': '0', 'holiday_memorial_day': '0', 'holiday_4th_of_july': '0', 'holiday_labor_day': '0'}], 'last': [{'week': '399', 'date': '1997-05-01', 'end': '1997-05-07', 'special_event': 'nan', 'lent': 'False', 'holiday_easter': '0', 'holiday_lent': '0', 'holiday_halloween': '0', 'holiday_thanksgiving': '0', 'holiday_christmas': '0', 'holiday_new_year': '0', 'holiday_presidents_day': '0', 'holiday_memorial_day': '0', 'holiday_4th_of_july': '0', 'holiday_labor_day': '0'}]}
+| rule | stores_before | stores_after | rows_after |
+| --- | --- | --- | --- |
+| OK == 1 | 93 | 93 | 3685264 |
+| valid price/qty/move | 93 | 93 | 2382983 |
+| known UPC and zoned store | 93 | 67 | 1904986 |
+| store coverage | 67 | 66 | 1877529 |
+
+## Top ten UPCs and missing-record causes
+
+| upc | volume | rows_present | expected_rows | coverage | missing_store_absent | missing_upc_absent | dropped_ok | dropped_price_qty_move |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 8000000245 | 4256504.0 | 21600 | 26334 | 0.8202323991797676 | 1584 | 2332 | 509 | 309 |
+| 8660000033 | 2926066.0 | 21853 | 26334 | 0.8298397508923825 | 1584 | 2332 | 510 | 55 |
+| 4800000024 | 2733247.0 | 17549 | 26334 | 0.6664008506113769 | 1584 | 6292 | 184 | 725 |
+| 8000000280 | 1311557.0 | 21439 | 26334 | 0.8141186299081036 | 1584 | 2332 | 509 | 470 |
+| 3828105003 | 1005125.0 | 11590 | 26334 | 0.4401154401154401 | 1584 | 7980 | 185 | 4995 |
+| 8660000037 | 888676.0 | 21473 | 26334 | 0.815409736462368 | 1584 | 2332 | 510 | 435 |
+| 3828105005 | 810281.0 | 10379 | 26334 | 0.39412926255031516 | 1584 | 7319 | 438 | 6614 |
+| 7114010110 | 749779.0 | 21678 | 26334 | 0.823194349510139 | 1584 | 2332 | 510 | 230 |
+| 1780000024 | 671308.0 | 4638 | 26334 | 0.17612212349054454 | 1584 | 13829 | 431 | 5852 |
+| 7303010314 | 662784.0 | 21278 | 26334 | 0.8080048606364396 | 1584 | 2332 | 510 | 630 |
+
+## Date alignment
+
+```json
+{
+  "week_min": 1,
+  "week_max": 399,
+  "all_weeks_in_calendar": true,
+  "start_date": "1989-09-14 00:00:00",
+  "end_date": "1997-05-01 00:00:00",
+  "date_basis": "week joined to authoritative codebook calendar; movement supplies week IDs, not independent dates"
+}
+```
+
+## Window proposal
+
+```json
+{
+  "week_range": [
+    1,
+    341
+  ],
+  "weeks": 341,
+  "n_stores": 66,
+  "upc": 8660000033,
+  "coverage": 0.9104683195592287,
+  "status": "candidate; author sample review pending",
+  "competing_index_validated": true,
+  "clean_validation": {
+    "focal_upc": 8660000033,
+    "n_stores": 66,
+    "n_rows": 20491
+  }
+}
+```
+
+A proposal does not change the sample or authorize a scientific run.

@@ -11,13 +11,15 @@ class Estimate(TypedDict):
     ci_low: float | None
     ci_high: float | None
     first_stage_F: float | None
+    converged: bool
+    failure_reason: str | None
     numerical_failure: bool
     predictions_unavailable: bool
     extreme_estimate: bool
     positive_slope: bool
     smearing_factor: float
-    converged: bool
-    failure_reason: str | None
+    coverage_status: str
+    fold_assignment: dict
     predict: Callable[[pd.DataFrame, np.ndarray], np.ndarray] | None
 
 
@@ -54,26 +56,39 @@ def smearing_factor(residuals):
     return float(np.mean(np.exp(np.asarray(residuals))))
 
 
-def finalize(eta, low=None, high=None, first_stage=None, predict=None, smearing=1.0):
-    finite = bool(np.isfinite(eta))
-    interval = finite and all(v is not None and np.isfinite(v) for v in (low, high))
+def finalize(
+    eta,
+    low=None,
+    high=None,
+    first_stage=None,
+    predict=None,
+    *,
+    smearing=1.0,
+    coverage_status="available",
+    fold_assignment=None,
+):
+    numerical_failure = not np.isfinite(eta)
+    if any(value is not None and not np.isfinite(value) for value in (low, high)):
+        low = high = None
     return Estimate(
-        eta_hat=float(eta) if finite else np.nan,
-        ci_low=float(low) if interval else None,
-        ci_high=float(high) if interval else None,
+        eta_hat=float(eta) if not numerical_failure else np.nan,
+        ci_low=low,
+        ci_high=high,
         first_stage_F=first_stage,
-        converged=finite,
-        failure_reason=None if finite else "nonfinite",
-        predict=predict,
-        numerical_failure=not finite,
+        converged=not numerical_failure,
+        failure_reason="nonfinite" if numerical_failure else None,
+        numerical_failure=numerical_failure,
         predictions_unavailable=predict is None,
-        extreme_estimate=finite and abs(eta) > 10,
-        positive_slope=finite and eta > 0,
+        extreme_estimate=bool(np.isfinite(eta) and abs(eta) > 10),
+        positive_slope=bool(np.isfinite(eta) and eta > 0),
         smearing_factor=smearing,
+        coverage_status=coverage_status,
+        fold_assignment=fold_assignment or {},
+        predict=predict,
     )
 
 
 def failed(reason="nonconvergence"):
-    result = finalize(np.nan, smearing=np.nan)
+    result = finalize(np.nan, predict=None, smearing=np.nan)
     result["failure_reason"] = reason
     return result

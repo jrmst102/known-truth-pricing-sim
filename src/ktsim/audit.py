@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 
 
-def coverage_audit(movement, upc, stores, cfg, calendar=None):
+def coverage_audit(movement, upc, stores, cfg, calendar=None, *, week_range=None):
     counts = []
     frame = movement.copy()
     duplicates = int(frame.duplicated(["upc", "store", "week"]).sum())
@@ -28,7 +28,9 @@ def coverage_audit(movement, upc, stores, cfg, calendar=None):
     retain(frame.store.isin(metadata.store) & frame.upc.isin(upc.upc), "known UPC and zoned store")
     if frame.empty:
         raise ValueError("No rows available for coverage audit")
-    start, end = int(frame.week.min()), int(frame.week.max())
+    start, end = week_range or (int(frame.week.min()), int(frame.week.max()))
+    if not frame.week.between(start, end).all():
+        raise ValueError("Movement rows outside the selected calibration window")
     span = end - start + 1
     coverage = frame.groupby("store").week.nunique() / span
     threshold = cfg.store_coverage_min

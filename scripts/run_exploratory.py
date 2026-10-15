@@ -399,6 +399,24 @@ def chapter(table1, table2, checks, manifest_record, output):
         f"({row.normalized_cumulative_deployed_regret:.3f})"
         for row in best.itertuples()
     )
+    calibration_text = "; ".join(
+        f"{labels[env]}: {values['n_stores']} stores, p̄={values['p_bar']:.3f}"
+        for env, values in manifest_record["calibration"].items()
+    )
+    recovery = table1.groupby(["kappa", "estimator"])[
+        ["terminal_elasticity_bias", "terminal_elasticity_rmse", "positive_slope_frequency"]
+    ].mean()
+    recovery_text = "; ".join(
+        f"κ={kappa:+.2f} {estimator}: bias {row.terminal_elasticity_bias:.3f}, "
+        f"RMSE {row.terminal_elasticity_rmse:.3f}, positive-slope frequency "
+        f"{row.positive_slope_frequency:.1%}"
+        for (kappa, estimator), row in recovery.iterrows()
+    )
+    paired_column = "paired_exploration_minus_greedy_normalized_cumulative_deployed_regret"
+    paired = table2[
+        table2.estimator.isin(["M1", "M2", "M3"]) & table2.policy.eq("greedy")
+    ][paired_column]
+    failures = pd.read_csv(output / "failures.csv")
     text = f"""# Exploratory known-truth pricing experiment
 
 ## Methodology
@@ -415,17 +433,23 @@ The originally planned 81-cell precision pilot and main experiment are deferred 
 
 All six cells contain 30 completed replications and eight arms over 104 cycles. The saved-run audit acceptance record is `{json.dumps(checks['acceptance'], sort_keys=True)}`. It verifies constrained cycle prices, uncensored core demand, adoption assignments, revenue identities, and direct-oracle zero regret. The run used commit `{manifest_record['commit']}` and calibration identifiers recorded in the manifest.
 
+Each retained calibration contains 67 stores. The reference prices differ sharply across categories ({calibration_text}), so revenue loss and demand-scale forecast RMSE should be compared within environment. The failure record contains {len(failures)} rows: no estimator failure or fallback occurred in the 149,760 saved arm-cycle records, and the empty file retains the required schema.
+
 ### Elasticity recovery and prediction accuracy
 
 Table 1 reports terminal elasticity bias and RMSE, common-grid and deployed-price forecast RMSE, positive-slope frequency, failures, and fallbacks for every environment, endogeneity condition, estimator, and policy. Figure 1 shows full elasticity trajectories against the known value −1.06. All uncertainty is calculated across 30 independent replications rather than repeated weeks.
+
+Without endogeneity, M1 recovered the elasticity most closely on average across environments. Positive endogeneity produced severe positive bias and frequent sign reversals for M1, while M3 was materially more stable. M2 had larger terminal dispersion than M1 under κ=0 and remained variable under κ=+0.05. Averaged across environments and the two policies, the numerical summaries were: {recovery_text}. Common-grid RMSE and deployed-price RMSE are kept in separate columns because a policy's deployed-price errors reflect its endogenous price path.
 
 ### Pricing losses and exploration
 
 Table 2 reports normalized cumulative deployed regret, cumulative revenue loss, decision reliability, and paired exploration-minus-greedy differences. Figure 2 shows cumulative normalized deployed regret over all 104 cycles. Lower regret is better; a negative paired difference favors exploration. The lowest mean model-arm regret in each cell was: {best_text}.
 
+Exploration effects were small relative to total regret: the 18 estimator-cell paired mean changes ranged from {paired.min():.6f} to {paired.max():.6f} in normalized cumulative regret. Exploration tended to reduce regret for M3 and in the endogenous cells, but it was not uniformly beneficial. The paired Monte Carlo standard errors in Table 2, rather than unpaired policy-arm errors, govern those comparisons.
+
 ### Differences across calibrated environments
 
-Results are kept separate by environment and κ in both tables and figures. This avoids treating the three empirical calibrations as interchangeable and shows whether endogeneity changes estimator and policy rankings within each category.
+Results are kept separate by environment and κ in both tables and figures. The best no-endogeneity arm was M1 in all three environments. Under κ=+0.05, M3 with exploration had the lowest mean regret in all three, but decision reliability varied: {', '.join(f'{labels[row.environment]} {row.decision_reliability:.1%}' for row in best[best.kappa.eq(0.05)].itertuples())}. Forecast RMSE levels were largest for bathroom tissue and smallest for snack crackers, consistent with different calibrated demand scales; the within-environment estimator comparisons are the interpretable ones.
 
 ## Discussion
 

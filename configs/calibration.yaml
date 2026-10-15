@@ -1,0 +1,14 @@
+store_coverage_min: 0.80
+store_coverage_fallback: 0.70
+upc_coverage_min: 0.90
+zero_share_max: 0.10
+harmonics: 2
+rho_xi_bounds: [0.20, 0.90]
+xi_share_max: 0.90
+plausibility:
+  retained_stores_min: 40
+  promo_freq: [0.05, 0.40]
+  promo_depth: [0.05, 0.40]
+  resid_sd: [0.20, 1.00]
+  profit_mean: [10, 45]
+  beta_reference: [-2.59, -0.79]

@@ -1,0 +1,19 @@
+feasible_band: {lower: 0.80, upper: 1.20}
+ladder_step: 0.05
+cross_price_coef: 0.20
+comp_index: {rho: 0.80}
+cost_shifter: {structure: iid_store_week, rho: 0.80, sd: 0.05}
+zone_drift: {rho: 0.90}
+kappa_levels: {none: 0.0, pos: 0.05, neg: -0.05}
+exploration: {delta: 0.03, decay_power: -0.25}
+censoring: {multiplier: 1.5}
+history_weeks: 52
+cycles: 104
+rho_m: 0.0
+rho_xi: 0.5
+xi_share: 0.5
+shock_split: design
+sales_process: latent
+reliability: {tau: 0.02, window: 26}
+eta_levels: {low: -0.8, med: -1.06, high: -2.5}
+phi_levels: [0.0, 0.5, 1.0]

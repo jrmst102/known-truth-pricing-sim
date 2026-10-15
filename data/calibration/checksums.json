@@ -1,0 +1,11 @@
+{
+  "data/wsna.zip": "9a1d3f078efa12625ef9b4b3c9d4482aa643634a7740d83d0a8f56222a1d5be6",
+  "data/upcsna.csv": "5ce04b56bfd5c9c71d7e3e0f799acc4fcd7253326ae3c8443bd307e0b9518f12",
+  "data/wtna.zip": "c4dcd8e9c4928b822307e37e1b756fdacc7b2a0a026033e35c1ebc3d5b0d5885",
+  "data/upctna.csv": "316d269f56d48880f1a430865b18d1225bb9ff2846c593b3e7e0428117f2cc07",
+  "data/wtti.zip": "6dd3b03925a2ee3e3e1831da127a0240ee0e00ecb0f118e2578d2f629d2c0b95",
+  "data/upctti.csv": "944a03a81ee106f89f11f272bf05e78393a1cc294ea28918db53c0f7f1d31e43",
+  "data/raw/stores.csv": "07fbd8ff19673e83f81aea4e29cae7167be3b262a9f50ae3ac73def4833b89ce",
+  "data/fixtures/week_decode.csv": "d7def12e3b0e629ef177e82457eff64ef60fc15c8f253018ea4729756e17ee73",
+  "data/calibration/stores_sna.csv": "964fc9e7bfbc05a55dbeaaa5762d3556d8939f8584e051dd5fb8ccb09777972f"
+}

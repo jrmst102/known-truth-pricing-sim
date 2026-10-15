@@ -1,0 +1,10 @@
+{
+  "supervisor_pid": 65787,
+  "workers": 4,
+  "budget": {
+    "previous_worker_hours_upper_bound": 31.93887841,
+    "remaining_wall_seconds": 106255,
+    "workers": 4
+  },
+  "log": "/workspace/onboarding-artifacts/s2-diagnostic-20261014/run.log"
+}

@@ -1,0 +1,252 @@
+{
+  "week_range": [
+    1,
+    399
+  ],
+  "calendar_span": 399,
+  "equals_399_weeks": true,
+  "retained_stores": 66,
+  "store_ids": [
+    2,
+    5,
+    8,
+    9,
+    12,
+    14,
+    18,
+    21,
+    28,
+    32,
+    33,
+    40,
+    47,
+    48,
+    51,
+    52,
+    53,
+    54,
+    56,
+    59,
+    62,
+    68,
+    70,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    81,
+    83,
+    84,
+    86,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    98,
+    100,
+    101,
+    103,
+    104,
+    106,
+    107,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115,
+    116,
+    117,
+    119,
+    121,
+    123,
+    124,
+    126,
+    128,
+    129,
+    130,
+    132
+  ],
+  "store_coverage_threshold": 0.8,
+  "retained_after_rules": [
+    {
+      "rule": "OK == 1",
+      "stores_before": 93,
+      "stores_after": 93,
+      "rows_after": 3685264
+    },
+    {
+      "rule": "valid price/qty/move",
+      "stores_before": 93,
+      "stores_after": 93,
+      "rows_after": 2382983
+    },
+    {
+      "rule": "known UPC and zoned store",
+      "stores_before": 93,
+      "stores_after": 67,
+      "rows_after": 1904986
+    },
+    {
+      "rule": "store coverage",
+      "stores_before": 67,
+      "stores_after": 66,
+      "rows_after": 1877529
+    }
+  ],
+  "duplicate_rows": 0,
+  "date_alignment": {
+    "week_min": 1,
+    "week_max": 399,
+    "all_weeks_in_calendar": true,
+    "start_date": "1989-09-14 00:00:00",
+    "end_date": "1997-05-01 00:00:00",
+    "date_basis": "week joined to authoritative codebook calendar; movement supplies week IDs, not independent dates"
+  },
+  "top_upcs": [
+    {
+      "upc": 8000000245,
+      "volume": 4256504.0,
+      "rows_present": 21600,
+      "expected_rows": 26334,
+      "coverage": 0.8202323991797676,
+      "missing_store_absent": 1584,
+      "missing_upc_absent": 2332,
+      "dropped_ok": 509,
+      "dropped_price_qty_move": 309
+    },
+    {
+      "upc": 8660000033,
+      "volume": 2926066.0,
+      "rows_present": 21853,
+      "expected_rows": 26334,
+      "coverage": 0.8298397508923825,
+      "missing_store_absent": 1584,
+      "missing_upc_absent": 2332,
+      "dropped_ok": 510,
+      "dropped_price_qty_move": 55
+    },
+    {
+      "upc": 4800000024,
+      "volume": 2733247.0,
+      "rows_present": 17549,
+      "expected_rows": 26334,
+      "coverage": 0.6664008506113769,
+      "missing_store_absent": 1584,
+      "missing_upc_absent": 6292,
+      "dropped_ok": 184,
+      "dropped_price_qty_move": 725
+    },
+    {
+      "upc": 8000000280,
+      "volume": 1311557.0,
+      "rows_present": 21439,
+      "expected_rows": 26334,
+      "coverage": 0.8141186299081036,
+      "missing_store_absent": 1584,
+      "missing_upc_absent": 2332,
+      "dropped_ok": 509,
+      "dropped_price_qty_move": 470
+    },
+    {
+      "upc": 3828105003,
+      "volume": 1005125.0,
+      "rows_present": 11590,
+      "expected_rows": 26334,
+      "coverage": 0.4401154401154401,
+      "missing_store_absent": 1584,
+      "missing_upc_absent": 7980,
+      "dropped_ok": 185,
+      "dropped_price_qty_move": 4995
+    },
+    {
+      "upc": 8660000037,
+      "volume": 888676.0,
+      "rows_present": 21473,
+      "expected_rows": 26334,
+      "coverage": 0.815409736462368,
+      "missing_store_absent": 1584,
+      "missing_upc_absent": 2332,
+      "dropped_ok": 510,
+      "dropped_price_qty_move": 435
+    },
+    {
+      "upc": 3828105005,
+      "volume": 810281.0,
+      "rows_present": 10379,
+      "expected_rows": 26334,
+      "coverage": 0.39412926255031516,
+      "missing_store_absent": 1584,
+      "missing_upc_absent": 7319,
+      "dropped_ok": 438,
+      "dropped_price_qty_move": 6614
+    },
+    {
+      "upc": 7114010110,
+      "volume": 749779.0,
+      "rows_present": 21678,
+      "expected_rows": 26334,
+      "coverage": 0.823194349510139,
+      "missing_store_absent": 1584,
+      "missing_upc_absent": 2332,
+      "dropped_ok": 510,
+      "dropped_price_qty_move": 230
+    },
+    {
+      "upc": 1780000024,
+      "volume": 671308.0,
+      "rows_present": 4638,
+      "expected_rows": 26334,
+      "coverage": 0.17612212349054454,
+      "missing_store_absent": 1584,
+      "missing_upc_absent": 13829,
+      "dropped_ok": 431,
+      "dropped_price_qty_move": 5852
+    },
+    {
+      "upc": 7303010314,
+      "volume": 662784.0,
+      "rows_present": 21278,
+      "expected_rows": 26334,
+      "coverage": 0.8080048606364396,
+      "missing_store_absent": 1584,
+      "missing_upc_absent": 2332,
+      "dropped_ok": 510,
+      "dropped_price_qty_move": 630
+    }
+  ],
+  "best_coverage": 0.8357636515531253,
+  "threshold": 0.9,
+  "category": "tna",
+  "metadata_source": "data/calibration/stores_sna.csv",
+  "metadata_scope": "retained-store table",
+  "candidate_window": {
+    "week_range": [
+      1,
+      341
+    ],
+    "weeks": 341,
+    "n_stores": 66,
+    "upc": 8660000033,
+    "coverage": 0.9104683195592287,
+    "status": "candidate; author sample review pending",
+    "competing_index_validated": true,
+    "clean_validation": {
+      "focal_upc": 8660000033,
+      "n_stores": 66,
+      "n_rows": 20491
+    }
+  },
+  "input_checksums": {
+    "data/wtna.zip": "c4dcd8e9c4928b822307e37e1b756fdacc7b2a0a026033e35c1ebc3d5b0d5885",
+    "data/upctna.csv": "316d269f56d48880f1a430865b18d1225bb9ff2846c593b3e7e0428117f2cc07",
+    "data/calibration/stores_sna.csv": "964fc9e7bfbc05a55dbeaaa5762d3556d8939f8584e051dd5fb8ccb09777972f"
+  }
+}

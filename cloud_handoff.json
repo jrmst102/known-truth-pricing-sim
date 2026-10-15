@@ -1,0 +1,8 @@
+{
+  "stopped_at": "2026-10-15T15:12:27.590790+00:00",
+  "cloud_workers_stopped": true,
+  "worker_hours_used_upper_bound": 33.25511135666667,
+  "remaining_worker_hours": 116.74488864333333,
+  "budget_worker_hours": 150,
+  "reason": "Author requested stopping cloud execution and continuing locally in VS Code"
+}

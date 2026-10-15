@@ -1,0 +1,35 @@
+2026-10-14 22:54:47,990 INFO Start sna:low:neg:phi=0 replication 0
+2026-10-14 22:54:48,186 INFO Start sna:low:neg:phi=0.5 replication 0
+2026-10-15 00:46:31,053 INFO Finish sna:low:neg:phi=0.5 replication 0; 6697.67 seconds
+2026-10-15 00:46:31,232 INFO Start sna:low:neg:phi=1 replication 0
+2026-10-15 00:46:40,204 INFO Finish sna:low:neg:phi=0 replication 0; 6707.36 seconds
+2026-10-15 00:46:40,366 INFO Start sna:low:none:phi=0 replication 0
+2026-10-15 02:37:47,938 INFO Finish sna:low:neg:phi=1 replication 0; 6673.61 seconds
+2026-10-15 02:37:48,076 INFO Start sna:low:none:phi=0.5 replication 0
+2026-10-15 02:42:17,528 INFO Finish sna:low:none:phi=0 replication 0; 6934.49 seconds
+2026-10-15 02:42:17,667 INFO Start sna:low:none:phi=1 replication 0
+2026-10-15 04:17:32,911 INFO Finish sna:low:none:phi=0.5 replication 0; 5981.63 seconds
+2026-10-15 04:17:33,106 INFO Start sna:low:pos:phi=0 replication 0
+2026-10-15 04:27:51,462 INFO Finish sna:low:none:phi=1 replication 0; 6331.38 seconds
+2026-10-15 04:27:51,592 INFO Start sna:low:pos:phi=0.5 replication 0
+2026-10-15 06:23:31,692 INFO Finish sna:low:pos:phi=0 replication 0; 7555.54 seconds
+2026-10-15 06:23:31,857 INFO Start sna:low:pos:phi=1 replication 0
+2026-10-15 06:34:19,743 INFO Finish sna:low:pos:phi=0.5 replication 0; 7584.53 seconds
+2026-10-15 06:34:19,978 INFO Start sna:med:neg:phi=0 replication 0
+2026-10-15 08:53:09,146 INFO Finish sna:low:pos:phi=1 replication 0; 8973.08 seconds
+2026-10-15 08:53:09,410 INFO Start sna:med:neg:phi=0.5 replication 0
+2026-10-15 09:03:09,993 INFO Finish sna:med:neg:phi=0 replication 0; 8927.50 seconds
+2026-10-15 09:03:10,179 INFO Start sna:med:neg:phi=1 replication 0
+2026-10-15 11:19:59,035 INFO Finish sna:med:neg:phi=0.5 replication 0; 8804.14 seconds
+2026-10-15 11:19:59,230 INFO Start sna:med:none:phi=0 replication 0
+2026-10-15 11:29:19,879 INFO Finish sna:med:neg:phi=1 replication 0; 8766.91 seconds
+2026-10-15 11:29:20,050 INFO Start sna:med:none:phi=0.5 replication 0
+2026-10-15 14:02:53,190 INFO Finish sna:med:none:phi=0 replication 0; 9771.60 seconds
+2026-10-15 14:02:53,361 INFO Start sna:med:none:phi=1 replication 0
+2026-10-15 14:22:14,299 INFO Finish sna:med:none:phi=0.5 replication 0; 10370.93 seconds
+2026-10-15 14:22:19,818 INFO Start sna:med:pos:phi=0 replication 0
+Terminated
+/workspace/known-truth-pricing-sim/.venv/lib/python3.11/site-packages/joblib/externals/loky/backend/resource_tracker.py:314: UserWarning: resource_tracker: There appear to be 8 leaked semlock objects to clean up at shutdown
+  warnings.warn(
+/workspace/known-truth-pricing-sim/.venv/lib/python3.11/site-packages/joblib/externals/loky/backend/resource_tracker.py:314: UserWarning: resource_tracker: There appear to be 2 leaked folder objects to clean up at shutdown
+  warnings.warn(

@@ -1,0 +1,128 @@
+[
+  {
+    "category": "sna",
+    "name": "retained_stores_min",
+    "value": 67.0,
+    "passed": true,
+    "expected": 40,
+    "status": "pass"
+  },
+  {
+    "category": "sna",
+    "name": "promo_freq",
+    "value": 0.34126254347739177,
+    "passed": true,
+    "expected": [
+      0.05,
+      0.4
+    ],
+    "status": "pass"
+  },
+  {
+    "category": "sna",
+    "name": "promo_depth",
+    "value": 0.13012049453024782,
+    "passed": true,
+    "expected": [
+      0.05,
+      0.4
+    ],
+    "status": "pass"
+  },
+  {
+    "category": "sna",
+    "name": "resid_sd",
+    "value": 0.46507264157411954,
+    "passed": true,
+    "expected": [
+      0.2,
+      1.0
+    ],
+    "status": "pass"
+  },
+  {
+    "category": "sna",
+    "name": "profit_mean",
+    "value": 24.29354935433574,
+    "passed": true,
+    "expected": [
+      10,
+      45
+    ],
+    "status": "pass"
+  },
+  {
+    "category": "sna",
+    "name": "beta_reference",
+    "value": -2.945603607800617,
+    "passed": false,
+    "expected": [
+      -2.59,
+      -0.79
+    ],
+    "status": "flag"
+  },
+  {
+    "category": "tti",
+    "name": "retained_stores_min",
+    "value": 67.0,
+    "passed": true,
+    "expected": 40,
+    "status": "pass"
+  },
+  {
+    "category": "tti",
+    "name": "promo_freq",
+    "value": 0.23894373545228348,
+    "passed": true,
+    "expected": [
+      0.05,
+      0.4
+    ],
+    "status": "pass"
+  },
+  {
+    "category": "tti",
+    "name": "promo_depth",
+    "value": 0.11025512944260955,
+    "passed": true,
+    "expected": [
+      0.05,
+      0.4
+    ],
+    "status": "pass"
+  },
+  {
+    "category": "tti",
+    "name": "resid_sd",
+    "value": 0.5043886348762084,
+    "passed": true,
+    "expected": [
+      0.2,
+      1.0
+    ],
+    "status": "pass"
+  },
+  {
+    "category": "tti",
+    "name": "profit_mean",
+    "value": 10.248270326671483,
+    "passed": true,
+    "expected": [
+      10,
+      45
+    ],
+    "status": "pass"
+  },
+  {
+    "category": "tti",
+    "name": "beta_reference",
+    "value": -3.8578167610971525,
+    "passed": false,
+    "expected": [
+      -2.59,
+      -0.79
+    ],
+    "status": "flag"
+  }
+]

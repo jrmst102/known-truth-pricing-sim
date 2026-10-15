@@ -1,0 +1,25 @@
+Metadata-Version: 2.2
+Name: ktsim
+Version: 1.1.0
+Summary: Known-truth price optimization simulation
+Requires-Python: <3.12,>=3.11
+License-File: LICENSE
+Requires-Dist: numpy==2.2.3
+Requires-Dist: pandas==2.2.3
+Requires-Dist: pyarrow==19.0.1
+Requires-Dist: scipy==1.15.2
+Requires-Dist: statsmodels==0.14.4
+Requires-Dist: linearmodels==6.1
+Requires-Dist: lightgbm==4.6.0
+Requires-Dist: doubleml==0.9.3
+Requires-Dist: scikit-learn==1.5.2
+Requires-Dist: PyYAML==6.0.2
+Requires-Dist: joblib==1.4.2
+Requires-Dist: matplotlib==3.10.1
+Requires-Dist: pyreadstat==1.2.8
+Provides-Extra: dev
+Requires-Dist: pytest==8.3.5; extra == "dev"
+Requires-Dist: ruff==0.11.0; extra == "dev"
+Requires-Dist: pre-commit==4.2.0; extra == "dev"
+Provides-Extra: data
+Requires-Dist: pypdf==5.3.1; extra == "data"

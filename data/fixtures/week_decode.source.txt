@@ -1,0 +1,2 @@
+Kilts Center Dominick's data manual; SHA-256 d8dc133bfe402a213bd0aebf0fe4511e938634b3e954a5057692b34735d25700
+Week start/end and special-event fields extracted verbatim. Lent and Easter use actual Easter dates.

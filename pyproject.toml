@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools==75.8.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ktsim"
+version = "1.1.0"
+description = "Known-truth price optimization simulation"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+  "numpy==2.2.3", "pandas==2.2.3", "pyarrow==19.0.1", "scipy==1.15.2",
+  "statsmodels==0.14.4", "linearmodels==6.1", "lightgbm==4.6.0",
+  "doubleml==0.9.3", "scikit-learn==1.5.2", "PyYAML==6.0.2",
+  "joblib==1.4.2", "matplotlib==3.10.1", "pyreadstat==1.2.8",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==8.3.5", "ruff==0.11.0", "pre-commit==4.2.0"]
+data = ["pypdf==5.3.1"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["slow: statistical or end-to-end checks"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]

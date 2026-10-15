@@ -123,7 +123,19 @@ Keep the 90% threshold.
 Benchmark observational elasticities are review flags, not exclusion criteria;
 see [the investigation draft](docs/BETA_REFERENCE_REVIEW.md).
 
-After the required author acceptance, stages use `configs/scenarios.yaml`:
+The accepted chapter amendment uses the exploratory configuration:
+
+```bash
+python scripts/run_exploratory.py benchmark
+python scripts/run_exploratory.py run
+python scripts/run_exploratory.py analyze
+```
+
+The six-cell study is defined in `configs/exploratory.yaml`. Benchmark artifacts
+are separate from production. The runner enforces the remaining worker-hour
+budget before launch and resumes completed replication checkpoints safely.
+
+The original deferred stages use `configs/scenarios.yaml`:
 
 ```bash
 python scripts/run_pilot.py --stage diagnostic --cells all --n-jobs 2 --run-id s2-diagnostic
@@ -132,8 +144,7 @@ python scripts/run_pilot.py --stage main --cells all --decision outputs/pilot/s3
   --n-jobs 2 --run-id s4-main
 ```
 
-The core has 81 cells; the two-environment 54-cell alternative requires author
-approval and a protocol/chapter amendment. Named extensions vary one factor from
+The original 81-cell core is deferred future work under Amendment A8. Named extensions vary one factor from
 a base cell, for example `--extension censored` during validation. No extension
 is silently mixed into the core. Stage seeds are separate; cells within a stage
 share replication streams. The diagnostic's five extra base replications use

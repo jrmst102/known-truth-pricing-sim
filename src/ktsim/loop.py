@@ -140,7 +140,7 @@ def run_replication(cell, rep, shocks, cal, dgm, est_cfg, *, save_data=False, sa
         history.append(observed(frame, price, t - 1, cap))
     initial = pd.concat(history, ignore_index=True)
     names = list(cell.estimators)
-    if "M3" in names:
+    if "M3" in names and cell.auto_m3_cf:
         names.append("M3_cf")
     arms = [
         (name, policy)
@@ -167,6 +167,7 @@ def run_replication(cell, rep, shocks, cal, dgm, est_cfg, *, save_data=False, sa
             )
             fallback = np.zeros(len(stores), dtype=bool)
             forecast = None
+            forecast_grid_rmse = np.nan
             if policy in {"oracle", "legacy"}:
                 est = finalize(cell.eta, coverage_status="not applicable")
                 est["predictions_unavailable"] = False
@@ -188,6 +189,23 @@ def run_replication(cell, rep, shocks, cal, dgm, est_cfg, *, save_data=False, sa
                     try:
                         predictions = np.column_stack(
                             [est["predict"](frame, np.full(len(stores), price)) for price in ladder]
+                        )
+                        truth_grid = np.column_stack(
+                            [
+                                expected_revenue(
+                                    cal,
+                                    dgm,
+                                    frame,
+                                    np.full(len(stores), price),
+                                    cell.eta,
+                                    cap,
+                                )
+                                / price
+                                for price in ladder
+                            ]
+                        )
+                        forecast_grid_rmse = float(
+                            np.sqrt(np.mean((predictions - truth_grid) ** 2))
                         )
                         usable = np.isfinite(predictions).all(axis=1) & (predictions > 0).all(
                             axis=1
@@ -303,6 +321,7 @@ def run_replication(cell, rep, shocks, cal, dgm, est_cfg, *, save_data=False, sa
                     forecast_rmse=float(np.sqrt(np.mean(errors**2)))
                     if errors is not None
                     else np.nan,
+                    forecast_grid_rmse=forecast_grid_rmse,
                     price_sd_26=price_sd,
                     censored_share=float(next_week.censored.mean()),
                     sales_process=dgm.sales_process,

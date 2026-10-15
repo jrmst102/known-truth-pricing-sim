@@ -4,6 +4,7 @@ Protocol version: 1.1 · Supersedes 1.0 · Date: 2026-10-14 · Author: Jose Mend
 Author approval: APPROVED 2026-10-14 — Jose Mendoza, explicit chat confirmation
 Deliverable 1 acceptance: ACCEPTED 2026-10-14 — Jose Mendoza, explicit chat confirmation
 Deliverable 2 acceptance: ACCEPTED 2026-10-15 — Jose Mendoza, explicit chat confirmation
+Exploratory chapter amendment: APPROVED 2026-10-15 — Jose Mendoza, explicit implementation brief
 
 The author accepted Deliverable 1 and authorized beginning Deliverable 2 (S2)
 on 2026-10-14, stating: “OK, all passed. Let's accept Deliverable 1. Let's begin
@@ -11,6 +12,10 @@ Deliverable 2”. On 2026-10-15, after reviewing the completed reduced diagnosti
 the author stated: “Deliverable 2 is accepted.” S3 is now eligible for a scope and
 compute decision but has not started. S4 still requires an accepted S3 precision
 decision. M4 inference coverage remains withheld.
+
+On 2026-10-15, the author replaced the planned S3/S4 sequence for this chapter
+with the exploratory six-cell study in Amendment A8 below. The original 81-cell
+precision pilot and main experiment are deferred future work.
 The complete implementation requirements are in [SPEC_v1.1.md](SPEC_v1.1.md).
 Where silent, [PILOT_SPEC.md](../PILOT_SPEC.md) remains in force.
 
@@ -37,7 +42,7 @@ Where silent, [PILOT_SPEC.md](../PILOT_SPEC.md) remains in force.
 
 The following records the author's explicit confirmations in this chat:
 
-- **A1–A7: APPROVED.** All seven methodology amendments below are approved.
+- **A1–A8: APPROVED.** The methodology amendments below are approved.
 - **Tuna calibration window: APPROVED, weeks 1–341 inclusive.** The 90% coverage
   threshold is unchanged; this does not approve a synthetic substitute or a
   reduction to two environments. Retain the three-environment, 81-cell design.
@@ -49,7 +54,7 @@ Deliverable 1 status. Deliverable 2 remains PENDING. Approval of A7 does not ena
 M4 coverage reporting;
 `inference_validated` remains false until separately authorized.
 
-## Amendments (A1–A7 approved by author)
+## Amendments (A1–A8 approved by author)
 
 | ID | Protocol v1.0 section | v1.0 text (summary) | v1.1 text (summary) | Reason | Motivating evidence |
 |---|---|---|---|---|---|
@@ -60,6 +65,28 @@ M4 coverage reporting;
 | A5 | §7 | Reliability: recommended-price regret ≤ 2% in the final 26 cycles and no sign change | Deployed weekly regret ≤ 0.02 and finite negative η̂ in every one of the final 26 cycles; criteria also reported separately; missing estimates fail | Deployed prices are what the retailer experiences; the joint criterion is what the chapter claims | Same |
 | A6 | §9.3 | \|η̂\| > 10 counted as failure; previous recommendation carried forward | Extreme estimates and positive slopes retained with flags; legacy fallback only when predictions are unavailable; explicit denominators; smearing retransformation | Discarding extreme estimates hides the failure the chapter studies | Same |
 | A7 | §6.1 (M4) | Five-fold cross-fitting, unspecified fold structure | Within-store transformation, store-grouped folds, cluster-robust variance, cross-fitted predictions; coverage withheld until validated | Row-level shuffling with store and serial dependence invalidates nominal coverage | Same |
+
+### A8 — exploratory chapter study (approved 2026-10-15)
+
+Computational evidence from Deliverable 2 showed that the planned 81-cell
+precision pilot and subsequent main experiment cannot fit the retained
+150-worker-hour budget. For this chapter, replace those stages with one
+exploratory experiment containing six cells: `sna`, `tna`, and `tti`, crossed
+with κ ∈ {0, +0.05}, at η = −1.06 and φ = 0.5. Each cell uses 30 independent
+replications, 52 history weeks, 104 pricing cycles, M1 OLS, M2 GBM, and M3 2SLS,
+each under greedy and greedy-with-exploration policies, plus legacy and oracle
+references, for eight arms per cell. M2 retains the accepted 500-tree settings.
+Automatic `M3_cf` expansion is disabled. DML and control-function results remain
+supplementary diagnostic evidence and are not rerun as main-study arms. All
+other accepted Protocol v1.1 settings remain in force.
+
+This is an exploratory design. Thirty replications per cell support reported
+Monte Carlo uncertainty but do not meet or claim the original precision targets.
+The full 81-cell design, other elasticities, adoption shares, negative
+endogeneity, and additional validation are deferred future work. Timing runs
+use separate seeds and outputs. Production uses fresh exploratory-stage seeds;
+methods within a cell replication share initial histories and exogenous draws
+while each method-policy arm retains its own evolving history.
 
 ## Implementation corrections (no design change)
 
@@ -88,11 +115,13 @@ M4 coverage reporting;
   folds and DoubleMLClusterData. No separate temporal/HAC dependence model is fitted.
   Training predictions are out of fold; new predictions average the fold learners.
   Coverage is withheld until 200-draw inference validation and explicit author opt-in.
-- Stage streams are the four children of the master SeedSequence, ordered validation,
-  diagnostic, pilot, main. Cells share the same replication streams within a stage.
+- Stage streams are children of the master SeedSequence, ordered validation,
+  diagnostic, pilot, main, exploratory. Adding the final exploratory child leaves
+  all previously generated child streams unchanged. Cells share replication
+  streams within a stage.
 - S2: one replication per core cell plus five additional base-cell replications.
-  S3: 100 replications per cell. S4 uses the accepted S3 decision, fresh seeds and
-  frozen scientific settings. S2 is now authorized by the author; S3/S4 remain gated.
+  The former S3/S4 sequence is deferred under A8 and replaced for chapter
+  completion by the six-cell exploratory production study.
 - **S2 scope amendment, 2026-10-15:** after observing that the original S2 plan
   projected to about 210 worker-hours, Jose Mendoza explicitly requested a reduced
   diagnostic that finishes within one to two hours. Preserve the 14 completed SNA

@@ -38,7 +38,12 @@ def test_config_baseline_and_protocol():
 def test_every_yaml_key_has_consumer():
     # Exclude declarations and documentation: each key must occur in executable source
     # as an attribute or literal (including dynamically used cell names/levels).
-    source = "\n".join(p.read_text() for p in Path("src").rglob("*.py") if p.name != "config.py")
+    source = "\n".join(
+        p.read_text()
+        for folder in ("src", "scripts")
+        for p in Path(folder).rglob("*.py")
+        if p.name != "config.py"
+    )
     dynamic_keys = {
         "none",
         "pos",

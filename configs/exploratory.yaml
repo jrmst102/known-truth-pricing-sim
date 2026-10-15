@@ -1,0 +1,20 @@
+protocol_version: '1.1'
+study_version: 'exploratory-1.0'
+master_seed: 20261015
+timing_seed: 2026101501
+environments: [sna, tna, tti]
+eta: -1.06
+kappa: [0.0, 0.05]
+phi: 0.5
+estimators: [M1, M2, M3]
+policies: [greedy, greedy_rps]
+reference_arms: [legacy, oracle]
+auto_m3_cf: false
+history_weeks: 52
+cycles: 104
+replications_per_cell: 30
+pass_through: 0.20
+runtime:
+  workers: 4
+  buffer_fraction: 0.25
+  remaining_worker_hours: 116.20

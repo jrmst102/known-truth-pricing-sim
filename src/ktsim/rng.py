@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 import numpy as np
 
-STAGES = ("validation", "diagnostic", "pilot", "main")
+STAGES = ("validation", "diagnostic", "pilot", "main", "exploratory")
 
 
 @dataclass
@@ -20,7 +20,7 @@ class ShockArrays:
 
 
 def replication_streams(master_seed: int, n_reps: int, stage="validation"):
-    child = np.random.SeedSequence(master_seed).spawn(4)[STAGES.index(stage)]
+    child = np.random.SeedSequence(master_seed).spawn(len(STAGES))[STAGES.index(stage)]
     return child.spawn(n_reps)
 
 

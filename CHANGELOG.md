@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.1.2 - 2026-10-15 (exploratory chapter experiment)
+
+The author replaced the computationally infeasible 81-cell precision-pilot and
+main-experiment sequence for this chapter with a six-cell exploratory study.
+The amended study crosses the three accepted environments with κ = 0 and +0.05
+at η = −1.06 and φ = 0.5, with 30 independent replications per cell, 104 cycles,
+and eight arms: M1, M2, and M3 under both policies plus legacy and oracle.
+Automatic M3 control-function expansion is disabled. Accepted DML and control-
+function diagnostics remain supplementary evidence. The original factorial
+design and Monte Carlo precision targets are preserved as future work.
+
+Timing runs are separated from production and must demonstrate that the exact
+configuration, including a runtime buffer, fits the remaining worker-hour
+budget. Production must retain failures and fallbacks, use fresh seeds, finish
+all 180 cell replications, pass saved-run audits, and generate the chapter's two
+tables and two figures with replication-level Monte Carlo uncertainty.
+
 ## 1.1.1 - 2026-10-15 (reduced S2 diagnostic scope)
 
 Jose Mendoza explicitly requested that Deliverable 2 finish within one to two

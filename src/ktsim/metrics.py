@@ -76,9 +76,10 @@ def replication_summary(estimates, reliability=None):
             ("positive_slope_rate", "positive_slope"),
             ("failure_share", "numerical_failure"),
             ("forecast_mape", "forecast_mape"),
+            ("forecast_grid_rmse", "forecast_grid_rmse"),
             ("censored_share", "censored_share"),
         ):
-            row[measure] = group[column].mean()
+            row[measure] = group[column].mean() if column in group else np.nan
         row["forecast_rmse"] = np.sqrt(np.mean(group.forecast_rmse**2))
         row["seconds"] = group.seconds.sum()
         row["price_sd_26"] = group.price_sd_26.iloc[-1]

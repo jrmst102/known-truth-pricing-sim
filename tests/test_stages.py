@@ -9,7 +9,7 @@ from ktsim.rng import replication_streams
 def test_stage_seed_separation(dgm):
     values = [
         replication_streams(42, 2, stage)[0].generate_state(8)
-        for stage in ("validation", "diagnostic", "pilot", "main")
+        for stage in ("validation", "diagnostic", "pilot", "main", "exploratory")
     ]
     for i, first in enumerate(values):
         for second in values[i + 1 :]:

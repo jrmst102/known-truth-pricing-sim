@@ -113,6 +113,7 @@ class CellConfig:
     sales_process: str | None = None
     cost_structure: str | None = None
     shock_split: str | None = None
+    auto_m3_cf: bool = True
 
     @property
     def label(self) -> str:

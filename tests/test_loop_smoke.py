@@ -84,3 +84,19 @@ def test_failed_fit_uses_legacy_fallback(cal, dgm, monkeypatch):
     assert result.failure_reason.iloc[1] == "nonconvergence"
     assert result.fallback_used.iloc[1] == 1
     assert result.predictions_unavailable.iloc[1]
+
+
+def test_control_function_can_be_disabled(cal, dgm):
+    from dataclasses import replace
+
+    from ktsim.config import CellConfig
+    from ktsim.loop import run_replication
+    from ktsim.rng import draw_shocks, replication_streams
+
+    cell = CellConfig(
+        "no-cf", -1.06, 0.05, 0.5, 0.03, 1, ["M3"], ["greedy"], auto_m3_cf=False
+    )
+    shocks = draw_shocks(replication_streams(91, 1)[0], cal.n_stores, 53, cal, dgm)
+    result = run_replication(cell, 0, shocks, cal, replace(dgm, cycles=1), {"M3_iv": {}})
+    assert set(result.arm) == {"M3:greedy", "oracle:oracle", "legacy:legacy"}
+    assert "forecast_grid_rmse" in result

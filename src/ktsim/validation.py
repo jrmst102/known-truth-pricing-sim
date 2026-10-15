@@ -18,7 +18,7 @@ from ktsim.rng import assign_model_stores, draw_shocks, replication_streams
 
 def _arms(cell):
     names = list(cell.estimators)
-    if "M3" in names:
+    if "M3" in names and cell.auto_m3_cf:
         names.append("M3_cf")
     if cell.data_only:
         return {"data:legacy"}
@@ -231,7 +231,9 @@ def check_run(output, *, require_full_horizon=False):
         for label, cell in cells.items():
             if cell.phi != 0 or not {"greedy", "greedy_rps"} <= set(cell.policies):
                 continue
-            names = list(cell.estimators) + (["M3_cf"] if "M3" in cell.estimators else [])
+            names = list(cell.estimators) + (
+                ["M3_cf"] if "M3" in cell.estimators and cell.auto_m3_cf else []
+            )
             for rep in range(cell.reps):
                 frame = storeweek[storeweek.cell.eq(label) & storeweek.rep.eq(rep)]
                 for name in names:

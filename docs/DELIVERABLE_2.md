@@ -1,6 +1,6 @@
 # Deliverable 2: full-horizon diagnostics
 
-Status: **S2 running; Deliverable 2 acceptance pending.** Jose Mendoza accepted
+Status: **Cloud execution stopped for local continuation; Deliverable 2 acceptance pending.** Jose Mendoza accepted
 Deliverable 1 and authorized S2 in chat on 2026-10-14. On 2026-10-15 he explicitly
 requested increasing the run from two workers to four. No S3 or S4 run is authorized.
 
@@ -77,3 +77,30 @@ validating the frozen scientific inputs and recording the changed environment.
 The normal CLI resume check rejects changed hardware/worker settings; do not
 bypass it by rewriting the original fingerprint. Stop the current execution
 before starting a replacement to avoid duplicate computation.
+
+## Local handoff — 2026-10-15
+
+The author requested stopping the cloud run to continue locally in VS Code.
+All cloud scientific workers were stopped at 11:12 a.m. Eastern. Fourteen
+completed replications and their audits remain preserved; the four interrupted
+replications will restart from their original seeds. No local scientific run was
+started by the cloud handoff process.
+
+The cloud attempts used at most 33.25511136 worker-hours under conservative
+worker-slot accounting, leaving approximately 116.74488864 worker-hours of the
+unchanged 150-hour budget. Local execution must retain that accounting.
+
+A self-contained transfer bundle is prepared at
+`/workspace/exports/s2-local-transfer.zip`. It includes a source snapshot,
+calibrations, completed checkpoints, execution history, original cloud logs,
+`README_LOCAL.md`, and a portable `resume_local.py` launcher. No raw movement
+archives or virtual environment are included. The launcher validates original
+scientific inputs, permits and records hardware changes, enforces numerical
+package versions, and preserves the original manifest/fingerprint. It records
+local attempts and stops child workers on the remaining-budget timeout or Ctrl+C.
+The normal `scripts/run_pilot.py --resume` command is not the migration launcher.
+
+The bundle's preflight was verified against the transferred checkpoints; checks
+accept hardware changes and reject changed dependency versions, scientific
+configurations and corrupted checkpoints. Deliverable 2 still needs completion
+and author review before S3 can start.

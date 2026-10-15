@@ -72,11 +72,11 @@ Deliverable 1 was accepted by Jose Mendoza on 2026-10-14, and Deliverable 2
 [VALIDATION_v1.1.md](docs/VALIDATION_v1.1.md) for local evidence and historical
 metadata limitations; acceptance records the author's explicit confirmation.
 
-Deliverable 2 is running under the author-approved reduced diagnostic scope; see
-its [execution record](docs/DELIVERABLE_2.md). Acceptance remains pending.
-The precision pilot requires accepted Deliverable 2
-diagnostics. A main experiment additionally needs an approved precision decision
-and unchanged scientific settings. M4 inference coverage remains withheld.
+Deliverable 2 was accepted by Jose Mendoza on 2026-10-15 under the documented
+reduced diagnostic scope; see its [execution record](docs/DELIVERABLE_2.md).
+The precision pilot is eligible for a scope and compute decision but has not
+started. A main experiment additionally needs an approved precision decision and
+unchanged scientific settings. M4 inference coverage remains withheld.
 
 ## Development validation
 

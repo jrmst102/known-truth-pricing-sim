@@ -12,6 +12,10 @@ must label this reduced scope and cannot claim 81-cell or full-horizon cross-
 environment coverage. S3 and S4 remain blocked pending review and explicit
 acceptance of the reduced Deliverable 2.
 
+Jose Mendoza accepted the completed reduced Deliverable 2 on 2026-10-15. The
+acceptance includes its stated limitations and makes S3 eligible for a new scope
+and compute decision; it does not authorize S4 or M4 coverage reporting.
+
 ## 1.1.0 - 2026-10-14 (Deliverable 1 accepted)
 
 Corrections and amendments implement SPEC_v1.1.md. Jose Mendoza confirmed all CI

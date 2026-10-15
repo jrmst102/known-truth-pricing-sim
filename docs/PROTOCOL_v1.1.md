@@ -3,12 +3,14 @@
 Protocol version: 1.1 · Supersedes 1.0 · Date: 2026-10-14 · Author: Jose Mendoza
 Author approval: APPROVED 2026-10-14 — Jose Mendoza, explicit chat confirmation
 Deliverable 1 acceptance: ACCEPTED 2026-10-14 — Jose Mendoza, explicit chat confirmation
-Deliverable 2 acceptance: PENDING
+Deliverable 2 acceptance: ACCEPTED 2026-10-15 — Jose Mendoza, explicit chat confirmation
 
 The author accepted Deliverable 1 and authorized beginning Deliverable 2 (S2)
 on 2026-10-14, stating: “OK, all passed. Let's accept Deliverable 1. Let's begin
-Deliverable 2”. S3 and S4 remain blocked until Deliverable 2 is accepted; S4 also
-requires an approved precision decision. M4 inference coverage remains withheld.
+Deliverable 2”. On 2026-10-15, after reviewing the completed reduced diagnostic,
+the author stated: “Deliverable 2 is accepted.” S3 is now eligible for a scope and
+compute decision but has not started. S4 still requires an accepted S3 precision
+decision. M4 inference coverage remains withheld.
 The complete implementation requirements are in [SPEC_v1.1.md](SPEC_v1.1.md).
 Where silent, [PILOT_SPEC.md](../PILOT_SPEC.md) remains in force.
 
@@ -99,8 +101,9 @@ M4 coverage reporting;
   diagnostic seed stream, shortened to 52 cycles. The report must distinguish the
   104-cycle SNA evidence from the 52-cycle TNA/TTI evidence and state that the
   reduced diagnostic does not establish 81-cell or full-horizon cross-environment
-  behavior. This amendment supersedes the original S2 scope only; S3 and S4 remain
-  gated by explicit acceptance of the reduced Deliverable 2.
+  behavior. This amendment supersedes the original S2 scope only. The author
+  accepted the reduced Deliverable 2 on 2026-10-15; S3 still requires an executable
+  scope within the compute budget, and S4 remains gated by the S3 decision.
 - Tuna: audit at the unchanged 90% threshold first; investigate denominator or join
   errors before proposing a window. A window needs >=40 zoned stores and >=156 weeks.
   If no defensible window exists, propose two environments (54 cells), with author
@@ -137,5 +140,7 @@ a stopped run is incomplete, never an accepted diagnostic report.
 
 Run ID: `s2-diagnostic-20261014`. The report will be written to
 `outputs/diagnostic/s2-diagnostic-20261014/report.md` on successful completion.
-Deliverable 2 acceptance remains pending the completed diagnostic report and
-author review. Do not start the precision pilot or main experiment yet.
+The author accepted the reduced Deliverable 2 on 2026-10-15. Do not start the
+precision pilot until its scope is reconciled with observed runtime and the
+150-worker-hour budget. Do not start the main experiment before the accepted S3
+precision decision.

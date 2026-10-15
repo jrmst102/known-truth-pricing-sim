@@ -1,6 +1,6 @@
 # Deliverable 2: full-horizon diagnostics
 
-Status: **Reduced S2 running; Deliverable 2 acceptance pending.** Jose Mendoza accepted
+Status: **Deliverable 2 accepted by Jose Mendoza on 2026-10-15.** Jose Mendoza accepted
 Deliverable 1 and authorized S2 in chat on 2026-10-14. On 2026-10-15 he explicitly
 requested increasing the run from two workers to four. No S3 or S4 run is authorized.
 
@@ -53,6 +53,12 @@ representative `med, pos, phi=0.5` cell for TNA and TTI. Both new cells retain a
 but run for 52 cycles. The final report must keep the two evidence sets separate
 and explicitly state that the reduced scope does not diagnose all 81 cells or a
 104-cycle horizon in TNA and TTI.
+
+Both replacement cells finished successfully on 2026-10-15 at approximately
+2:07 p.m. Eastern. The report is under
+`outputs/diagnostic/s2-reduced-20261015/report.md`. The author subsequently stated:
+“Deliverable 2 is accepted.” This acceptance applies to the documented reduced
+scope and its limitations. It does not authorize S4 or validate M4 coverage.
 
 Machine: Intel Xeon Platinum 8573C, four CPU equivalents, 32 GiB cgroup memory;
 one numerical-library thread per worker. The 150-hour budget and 2,000-replication

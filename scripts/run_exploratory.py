@@ -340,6 +340,13 @@ def tables(estimates, output):
 def figures(estimates, output):
     model = estimates[estimates.arm.str.startswith(("M1:", "M2:", "M3:"))]
     cells = sorted(model.cell.unique())
+    environment_labels = {"sna": "Snack crackers", "tna": "Canned tuna", "tti": "Bathroom tissue"}
+
+    def panel_title(cell):
+        env = cell.split(":", 1)[0]
+        kappa = float(cell.split("kappa=")[1].split(":")[0])
+        return f"{environment_labels[env]} · κ = {kappa:+.2f}"
+
     fig, axes = plt.subplots(3, 2, figsize=(13, 12), sharex=True, sharey=True)
     for axis, cell in zip(axes.flat, cells):
         frame = model[model.cell.eq(cell)]
@@ -353,12 +360,13 @@ def figures(estimates, output):
                 alpha=0.12,
             )
         axis.axhline(-1.06, color="black", linestyle="--", linewidth=1, label="truth")
-        axis.set_title(cell)
-        axis.set_xlabel("Pricing cycle")
-        axis.set_ylabel("Elasticity estimate")
+        axis.set_title(panel_title(cell))
+    fig.supxlabel("Pricing cycle")
+    fig.supylabel("Elasticity estimate")
+    fig.suptitle("Elasticity trajectories (mean ± Monte Carlo SE)", fontsize=14)
     handles, labels = axes.flat[0].get_legend_handles_labels()
     fig.legend(handles, labels, loc="lower center", ncol=4, fontsize=8)
-    fig.tight_layout(rect=(0, 0.05, 1, 1))
+    fig.tight_layout(rect=(0.03, 0.06, 1, 0.96))
     fig.savefig(output / "figure1_elasticity_trajectories.png", dpi=180)
     plt.close(fig)
 
@@ -379,12 +387,13 @@ def figures(estimates, output):
                 summary["mean"] + summary["sem"],
                 alpha=0.12,
             )
-        axis.set_title(cell)
-        axis.set_xlabel("Pricing cycle")
-        axis.set_ylabel("Cumulative normalized deployed regret")
+        axis.set_title(panel_title(cell))
+    fig.supxlabel("Pricing cycle")
+    fig.supylabel("Cumulative normalized deployed regret")
+    fig.suptitle("Cumulative normalized deployed regret (mean ± Monte Carlo SE)", fontsize=14)
     handles, labels = axes.flat[0].get_legend_handles_labels()
     fig.legend(handles, labels, loc="lower center", ncol=4, fontsize=8)
-    fig.tight_layout(rect=(0, 0.05, 1, 1))
+    fig.tight_layout(rect=(0.03, 0.06, 1, 0.96))
     fig.savefig(output / "figure2_cumulative_regret.png", dpi=180)
     plt.close(fig)
 

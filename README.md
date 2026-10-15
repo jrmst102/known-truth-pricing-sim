@@ -78,6 +78,12 @@ The precision pilot is eligible for a scope and compute decision but has not
 started. A main experiment additionally needs an approved precision decision and
 unchanged scientific settings. M4 inference coverage remains withheld.
 
+Published Deliverable 2 artifacts:
+
+- [Accepted reduced diagnostic report](outputs/diagnostic/s2-reduced-20261015/report.md)
+- [Reduced diagnostic results and figures](outputs/diagnostic/s2-reduced-20261015/)
+- [Fourteen preserved full-horizon SNA checkpoint results](outputs/diagnostic/s2-diagnostic-20261014/)
+
 ## Development validation
 
 From the repository root, use a fresh run ID for a small synthetic check:

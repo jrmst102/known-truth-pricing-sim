@@ -60,6 +60,11 @@ Both replacement cells finished successfully on 2026-10-15 at approximately
 “Deliverable 2 is accepted.” This acceptance applies to the documented reduced
 scope and its limitations. It does not authorize S4 or validate M4 coverage.
 
+The accepted report, its complete reduced-run results and figures, and the 14
+preserved full-horizon SNA checkpoint results are published under `outputs/diagnostic/`.
+Machine-only environments, caches, launchers, and duplicate handoff snapshots are
+not scientific results and remain excluded.
+
 Machine: Intel Xeon Platinum 8573C, four CPU equivalents, 32 GiB cgroup memory;
 one numerical-library thread per worker. The 150-hour budget and 2,000-replication
 cap remain unchanged. Conservative worker-slot accounting includes interrupted

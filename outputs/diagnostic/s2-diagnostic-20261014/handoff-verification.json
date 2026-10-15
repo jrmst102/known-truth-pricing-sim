@@ -1,0 +1,19 @@
+{
+  "verified_at": "2026-10-15T15:58:49.896945+00:00",
+  "archive_sha256": "9ce82851485d09cea06cb3dae188e4fcf30251b6fabf20f856179678d47d709a",
+  "completed_replications": 14,
+  "pending_replications": 82,
+  "seed_states_verified": 96,
+  "checkpoint_hashes_verified": 42,
+  "estimate_rows_per_completed_replication": 1456,
+  "scientific_inputs_verified": true,
+  "original_manifest_sha256": "2b89e889731b2e3949f08a714e58dcdc47b8846fd7fa5c9175e7782697b5a3da",
+  "original_launcher_sha256": "b1c664de9ca94e78081ab9f7b89b119057749938179af1e743cdecc3d5684bec",
+  "local_launcher_sha256": "fa4d794b988aefb8e14f02215529502624f7a74d087e4a8c5cb54cd86d4d8fb8",
+  "launcher_changes": [
+    "Resolve ROOT from outputs/runtime instead of the snapshot root",
+    "Read preserved_checkpoint_hashes.json next to the local launcher"
+  ],
+  "local_tests": "3 estimator tests passed; prior setup: 6 CLI/checkpoint/stage tests passed",
+  "remaining_worker_hours": 116.74488864333333
+}

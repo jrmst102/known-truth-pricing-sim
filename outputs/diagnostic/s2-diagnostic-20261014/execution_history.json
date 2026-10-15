@@ -1,0 +1,61 @@
+[
+  {
+    "attempt": 1,
+    "workers": 2,
+    "started_at": "2026-10-14T22:54:33+00:00",
+    "stopped_at": "2026-10-15T14:52:42.981138+00:00",
+    "reason": "Author requested four workers; completed replications retained, incomplete replications replayed",
+    "worker_hours_upper_bound": 31.93887841
+  },
+  {
+    "attempt": 2,
+    "workers": 4,
+    "authorized_by": "Jose Mendoza, explicit chat request",
+    "started_at": "2026-10-15T14:52:42.981138+00:00",
+    "remaining_wall_seconds": 106255,
+    "budget_worker_hours": 150,
+    "budget_accounting": "Conservative worker-slot hours, including interrupted computation",
+    "original_manifest_n_jobs": 2,
+    "launcher": "/workspace/onboarding-artifacts/s2-diagnostic-20261014/resume_four_workers.py",
+    "stopped_at": "2026-10-15T15:12:27.590790+00:00",
+    "reason": "Author requested stopping cloud execution and continuing locally in VS Code",
+    "status": "stopped_by_author",
+    "worker_hours_upper_bound": 1.3162329466666667
+  },
+  {
+    "attempt": 3,
+    "workers": 4,
+    "started_at": "2026-10-15T16:32:03.986674+00:00",
+    "status": "stopped_by_user",
+    "environment": {
+      "python": "3.11.17",
+      "packages": {
+        "ktsim": "1.1.0",
+        "numpy": "2.2.3",
+        "pandas": "2.2.3",
+        "pyarrow": "19.0.1",
+        "scipy": "1.15.2",
+        "statsmodels": "0.14.4",
+        "linearmodels": "6.1",
+        "lightgbm": "4.6.0",
+        "doubleml": "0.9.3",
+        "scikit-learn": "1.5.2",
+        "PyYAML": "6.0.2",
+        "joblib": "1.4.2",
+        "matplotlib": "3.10.1"
+      },
+      "cpu": "arm",
+      "cores": 10,
+      "ram_gib": 16.0
+    },
+    "checkout_commit": "743abf2328c2e5a8722d5b2059ee27fe0976f8ec",
+    "scientific_commit": "8f04ebb0cc3cc33e554dce5c93d9b6acfbefe588",
+    "launcher_sha256": "fa4d794b988aefb8e14f02215529502624f7a74d087e4a8c5cb54cd86d4d8fb8",
+    "budget_worker_hours": 150.0,
+    "remaining_wall_seconds": 105070,
+    "authorization": "Author requested local continuation in VS Code",
+    "finished_at": "2026-10-15T16:54:00.316366+00:00",
+    "exit_code": 130,
+    "worker_hours_upper_bound": 1.4625716357411127
+  }
+]

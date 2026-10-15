@@ -1,0 +1,4210 @@
+{
+  "commit": "8f04ebb0cc3cc33e554dce5c93d9b6acfbefe588",
+  "dirty": false,
+  "synthetic": false,
+  "master_seed": 20261013,
+  "protocol_version": "1.1",
+  "spec_version": "1.1",
+  "stage": "diagnostic",
+  "seed_child_index": 1,
+  "cells": [
+    {
+      "name": "sna:low:neg:phi=0",
+      "eta": -0.8,
+      "kappa": -0.05,
+      "phi": 0.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "sna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "sna:low:neg:phi=0.5",
+      "eta": -0.8,
+      "kappa": -0.05,
+      "phi": 0.5,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "sna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "sna:low:neg:phi=1",
+      "eta": -0.8,
+      "kappa": -0.05,
+      "phi": 1.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "sna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "sna:low:none:phi=0",
+      "eta": -0.8,
+      "kappa": 0.0,
+      "phi": 0.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "sna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "sna:low:none:phi=0.5",
+      "eta": -0.8,
+      "kappa": 0.0,
+      "phi": 0.5,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "sna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "sna:low:none:phi=1",
+      "eta": -0.8,
+      "kappa": 0.0,
+      "phi": 1.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "sna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "sna:low:pos:phi=0",
+      "eta": -0.8,
+      "kappa": 0.05,
+      "phi": 0.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "sna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "sna:low:pos:phi=0.5",
+      "eta": -0.8,
+      "kappa": 0.05,
+      "phi": 0.5,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "sna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "sna:low:pos:phi=1",
+      "eta": -0.8,
+      "kappa": 0.05,
+      "phi": 1.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "sna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "sna:med:neg:phi=0",
+      "eta": -1.06,
+      "kappa": -0.05,
+      "phi": 0.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "sna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "sna:med:neg:phi=0.5",
+      "eta": -1.06,
+      "kappa": -0.05,
+      "phi": 0.5,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "sna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "sna:med:neg:phi=1",
+      "eta": -1.06,
+      "kappa": -0.05,
+      "phi": 1.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "sna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "sna:med:none:phi=0",
+      "eta": -1.06,
+      "kappa": 0.0,
+      "phi": 0.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "sna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "sna:med:none:phi=0.5",
+      "eta": -1.06,
+      "kappa": 0.0,
+      "phi": 0.5,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "sna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "sna:med:none:phi=1",
+      "eta": -1.06,
+      "kappa": 0.0,
+      "phi": 1.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "sna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "sna:med:pos:phi=0",
+      "eta": -1.06,
+      "kappa": 0.05,
+      "phi": 0.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "sna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "sna:med:pos:phi=0.5",
+      "eta": -1.06,
+      "kappa": 0.05,
+      "phi": 0.5,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "sna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "sna:med:pos:phi=0.5:base-extra",
+      "eta": -1.06,
+      "kappa": 0.05,
+      "phi": 0.5,
+      "delta": 0.03,
+      "reps": 5,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 1,
+      "environment": "sna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "sna:med:pos:phi=1",
+      "eta": -1.06,
+      "kappa": 0.05,
+      "phi": 1.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "sna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "sna:high:neg:phi=0",
+      "eta": -2.5,
+      "kappa": -0.05,
+      "phi": 0.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "sna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "sna:high:neg:phi=0.5",
+      "eta": -2.5,
+      "kappa": -0.05,
+      "phi": 0.5,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "sna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "sna:high:neg:phi=1",
+      "eta": -2.5,
+      "kappa": -0.05,
+      "phi": 1.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "sna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "sna:high:none:phi=0",
+      "eta": -2.5,
+      "kappa": 0.0,
+      "phi": 0.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "sna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "sna:high:none:phi=0.5",
+      "eta": -2.5,
+      "kappa": 0.0,
+      "phi": 0.5,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "sna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "sna:high:none:phi=1",
+      "eta": -2.5,
+      "kappa": 0.0,
+      "phi": 1.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "sna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "sna:high:pos:phi=0",
+      "eta": -2.5,
+      "kappa": 0.05,
+      "phi": 0.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "sna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "sna:high:pos:phi=0.5",
+      "eta": -2.5,
+      "kappa": 0.05,
+      "phi": 0.5,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "sna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "sna:high:pos:phi=1",
+      "eta": -2.5,
+      "kappa": 0.05,
+      "phi": 1.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "sna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tna:low:neg:phi=0",
+      "eta": -0.8,
+      "kappa": -0.05,
+      "phi": 0.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tna:low:neg:phi=0.5",
+      "eta": -0.8,
+      "kappa": -0.05,
+      "phi": 0.5,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tna:low:neg:phi=1",
+      "eta": -0.8,
+      "kappa": -0.05,
+      "phi": 1.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tna:low:none:phi=0",
+      "eta": -0.8,
+      "kappa": 0.0,
+      "phi": 0.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tna:low:none:phi=0.5",
+      "eta": -0.8,
+      "kappa": 0.0,
+      "phi": 0.5,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tna:low:none:phi=1",
+      "eta": -0.8,
+      "kappa": 0.0,
+      "phi": 1.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tna:low:pos:phi=0",
+      "eta": -0.8,
+      "kappa": 0.05,
+      "phi": 0.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tna:low:pos:phi=0.5",
+      "eta": -0.8,
+      "kappa": 0.05,
+      "phi": 0.5,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tna:low:pos:phi=1",
+      "eta": -0.8,
+      "kappa": 0.05,
+      "phi": 1.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tna:med:neg:phi=0",
+      "eta": -1.06,
+      "kappa": -0.05,
+      "phi": 0.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tna:med:neg:phi=0.5",
+      "eta": -1.06,
+      "kappa": -0.05,
+      "phi": 0.5,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tna:med:neg:phi=1",
+      "eta": -1.06,
+      "kappa": -0.05,
+      "phi": 1.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tna:med:none:phi=0",
+      "eta": -1.06,
+      "kappa": 0.0,
+      "phi": 0.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tna:med:none:phi=0.5",
+      "eta": -1.06,
+      "kappa": 0.0,
+      "phi": 0.5,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tna:med:none:phi=1",
+      "eta": -1.06,
+      "kappa": 0.0,
+      "phi": 1.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tna:med:pos:phi=0",
+      "eta": -1.06,
+      "kappa": 0.05,
+      "phi": 0.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tna:med:pos:phi=0.5",
+      "eta": -1.06,
+      "kappa": 0.05,
+      "phi": 0.5,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tna:med:pos:phi=0.5:base-extra",
+      "eta": -1.06,
+      "kappa": 0.05,
+      "phi": 0.5,
+      "delta": 0.03,
+      "reps": 5,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 1,
+      "environment": "tna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tna:med:pos:phi=1",
+      "eta": -1.06,
+      "kappa": 0.05,
+      "phi": 1.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tna:high:neg:phi=0",
+      "eta": -2.5,
+      "kappa": -0.05,
+      "phi": 0.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tna:high:neg:phi=0.5",
+      "eta": -2.5,
+      "kappa": -0.05,
+      "phi": 0.5,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tna:high:neg:phi=1",
+      "eta": -2.5,
+      "kappa": -0.05,
+      "phi": 1.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tna:high:none:phi=0",
+      "eta": -2.5,
+      "kappa": 0.0,
+      "phi": 0.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tna:high:none:phi=0.5",
+      "eta": -2.5,
+      "kappa": 0.0,
+      "phi": 0.5,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tna:high:none:phi=1",
+      "eta": -2.5,
+      "kappa": 0.0,
+      "phi": 1.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tna:high:pos:phi=0",
+      "eta": -2.5,
+      "kappa": 0.05,
+      "phi": 0.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tna:high:pos:phi=0.5",
+      "eta": -2.5,
+      "kappa": 0.05,
+      "phi": 0.5,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tna:high:pos:phi=1",
+      "eta": -2.5,
+      "kappa": 0.05,
+      "phi": 1.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tna",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tti:low:neg:phi=0",
+      "eta": -0.8,
+      "kappa": -0.05,
+      "phi": 0.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tti",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tti:low:neg:phi=0.5",
+      "eta": -0.8,
+      "kappa": -0.05,
+      "phi": 0.5,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tti",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tti:low:neg:phi=1",
+      "eta": -0.8,
+      "kappa": -0.05,
+      "phi": 1.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tti",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tti:low:none:phi=0",
+      "eta": -0.8,
+      "kappa": 0.0,
+      "phi": 0.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tti",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tti:low:none:phi=0.5",
+      "eta": -0.8,
+      "kappa": 0.0,
+      "phi": 0.5,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tti",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tti:low:none:phi=1",
+      "eta": -0.8,
+      "kappa": 0.0,
+      "phi": 1.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tti",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tti:low:pos:phi=0",
+      "eta": -0.8,
+      "kappa": 0.05,
+      "phi": 0.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tti",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tti:low:pos:phi=0.5",
+      "eta": -0.8,
+      "kappa": 0.05,
+      "phi": 0.5,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tti",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tti:low:pos:phi=1",
+      "eta": -0.8,
+      "kappa": 0.05,
+      "phi": 1.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tti",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tti:med:neg:phi=0",
+      "eta": -1.06,
+      "kappa": -0.05,
+      "phi": 0.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tti",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tti:med:neg:phi=0.5",
+      "eta": -1.06,
+      "kappa": -0.05,
+      "phi": 0.5,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tti",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tti:med:neg:phi=1",
+      "eta": -1.06,
+      "kappa": -0.05,
+      "phi": 1.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tti",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tti:med:none:phi=0",
+      "eta": -1.06,
+      "kappa": 0.0,
+      "phi": 0.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tti",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tti:med:none:phi=0.5",
+      "eta": -1.06,
+      "kappa": 0.0,
+      "phi": 0.5,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tti",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tti:med:none:phi=1",
+      "eta": -1.06,
+      "kappa": 0.0,
+      "phi": 1.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tti",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tti:med:pos:phi=0",
+      "eta": -1.06,
+      "kappa": 0.05,
+      "phi": 0.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tti",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tti:med:pos:phi=0.5",
+      "eta": -1.06,
+      "kappa": 0.05,
+      "phi": 0.5,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tti",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tti:med:pos:phi=0.5:base-extra",
+      "eta": -1.06,
+      "kappa": 0.05,
+      "phi": 0.5,
+      "delta": 0.03,
+      "reps": 5,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 1,
+      "environment": "tti",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tti:med:pos:phi=1",
+      "eta": -1.06,
+      "kappa": 0.05,
+      "phi": 1.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tti",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tti:high:neg:phi=0",
+      "eta": -2.5,
+      "kappa": -0.05,
+      "phi": 0.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tti",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tti:high:neg:phi=0.5",
+      "eta": -2.5,
+      "kappa": -0.05,
+      "phi": 0.5,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tti",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tti:high:neg:phi=1",
+      "eta": -2.5,
+      "kappa": -0.05,
+      "phi": 1.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tti",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tti:high:none:phi=0",
+      "eta": -2.5,
+      "kappa": 0.0,
+      "phi": 0.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tti",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tti:high:none:phi=0.5",
+      "eta": -2.5,
+      "kappa": 0.0,
+      "phi": 0.5,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tti",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tti:high:none:phi=1",
+      "eta": -2.5,
+      "kappa": 0.0,
+      "phi": 1.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tti",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tti:high:pos:phi=0",
+      "eta": -2.5,
+      "kappa": 0.05,
+      "phi": 0.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tti",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tti:high:pos:phi=0.5",
+      "eta": -2.5,
+      "kappa": 0.05,
+      "phi": 0.5,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tti",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    },
+    {
+      "name": "tti:high:pos:phi=1",
+      "eta": -2.5,
+      "kappa": 0.05,
+      "phi": 1.0,
+      "delta": 0.03,
+      "reps": 1,
+      "estimators": [
+        "M1",
+        "M2",
+        "M3",
+        "M4_plr",
+        "M4_pliv"
+      ],
+      "policies": [
+        "greedy",
+        "greedy_rps"
+      ],
+      "pass_through": 0.2,
+      "multiplier": 1.5,
+      "rho_m": 0.0,
+      "data_only": false,
+      "seed_offset": 0,
+      "environment": "tti",
+      "sales_process": null,
+      "cost_structure": null,
+      "shock_split": null
+    }
+  ],
+  "dgm": {
+    "feasible_band": {
+      "lower": 0.8,
+      "upper": 1.2
+    },
+    "ladder_step": 0.05,
+    "cross_price_coef": 0.2,
+    "comp_index": {
+      "rho": 0.8
+    },
+    "cost_shifter": {
+      "structure": "iid_store_week",
+      "rho": 0.8,
+      "sd": 0.05
+    },
+    "zone_drift": {
+      "rho": 0.9
+    },
+    "kappa_levels": {
+      "none": 0.0,
+      "pos": 0.05,
+      "neg": -0.05
+    },
+    "exploration": {
+      "delta": 0.03,
+      "decay_power": -0.25
+    },
+    "censoring": {
+      "multiplier": 1.5
+    },
+    "history_weeks": 52,
+    "cycles": 104,
+    "rho_m": 0.0,
+    "rho_xi": 0.5,
+    "xi_share": 0.5,
+    "shock_split": "design",
+    "sales_process": "latent",
+    "reliability": {
+      "tau": 0.02,
+      "window": 26
+    },
+    "eta_levels": {
+      "low": -0.8,
+      "med": -1.06,
+      "high": -2.5
+    },
+    "phi_levels": [
+      0.0,
+      0.5,
+      1.0
+    ],
+    "store_zones": {
+      "2": 1,
+      "5": 2,
+      "8": 5,
+      "9": 2,
+      "12": 7,
+      "14": 1,
+      "18": 5,
+      "21": 6,
+      "28": 2,
+      "32": 1,
+      "33": 7,
+      "40": 6,
+      "47": 2,
+      "48": 2,
+      "51": 3,
+      "52": 1,
+      "53": 7,
+      "54": 2,
+      "56": 2,
+      "59": 6,
+      "62": 1,
+      "68": 1,
+      "70": 6,
+      "72": 1,
+      "73": 5,
+      "74": 2,
+      "75": 7,
+      "76": 2,
+      "77": 6,
+      "81": 2,
+      "83": 6,
+      "84": 2,
+      "86": 2,
+      "88": 2,
+      "89": 2,
+      "90": 10,
+      "91": 2,
+      "92": 2,
+      "93": 1,
+      "94": 5,
+      "95": 1,
+      "98": 12,
+      "100": 11,
+      "101": 12,
+      "103": 15,
+      "104": 8,
+      "106": 8,
+      "107": 2,
+      "109": 7,
+      "110": 2,
+      "111": 1,
+      "112": 14,
+      "113": 2,
+      "114": 12,
+      "115": 12,
+      "116": 2,
+      "117": 2,
+      "119": 2,
+      "121": 12,
+      "123": 1,
+      "124": 1,
+      "126": 12,
+      "128": 11,
+      "129": 12,
+      "130": 1,
+      "132": 15,
+      "137": 1,
+      "45": 2
+    }
+  },
+  "estimators": {
+    "M1_ols": {
+      "robust_se": "HC1"
+    },
+    "M2_gbm": {
+      "n_estimators": 500,
+      "learning_rate": 0.05,
+      "num_leaves": 31,
+      "min_child_samples": 20,
+      "fd_step": 0.01,
+      "fd_window_weeks": 4
+    },
+    "M3_iv": {
+      "instrument": "cost_shifter"
+    },
+    "M4_dml": {
+      "n_folds": 5,
+      "instrument": "cost_shifter",
+      "nuisance_params": {
+        "n_estimators": 500,
+        "learning_rate": 0.05,
+        "num_leaves": 31,
+        "min_child_samples": 20
+      },
+      "inference_validated": false
+    }
+  },
+  "calibration": {
+    "sna": {
+      "alpha_s": {
+        "2": 3.0320713147331184,
+        "5": 3.518900782734009,
+        "8": 3.986021465597515,
+        "9": 2.9553579985525755,
+        "12": 3.3708086673534936,
+        "14": 3.1657509473055154,
+        "18": 3.470280421539123,
+        "21": 3.2859778678003204,
+        "28": 2.8106031769240554,
+        "32": 3.5159975064301006,
+        "33": 2.8645955346561403,
+        "40": 3.422475010770531,
+        "47": 3.1446579151766465,
+        "48": 2.8512503649550593,
+        "51": 3.365952805670103,
+        "52": 3.0043875420992685,
+        "53": 2.433096240972744,
+        "54": 3.243565972119914,
+        "56": 3.248446522285747,
+        "59": 3.4927701919925656,
+        "62": 3.1517245714534203,
+        "68": 3.2670115745332984,
+        "70": 3.867664857314115,
+        "72": 2.801550312184902,
+        "73": 4.170542834696419,
+        "74": 3.387173851446483,
+        "75": 3.2600786855069153,
+        "76": 3.529936233116574,
+        "77": 3.4289513404270657,
+        "81": 3.4532479031494385,
+        "83": 3.966658216975501,
+        "84": 3.508070114598713,
+        "86": 3.4548431202874115,
+        "88": 3.2684302735943693,
+        "89": 3.142411781440353,
+        "90": 3.2276268006674087,
+        "91": 3.3101100223192956,
+        "92": 3.4072287394772984,
+        "93": 3.497887032886907,
+        "94": 3.2825277034504845,
+        "95": 3.1907278843436178,
+        "98": 3.7176993456456193,
+        "100": 4.044142566917702,
+        "101": 3.426217396985602,
+        "103": 3.5493147608500992,
+        "104": 3.341811485136655,
+        "106": 3.1088076631969073,
+        "107": 3.572145811880544,
+        "109": 3.414118886083775,
+        "110": 3.422242038264875,
+        "111": 4.150503826087428,
+        "112": 3.346303237581693,
+        "113": 3.471502279570021,
+        "114": 4.005393624608806,
+        "115": 3.5150324922185723,
+        "116": 3.1549490768431627,
+        "117": 3.001200129077116,
+        "119": 3.0355467659210515,
+        "121": 3.687061119556177,
+        "123": 3.47527058169951,
+        "124": 4.024893310855658,
+        "126": 3.6926097276371026,
+        "128": 3.851412442249762,
+        "129": 3.4823351245675758,
+        "130": 4.162829185908085,
+        "132": 4.120688597872984,
+        "137": 3.8138625358038754
+      },
+      "season": {
+        "g": [
+          0.14578959893309182,
+          -0.02040594188690882
+        ],
+        "h": [
+          -0.10044221047624545,
+          -0.10173603192456328
+        ]
+      },
+      "holiday": {
+        "easter": 0.3850960197503433,
+        "lent": 0.06347372299710942,
+        "halloween": -0.13533536683240158,
+        "thanksgiving": -0.0687233835210477,
+        "christmas": 0.5396713238824027,
+        "new_year": 0.39163028239242564,
+        "presidents_day": -0.0686328824874195,
+        "memorial_day": -0.06382618635010853,
+        "4th_of_july": -0.04766021598838804,
+        "labor_day": 0.08585926936107618
+      },
+      "promo_effect": 0.23073420980204132,
+      "rho_xi": 0.6129165448857569,
+      "sigma_xi2": 0.13116636551551308,
+      "sigma_eps2": 0.08512619642521638,
+      "p_bar": 2.6942881701515216,
+      "mu_z": {
+        "1": 1.0380333653040554,
+        "2": 1.0378937647597621,
+        "3": 1.0342262691704558,
+        "5": 1.0362309060122192,
+        "6": 1.043425988015041,
+        "7": 1.0416807468573686,
+        "8": 1.033962424407673,
+        "10": 1.0420878137741667,
+        "11": 1.0255432482436224,
+        "12": 1.0328673000669077,
+        "14": 1.0274957987134858,
+        "15": 1.0252283412290732
+      },
+      "sigma_nu2": 0.006101340273500427,
+      "pi_promo": 0.34126254347739177,
+      "promo_depth": {
+        "mean": 0.13012049453024782,
+        "sd": 0.0899953944115278
+      },
+      "sigma_comp": 0.08362121366636188,
+      "unit_cost": 2.019213255986887,
+      "price_dispersion": {
+        "sd_log_price": 0.11938809730060614,
+        "n_distinct": 128,
+        "profit_mean": 24.29354935433574,
+        "resid_sd": 0.46507264157411954
+      },
+      "beta_reference": -2.945603607800617,
+      "n_stores": 67,
+      "n_store_weeks": 25013,
+      "zero_share": 0.0,
+      "focal_upc": 4400000028,
+      "weeks": [
+        1,
+        399
+      ],
+      "diagnostics": {
+        "resid_var": 0.21629256194072946,
+        "autocov_lag1": 0.08039403555699057,
+        "autocov_lag2": 0.04927483450301334,
+        "empirical_rho_xi": 0.6129165448857569,
+        "empirical_sigma_xi2": 0.13116636551551308,
+        "empirical_sigma_eps2": 0.08512619642521638,
+        "beta_reference_review": "pending: units, log base, promotion coding, and competing-index construction",
+        "previous_beta_reference": -3.159570873246531,
+        "previous_p_bar": 2.89
+      }
+    },
+    "tna": {
+      "alpha_s": {
+        "2": 4.0452299370530005,
+        "5": 4.323671796955745,
+        "8": 4.26934922918847,
+        "9": 3.6557240101082957,
+        "12": 4.746906171559082,
+        "14": 3.8548107638616784,
+        "18": 4.214875483275525,
+        "21": 3.7848022722885504,
+        "28": 3.5470083232322516,
+        "32": 4.551382253682691,
+        "33": 4.907818407345072,
+        "40": 3.8259563890614237,
+        "45": 3.7746637429672387,
+        "47": 4.074008996727999,
+        "48": 3.936432968795752,
+        "51": 4.023591530427449,
+        "52": 4.105477968629821,
+        "53": 3.871691123594354,
+        "54": 3.985209255134737,
+        "56": 3.963054050846623,
+        "59": 3.6341633707798637,
+        "62": 4.29426792002888,
+        "68": 4.223093149455864,
+        "70": 3.916087208330083,
+        "72": 3.879603912534037,
+        "73": 4.440356572222685,
+        "74": 4.3436972755857655,
+        "75": 4.242204479471925,
+        "76": 3.9859327676613687,
+        "77": 3.6442373014389076,
+        "81": 4.196671668042659,
+        "83": 4.0519780649454225,
+        "84": 3.9194493739564256,
+        "86": 4.360078840502273,
+        "88": 4.0991704631058665,
+        "89": 3.947281326598964,
+        "90": 3.860354637728473,
+        "91": 3.9988300366342178,
+        "92": 3.95867553234282,
+        "93": 4.765216910387944,
+        "94": 3.974808807411412,
+        "95": 4.095077787250484,
+        "98": 3.9342939468594533,
+        "100": 4.561740584111256,
+        "101": 4.192355119065143,
+        "103": 3.8642133521741786,
+        "104": 4.111861228587422,
+        "106": 3.347128725193371,
+        "107": 4.169502545713642,
+        "109": 4.634528059473366,
+        "110": 3.9654789633834455,
+        "111": 4.153069351312509,
+        "112": 4.187141079853269,
+        "113": 4.101885909167456,
+        "114": 4.22621551092202,
+        "115": 4.209611985088818,
+        "116": 4.167260420033636,
+        "117": 3.7128924652693653,
+        "119": 3.8224574205155775,
+        "121": 4.030225132049584,
+        "123": 4.44732858681861,
+        "124": 4.7408824382483,
+        "126": 4.3551937030593075,
+        "128": 4.978890199079701,
+        "129": 4.040707089146908,
+        "130": 4.562273400263806,
+        "132": 4.189558414225577
+      },
+      "season": {
+        "g": [
+          0.04941712862111369,
+          -0.02755999949357289
+        ],
+        "h": [
+          -0.17700252862668583,
+          0.04819514719030036
+        ]
+      },
+      "holiday": {
+        "easter": -0.22784766353992203,
+        "lent": -0.36522102813015805,
+        "halloween": -0.08667964717295454,
+        "thanksgiving": -0.1367595276725686,
+        "christmas": -0.38729385482699935,
+        "new_year": 0.36428413726248665,
+        "presidents_day": 0.18081787204086344,
+        "memorial_day": -0.020469155267170122,
+        "4th_of_july": -0.08317670835641305,
+        "labor_day": -0.0451210006582437
+      },
+      "promo_effect": 0.0638811224563467,
+      "rho_xi": 0.6882304131216641,
+      "sigma_xi2": 0.2636239150778094,
+      "sigma_eps2": 0.3044800328315848,
+      "p_bar": 0.7931355646520587,
+      "mu_z": {
+        "1": -0.13599625907227159,
+        "2": -0.20875097520457206,
+        "3": -0.1965029104060792,
+        "5": -0.2956571906116921,
+        "6": -0.3523985339675441,
+        "7": -0.12504261547725348,
+        "8": -0.20672885241480582,
+        "10": -0.14623495904875047,
+        "11": -0.13315956086252828,
+        "12": -0.21612391854749904,
+        "14": -0.259817437008634,
+        "15": -0.32141871057845744
+      },
+      "sigma_nu2": 0.021394092599476843,
+      "pi_promo": 0.23809294485913798,
+      "promo_depth": {
+        "mean": 0.1767249142503761,
+        "sd": 0.10193791188278253
+      },
+      "sigma_comp": 0.038534735516487784,
+      "unit_cost": 0.5523680577895497,
+      "price_dispersion": {
+        "sd_log_price": 0.17743001368620565,
+        "n_distinct": 67,
+        "profit_mean": 28.77458704550927,
+        "resid_sd": 0.7537267063793045
+      },
+      "beta_reference": -4.434526692233034,
+      "n_stores": 67,
+      "n_store_weeks": 20765,
+      "zero_share": 0.0,
+      "focal_upc": 8660000033,
+      "weeks": [
+        1,
+        331
+      ],
+      "diagnostics": {
+        "resid_var": 0.5681039479093942,
+        "empirical_rho_xi": 0.6882304131216641,
+        "empirical_sigma_xi2": 0.2636239150778094,
+        "empirical_sigma_eps2": 0.3044800328315848,
+        "autocovariances": [
+          0.5681039479093942,
+          0.18143399598275128,
+          0.12486839400952326
+        ],
+        "elasticity_review": "Code audit: natural log; unit price=price/qty; nonblank sale is promotion; competitor index is equal-weighted centered log unit price over eligible competing UPCs. External units/bundle interpretation remains pending; see docs/issues/elasticity-benchmark.md.",
+        "beta_reference_v1_0": -4.434526692233034,
+        "calibration_window": [
+          1,
+          341
+        ]
+      }
+    },
+    "tti": {
+      "alpha_s": {
+        "2": 5.545426783147822,
+        "5": 5.612687695751423,
+        "8": 6.189649731324808,
+        "9": 5.08716003505688,
+        "12": 6.096724375614927,
+        "14": 5.423496434428868,
+        "18": 6.186136359140378,
+        "21": 5.065412269498024,
+        "28": 5.104613546257509,
+        "32": 5.988293481562411,
+        "33": 5.52037183454022,
+        "40": 5.456999177004155,
+        "47": 5.177913853136115,
+        "48": 4.506086557274051,
+        "51": 5.41683725004874,
+        "52": 5.103638268870996,
+        "53": 5.286603545444155,
+        "54": 4.720483094278727,
+        "56": 5.218104022393586,
+        "59": 5.149779107439999,
+        "62": 5.370875283567988,
+        "68": 5.678477602394036,
+        "70": 5.716499049587973,
+        "72": 5.192440447337312,
+        "73": 6.288887487714096,
+        "74": 6.018720057288917,
+        "75": 5.817008291388027,
+        "76": 5.909923676148005,
+        "77": 4.7412769064489035,
+        "81": 5.582375553555267,
+        "83": 5.643732949669281,
+        "84": 5.47199636856468,
+        "86": 5.905203462283135,
+        "88": 5.258053369910898,
+        "89": 5.738458337188655,
+        "90": 5.6855550380493804,
+        "91": 5.68435888945399,
+        "92": 5.240951685726122,
+        "93": 5.814273580578588,
+        "94": 4.969005211338306,
+        "95": 5.81166416884795,
+        "98": 6.101622710569442,
+        "100": 6.237647103135985,
+        "101": 5.723023475476128,
+        "103": 5.038771553449857,
+        "104": 5.223321569652553,
+        "106": 4.908033888066393,
+        "107": 5.844432432843979,
+        "109": 5.58962796195753,
+        "110": 5.213547969613713,
+        "111": 6.249748815640684,
+        "112": 5.1358015902636724,
+        "113": 5.8662274089171325,
+        "114": 5.864797751437171,
+        "115": 4.974385206251512,
+        "116": 5.404615113474898,
+        "117": 4.77791329344498,
+        "119": 4.828464228672802,
+        "121": 5.43943595203434,
+        "123": 5.907369245569913,
+        "124": 6.290226847121759,
+        "126": 5.498332562633509,
+        "128": 6.215919641693526,
+        "129": 5.338421676942967,
+        "130": 6.37414317537629,
+        "132": 5.68441443502598,
+        "137": 6.113953844632948
+      },
+      "season": {
+        "g": [
+          0.013475701143403414,
+          0.03450628141391348
+        ],
+        "h": [
+          -0.053120403537780976,
+          0.010129167093206614
+        ]
+      },
+      "holiday": {
+        "easter": -0.10857177515346486,
+        "lent": -0.04076579096570541,
+        "halloween": -0.12543125237293418,
+        "thanksgiving": -0.23417916901637534,
+        "christmas": -0.2395885099083779,
+        "new_year": -0.0940544369285295,
+        "presidents_day": 0.047407498516359094,
+        "memorial_day": -0.013003275067396125,
+        "4th_of_july": -0.09850195054489151,
+        "labor_day": -0.14179994217973438
+      },
+      "promo_effect": 0.2639063319418681,
+      "rho_xi": 0.6611669644985685,
+      "sigma_xi2": 0.060962380834567446,
+      "sigma_eps2": 0.19344551415771766,
+      "p_bar": 0.5714305254568318,
+      "mu_z": {
+        "1": -0.5010455109498138,
+        "2": -0.5477512701045039,
+        "3": -0.5243609079623418,
+        "5": -0.5841221125865742,
+        "6": -0.6189434959091444,
+        "7": -0.4944470437380839,
+        "8": -0.5439021381053495,
+        "10": -0.5004991566730517,
+        "11": -0.5063485912874243,
+        "12": -0.547801324762341,
+        "14": -0.5645282153630624,
+        "15": -0.6050392885674261
+      },
+      "sigma_nu2": 0.010024454139600958,
+      "pi_promo": 0.23894373545228348,
+      "promo_depth": {
+        "mean": 0.11025512944260955,
+        "sd": 0.08807112886886119
+      },
+      "sigma_comp": 0.06643584487692808,
+      "unit_cost": 0.5094632200852129,
+      "price_dispersion": {
+        "sd_log_price": 0.1215721241470766,
+        "n_distinct": 48,
+        "profit_mean": 10.248270326671483,
+        "resid_sd": 0.5043886348762084
+      },
+      "beta_reference": -3.8578167610971525,
+      "n_stores": 67,
+      "n_store_weeks": 24918,
+      "zero_share": 0.0,
+      "focal_upc": 5400041500,
+      "weeks": [
+        1,
+        399
+      ],
+      "diagnostics": {
+        "resid_var": 0.2544078949922851,
+        "autocov_lag1": 0.04030631228499667,
+        "autocov_lag2": 0.026649202143602606,
+        "empirical_rho_xi": 0.6611669644985685,
+        "empirical_sigma_xi2": 0.060962380834567446,
+        "empirical_sigma_eps2": 0.19344551415771766,
+        "beta_reference_review": "pending: units, log base, promotion coding, and competing-index construction",
+        "previous_beta_reference": -3.84815906022416,
+        "previous_p_bar": 0.57
+      }
+    }
+  },
+  "calibration_ids": {
+    "sna": "218395d11ad4d811bc75ab6668b57589674949579488ee0b7b19babad8b56e83",
+    "tna": "61a162e72e83b8823c3aaa58c7951fabd151edbc4586465e06800f88ef296b37",
+    "tti": "84e46155b515944376d970b6cbe0080e9b4ad319288e06781548a445f5322d64"
+  },
+  "scenario_file_sha256": "defb89b7f16aa6d72336cba3ebeb40d4b9ffd50acff3323c818bbffc1a5d20c3",
+  "figures": [],
+  "checksums": {
+    "data/calibration/stores_sna.csv": "964fc9e7bfbc05a55dbeaaa5762d3556d8939f8584e051dd5fb8ccb09777972f",
+    "data/calibration/calibration_sna.json": "218395d11ad4d811bc75ab6668b57589674949579488ee0b7b19babad8b56e83",
+    "data/calibration/stores_tna.csv": "fba763bf739092ae58aa157940c1bbfec82154b2d6009f20c8662e9c573cb947",
+    "data/calibration/coverage_audit_tna_window.json": "57c916397b1506b6ce931fd5916347320d411489fa3a154e20150c4eb6453fd8",
+    "data/calibration/calibration_tna.json": "61a162e72e83b8823c3aaa58c7951fabd151edbc4586465e06800f88ef296b37",
+    "data/calibration/stores_tti.csv": "964fc9e7bfbc05a55dbeaaa5762d3556d8939f8584e051dd5fb8ccb09777972f",
+    "data/calibration/calibration_tti.json": "84e46155b515944376d970b6cbe0080e9b4ad319288e06781548a445f5322d64",
+    "data/fixtures/week_decode.csv": "d7def12e3b0e629ef177e82457eff64ef60fc15c8f253018ea4729756e17ee73",
+    "data/wsna.zip": "9a1d3f078efa12625ef9b4b3c9d4482aa643634a7740d83d0a8f56222a1d5be6",
+    "data/upcsna.csv": "5ce04b56bfd5c9c71d7e3e0f799acc4fcd7253326ae3c8443bd307e0b9518f12",
+    "data/wtna.zip": "c4dcd8e9c4928b822307e37e1b756fdacc7b2a0a026033e35c1ebc3d5b0d5885",
+    "data/upctna.csv": "316d269f56d48880f1a430865b18d1225bb9ff2846c593b3e7e0428117f2cc07",
+    "data/wtti.zip": "6dd3b03925a2ee3e3e1831da127a0240ee0e00ecb0f118e2578d2f629d2c0b95",
+    "data/upctti.csv": "944a03a81ee106f89f11f272bf05e78393a1cc294ea28918db53c0f7f1d31e43",
+    "data/raw/stores.csv": "07fbd8ff19673e83f81aea4e29cae7167be3b262a9f50ae3ac73def4833b89ce"
+  },
+  "calibration_checks": [
+    {
+      "category": "sna",
+      "name": "retained_stores_min",
+      "value": 67.0,
+      "passed": true,
+      "expected": 40,
+      "status": "pass"
+    },
+    {
+      "category": "sna",
+      "name": "promo_freq",
+      "value": 0.34126254347739177,
+      "passed": true,
+      "expected": [
+        0.05,
+        0.4
+      ],
+      "status": "pass"
+    },
+    {
+      "category": "sna",
+      "name": "promo_depth",
+      "value": 0.13012049453024782,
+      "passed": true,
+      "expected": [
+        0.05,
+        0.4
+      ],
+      "status": "pass"
+    },
+    {
+      "category": "sna",
+      "name": "resid_sd",
+      "value": 0.46507264157411954,
+      "passed": true,
+      "expected": [
+        0.2,
+        1.0
+      ],
+      "status": "pass"
+    },
+    {
+      "category": "sna",
+      "name": "profit_mean",
+      "value": 24.29354935433574,
+      "passed": true,
+      "expected": [
+        10,
+        45
+      ],
+      "status": "pass"
+    },
+    {
+      "category": "sna",
+      "name": "beta_reference",
+      "value": -2.945603607800617,
+      "passed": false,
+      "expected": [
+        -2.59,
+        -0.79
+      ],
+      "status": "flag"
+    },
+    {
+      "category": "tti",
+      "name": "retained_stores_min",
+      "value": 67.0,
+      "passed": true,
+      "expected": 40,
+      "status": "pass"
+    },
+    {
+      "category": "tti",
+      "name": "promo_freq",
+      "value": 0.23894373545228348,
+      "passed": true,
+      "expected": [
+        0.05,
+        0.4
+      ],
+      "status": "pass"
+    },
+    {
+      "category": "tti",
+      "name": "promo_depth",
+      "value": 0.11025512944260955,
+      "passed": true,
+      "expected": [
+        0.05,
+        0.4
+      ],
+      "status": "pass"
+    },
+    {
+      "category": "tti",
+      "name": "resid_sd",
+      "value": 0.5043886348762084,
+      "passed": true,
+      "expected": [
+        0.2,
+        1.0
+      ],
+      "status": "pass"
+    },
+    {
+      "category": "tti",
+      "name": "profit_mean",
+      "value": 10.248270326671483,
+      "passed": true,
+      "expected": [
+        10,
+        45
+      ],
+      "status": "pass"
+    },
+    {
+      "category": "tti",
+      "name": "beta_reference",
+      "value": -3.8578167610971525,
+      "passed": false,
+      "expected": [
+        -2.59,
+        -0.79
+      ],
+      "status": "flag"
+    }
+  ],
+  "coverage_audits": {
+    "sna": {
+      "week_range": [
+        1,
+        399
+      ],
+      "calendar_span": 399,
+      "equals_399_weeks": true,
+      "retained_stores": 67,
+      "store_ids": [
+        2,
+        5,
+        8,
+        9,
+        12,
+        14,
+        18,
+        21,
+        28,
+        32,
+        33,
+        40,
+        47,
+        48,
+        51,
+        52,
+        53,
+        54,
+        56,
+        59,
+        62,
+        68,
+        70,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        81,
+        83,
+        84,
+        86,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        98,
+        100,
+        101,
+        103,
+        104,
+        106,
+        107,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        119,
+        121,
+        123,
+        124,
+        126,
+        128,
+        129,
+        130,
+        132,
+        137
+      ],
+      "store_coverage_threshold": 0.8,
+      "retained_after_rules": [
+        {
+          "rule": "OK == 1",
+          "stores_before": 93,
+          "stores_after": 93,
+          "rows_after": 5326861
+        },
+        {
+          "rule": "valid price/qty/move",
+          "stores_before": 93,
+          "stores_after": 93,
+          "rows_after": 3487565
+        },
+        {
+          "rule": "known UPC and zoned store",
+          "stores_before": 93,
+          "stores_after": 67,
+          "rows_after": 2783337
+        },
+        {
+          "rule": "store coverage",
+          "stores_before": 67,
+          "stores_after": 67,
+          "rows_after": 2783337
+        }
+      ],
+      "duplicate_rows": 0,
+      "date_alignment": {
+        "week_min": 1,
+        "week_max": 399,
+        "all_weeks_in_calendar": false,
+        "start_date": "1989-09-14 00:00:00",
+        "end_date": "1997-05-01 00:00:00",
+        "date_basis": "week joined to authoritative codebook calendar; movement supplies week IDs, not independent dates"
+      },
+      "top_upcs": [
+        {
+          "upc": 4400000028,
+          "volume": 1148296.0,
+          "rows_present": 25013,
+          "expected_rows": 26733,
+          "coverage": 0.9356600456364793,
+          "missing_store_absent": 938,
+          "missing_upc_absent": 0,
+          "dropped_ok": 570,
+          "dropped_price_qty_move": 212
+        },
+        {
+          "upc": 4400000119,
+          "volume": 763520.0,
+          "rows_present": 24820,
+          "expected_rows": 26733,
+          "coverage": 0.9284405042456888,
+          "missing_store_absent": 938,
+          "missing_upc_absent": 0,
+          "dropped_ok": 570,
+          "dropped_price_qty_move": 405
+        },
+        {
+          "upc": 4400004754,
+          "volume": 715191.0,
+          "rows_present": 14133,
+          "expected_rows": 26733,
+          "coverage": 0.5286724273369993,
+          "missing_store_absent": 938,
+          "missing_upc_absent": 10143,
+          "dropped_ok": 74,
+          "dropped_price_qty_move": 1445
+        },
+        {
+          "upc": 3010067264,
+          "volume": 699798.0,
+          "rows_present": 24958,
+          "expected_rows": 26733,
+          "coverage": 0.9336026633748551,
+          "missing_store_absent": 938,
+          "missing_upc_absent": 0,
+          "dropped_ok": 570,
+          "dropped_price_qty_move": 267
+        },
+        {
+          "upc": 4400000104,
+          "volume": 690623.0,
+          "rows_present": 24941,
+          "expected_rows": 26733,
+          "coverage": 0.9329667452212621,
+          "missing_store_absent": 938,
+          "missing_upc_absent": 0,
+          "dropped_ok": 570,
+          "dropped_price_qty_move": 284
+        },
+        {
+          "upc": 1470001283,
+          "volume": 681005.0,
+          "rows_present": 24923,
+          "expected_rows": 26733,
+          "coverage": 0.9322934201174579,
+          "missing_store_absent": 938,
+          "missing_upc_absent": 0,
+          "dropped_ok": 571,
+          "dropped_price_qty_move": 301
+        },
+        {
+          "upc": 4400000105,
+          "volume": 596376.0,
+          "rows_present": 24667,
+          "expected_rows": 26733,
+          "coverage": 0.9227172408633524,
+          "missing_store_absent": 938,
+          "missing_upc_absent": 0,
+          "dropped_ok": 570,
+          "dropped_price_qty_move": 558
+        },
+        {
+          "upc": 1410007450,
+          "volume": 514861.0,
+          "rows_present": 24913,
+          "expected_rows": 26733,
+          "coverage": 0.9319193506153444,
+          "missing_store_absent": 938,
+          "missing_upc_absent": 0,
+          "dropped_ok": 571,
+          "dropped_price_qty_move": 311
+        },
+        {
+          "upc": 4400000071,
+          "volume": 472792.0,
+          "rows_present": 24784,
+          "expected_rows": 26733,
+          "coverage": 0.9270938540380803,
+          "missing_store_absent": 938,
+          "missing_upc_absent": 0,
+          "dropped_ok": 570,
+          "dropped_price_qty_move": 441
+        },
+        {
+          "upc": 4400000120,
+          "volume": 471958.0,
+          "rows_present": 24548,
+          "expected_rows": 26733,
+          "coverage": 0.9182658137882018,
+          "missing_store_absent": 938,
+          "missing_upc_absent": 0,
+          "dropped_ok": 570,
+          "dropped_price_qty_move": 677
+        }
+      ],
+      "best_coverage": 0.9356600456364793,
+      "threshold": 0.9,
+      "metadata_source": "data/calibration/stores_sna.csv",
+      "metadata_sha256": "964fc9e7bfbc05a55dbeaaa5762d3556d8939f8584e051dd5fb8ccb09777972f",
+      "metadata_scope": "retained-store table",
+      "input_checksums": {
+        "data/wsna.zip": "9a1d3f078efa12625ef9b4b3c9d4482aa643634a7740d83d0a8f56222a1d5be6",
+        "data/upcsna.csv": "5ce04b56bfd5c9c71d7e3e0f799acc4fcd7253326ae3c8443bd307e0b9518f12",
+        "data/calibration/stores_sna.csv": "964fc9e7bfbc05a55dbeaaa5762d3556d8939f8584e051dd5fb8ccb09777972f"
+      }
+    },
+    "tna": {
+      "week_range": [
+        1,
+        399
+      ],
+      "calendar_span": 399,
+      "equals_399_weeks": true,
+      "retained_stores": 66,
+      "store_ids": [
+        2,
+        5,
+        8,
+        9,
+        12,
+        14,
+        18,
+        21,
+        28,
+        32,
+        33,
+        40,
+        47,
+        48,
+        51,
+        52,
+        53,
+        54,
+        56,
+        59,
+        62,
+        68,
+        70,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        81,
+        83,
+        84,
+        86,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        98,
+        100,
+        101,
+        103,
+        104,
+        106,
+        107,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        119,
+        121,
+        123,
+        124,
+        126,
+        128,
+        129,
+        130,
+        132
+      ],
+      "store_coverage_threshold": 0.8,
+      "retained_after_rules": [
+        {
+          "rule": "OK == 1",
+          "stores_before": 93,
+          "stores_after": 93,
+          "rows_after": 3685264
+        },
+        {
+          "rule": "valid price/qty/move",
+          "stores_before": 93,
+          "stores_after": 93,
+          "rows_after": 2382983
+        },
+        {
+          "rule": "known UPC and zoned store",
+          "stores_before": 93,
+          "stores_after": 67,
+          "rows_after": 1904986
+        },
+        {
+          "rule": "store coverage",
+          "stores_before": 67,
+          "stores_after": 66,
+          "rows_after": 1877529
+        }
+      ],
+      "duplicate_rows": 0,
+      "date_alignment": {
+        "week_min": 1,
+        "week_max": 399,
+        "all_weeks_in_calendar": true,
+        "start_date": "1989-09-14 00:00:00",
+        "end_date": "1997-05-01 00:00:00",
+        "date_basis": "week joined to authoritative codebook calendar; movement supplies week IDs, not independent dates"
+      },
+      "top_upcs": [
+        {
+          "upc": 8000000245,
+          "volume": 4256504.0,
+          "rows_present": 21600,
+          "expected_rows": 26334,
+          "coverage": 0.8202323991797676,
+          "missing_store_absent": 1584,
+          "missing_upc_absent": 2332,
+          "dropped_ok": 509,
+          "dropped_price_qty_move": 309
+        },
+        {
+          "upc": 8660000033,
+          "volume": 2926066.0,
+          "rows_present": 21853,
+          "expected_rows": 26334,
+          "coverage": 0.8298397508923825,
+          "missing_store_absent": 1584,
+          "missing_upc_absent": 2332,
+          "dropped_ok": 510,
+          "dropped_price_qty_move": 55
+        },
+        {
+          "upc": 4800000024,
+          "volume": 2733247.0,
+          "rows_present": 17549,
+          "expected_rows": 26334,
+          "coverage": 0.6664008506113769,
+          "missing_store_absent": 1584,
+          "missing_upc_absent": 6292,
+          "dropped_ok": 184,
+          "dropped_price_qty_move": 725
+        },
+        {
+          "upc": 8000000280,
+          "volume": 1311557.0,
+          "rows_present": 21439,
+          "expected_rows": 26334,
+          "coverage": 0.8141186299081036,
+          "missing_store_absent": 1584,
+          "missing_upc_absent": 2332,
+          "dropped_ok": 509,
+          "dropped_price_qty_move": 470
+        },
+        {
+          "upc": 3828105003,
+          "volume": 1005125.0,
+          "rows_present": 11590,
+          "expected_rows": 26334,
+          "coverage": 0.4401154401154401,
+          "missing_store_absent": 1584,
+          "missing_upc_absent": 7980,
+          "dropped_ok": 185,
+          "dropped_price_qty_move": 4995
+        },
+        {
+          "upc": 8660000037,
+          "volume": 888676.0,
+          "rows_present": 21473,
+          "expected_rows": 26334,
+          "coverage": 0.815409736462368,
+          "missing_store_absent": 1584,
+          "missing_upc_absent": 2332,
+          "dropped_ok": 510,
+          "dropped_price_qty_move": 435
+        },
+        {
+          "upc": 3828105005,
+          "volume": 810281.0,
+          "rows_present": 10379,
+          "expected_rows": 26334,
+          "coverage": 0.39412926255031516,
+          "missing_store_absent": 1584,
+          "missing_upc_absent": 7319,
+          "dropped_ok": 438,
+          "dropped_price_qty_move": 6614
+        },
+        {
+          "upc": 7114010110,
+          "volume": 749779.0,
+          "rows_present": 21678,
+          "expected_rows": 26334,
+          "coverage": 0.823194349510139,
+          "missing_store_absent": 1584,
+          "missing_upc_absent": 2332,
+          "dropped_ok": 510,
+          "dropped_price_qty_move": 230
+        },
+        {
+          "upc": 1780000024,
+          "volume": 671308.0,
+          "rows_present": 4638,
+          "expected_rows": 26334,
+          "coverage": 0.17612212349054454,
+          "missing_store_absent": 1584,
+          "missing_upc_absent": 13829,
+          "dropped_ok": 431,
+          "dropped_price_qty_move": 5852
+        },
+        {
+          "upc": 7303010314,
+          "volume": 662784.0,
+          "rows_present": 21278,
+          "expected_rows": 26334,
+          "coverage": 0.8080048606364396,
+          "missing_store_absent": 1584,
+          "missing_upc_absent": 2332,
+          "dropped_ok": 510,
+          "dropped_price_qty_move": 630
+        }
+      ],
+      "best_coverage": 0.8357636515531253,
+      "threshold": 0.9,
+      "category": "tna",
+      "metadata_source": "data/calibration/stores_sna.csv",
+      "metadata_scope": "retained-store table",
+      "candidate_window": {
+        "week_range": [
+          1,
+          341
+        ],
+        "weeks": 341,
+        "n_stores": 66,
+        "upc": 8660000033,
+        "coverage": 0.9104683195592287,
+        "status": "candidate; author sample review pending",
+        "competing_index_validated": true,
+        "clean_validation": {
+          "focal_upc": 8660000033,
+          "n_stores": 66,
+          "n_rows": 20491
+        }
+      },
+      "input_checksums": {
+        "data/wtna.zip": "c4dcd8e9c4928b822307e37e1b756fdacc7b2a0a026033e35c1ebc3d5b0d5885",
+        "data/upctna.csv": "316d269f56d48880f1a430865b18d1225bb9ff2846c593b3e7e0428117f2cc07",
+        "data/calibration/stores_sna.csv": "964fc9e7bfbc05a55dbeaaa5762d3556d8939f8584e051dd5fb8ccb09777972f"
+      },
+      "calibration_window_audit": {
+        "week_range": [
+          1,
+          341
+        ],
+        "calendar_span": 341,
+        "equals_399": false,
+        "store_coverage_threshold": 0.8,
+        "store_steps": [
+          {
+            "rule": "raw",
+            "stores": 86,
+            "rows": 3354113
+          },
+          {
+            "rule": "OK == 1",
+            "stores": 86,
+            "rows": 3276148
+          },
+          {
+            "rule": "valid price/qty/move",
+            "stores": 86,
+            "rows": 2157434
+          },
+          {
+            "rule": "known UPC and zoned store",
+            "stores": 75,
+            "rows": 1881535
+          },
+          {
+            "rule": "store coverage",
+            "stores": 67,
+            "rows": 1728596
+          }
+        ],
+        "n_retained_stores": 67,
+        "retained_stores": [
+          2,
+          5,
+          8,
+          9,
+          12,
+          14,
+          18,
+          21,
+          28,
+          32,
+          33,
+          40,
+          45,
+          47,
+          48,
+          51,
+          52,
+          53,
+          54,
+          56,
+          59,
+          62,
+          68,
+          70,
+          72,
+          73,
+          74,
+          75,
+          76,
+          77,
+          81,
+          83,
+          84,
+          86,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95,
+          98,
+          100,
+          101,
+          103,
+          104,
+          106,
+          107,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          119,
+          121,
+          123,
+          124,
+          126,
+          128,
+          129,
+          130,
+          132
+        ],
+        "top_upcs": [
+          {
+            "upc": 8000000245,
+            "volume": 4131325.0,
+            "rows_present": 20511,
+            "expected_rows": 22847,
+            "coverage": 0.8977546286164485,
+            "missing_by_cause": {
+              "store_absent": 804,
+              "upc_absent": 660,
+              "ok_zero": 511,
+              "price_qty_rule": 361
+            }
+          },
+          {
+            "upc": 8660000033,
+            "volume": 2744608.0,
+            "rows_present": 20765,
+            "expected_rows": 22847,
+            "coverage": 0.9088720619775025,
+            "missing_by_cause": {
+              "store_absent": 804,
+              "upc_absent": 660,
+              "ok_zero": 512,
+              "price_qty_rule": 106
+            }
+          },
+          {
+            "upc": 4800000024,
+            "volume": 2670244.0,
+            "rows_present": 16392,
+            "expected_rows": 22847,
+            "coverage": 0.7174683765921127,
+            "missing_by_cause": {
+              "store_absent": 804,
+              "upc_absent": 4680,
+              "ok_zero": 186,
+              "price_qty_rule": 785
+            }
+          },
+          {
+            "upc": 8000000280,
+            "volume": 1282054.0,
+            "rows_present": 20354,
+            "expected_rows": 22847,
+            "coverage": 0.8908828292554821,
+            "missing_by_cause": {
+              "store_absent": 804,
+              "upc_absent": 660,
+              "ok_zero": 511,
+              "price_qty_rule": 518
+            }
+          },
+          {
+            "upc": 3828105003,
+            "volume": 1017537.0,
+            "rows_present": 11770,
+            "expected_rows": 22847,
+            "coverage": 0.5151661049590756,
+            "missing_by_cause": {
+              "store_absent": 804,
+              "upc_absent": 5266,
+              "ok_zero": 187,
+              "price_qty_rule": 4820
+            }
+          },
+          {
+            "upc": 8660000037,
+            "volume": 841836.0,
+            "rows_present": 20440,
+            "expected_rows": 22847,
+            "coverage": 0.8946469996060752,
+            "missing_by_cause": {
+              "store_absent": 804,
+              "upc_absent": 660,
+              "ok_zero": 512,
+              "price_qty_rule": 431
+            }
+          },
+          {
+            "upc": 3828105005,
+            "volume": 728731.0,
+            "rows_present": 9107,
+            "expected_rows": 22847,
+            "coverage": 0.3986081323587342,
+            "missing_by_cause": {
+              "store_absent": 804,
+              "upc_absent": 5758,
+              "ok_zero": 438,
+              "price_qty_rule": 6740
+            }
+          },
+          {
+            "upc": 7114010110,
+            "volume": 726350.0,
+            "rows_present": 20614,
+            "expected_rows": 22847,
+            "coverage": 0.9022628791526239,
+            "missing_by_cause": {
+              "store_absent": 804,
+              "upc_absent": 660,
+              "ok_zero": 512,
+              "price_qty_rule": 257
+            }
+          },
+          {
+            "upc": 1780000024,
+            "volume": 679120.0,
+            "rows_present": 4714,
+            "expected_rows": 22847,
+            "coverage": 0.2063290585197181,
+            "missing_by_cause": {
+              "store_absent": 804,
+              "upc_absent": 10953,
+              "ok_zero": 432,
+              "price_qty_rule": 5944
+            }
+          },
+          {
+            "upc": 7303010314,
+            "volume": 599855.0,
+            "rows_present": 20219,
+            "expected_rows": 22847,
+            "coverage": 0.8849739571935046,
+            "missing_by_cause": {
+              "store_absent": 804,
+              "upc_absent": 660,
+              "ok_zero": 512,
+              "price_qty_rule": 652
+            }
+          }
+        ],
+        "best_upc": {
+          "upc": 8660000033,
+          "volume": 2744608.0,
+          "rows_present": 20765,
+          "expected_rows": 22847,
+          "coverage": 0.9088720619775025,
+          "missing_by_cause": {
+            "store_absent": 804,
+            "upc_absent": 660,
+            "ok_zero": 512,
+            "price_qty_rule": 106
+          }
+        },
+        "duplicates": [],
+        "date_alignment": {
+          "missing_weeks": [],
+          "first": [
+            {
+              "week": "1",
+              "date": "1989-09-14",
+              "end": "1989-09-20",
+              "special_event": "nan",
+              "lent": "False",
+              "holiday_easter": "0",
+              "holiday_lent": "0",
+              "holiday_halloween": "0",
+              "holiday_thanksgiving": "0",
+              "holiday_christmas": "0",
+              "holiday_new_year": "0",
+              "holiday_presidents_day": "0",
+              "holiday_memorial_day": "0",
+              "holiday_4th_of_july": "0",
+              "holiday_labor_day": "0"
+            }
+          ],
+          "last": [
+            {
+              "week": "341",
+              "date": "1996-03-21",
+              "end": "1996-03-27",
+              "special_event": "Easter",
+              "lent": "True",
+              "holiday_easter": "0",
+              "holiday_lent": "1",
+              "holiday_halloween": "0",
+              "holiday_thanksgiving": "0",
+              "holiday_christmas": "0",
+              "holiday_new_year": "0",
+              "holiday_presidents_day": "0",
+              "holiday_memorial_day": "0",
+              "holiday_4th_of_july": "0",
+              "holiday_labor_day": "0"
+            }
+          ]
+        }
+      }
+    },
+    "tti": {
+      "week_range": [
+        1,
+        399
+      ],
+      "calendar_span": 399,
+      "equals_399_weeks": true,
+      "retained_stores": 67,
+      "store_ids": [
+        2,
+        5,
+        8,
+        9,
+        12,
+        14,
+        18,
+        21,
+        28,
+        32,
+        33,
+        40,
+        47,
+        48,
+        51,
+        52,
+        53,
+        54,
+        56,
+        59,
+        62,
+        68,
+        70,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        81,
+        83,
+        84,
+        86,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        98,
+        100,
+        101,
+        103,
+        104,
+        106,
+        107,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        119,
+        121,
+        123,
+        124,
+        126,
+        128,
+        129,
+        130,
+        132,
+        137
+      ],
+      "store_coverage_threshold": 0.8,
+      "retained_after_rules": [
+        {
+          "rule": "OK == 1",
+          "stores_before": 93,
+          "stores_after": 93,
+          "rows_after": 1600398
+        },
+        {
+          "rule": "valid price/qty/move",
+          "stores_before": 93,
+          "stores_after": 93,
+          "rows_after": 1149973
+        },
+        {
+          "rule": "known UPC and zoned store",
+          "stores_before": 93,
+          "stores_after": 67,
+          "rows_after": 917126
+        },
+        {
+          "rule": "store coverage",
+          "stores_before": 67,
+          "stores_after": 67,
+          "rows_after": 917126
+        }
+      ],
+      "duplicate_rows": 0,
+      "date_alignment": {
+        "week_min": 1,
+        "week_max": 399,
+        "all_weeks_in_calendar": true,
+        "start_date": "1989-09-14 00:00:00",
+        "end_date": "1997-05-01 00:00:00",
+        "date_basis": "week joined to authoritative codebook calendar; movement supplies week IDs, not independent dates"
+      },
+      "top_upcs": [
+        {
+          "upc": 5400041500,
+          "volume": 11405017.0,
+          "rows_present": 24918,
+          "expected_rows": 26733,
+          "coverage": 0.9321063853664011,
+          "missing_store_absent": 938,
+          "missing_upc_absent": 0,
+          "dropped_ok": 570,
+          "dropped_price_qty_move": 307
+        },
+        {
+          "upc": 3700060511,
+          "volume": 4538834.0,
+          "rows_present": 24999,
+          "expected_rows": 26733,
+          "coverage": 0.9351363483335203,
+          "missing_store_absent": 938,
+          "missing_upc_absent": 0,
+          "dropped_ok": 570,
+          "dropped_price_qty_move": 226
+        },
+        {
+          "upc": 5400046550,
+          "volume": 3662681.0,
+          "rows_present": 22096,
+          "expected_rows": 26733,
+          "coverage": 0.8265439718699734,
+          "missing_store_absent": 938,
+          "missing_upc_absent": 0,
+          "dropped_ok": 570,
+          "dropped_price_qty_move": 3129
+        },
+        {
+          "upc": 5400046510,
+          "volume": 3466978.0,
+          "rows_present": 22375,
+          "expected_rows": 26733,
+          "coverage": 0.8369805109789399,
+          "missing_store_absent": 938,
+          "missing_upc_absent": 0,
+          "dropped_ok": 570,
+          "dropped_price_qty_move": 2850
+        },
+        {
+          "upc": 5400046520,
+          "volume": 3281450.0,
+          "rows_present": 22465,
+          "expected_rows": 26733,
+          "coverage": 0.8403471364979613,
+          "missing_store_absent": 938,
+          "missing_upc_absent": 0,
+          "dropped_ok": 570,
+          "dropped_price_qty_move": 2760
+        },
+        {
+          "upc": 4200013100,
+          "volume": 3029693.0,
+          "rows_present": 24972,
+          "expected_rows": 26733,
+          "coverage": 0.934126360677814,
+          "missing_store_absent": 938,
+          "missing_upc_absent": 0,
+          "dropped_ok": 570,
+          "dropped_price_qty_move": 253
+        },
+        {
+          "upc": 3700060571,
+          "volume": 2804832.0,
+          "rows_present": 22759,
+          "expected_rows": 26733,
+          "coverage": 0.851344779860098,
+          "missing_store_absent": 938,
+          "missing_upc_absent": 0,
+          "dropped_ok": 570,
+          "dropped_price_qty_move": 2466
+        },
+        {
+          "upc": 5400046530,
+          "volume": 2762924.0,
+          "rows_present": 22556,
+          "expected_rows": 26733,
+          "coverage": 0.8437511689671942,
+          "missing_store_absent": 938,
+          "missing_upc_absent": 0,
+          "dropped_ok": 570,
+          "dropped_price_qty_move": 2669
+        },
+        {
+          "upc": 3828111217,
+          "volume": 2683457.0,
+          "rows_present": 24827,
+          "expected_rows": 26733,
+          "coverage": 0.9287023528971683,
+          "missing_store_absent": 938,
+          "missing_upc_absent": 0,
+          "dropped_ok": 570,
+          "dropped_price_qty_move": 398
+        },
+        {
+          "upc": 4200013700,
+          "volume": 2678337.0,
+          "rows_present": 24891,
+          "expected_rows": 26733,
+          "coverage": 0.9310963977106946,
+          "missing_store_absent": 938,
+          "missing_upc_absent": 0,
+          "dropped_ok": 570,
+          "dropped_price_qty_move": 334
+        }
+      ],
+      "best_coverage": 0.9351363483335203,
+      "threshold": 0.9,
+      "metadata_source": "data/calibration/stores_sna.csv",
+      "metadata_sha256": "964fc9e7bfbc05a55dbeaaa5762d3556d8939f8584e051dd5fb8ccb09777972f",
+      "metadata_scope": "retained-store table",
+      "input_checksums": {
+        "data/wtti.zip": "6dd3b03925a2ee3e3e1831da127a0240ee0e00ecb0f118e2578d2f629d2c0b95",
+        "data/upctti.csv": "944a03a81ee106f89f11f272bf05e78393a1cc294ea28918db53c0f7f1d31e43",
+        "data/calibration/stores_sna.csv": "964fc9e7bfbc05a55dbeaaa5762d3556d8939f8584e051dd5fb8ccb09777972f"
+      }
+    }
+  },
+  "environment": {
+    "python": "3.11.17",
+    "packages": {
+      "ktsim": "0.1.0",
+      "numpy": "2.2.3",
+      "pandas": "2.2.3",
+      "pyarrow": "19.0.1",
+      "scipy": "1.15.2",
+      "statsmodels": "0.14.4",
+      "linearmodels": "6.1",
+      "lightgbm": "4.6.0",
+      "doubleml": "0.9.3",
+      "scikit-learn": "1.5.2",
+      "PyYAML": "6.0.2",
+      "joblib": "1.4.2",
+      "matplotlib": "3.10.1"
+    },
+    "cpu": "INTEL(R) XEON(R) PLATINUM 8573C",
+    "cores": 5,
+    "ram_gib": 33.38
+  },
+  "n_jobs": 2,
+  "save_data": false,
+  "save_storeweek": true,
+  "config_checksums": {
+    "configs/scenarios.yaml": "defb89b7f16aa6d72336cba3ebeb40d4b9ffd50acff3323c818bbffc1a5d20c3",
+    "configs/dgm_base.yaml": "4454ab646e559f67d2fd01281118b2fd9fea6e1d052e76ab06ec761e8140f7e2",
+    "configs/estimators.yaml": "d480e5ea065525d730eed50fe1da6361e328f2a6635b473106e0924494eb0fd6",
+    "configs/decisions.yaml": "a99c977e100974abd06216e46b7c8c1564b9d5f9765fe08e4168a973df39538f"
+  },
+  "source_checksums": {
+    "src/ktsim/__init__.py": "68602e3d99b8d7e9f0931e84eb8495511adbb4dabb1aa2a238b9047ab19b946b",
+    "src/ktsim/audit.py": "a24df5f668b0ae6aee273e17bce830dd365765b65d13f41295812b7aae2c3d98",
+    "src/ktsim/calibrate.py": "9004b4f490585e453d76dc7851a5f3e09790c7b961d3814f59bb270d46f3bf7d",
+    "src/ktsim/calibration_windows.py": "3586d0915a7ea797955546f3ba9a910c63d165bb8dc68111656f11493020d4ce",
+    "src/ktsim/clean.py": "230e7fb686ccefcf66d35243b08bdfccb7c243ac29b3d79c533c5bdfdb165e19",
+    "src/ktsim/cli.py": "e0e28820903b0167053ec17d8b2b521fdf43576fc234a41ee5774fc117a6bb25",
+    "src/ktsim/config.py": "34d09194f99a7e493877ef0a2c10197dc7f796647da969d0f9e2818ccce33ead",
+    "src/ktsim/config_validation.py": "cd2d822a7a47b1eaa1c10aa1df929829e42eecb713ae61e7612a158de3770bba",
+    "src/ktsim/coverage.py": "1e2d259f689554e0713419e190f71ecc1abfc3e5bc4cf96a5a171144815f3724",
+    "src/ktsim/decisions.py": "e57d94c05ed95b2aba0005b6e8fac40879f475933b1431f7a8a7575126230dcd",
+    "src/ktsim/dgm.py": "e0a11e948db553243d5a0b7dd7f5149b06e5ac5c0933698e0722463b1e4f3a46",
+    "src/ktsim/estimators/__init__.py": "d57f97eb8587f88f33854fc72763a0e6fe65cd1d48136985471c1100fe3fc903",
+    "src/ktsim/estimators/base.py": "6015c2b5c8ff86156424125a06defccb2576bbc7eb17d3064c6f21632d9f9719",
+    "src/ktsim/estimators/dml.py": "0621dc7380152ca0ddfad819dfa6e82fb4199e45339a6c18dc8a9c4997bde956",
+    "src/ktsim/estimators/gbm.py": "8e32747873ce58c68aa702347613d901c545ebd95f683ada2712db487fc67bdb",
+    "src/ktsim/estimators/iv.py": "e6284335fab421e10493bceccbbc770907e7feda0e8ae0c344d6fcdd8cf45c9f",
+    "src/ktsim/estimators/ols.py": "ad42eaf69808539ececfbc9a7a866e10541f5df6d7158de10f114f4144729a11",
+    "src/ktsim/io.py": "1784d0637aa233c7c3bb18ec0aee2d0a2fc38e425e28f212418f55630ecd5501",
+    "src/ktsim/loop.py": "ea522fe2d36cb8c1a793761935179b91814acd9075c393a4d6553af3ef0f00a6",
+    "src/ktsim/metrics.py": "727f25e4ce09aa1c9ba1ce555343a0f02123df137ca7f0c1917074b973704084",
+    "src/ktsim/oracle.py": "8b7ec66f79fb5df45a973e0fee079e3609601c257a708a895ca76c8bb76b630d",
+    "src/ktsim/pilot.py": "43d4d59563ce0ba38b777f616e18f47c0e508b862cefc0434d33505748e20b7f",
+    "src/ktsim/policies.py": "949f84ca5b58839264b7dded9aae39a409576dc6c3c32a57ba9905e6bb44af5f",
+    "src/ktsim/protocol.py": "3a5f7bb1cf087fc911a684b5fb180084425eaf571722fcfc82408df638f6c61b",
+    "src/ktsim/report.py": "14575a734f4d9334223e978c599d9999ca9c005641d2f7f680392c7215f07151",
+    "src/ktsim/rng.py": "e1f4818023d5f7094f3a136305afda089d97a546f2a3806fcc1d90f415cde671",
+    "src/ktsim/validation.py": "573c532cf370c434d9029a5996b07f402c252072f99b86c22b90e0fbd8e0648a",
+    "scripts/audit_coverage.py": "08e9acb2cd9ccbac6e303ee2c56397c073934b23612bb7e03a7119eea2894501",
+    "scripts/check_raw_staging.py": "6719c5efed1244a24da9ae4fb87e53321a0e737ab3784ea1d872dc0584af42eb",
+    "scripts/check_validation.py": "ddbe760d7226b14248a6558066dc52b0777dcde1910f835fd6164442ea1c38de",
+    "scripts/evaluate_calibration_window.py": "5665b458bc3506ac697d7a21eb6dfbe583f63a22f48777d741783eecb17c7f05",
+    "scripts/import_codebook.py": "80c11ba359cb6943f1bd085b4233aa828e5b2de29b556cb2d46800b290589d1b",
+    "scripts/make_report.py": "52ea2d2f467d06c6006b828d86c0386d52e7e007d6f55f64efbb04d223102dad",
+    "scripts/run_calibration.py": "68f486cb7c8f4094ef4d4bfd4344cd93b4d1fc34640d0ee5ee35ae03af8841f3",
+    "scripts/run_pilot.py": "ccce631cfe33842f2d81fa3fe14149c261c03310fa3914b05c7f3055684cac0e",
+    "scripts/validate_v11.py": "9eefe9d2227f70667db2bcab2ed7b4612c2415ae7eca4cb86c199b33ea4c1d60"
+  },
+  "decisions_config": {
+    "targets": {
+      "elasticity": 0.02,
+      "regret": 0.0025,
+      "paired": 0.0025
+    },
+    "floor": 0,
+    "cap": 2000,
+    "budget_hours": 150.0
+  },
+  "scientific_fingerprint": "033820c3e72f4fd6dd2dc4ebbe501083eaaac0aba358843e4913b3c83a4db76b",
+  "fingerprint": "8bd34a465ffb2a34397bb700002f22f74893c49e47dbc1ad0a7163fb5ab1bcf7"
+}

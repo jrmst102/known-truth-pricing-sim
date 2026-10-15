@@ -134,6 +134,9 @@ python scripts/run_exploratory.py analyze
 The six-cell study is defined in `configs/exploratory.yaml`. Benchmark artifacts
 are separate from production. The runner enforces the remaining worker-hour
 budget before launch and resumes completed replication checkpoints safely.
+The completed chapter-ready study is documented in
+[`docs/CHAPTER_EXPLORATORY_STUDY.md`](docs/CHAPTER_EXPLORATORY_STUDY.md), with
+reproducible publication outputs under `outputs/exploratory/six-cell-20261015/`.
 
 The original deferred stages use `configs/scenarios.yaml`:
 

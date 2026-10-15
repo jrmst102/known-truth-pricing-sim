@@ -88,6 +88,13 @@ use separate seeds and outputs. Production uses fresh exploratory-stage seeds;
 methods within a cell replication share initial histories and exogenous draws
 while each method-policy arm retains its own evolving history.
 
+The amended study completed on 2026-10-15 at simulation commit `161b1f8` and
+analysis commit `9225a05`. All six cells contain 30 completed replications and
+the exact eight arms over 104 cycles. Required mechanical checks passed; no
+estimator failures or fallbacks occurred. The run consumed 14.51 measured
+worker-hours, below the benchmark projection and retained budget. Chapter-ready
+results are under `outputs/exploratory/six-cell-20261015/`.
+
 ## Implementation corrections (no design change)
 
 - C1. Project every deployed price onto the ladder, after every adjustment

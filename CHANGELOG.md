@@ -17,6 +17,13 @@ budget. Production must retain failures and fallbacks, use fresh seeds, finish
 all 180 cell replications, pass saved-run audits, and generate the chapter's two
 tables and two figures with replication-level Monte Carlo uncertainty.
 
+The study completed on 2026-10-15: 180/180 replications, six cells, eight arms,
+and 104 cycles. All required saved-run checks passed. Measured computation was
+14.51 worker-hours; no estimator failure or fallback occurred. The tracked
+publication set contains the cycle-level estimates, seed states, manifest,
+checks, replication metrics, tables, figures, and chapter text. Larger
+store-week, simulated-history, and per-replication checkpoints remain local.
+
 ## 1.1.1 - 2026-10-15 (reduced S2 diagnostic scope)
 
 Jose Mendoza explicitly requested that Deliverable 2 finish within one to two

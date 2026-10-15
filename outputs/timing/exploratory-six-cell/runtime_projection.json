@@ -1,0 +1,65 @@
+{
+  "started_at": "2026-10-15T15:04:53.794700-04:00",
+  "finished_at": "2026-10-15T15:10:18.282438-04:00",
+  "commit": "161b1f8c2d7e2fac281f9f7e2665e85f4d6ef665",
+  "exact_arms": [
+    "M1:greedy",
+    "M1:greedy_rps",
+    "M2:greedy",
+    "M2:greedy_rps",
+    "M3:greedy",
+    "M3:greedy_rps",
+    "legacy:legacy",
+    "oracle:oracle"
+  ],
+  "cycles": 104,
+  "timing_replications": [
+    {
+      "environment": "sna",
+      "cell": "sna:eta=-1.06:kappa=+0.05:phi=0.5",
+      "rep": 0,
+      "seconds": 321.00214229099583
+    },
+    {
+      "environment": "tna",
+      "cell": "tna:eta=-1.06:kappa=+0.05:phi=0.5",
+      "rep": 0,
+      "seconds": 304.20629226992605
+    },
+    {
+      "environment": "tti",
+      "cell": "tti:eta=-1.06:kappa=+0.05:phi=0.5",
+      "rep": 0,
+      "seconds": 302.4647687509496
+    }
+  ],
+  "projection_method": "one full-horizon kappa=+0.05 replication per environment; each environment scaled to 60 production replications",
+  "projected_worker_hours": 15.461220055197858,
+  "buffer_fraction": 0.25,
+  "buffered_worker_hours": 19.326525068997324,
+  "workers": 4,
+  "buffered_wall_hours": 4.831631267249331,
+  "remaining_worker_hours": 116.2,
+  "fits_budget": true,
+  "machine": {
+    "python": "3.11.17",
+    "packages": {
+      "ktsim": "1.1.0",
+      "numpy": "2.2.3",
+      "pandas": "2.2.3",
+      "pyarrow": "19.0.1",
+      "scipy": "1.15.2",
+      "statsmodels": "0.14.4",
+      "linearmodels": "6.1",
+      "lightgbm": "4.6.0",
+      "doubleml": "0.9.3",
+      "scikit-learn": "1.5.2",
+      "PyYAML": "6.0.2",
+      "joblib": "1.4.2",
+      "matplotlib": "3.10.1"
+    },
+    "cpu": "arm",
+    "cores": 10,
+    "ram_gib": 16.0
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "run_id": "six-cell-20261015",
+  "synthetic": false,
+  "stage": "exploratory",
+  "fingerprint": "c4dd0f7b0d489091cc0af6050ebe461c80ac0bf41b97850cc37b69078db188d9",
+  "cycles": 104,
+  "replications": 30,
+  "cells": 6,
+  "arms": [
+    "M1:greedy",
+    "M1:greedy_rps",
+    "M2:greedy",
+    "M2:greedy_rps",
+    "M3:greedy",
+    "M3:greedy_rps",
+    "legacy:legacy",
+    "oracle:oracle"
+  ],
+  "complete": true,
+  "deployed_prices_on_ladder": true,
+  "history_checked": true,
+  "exploration_inert_at_phi_zero": null,
+  "cycle_prices_checked": true,
+  "adoption_recorded": true,
+  "revenue_balanced": true,
+  "core_censored_share_zero": true,
+  "denominators_valid": true,
+  "dml_folds_recorded": null,
+  "dml_coverage_withheld": null,
+  "cost_coefficients": {
+    "0": 0.19956806314162323,
+    "1": 0.19956806314162323
+  },
+  "cost_relevance_within_ten_percent": true,
+  "censored_oracle_mc_relative_errors": [
+    1.1217997009760339e-05,
+    5.188045839799038e-05,
+    3.571747595487729e-05
+  ],
+  "censored_oracle_mc_pass": true,
+  "direct_oracle_regret_zero": true,
+  "tti_zone_balance": true,
+  "acceptance": {
+    "AC-C1": true,
+    "AC-C2": true,
+    "AC-C3": true,
+    "AC-C5": true,
+    "AC-C6": true,
+    "AC-A6": true,
+    "AC-A7": null,
+    "run_complete": true
+  },
+  "scope": "Saved-run mechanical checks, not scientific or author acceptance. Planted failure, smearing, grouped-fold and hand-regret tests are separate."
+}

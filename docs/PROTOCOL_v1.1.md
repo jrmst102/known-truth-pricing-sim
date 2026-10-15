@@ -113,14 +113,17 @@ separate from that locally reproduced evidence. Tuna's 66 full-span versus 67
 window stores were reconciled by store 45 passing the shorter-window filter.
 
 Execute S2 on the current cloud machine: Intel Xeon Platinum 8573C, 32 GiB cgroup
-memory limit, four CPU equivalents (cpu.max 400000/100000), using two workers and
-one numerical-library thread per worker. Preserve all scientific configurations:
+memory limit, four CPU equivalents (cpu.max 400000/100000), initially two workers
+and four workers after the author's 2026-10-15 request, with one numerical-library
+thread per worker. Preserve all scientific configurations:
 81 core cells plus five additional base replications per environment (96 cell
 replications total), 104 cycles, 14 arms, diagnostic seed child 1. Save store-week
 and state audits. Record the exact commit, input hashes and software/hardware in
 the run manifest. The 150-hour budget and 2,000-replication cap remain unchanged.
-A conservative 75-hour wall-time stop for two workers bounds worker time at 150
-hours; a stopped run is incomplete, never an accepted diagnostic report.
+The initial conservative 75-hour wall-time stop for two workers was superseded
+by a four-worker limit that accounts for time already used. See
+[DELIVERABLE_2.md](DELIVERABLE_2.md) for execution history and remaining budget;
+a stopped run is incomplete, never an accepted diagnostic report.
 
 Run ID: `s2-diagnostic-20261014`. The report will be written to
 `outputs/diagnostic/s2-diagnostic-20261014/report.md` on successful completion.

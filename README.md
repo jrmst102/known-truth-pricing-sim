@@ -7,8 +7,7 @@ Clinical Associate Professor at New York University.
 
 The pilot supports the chapter's work on evaluating machine-learning methods for
 price optimization using reproducible, known-truth simulations calibrated with
-Dominick's data. Its implementation and protocol are described in the
-[pilot specification](PILOT_SPEC.md).
+Dominick's data.
 
 The software is provided under the [MIT License](LICENSE). This license applies
 to the code, not to the data; see the [Data section](#data) for the applicable
@@ -58,9 +57,6 @@ curl -L --fail -o /tmp/dominicks-manual.pdf \
 python scripts/import_codebook.py --manual /tmp/dominicks-manual.pdf
 ```
 
-Review the generated store and calendar tables before using them in scientific
-analyses. Raw data is ignored by Git, and the pre-commit hook blocks staging raw
-files, including with `git add -f`.
 
 ## Development validation
 
@@ -72,10 +68,6 @@ python scripts/run_pilot.py --stage validation --synthetic \
   --n-jobs 2 --save-data --save-storeweek --run-id v11-smoke
 ```
 
-Synthetic fixtures can be used only for validation; they never replace a blocked
-empirical calibration. The environment tag names the scenario whose mechanics
-are exercised, not a claim that synthetic results use that environment's data.
-
 Run reproducible mechanical acceptance across all estimators and policies,
 three adoption settings, two replications, and 104 cycles:
 
@@ -85,7 +77,7 @@ python scripts/validate_v11.py --run-id v11-acceptance --n-jobs 2
 
 This uses small nuisance learners for mechanical validation and records the
 actual parameters. It is not the S2 diagnostic or a statistical acceptance study.
-Results, report, manifest and checks are under `outputs/validation/<run-id>/`.
+Results, report, manifest, and checks are under `outputs/validation/<run-id>/`.
 Both validation commands use the same saved-run checker. For a short run, use
 `python scripts/check_validation.py <run-directory>`; add `--full-horizon` to
 require the complete 104-cycle, two-replication, all-arm adoption matrix.
@@ -113,6 +105,7 @@ python scripts/run_calibration.py --config configs/calibration.yaml --categories
 
 Recalibration reads approved selections from
 `<data-dir>/calibration/calibration_windows.json`, or an explicit `--windows` file.
+
 Tuna uses the approved inclusive range 1–341 without changing the 90% threshold.
 The full-span audit is preserved in `coverage_audit_tna.json`; the applied-window
 audit is written to `coverage_audit_tna_window.json`. Calibration diagnostics and
@@ -124,10 +117,9 @@ approved 341-week denominator, which includes missing boundary weeks.
 
 The first command needs the full public zoned-store table, normally imported to
 `data/raw/stores.csv`. Audit results identify the metadata source and scope.
-The checked-in preliminary audits used the previously retained store table;
-they do not certify the original full-metadata tuna sample. A search result alone
-never changes the selected window; author approval is recorded separately. Keep
-the 90% threshold.
+
+Keep the 90% threshold.
+
 Benchmark observational elasticities are review flags, not exclusion criteria;
 see [the investigation draft](docs/BETA_REFERENCE_REVIEW.md).
 
@@ -159,8 +151,3 @@ pytest -m 'not slow' --ignore=tests/test_loop_smoke.py
 pytest tests/test_loop_smoke.py
 RUN_DML_INFERENCE=1 pytest tests/test_dml_inference.py
 ```
-
-The last command explicitly runs 200 independent draws for each DML variant.
-Passing never changes `M4_dml.inference_validated`: author opt-in is separate.
-CI runs the unit and full-horizon smoke jobs with synthetic data; it never reads
-movement archives or `data/raw/`.

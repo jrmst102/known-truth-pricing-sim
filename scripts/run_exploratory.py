@@ -252,11 +252,15 @@ def _replication_metrics(estimates):
                 policy=arm.split(":")[1],
                 rep=rep,
                 terminal_error=group.eta_hat.iloc[-1] - group.eta_true.iloc[-1],
-                common_grid_forecast_rmse=float(
-                    np.sqrt(np.nanmean(group.forecast_grid_rmse.to_numpy() ** 2))
+                common_grid_forecast_rmse=(
+                    float(np.sqrt(np.mean(group.forecast_grid_rmse.dropna().to_numpy() ** 2)))
+                    if group.forecast_grid_rmse.notna().any()
+                    else np.nan
                 ),
-                deployed_price_forecast_rmse=float(
-                    np.sqrt(np.nanmean(group.forecast_rmse.to_numpy() ** 2))
+                deployed_price_forecast_rmse=(
+                    float(np.sqrt(np.mean(group.forecast_rmse.dropna().to_numpy() ** 2)))
+                    if group.forecast_rmse.notna().any()
+                    else np.nan
                 ),
                 positive_slope_frequency=group.positive_slope.mean(),
                 failure_rate=group.numerical_failure.mean(),
@@ -342,7 +346,12 @@ def figures(estimates, output):
         for arm, group in frame.groupby("arm"):
             summary = group.groupby("cycle").eta_hat.agg(["mean", "sem"])
             axis.plot(summary.index, summary["mean"], label=arm, linewidth=1.2)
-            axis.fill_between(summary.index, summary["mean"] - summary.sem, summary["mean"] + summary.sem, alpha=0.12)
+            axis.fill_between(
+                summary.index,
+                summary["mean"] - summary["sem"],
+                summary["mean"] + summary["sem"],
+                alpha=0.12,
+            )
         axis.axhline(-1.06, color="black", linestyle="--", linewidth=1, label="truth")
         axis.set_title(cell)
         axis.set_xlabel("Pricing cycle")
@@ -364,7 +373,12 @@ def figures(estimates, output):
         for arm, group in frame.groupby("arm"):
             summary = group.groupby("cycle").cum_regret.agg(["mean", "sem"])
             axis.plot(summary.index, summary["mean"], label=arm, linewidth=1.2)
-            axis.fill_between(summary.index, summary["mean"] - summary.sem, summary["mean"] + summary.sem, alpha=0.12)
+            axis.fill_between(
+                summary.index,
+                summary["mean"] - summary["sem"],
+                summary["mean"] + summary["sem"],
+                alpha=0.12,
+            )
         axis.set_title(cell)
         axis.set_xlabel("Pricing cycle")
         axis.set_ylabel("Cumulative normalized deployed regret")
@@ -455,6 +469,7 @@ def analyze():
     table1, table2, _ = tables(estimates, PRODUCTION)
     figures(estimates, PRODUCTION)
     record = json.loads((PRODUCTION / "manifest.json").read_text())
+    record["analysis_commit"] = git_state()[0]
     record["execution_history"].append(
         dict(event="analysis_and_audit_complete", at=datetime.now().astimezone().isoformat())
     )

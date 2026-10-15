@@ -62,28 +62,6 @@ Review the generated store and calendar tables before using them in scientific
 analyses. Raw data is ignored by Git, and the pre-commit hook blocks staging raw
 files, including with `git add -f`.
 
-## Protocol v1.1 implementation
-
-Deliverable 1 was accepted by Jose Mendoza on 2026-10-14, and Deliverable 2
-(S2 full-horizon diagnostics) is authorized. The authoritative design is
-[PROTOCOL_v1.1.md](docs/PROTOCOL_v1.1.md), with requirements in
-[SPEC_v1.1.md](docs/SPEC_v1.1.md). A1–A7, the tuna window (weeks 1–341), and the
-150-hour/2,000-replication limits remain approved. See
-[VALIDATION_v1.1.md](docs/VALIDATION_v1.1.md) for local evidence and historical
-metadata limitations; acceptance records the author's explicit confirmation.
-
-Deliverable 2 was accepted by Jose Mendoza on 2026-10-15 under the documented
-reduced diagnostic scope; see its [execution record](docs/DELIVERABLE_2.md).
-The precision pilot is eligible for a scope and compute decision but has not
-started. A main experiment additionally needs an approved precision decision and
-unchanged scientific settings. M4 inference coverage remains withheld.
-
-Published Deliverable 2 artifacts:
-
-- [Accepted reduced diagnostic report](outputs/diagnostic/s2-reduced-20261015/report.md)
-- [Reduced diagnostic results and figures](outputs/diagnostic/s2-reduced-20261015/)
-- [Fourteen preserved full-horizon SNA checkpoint results](outputs/diagnostic/s2-diagnostic-20261014/)
-
 ## Development validation
 
 From the repository root, use a fresh run ID for a small synthetic check:

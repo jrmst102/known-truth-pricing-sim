@@ -72,8 +72,8 @@ Deliverable 1 was accepted by Jose Mendoza on 2026-10-14, and Deliverable 2
 [VALIDATION_v1.1.md](docs/VALIDATION_v1.1.md) for local evidence and historical
 metadata limitations; acceptance records the author's explicit confirmation.
 
-The Deliverable 2 cloud run is stopped for local continuation in VS Code; see its
-[execution record](docs/DELIVERABLE_2.md). Acceptance remains pending.
+Deliverable 2 is running under the author-approved reduced diagnostic scope; see
+its [execution record](docs/DELIVERABLE_2.md). Acceptance remains pending.
 The precision pilot requires accepted Deliverable 2
 diagnostics. A main experiment additionally needs an approved precision decision
 and unchanged scientific settings. M4 inference coverage remains withheld.

@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.1.1 - 2026-10-15 (reduced S2 diagnostic scope)
+
+Jose Mendoza explicitly requested that Deliverable 2 finish within one to two
+hours after the original 96-replication diagnostic was observed to require about
+210 worker-hours, above the retained 150-worker-hour budget. The broad run was
+stopped with 14 completed SNA replications preserved. The replacement diagnostic
+retains those full-horizon results and adds one representative base cell for each
+of TNA and TTI, with all 14 arms and unchanged learners, for 52 cycles. The report
+must label this reduced scope and cannot claim 81-cell or full-horizon cross-
+environment coverage. S3 and S4 remain blocked pending review and explicit
+acceptance of the reduced Deliverable 2.
+
 ## 1.1.0 - 2026-10-14 (Deliverable 1 accepted)
 
 Corrections and amendments implement SPEC_v1.1.md. Jose Mendoza confirmed all CI

@@ -91,6 +91,16 @@ M4 coverage reporting;
 - S2: one replication per core cell plus five additional base-cell replications.
   S3: 100 replications per cell. S4 uses the accepted S3 decision, fresh seeds and
   frozen scientific settings. S2 is now authorized by the author; S3/S4 remain gated.
+- **S2 scope amendment, 2026-10-15:** after observing that the original S2 plan
+  projected to about 210 worker-hours, Jose Mendoza explicitly requested a reduced
+  diagnostic that finishes within one to two hours. Preserve the 14 completed SNA
+  full-horizon replications. Add one `med, pos, phi=0.5` replication for TNA and one
+  for TTI, with all estimators and policies, unchanged 500-tree learners and the
+  diagnostic seed stream, shortened to 52 cycles. The report must distinguish the
+  104-cycle SNA evidence from the 52-cycle TNA/TTI evidence and state that the
+  reduced diagnostic does not establish 81-cell or full-horizon cross-environment
+  behavior. This amendment supersedes the original S2 scope only; S3 and S4 remain
+  gated by explicit acceptance of the reduced Deliverable 2.
 - Tuna: audit at the unchanged 90% threshold first; investigate denominator or join
   errors before proposing a window. A window needs >=40 zoned stores and >=156 weeks.
   If no defensible window exists, propose two environments (54 cells), with author

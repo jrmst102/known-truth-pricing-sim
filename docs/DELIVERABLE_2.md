@@ -1,6 +1,6 @@
 # Deliverable 2: full-horizon diagnostics
 
-Status: **Cloud execution stopped for local continuation; Deliverable 2 acceptance pending.** Jose Mendoza accepted
+Status: **Reduced S2 running; Deliverable 2 acceptance pending.** Jose Mendoza accepted
 Deliverable 1 and authorized S2 in chat on 2026-10-14. On 2026-10-15 he explicitly
 requested increasing the run from two workers to four. No S3 or S4 run is authorized.
 
@@ -37,6 +37,22 @@ The frozen manifest retains `n_jobs=2` as its original launch setting. The adjac
 `execution_history.json` records the subsequent four-worker attempt; the report
 launcher includes that history in the final manifest on successful completion.
 The simulation commit remains the original commit even after documentation merges.
+
+## Reduced-scope decision — 2026-10-15
+
+At 12:54 p.m. Eastern, after live inspection showed four healthy workers spending
+about 71% of measured runtime in M4 and projected total work of roughly 210
+worker-hours, Jose Mendoza requested reducing the diagnostic scope so it would
+finish within one to two hours. The local broad-run attempt stopped cleanly with
+14 completed SNA full-horizon replications preserved and no new partial result
+treated as complete.
+
+The replacement diagnostic retains those 14 SNA replications and adds one
+representative `med, pos, phi=0.5` cell for TNA and TTI. Both new cells retain all
+14 arms, the original diagnostic seed, calibrations and 500-tree learner settings,
+but run for 52 cycles. The final report must keep the two evidence sets separate
+and explicitly state that the reduced scope does not diagnose all 81 cells or a
+104-cycle horizon in TNA and TTI.
 
 Machine: Intel Xeon Platinum 8573C, four CPU equivalents, 32 GiB cgroup memory;
 one numerical-library thread per worker. The 150-hour budget and 2,000-replication

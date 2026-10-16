@@ -13,23 +13,6 @@ The software is provided under the [MIT License](LICENSE). This license applies
 to the code, not to the data; see the [Data section](#data) for the applicable
 data terms.
 
-## Set up
-
-The project uses Python 3.11. From the repository root, create an environment
-and install the package and development/data dependencies:
-
-```bash
-uv python install 3.11
-uv venv --python 3.11
-source .venv/bin/activate
-uv pip install -e '.[dev,data]'
-pre-commit install
-```
-
-You can also use Python's built-in `venv` with `pip install -e '.[dev,data]'`,
-or create a Conda environment with `conda env create -f environment.yml`.
-Dependency versions are pinned in [pyproject.toml](pyproject.toml).
-
 ## Data
 
 Download Dominick's data in accordance with the
@@ -48,120 +31,7 @@ Calibration requires the `wsna`, `upcsna`, `wtna`, `upctna`, `wtti`, and
 SAS7BDAT file. The store metadata must include `store`, `price_tier`, and
 `zone`; demographic data alone does not provide the research pricing zones.
 
-The public codebook calendar is committed to the repository. To import its
-factual store table, download the codebook and run:
-
-```bash
-curl -L --fail -o /tmp/dominicks-manual.pdf \
-  https://www.chicagobooth.edu/-/media/enterprise/centers/kilts/datasets/dominicks-dataset/dominicks-manual-and-codebook_kiltscenter.pdf
-python scripts/import_codebook.py --manual /tmp/dominicks-manual.pdf
-```
-
-
-## Development validation
-
-From the repository root, use a fresh run ID for a small synthetic check:
-
-```bash
-python scripts/run_pilot.py --stage validation --synthetic \
-  --cells sna:med:pos:phi=0.5 --reps 2 --cycles 2 --estimators M1 M3 \
-  --n-jobs 2 --save-data --save-storeweek --run-id v11-smoke
-```
-
-Run reproducible mechanical acceptance across all estimators and policies,
-three adoption settings, two replications, and 104 cycles:
-
-```bash
-python scripts/validate_v11.py --run-id v11-acceptance --n-jobs 2
-```
-
-This uses small nuisance learners for mechanical validation and records the
-actual parameters. It is not the S2 diagnostic or a statistical acceptance study.
-Results, report, manifest, and checks are under `outputs/validation/<run-id>/`.
-Both validation commands use the same saved-run checker. For a short run, use
-`python scripts/check_validation.py <run-directory>`; add `--full-horizon` to
-require the complete 104-cycle, two-replication, all-arm adoption matrix.
-Use `--check-only` to recheck already-generated acceptance artifacts; `--resume`
-requires identical source, calibration, configuration, environment and worker count.
-
-`--save-data` writes simulated histories, forecasts and realized sales.
-`--save-storeweek` writes per-store prices, assignments, fallback flags and true
-expected revenue triplets to `storeweek.parquet`. Ratios are stored as fractions;
-percentages are a report presentation choice. Model-store measures are null
-when phi is zero. Failures remain in policy comparisons, with fallback rates.
-
-The historical `outputs/pilot/synthetic-smoke` and `synthetic-demo` reports are
-**v1.0 development records**, preserved for provenance. They are not scientific
-results and must not be cited as such.
-
-## Calibration and staged runs
-
-Audit eligibility before proposing any sample change:
-
-```bash
-python scripts/audit_coverage.py --category tna --search-window
-python scripts/run_calibration.py --config configs/calibration.yaml --categories sna tna tti
-```
-
-Recalibration reads approved selections from
-`<data-dir>/calibration/calibration_windows.json`, or an explicit `--windows` file.
-
-Tuna uses the approved inclusive range 1–341 without changing the 90% threshold.
-The full-span audit is preserved in `coverage_audit_tna.json`; the applied-window
-audit is written to `coverage_audit_tna_window.json`. Calibration diagnostics and
-checksums record the selected window and its configuration hash. A category
-without a window selection keeps its full sample. Invalid/too-short windows fail
-before calibration outputs are changed; selected windows must retain at least 40 stores.
-The observed focal-UPC range (currently weeks 1–331 for tuna) is separate from the
-approved 341-week denominator, which includes missing boundary weeks.
-
-The first command needs the full public zoned-store table, normally imported to
-`data/raw/stores.csv`. Audit results identify the metadata source and scope.
-
-Keep the 90% threshold.
-
-Benchmark observational elasticities are review flags, not exclusion criteria;
-see [the investigation draft](docs/BETA_REFERENCE_REVIEW.md).
-
-The accepted chapter amendment uses the exploratory configuration:
-
-```bash
-python scripts/run_exploratory.py benchmark
-python scripts/run_exploratory.py run
-python scripts/run_exploratory.py analyze
-```
-
-The six-cell study is defined in `configs/exploratory.yaml`. Benchmark artifacts
-are separate from production. The runner enforces the remaining worker-hour
-budget before launch and resumes completed replication checkpoints safely.
-The completed chapter-ready study is documented in
-[`docs/CHAPTER_EXPLORATORY_STUDY.md`](docs/CHAPTER_EXPLORATORY_STUDY.md), with
-reproducible publication outputs under `outputs/exploratory/six-cell-20261015/`.
-
-The original deferred stages use `configs/scenarios.yaml`:
-
-```bash
-python scripts/run_pilot.py --stage diagnostic --cells all --n-jobs 2 --run-id s2-diagnostic
-python scripts/run_pilot.py --stage pilot --cells all --n-jobs 2 --run-id s3-precision
-python scripts/run_pilot.py --stage main --cells all --decision outputs/pilot/s3-precision/decisions.json \
-  --n-jobs 2 --run-id s4-main
-```
-
-The original 81-cell core is deferred future work under Amendment A8. Named extensions vary one factor from
-a base cell, for example `--extension censored` during validation. No extension
-is silently mixed into the core. Stage seeds are separate; cells within a stage
-share replication streams. The diagnostic's five extra base replications use
-new streams, separate from its first base replication.
-
-The precision decision reports per-cell/arm SDs, the bounding measure, planned
-paired comparisons, targets, explicit floor/cap, achieved precision at the cap,
-and projected runtime against the budget. It appears only for the pilot stage.
-
-## Validate
-
-```bash
-ruff check src scripts tests
-pytest -m 'not slow' --ignore=tests/test_loop_smoke.py
-pytest tests/test_loop_smoke.py
-RUN_DML_INFERENCE=1 pytest tests/test_dml_inference.py
-```
+Contact:
+Professor Jose Mendoza
+New York University
+jose.mendoza@nyu.edu

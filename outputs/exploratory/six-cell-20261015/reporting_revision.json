@@ -1,0 +1,41 @@
+{
+  "reporting_version": "1.2",
+  "generated_at": "2026-10-16T05:50:16.635252+05:30",
+  "base_commit": "833f0dd1c931cae1f0173b716901aca8bf5696bd",
+  "working_tree_dirty": true,
+  "simulation_rerun": false,
+  "audit": "reused saved checks.json",
+  "source_sha256": {
+    "estimates.parquet": "1c65bcedc6a981940052f04b9b8ac88ebda61a104dac61343e692f77025e2633",
+    "states.parquet": "ad73503dde55112a1ce5fc2c4095d3ada61f9ea4bfcbe32d54ec06650645fa5c",
+    "checks.json": "37ff1583acc68333e24e5313300a5f87ff58dec11d9e61e4cbc6aeb198abb91d",
+    "manifest.json": "dbc36a403fec4a7163e8fc5f062a253070311f68ee79c998d0b945ab4771a847"
+  },
+  "reporting_source_sha256": {
+    "scripts/run_exploratory.py": "8143cd9ba73b2e0e9c3962caa5e1fa6c5f265b0448bd6610996303d3a34b5731",
+    "src/ktsim/metrics.py": "942762a404e18542a23140ac887b2419aad23974362f1ab31cf56be323da8494"
+  },
+  "output_sha256": {
+    "table1_estimation_prediction.csv": "f86cfebada3517c737bdac06073b3f33947ee3a5227c527d60f8eb9e59e30874",
+    "table2_pricing_performance.csv": "1ec59e9e30e37eaed973023cc865ddc9e724378b181806774692ed5b9a7afb26",
+    "table3_paired_comparisons.csv": "c18ca65d73b52679db400a6f3553667eee051d72983fbbc6c675b46fc87a21c2",
+    "figure1_elasticity_trajectories.png": "29c9e0f558221ea85586731dc258971060121e796cfea2a3ffb6749668ca69e6",
+    "figure2_cumulative_regret.png": "ed2f9d9d768bba5b18941ab8b12339dde07ff03cd567b4a361397cbda58a6548",
+    "replication_metrics.parquet": "d65f8b78ed806833dd9df7d49ecc79604528ab644ba80083f2153a9f7ccd111d",
+    "performance.csv": "a2f602bd9d0d1c32f8a65dc6fad3baa2cac051eb8afbf55e83b3da8d0857d272",
+    "chapter.md": "230ce85b1d26f703302bff72e00ed08d092ec47c2fccf3847cf8007396833a4e"
+  },
+  "environment": {
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3"
+  },
+  "definitions": {
+    "horizon_rmse": "sqrt(mean(weekly_rmse ** 2))",
+    "reference_joint_reliability": "not applicable",
+    "reference_regret_reliability": "last 26 cycles each at most 2% regret",
+    "paired_difference": "treatment minus comparator, percentage points",
+    "paired_mcse": "sample SD of paired differences / sqrt(n_pairs)"
+  }
+}

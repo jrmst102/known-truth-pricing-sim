@@ -19,7 +19,7 @@ six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy,exploratory,horizo
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy,exploratory,horizon,failure_share,0.0,0.0,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,30,available
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy,exploratory,horizon,forecast_grid_rmse,3.3413922784973282,0.04820685256407229,30,30,30,30,available
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy,exploratory,horizon,forecast_grid_rmse,3.6183247805600254,0.05368904592859402,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy,exploratory,horizon,forecast_mape,0.45799184942597965,0.0015986517586350077,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy,exploratory,horizon,forecast_rmse,24.006147397953967,0.2176438525294074,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy,exploratory,horizon,norm_cum_regret_all,0.005054028512807657,0.00020583967098007817,30,30,30,30,available
@@ -52,7 +52,7 @@ six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy_rps,exploratory,ho
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy_rps,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy_rps,exploratory,horizon,failure_share,0.0,0.0,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy_rps,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,30,available
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy_rps,exploratory,horizon,forecast_grid_rmse,3.342936114402556,0.048714554893895784,30,30,30,30,available
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy_rps,exploratory,horizon,forecast_grid_rmse,3.6198542953559385,0.05418207308402868,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy_rps,exploratory,horizon,forecast_mape,0.4580136490476731,0.001607528239113806,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy_rps,exploratory,horizon,forecast_rmse,24.00322670350437,0.21696966959726127,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy_rps,exploratory,horizon,norm_cum_regret_all,0.00510781987425488,0.00020934299355051912,30,30,30,30,available
@@ -85,7 +85,7 @@ six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy,exploratory,horizo
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,0,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy,exploratory,horizon,failure_share,0.0,0.0,30,30,30,0,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,0,available
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy,exploratory,horizon,forecast_grid_rmse,9.437800133448583,0.059845524449739375,30,30,30,0,available
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy,exploratory,horizon,forecast_grid_rmse,10.411239840546715,0.08055041228674403,30,30,30,0,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy,exploratory,horizon,forecast_mape,0.46931135963071635,0.0017700678156740445,30,30,30,0,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy,exploratory,horizon,forecast_rmse,24.529123733704232,0.16204930679988577,30,30,30,0,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy,exploratory,horizon,norm_cum_regret_all,0.00832511298489005,0.00013763534256144576,30,30,30,0,available
@@ -118,7 +118,7 @@ six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy_rps,exploratory,ho
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy_rps,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,0,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy_rps,exploratory,horizon,failure_share,0.0,0.0,30,30,30,0,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy_rps,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,0,available
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy_rps,exploratory,horizon,forecast_grid_rmse,9.422142912293626,0.05557764265526767,30,30,30,0,available
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy_rps,exploratory,horizon,forecast_grid_rmse,10.385547101865857,0.08195126668446127,30,30,30,0,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy_rps,exploratory,horizon,forecast_mape,0.46648075189813026,0.0016294902257864864,30,30,30,0,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy_rps,exploratory,horizon,forecast_rmse,24.54980245116503,0.17776409218898648,30,30,30,0,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy_rps,exploratory,horizon,norm_cum_regret_all,0.008293426354343127,0.0001371389981284566,30,30,30,0,available
@@ -151,7 +151,7 @@ six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy,exploratory,horizo
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy,exploratory,horizon,failure_share,0.0,0.0,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,30,available
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy,exploratory,horizon,forecast_grid_rmse,4.68385577146765,0.28386381401804245,30,30,30,30,available
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy,exploratory,horizon,forecast_grid_rmse,5.050141218721041,0.29917207134331464,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy,exploratory,horizon,forecast_mape,0.4826396578657445,0.004565173125431073,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy,exploratory,horizon,forecast_rmse,23.052730711386694,0.27603295863748945,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy,exploratory,horizon,norm_cum_regret_all,0.012736786968206985,0.0007045123231352794,30,30,30,30,available
@@ -184,7 +184,7 @@ six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,ho
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,horizon,failure_share,0.0,0.0,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,30,available
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,horizon,forecast_grid_rmse,4.6793170237053845,0.2825690238552221,30,30,30,30,available
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,horizon,forecast_grid_rmse,5.045424268659546,0.2976958520818776,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,horizon,forecast_mape,0.48216376556101875,0.00449994800816578,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,horizon,forecast_rmse,23.052082518156762,0.27307109497506,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,horizon,norm_cum_regret_all,0.012506244795803707,0.0006871414889139583,30,30,30,30,available
@@ -197,48 +197,48 @@ six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,ho
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,horizon,reliable_regret,0.7666666666666667,0.07854032324531728,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,horizon,reliable_sign,0.9,0.05570860145311555,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,horizon,seconds,81.99425253356506,0.9600281863481774,30,30,30,30,available
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,censored_share,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_all,5796.309838708849,126.97892922766687,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_all_rec,6896.352324083667,143.5971459809272,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_model,2926.703217070533,76.4875974035734,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_model_rec,3475.816736597224,84.70857268512297,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,failure_share,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,forecast_grid_rmse,,,0,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,forecast_mape,0.45432689413274707,0.0015156959341432828,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,forecast_rmse,23.134492007287772,0.16912458662609944,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_all,0.007414910241913253,0.00017141114933039563,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_all_rec,0.008819523094262541,0.00018979576386982935,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_model,0.007413390499251258,0.00019061024085577686,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_model_rec,0.008802394629334452,0.00020878496727109343,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,positive_slope_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,price_sd_26,0.09458328118832031,0.0022201675371156535,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,reliable,1.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,reliable_regret,1.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,reliable_sign,1.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,seconds,0.6846511017334705,0.017792882039330073,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,censored_share,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_all,50.64972432214602,0.2596971316567879,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_all_rec,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_model,25.563700266147467,0.2609594185238008,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_model_rec,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,failure_share,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,forecast_grid_rmse,,,0,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,forecast_mape,0.45432689413274707,0.0015156959341432843,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,forecast_rmse,24.04396239941787,0.12771922857043597,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_all,6.474669494953837e-05,2.5942818886887415e-07,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_all_rec,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_model,6.46651468805615e-05,2.974601259482891e-07,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_model_rec,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,positive_slope_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,price_sd_26,0.011299367462092518,4.2376296680180574e-05,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,reliable,1.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,reliable_regret,1.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,reliable_sign,1.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,seconds,0.6906436909663171,0.018907870728405093,30,30,30,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,censored_share,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_all,5796.309838708849,126.97892922766687,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_all_rec,6896.352324083667,143.5971459809272,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_model,2926.703217070533,76.4875974035734,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_model_rec,3475.816736597224,84.70857268512297,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,extreme_rate,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,failure_share,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,fallback_rate,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,forecast_grid_rmse,,,0,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,forecast_mape,0.45432689413274707,0.0015156959341432828,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,forecast_rmse,23.134492007287772,0.16912458662609944,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_all,0.007414910241913253,0.00017141114933039563,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_all_rec,0.008819523094262541,0.00018979576386982935,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_model,0.007413390499251258,0.00019061024085577686,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_model_rec,0.008802394629334452,0.00020878496727109343,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,positive_slope_rate,,,0,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,price_sd_26,0.09458328118832031,0.0022201675371156535,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,reliable,,,0,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,reliable_regret,1.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,reliable_sign,,,0,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,seconds,0.6846511017334705,0.017792882039330073,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,censored_share,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_all,50.64972432214602,0.2596971316567879,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_all_rec,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_model,25.563700266147467,0.2609594185238008,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_model_rec,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,extreme_rate,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,failure_share,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,fallback_rate,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,forecast_grid_rmse,,,0,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,forecast_mape,0.45432689413274707,0.0015156959341432843,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,forecast_rmse,24.04396239941787,0.12771922857043597,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_all,6.474669494953837e-05,2.5942818886887415e-07,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_all_rec,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_model,6.46651468805615e-05,2.974601259482891e-07,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_model_rec,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,positive_slope_rate,,,0,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,price_sd_26,0.011299367462092518,4.2376296680180574e-05,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,reliable,,,0,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,reliable_regret,1.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,reliable_sign,,,0,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,seconds,0.6906436909663171,0.018907870728405093,30,30,0,0,not applicable
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,78,bias,1.4550233676937836,0.0311520758540907,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,78,empirical_se,0.17062694658397487,0.02240441570568816,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,78,rmse,1.4646624538116324,0.030290615186222607,30,30,30,30,available
@@ -259,7 +259,7 @@ six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,horizo
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,horizon,failure_share,0.0,0.0,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,30,available
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,horizon,forecast_grid_rmse,9.064932282664836,0.13796813207876968,30,30,30,30,available
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,horizon,forecast_grid_rmse,9.553214918447848,0.14798563822645067,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,horizon,forecast_mape,0.4832607663923752,0.002559507326951767,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,horizon,forecast_rmse,21.03605852634377,0.1415237743873892,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,horizon,norm_cum_regret_all,0.0160975811768514,9.695695466036501e-05,30,30,30,30,available
@@ -292,7 +292,7 @@ six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy_rps,exploratory,ho
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy_rps,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy_rps,exploratory,horizon,failure_share,0.0,0.0,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy_rps,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,30,available
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy_rps,exploratory,horizon,forecast_grid_rmse,9.063902083961983,0.13855994078355854,30,30,30,30,available
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy_rps,exploratory,horizon,forecast_grid_rmse,9.553566357759623,0.14843947006278496,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy_rps,exploratory,horizon,forecast_mape,0.4831220873965045,0.0025506734244110114,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy_rps,exploratory,horizon,forecast_rmse,21.036965527872958,0.14120008319277919,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy_rps,exploratory,horizon,norm_cum_regret_all,0.016039561921673096,9.771216100291722e-05,30,30,30,30,available
@@ -325,7 +325,7 @@ six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy,exploratory,horizo
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,0,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy,exploratory,horizon,failure_share,0.0,0.0,30,30,30,0,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,0,available
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy,exploratory,horizon,forecast_grid_rmse,14.384879671006331,0.13789456179735396,30,30,30,0,available
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy,exploratory,horizon,forecast_grid_rmse,15.299918083635356,0.14836472552057461,30,30,30,0,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy,exploratory,horizon,forecast_mape,0.46180495944263367,0.002802959082558383,30,30,30,0,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy,exploratory,horizon,forecast_rmse,21.871419433381764,0.16858071244513487,30,30,30,0,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy,exploratory,horizon,norm_cum_regret_all,0.015586356296623353,0.00011126299604954524,30,30,30,0,available
@@ -358,7 +358,7 @@ six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy_rps,exploratory,ho
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy_rps,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,0,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy_rps,exploratory,horizon,failure_share,0.0,0.0,30,30,30,0,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy_rps,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,0,available
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy_rps,exploratory,horizon,forecast_grid_rmse,14.385117509356492,0.13922369410570024,30,30,30,0,available
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy_rps,exploratory,horizon,forecast_grid_rmse,15.294886245168374,0.15094826822947907,30,30,30,0,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy_rps,exploratory,horizon,forecast_mape,0.4632769542246995,0.0027366493322722096,30,30,30,0,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy_rps,exploratory,horizon,forecast_rmse,21.917540452959372,0.17001764615829745,30,30,30,0,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy_rps,exploratory,horizon,norm_cum_regret_all,0.015489420941653767,0.0001116408948248364,30,30,30,0,available
@@ -391,7 +391,7 @@ six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy,exploratory,horizo
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy,exploratory,horizon,failure_share,0.0,0.0,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,30,available
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy,exploratory,horizon,forecast_grid_rmse,4.6101681592504535,0.24351197468666982,30,30,30,30,available
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy,exploratory,horizon,forecast_grid_rmse,4.966898264489728,0.2552405556113297,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy,exploratory,horizon,forecast_mape,0.469139616145257,0.0025783182661566735,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy,exploratory,horizon,forecast_rmse,22.32970741623583,0.3204771399231435,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy,exploratory,horizon,norm_cum_regret_all,0.012120217238479078,0.0005974931848542697,30,30,30,30,available
@@ -424,7 +424,7 @@ six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,ho
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,horizon,failure_share,0.0,0.0,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,30,available
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,horizon,forecast_grid_rmse,4.608819681895832,0.24243751458187596,30,30,30,30,available
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,horizon,forecast_grid_rmse,4.965808504960639,0.2541422771044516,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,horizon,forecast_mape,0.4690804417309828,0.0025779127271172114,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,horizon,forecast_rmse,22.328257434581904,0.32063623041784467,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,horizon,norm_cum_regret_all,0.012092569104280852,0.0005935142871981398,30,30,30,30,available
@@ -437,48 +437,48 @@ six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,ho
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,horizon,reliable_regret,0.8666666666666667,0.06312427686319992,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,horizon,reliable_sign,0.9666666666666667,0.033333333333333326,30,30,30,30,available
 six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,horizon,seconds,74.11698112443446,0.9228200285275033,30,30,30,30,available
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,censored_share,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_all,6316.061617578529,113.58903940468356,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_all_rec,6896.352324083667,143.5971459809272,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_model,3185.0681185463745,69.68717192752835,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_model_rec,3475.816736597224,84.70857268512297,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,failure_share,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,forecast_grid_rmse,,,0,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,forecast_mape,0.45432689413274707,0.0015156959341432834,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,forecast_rmse,22.539241577069642,0.15552482356302516,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_all,0.008079288110999944,0.00015513207795645557,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_all_rec,0.008819523094262541,0.00018979576386982935,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_model,0.00806802007963958,0.0001749481910811684,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_model_rec,0.008802394629334452,0.00020878496727109343,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,positive_slope_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,price_sd_26,0.10151108253437834,0.0017889923011461376,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,reliable,1.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,reliable_regret,1.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,reliable_sign,1.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,seconds,0.6052062714319618,0.018821174415171376,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,censored_share,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_all,1032.4783562063417,5.237477366670755,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_all_rec,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_model,522.3353069148689,6.082543140038475,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_model_rec,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,failure_share,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,forecast_grid_rmse,,,0,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,forecast_mape,0.45432689413274707,0.0015156959341432828,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,forecast_rmse,23.31297033538539,0.11128047135001616,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_all,0.0013199004980451318,5.729575462154606e-06,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_all_rec,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_model,0.0013212497336452843,9.34297707186729e-06,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_model_rec,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,positive_slope_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,price_sd_26,0.04886430880110507,0.0002140816681980725,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,reliable,1.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,reliable_regret,1.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,reliable_sign,1.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,seconds,0.5997061521638292,0.01629493876014604,30,30,30,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,censored_share,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_all,6316.061617578529,113.58903940468356,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_all_rec,6896.352324083667,143.5971459809272,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_model,3185.0681185463745,69.68717192752835,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_model_rec,3475.816736597224,84.70857268512297,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,extreme_rate,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,failure_share,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,fallback_rate,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,forecast_grid_rmse,,,0,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,forecast_mape,0.45432689413274707,0.0015156959341432834,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,forecast_rmse,22.539241577069642,0.15552482356302516,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_all,0.008079288110999944,0.00015513207795645557,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_all_rec,0.008819523094262541,0.00018979576386982935,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_model,0.00806802007963958,0.0001749481910811684,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_model_rec,0.008802394629334452,0.00020878496727109343,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,positive_slope_rate,,,0,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,price_sd_26,0.10151108253437834,0.0017889923011461376,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,reliable,,,0,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,reliable_regret,1.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,reliable_sign,,,0,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,seconds,0.6052062714319618,0.018821174415171376,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,censored_share,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_all,1032.4783562063417,5.237477366670755,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_all_rec,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_model,522.3353069148689,6.082543140038475,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_model_rec,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,extreme_rate,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,failure_share,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,fallback_rate,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,forecast_grid_rmse,,,0,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,forecast_mape,0.45432689413274707,0.0015156959341432828,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,forecast_rmse,23.31297033538539,0.11128047135001616,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_all,0.0013199004980451318,5.729575462154606e-06,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_all_rec,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_model,0.0013212497336452843,9.34297707186729e-06,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_model_rec,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,positive_slope_rate,,,0,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,price_sd_26,0.04886430880110507,0.0002140816681980725,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,reliable,,,0,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,reliable_regret,1.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,reliable_sign,,,0,30,0,0,not applicable
+six-cell-20261015,sna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,seconds,0.5997061521638292,0.01629493876014604,30,30,0,0,not applicable
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy,exploratory,78,bias,-0.003925297859163243,0.01891953086790279,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy,exploratory,78,empirical_se,0.10362653833765652,0.01360683109871896,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy,exploratory,78,rmse,0.10196037839703921,0.011539863807804413,30,30,30,30,available
@@ -499,7 +499,7 @@ six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy,exploratory,horizo
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy,exploratory,horizon,failure_share,0.0,0.0,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,30,available
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy,exploratory,horizon,forecast_grid_rmse,11.271636461824217,0.19155021151216597,30,30,30,30,available
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy,exploratory,horizon,forecast_grid_rmse,11.795348053209473,0.20133843388279854,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy,exploratory,horizon,forecast_mape,1.0195084956283733,0.005296144243520762,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy,exploratory,horizon,forecast_rmse,83.73122446664156,0.9403020465880035,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy,exploratory,horizon,norm_cum_regret_all,0.008361684542919275,0.0004987972531284738,30,30,30,30,available
@@ -532,7 +532,7 @@ six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy_rps,exploratory,ho
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy_rps,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy_rps,exploratory,horizon,failure_share,0.0,0.0,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy_rps,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,30,available
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy_rps,exploratory,horizon,forecast_grid_rmse,11.275803517492799,0.19161910992480172,30,30,30,30,available
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy_rps,exploratory,horizon,forecast_grid_rmse,11.799238763628194,0.20140391696866142,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy_rps,exploratory,horizon,forecast_mape,1.0195674629770841,0.005300738088730028,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy_rps,exploratory,horizon,forecast_rmse,83.71418566810817,0.9417058412580076,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy_rps,exploratory,horizon,norm_cum_regret_all,0.008397932558044295,0.0005034474491660184,30,30,30,30,available
@@ -565,7 +565,7 @@ six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy,exploratory,horizo
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,0,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy,exploratory,horizon,failure_share,0.0,0.0,30,30,30,0,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,0,available
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy,exploratory,horizon,forecast_grid_rmse,29.681759691359346,0.13475102645598883,30,30,30,0,available
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy,exploratory,horizon,forecast_grid_rmse,30.64434634345944,0.15184642413964866,30,30,30,0,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy,exploratory,horizon,forecast_mape,0.9462964889788361,0.005298915379365362,30,30,30,0,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy,exploratory,horizon,forecast_rmse,83.83084212297787,0.6514497712041937,30,30,30,0,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy,exploratory,horizon,norm_cum_regret_all,0.01133469943645021,0.00017790034682587584,30,30,30,0,available
@@ -598,7 +598,7 @@ six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy_rps,exploratory,ho
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy_rps,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,0,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy_rps,exploratory,horizon,failure_share,0.0,0.0,30,30,30,0,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy_rps,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,0,available
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy_rps,exploratory,horizon,forecast_grid_rmse,29.69618947978409,0.13656823988538655,30,30,30,0,available
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy_rps,exploratory,horizon,forecast_grid_rmse,30.658565891466328,0.15238404260455726,30,30,30,0,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy_rps,exploratory,horizon,forecast_mape,0.9451778296935266,0.004973933339431997,30,30,30,0,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy_rps,exploratory,horizon,forecast_rmse,83.91045356359828,0.6987244213089672,30,30,30,0,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy_rps,exploratory,horizon,norm_cum_regret_all,0.011568151193421666,0.0001965979741851379,30,30,30,0,available
@@ -631,7 +631,7 @@ six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy,exploratory,horizo
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy,exploratory,horizon,failure_share,0.0,0.0,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,30,available
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy,exploratory,horizon,forecast_grid_rmse,22.105996022561314,1.8319982154303864,30,30,30,30,available
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy,exploratory,horizon,forecast_grid_rmse,24.039443917256502,2.0606216490651534,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy,exploratory,horizon,forecast_mape,1.2119788724729603,0.03102702663157048,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy,exploratory,horizon,forecast_rmse,82.68493103907898,1.1113977472847132,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy,exploratory,horizon,norm_cum_regret_all,0.016749706116260827,0.0006741550324739478,30,30,30,30,available
@@ -664,7 +664,7 @@ six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,ho
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,horizon,failure_share,0.0,0.0,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,30,available
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,horizon,forecast_grid_rmse,19.28032216215881,1.3670527957809744,30,30,30,30,available
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,horizon,forecast_grid_rmse,20.68999082015067,1.500956358494869,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,horizon,forecast_mape,1.1615738576000134,0.022374615883994593,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,horizon,forecast_rmse,81.27778298935722,1.0307344863011252,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,horizon,norm_cum_regret_all,0.016472756430605497,0.0006689432907304509,30,30,30,30,available
@@ -677,48 +677,48 @@ six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,ho
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,horizon,reliable_regret,0.23333333333333334,0.07854032324531726,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,horizon,reliable_sign,0.5,0.09284766908852593,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,horizon,seconds,71.64959562879994,1.1210368923315308,30,30,30,30,available
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,censored_share,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_all,5297.654292668442,133.6178718239896,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_all_rec,9144.805854924809,275.9620504104395,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_model,2629.495252524757,71.66028521166189,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_model_rec,4577.365501407333,146.07996858487957,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,failure_share,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,forecast_grid_rmse,,,0,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,forecast_mape,1.0118548853900893,0.004874828479797907,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,forecast_rmse,80.84932011913196,0.6908887088574274,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_all,0.011182046511677254,0.000285314914041697,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_all_rec,0.019301032199237917,0.00058651017436683,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_model,0.011074455942395955,0.00029534459155243996,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_model_rec,0.01928406733088993,0.0006148535405037931,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,positive_slope_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,price_sd_26,0.10732280757792974,0.002144229750969652,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,reliable,0.7333333333333333,0.08211756827352532,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,reliable_regret,0.7333333333333333,0.08211756827352532,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,reliable_sign,1.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,seconds,0.5600997386364421,0.00907662660123941,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,censored_share,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_all,0.9660616864422991,0.0961235450705136,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_all_rec,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_model,0.5418163887953976,0.058071499346148005,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_model_rec,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,failure_share,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,forecast_grid_rmse,,,0,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,forecast_mape,1.0118548853900893,0.004874828479797909,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,forecast_rmse,85.03319941202908,0.5809180972849572,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_all,2.0376907303404137e-06,2.0248616281524638e-07,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_all_rec,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_model,2.2915561066414987e-06,2.466660020590595e-07,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_model_rec,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,positive_slope_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,price_sd_26,0.0003568283702977796,4.0713700046996095e-05,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,reliable,1.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,reliable_regret,1.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,reliable_sign,1.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,seconds,0.6552680496679386,0.027839230883622206,30,30,30,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,censored_share,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_all,5297.654292668442,133.6178718239896,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_all_rec,9144.805854924809,275.9620504104395,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_model,2629.495252524757,71.66028521166189,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_model_rec,4577.365501407333,146.07996858487957,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,extreme_rate,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,failure_share,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,fallback_rate,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,forecast_grid_rmse,,,0,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,forecast_mape,1.0118548853900893,0.004874828479797907,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,forecast_rmse,80.84932011913196,0.6908887088574274,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_all,0.011182046511677254,0.000285314914041697,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_all_rec,0.019301032199237917,0.00058651017436683,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_model,0.011074455942395955,0.00029534459155243996,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_model_rec,0.01928406733088993,0.0006148535405037931,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,positive_slope_rate,,,0,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,price_sd_26,0.10732280757792974,0.002144229750969652,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,reliable,,,0,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,reliable_regret,0.7333333333333333,0.08211756827352532,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,reliable_sign,,,0,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,seconds,0.5600997386364421,0.00907662660123941,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,censored_share,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_all,0.9660616864422991,0.0961235450705136,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_all_rec,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_model,0.5418163887953976,0.058071499346148005,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_model_rec,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,extreme_rate,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,failure_share,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,fallback_rate,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,forecast_grid_rmse,,,0,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,forecast_mape,1.0118548853900893,0.004874828479797909,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,forecast_rmse,85.03319941202908,0.5809180972849572,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_all,2.0376907303404137e-06,2.0248616281524638e-07,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_all_rec,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_model,2.2915561066414987e-06,2.466660020590595e-07,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_model_rec,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,positive_slope_rate,,,0,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,price_sd_26,0.0003568283702977796,4.0713700046996095e-05,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,reliable,,,0,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,reliable_regret,1.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,reliable_sign,,,0,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,seconds,0.6552680496679386,0.027839230883622206,30,30,0,0,not applicable
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,78,bias,1.2759110519002141,0.03450375629725258,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,78,empirical_se,0.18898485642666163,0.02481492736189175,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,78,rmse,1.2893695277619588,0.03440424263830267,30,30,30,30,available
@@ -739,7 +739,7 @@ six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,horizo
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,horizon,failure_share,0.0,0.0,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,30,available
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,horizon,forecast_grid_rmse,20.450042211181643,0.35003253858227484,30,30,30,30,available
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,horizon,forecast_grid_rmse,21.01613836154082,0.365908115886685,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,horizon,forecast_mape,1.070777225675193,0.006906794343501489,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,horizon,forecast_rmse,72.13273498239141,0.5443030859003647,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,horizon,norm_cum_regret_all,0.01887057776481853,0.0001495166301194927,30,30,30,30,available
@@ -772,7 +772,7 @@ six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy_rps,exploratory,ho
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy_rps,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy_rps,exploratory,horizon,failure_share,0.0,0.0,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy_rps,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,30,available
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy_rps,exploratory,horizon,forecast_grid_rmse,20.43700560797027,0.35265015545386974,30,30,30,30,available
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy_rps,exploratory,horizon,forecast_grid_rmse,21.003639251886007,0.3683358637417447,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy_rps,exploratory,horizon,forecast_mape,1.0706357294980016,0.0068989786692531755,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy_rps,exploratory,horizon,forecast_rmse,72.13327164897747,0.5436689195031058,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy_rps,exploratory,horizon,norm_cum_regret_all,0.01881473661772364,0.00014856514446118195,30,30,30,30,available
@@ -805,7 +805,7 @@ six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy,exploratory,horizo
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,0,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy,exploratory,horizon,failure_share,0.0,0.0,30,30,30,0,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,0,available
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy,exploratory,horizon,forecast_grid_rmse,36.57989671472507,0.3174308461175692,30,30,30,0,available
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy,exploratory,horizon,forecast_grid_rmse,37.62339393477661,0.3373282846490477,30,30,30,0,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy,exploratory,horizon,forecast_mape,0.9143407021086595,0.006253509971638553,30,30,30,0,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy,exploratory,horizon,forecast_rmse,74.23045395994117,0.5453468092377138,30,30,30,0,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy,exploratory,horizon,norm_cum_regret_all,0.017899610313697138,0.00015826898060677537,30,30,30,0,available
@@ -838,7 +838,7 @@ six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy_rps,exploratory,ho
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy_rps,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,0,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy_rps,exploratory,horizon,failure_share,0.0,0.0,30,30,30,0,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy_rps,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,0,available
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy_rps,exploratory,horizon,forecast_grid_rmse,36.5565283477971,0.32284501584659614,30,30,30,0,available
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy_rps,exploratory,horizon,forecast_grid_rmse,37.624735491429234,0.3408301875230618,30,30,30,0,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy_rps,exploratory,horizon,forecast_mape,0.9176627550343192,0.006720585410242588,30,30,30,0,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy_rps,exploratory,horizon,forecast_rmse,74.40108556377226,0.5755621359137075,30,30,30,0,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy_rps,exploratory,horizon,norm_cum_regret_all,0.017819919683008986,0.0001599843683580216,30,30,30,0,available
@@ -871,7 +871,7 @@ six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy,exploratory,horizo
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy,exploratory,horizon,failure_share,0.0,0.0,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,30,available
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy,exploratory,horizon,forecast_grid_rmse,19.4326368165725,1.437686665167106,30,30,30,30,available
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy,exploratory,horizon,forecast_grid_rmse,21.063836650914375,1.6340572852158113,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy,exploratory,horizon,forecast_mape,1.1156333814932553,0.01932547843458155,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy,exploratory,horizon,forecast_rmse,78.59020223111524,1.3381995168398733,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy,exploratory,horizon,norm_cum_regret_all,0.015242432898425588,0.0005907581026280302,30,30,30,30,available
@@ -904,7 +904,7 @@ six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,ho
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,horizon,failure_share,0.0,0.0,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,30,available
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,horizon,forecast_grid_rmse,19.462797699651308,1.4615308279254002,30,30,30,30,available
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,horizon,forecast_grid_rmse,21.104024984261414,1.671767828170279,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,horizon,forecast_mape,1.1163488124419103,0.019851673290355483,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,horizon,forecast_rmse,78.6244903889512,1.3507233812826658,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,horizon,norm_cum_regret_all,0.015208801224845313,0.0005883579324483492,30,30,30,30,available
@@ -917,48 +917,48 @@ six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,ho
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,horizon,reliable_regret,0.3333333333333333,0.08753762190648169,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,horizon,reliable_sign,0.5333333333333333,0.09264111117062016,30,30,30,30,available
 six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,horizon,seconds,68.36035585533463,0.5348009562843993,30,30,30,30,available
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,censored_share,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_all,5422.306672633705,126.8772649780923,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_all_rec,9144.805854924809,275.9620504104395,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_model,2687.577647124458,67.9910496284003,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_model_rec,4577.365501407333,146.07996858487957,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,failure_share,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,forecast_grid_rmse,,,0,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,forecast_mape,1.0118548853900893,0.004874828479797907,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,forecast_rmse,78.04497321910684,0.6147112914359474,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_all,0.011444966915130724,0.00027102469144811277,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_all_rec,0.019301032199237917,0.00058651017436683,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_model,0.011321025072172305,0.00028160878367559705,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_model_rec,0.01928406733088993,0.0006148535405037931,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,positive_slope_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,price_sd_26,0.11116024183612588,0.0019181204391460992,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,reliable,0.8,0.07427813527082075,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,reliable_regret,0.8,0.07427813527082075,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,reliable_sign,1.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,seconds,0.5345075926719195,0.008137213898910095,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,censored_share,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_all,706.181537343917,2.9083364322404597,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_all_rec,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_model,354.7345742957837,2.816564387413888,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_model_rec,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,failure_share,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,forecast_grid_rmse,,,0,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,forecast_mape,1.0118548853900893,0.0048748284797979075,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,forecast_rmse,80.80619552002801,0.4777815096731619,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_all,0.0014903344838566703,5.932738457581496e-06,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_all_rec,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_model,0.0014944862840669388,8.639789768158821e-06,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_model_rec,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,positive_slope_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,price_sd_26,0.05225171793146254,0.0002167663684637037,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,reliable,1.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,reliable_regret,1.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,reliable_sign,1.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,seconds,0.600268778165749,0.008427774948966564,30,30,30,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,censored_share,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_all,5422.306672633705,126.8772649780923,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_all_rec,9144.805854924809,275.9620504104395,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_model,2687.577647124458,67.9910496284003,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_model_rec,4577.365501407333,146.07996858487957,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,extreme_rate,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,failure_share,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,fallback_rate,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,forecast_grid_rmse,,,0,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,forecast_mape,1.0118548853900893,0.004874828479797907,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,forecast_rmse,78.04497321910684,0.6147112914359474,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_all,0.011444966915130724,0.00027102469144811277,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_all_rec,0.019301032199237917,0.00058651017436683,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_model,0.011321025072172305,0.00028160878367559705,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_model_rec,0.01928406733088993,0.0006148535405037931,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,positive_slope_rate,,,0,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,price_sd_26,0.11116024183612588,0.0019181204391460992,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,reliable,,,0,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,reliable_regret,0.8,0.07427813527082075,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,reliable_sign,,,0,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,seconds,0.5345075926719195,0.008137213898910095,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,censored_share,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_all,706.181537343917,2.9083364322404597,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_all_rec,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_model,354.7345742957837,2.816564387413888,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_model_rec,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,extreme_rate,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,failure_share,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,fallback_rate,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,forecast_grid_rmse,,,0,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,forecast_mape,1.0118548853900893,0.0048748284797979075,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,forecast_rmse,80.80619552002801,0.4777815096731619,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_all,0.0014903344838566703,5.932738457581496e-06,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_all_rec,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_model,0.0014944862840669388,8.639789768158821e-06,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_model_rec,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,positive_slope_rate,,,0,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,price_sd_26,0.05225171793146254,0.0002167663684637037,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,reliable,,,0,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,reliable_regret,1.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,reliable_sign,,,0,30,0,0,not applicable
+six-cell-20261015,tna:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,seconds,0.600268778165749,0.008427774948966564,30,30,0,0,not applicable
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy,exploratory,78,bias,-0.022767719983523733,0.021446979336628206,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy,exploratory,78,empirical_se,0.11746994373018452,0.015424559279442859,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy,exploratory,78,rmse,0.1177182391584036,0.018775119728573795,30,30,30,30,available
@@ -979,7 +979,7 @@ six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy,exploratory,horizo
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy,exploratory,horizon,failure_share,0.0,0.0,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,30,available
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy,exploratory,horizon,forecast_grid_rmse,29.456425726107987,0.49365567522049714,30,30,30,30,available
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy,exploratory,horizon,forecast_grid_rmse,30.434316150211043,0.5240369199337358,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy,exploratory,horizon,forecast_mape,0.5145457084463562,0.0018688117008855887,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy,exploratory,horizon,forecast_rmse,208.8564086134451,1.914334835268817,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy,exploratory,horizon,norm_cum_regret_all,0.0044790739385540575,0.00021702578514880153,30,30,30,30,available
@@ -1012,7 +1012,7 @@ six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy_rps,exploratory,ho
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy_rps,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy_rps,exploratory,horizon,failure_share,0.0,0.0,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy_rps,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,30,available
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy_rps,exploratory,horizon,forecast_grid_rmse,29.455924844988704,0.4944540560757067,30,30,30,30,available
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy_rps,exploratory,horizon,forecast_grid_rmse,30.43381274288478,0.524814588956057,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy_rps,exploratory,horizon,forecast_mape,0.5145412007991006,0.0018722901673357442,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy_rps,exploratory,horizon,forecast_rmse,208.8664880087062,1.917330306482338,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M1:greedy_rps,exploratory,horizon,norm_cum_regret_all,0.004475965602196901,0.00020830829948057295,30,30,30,30,available
@@ -1045,7 +1045,7 @@ six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy,exploratory,horizo
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy,exploratory,horizon,extreme_rate,0.004487179487179487,0.0019953981381229014,30,30,30,0,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy,exploratory,horizon,failure_share,0.0,0.0,30,30,30,0,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,0,available
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy,exploratory,horizon,forecast_grid_rmse,80.16221935871518,0.4052730119961733,30,30,30,0,available
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy,exploratory,horizon,forecast_grid_rmse,82.13166548415198,0.4395649384429557,30,30,30,0,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy,exploratory,horizon,forecast_mape,0.512364325206876,0.001901891989098955,30,30,30,0,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy,exploratory,horizon,forecast_rmse,211.187189088416,1.3024166126103196,30,30,30,0,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy,exploratory,horizon,norm_cum_regret_all,0.006561485090222852,0.000108668731516007,30,30,30,0,available
@@ -1078,7 +1078,7 @@ six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy_rps,exploratory,ho
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy_rps,exploratory,horizon,extreme_rate,0.003205128205128206,0.0013308570489381404,30,30,30,0,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy_rps,exploratory,horizon,failure_share,0.0,0.0,30,30,30,0,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy_rps,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,0,available
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy_rps,exploratory,horizon,forecast_grid_rmse,80.21431491675243,0.4263753349682033,30,30,30,0,available
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy_rps,exploratory,horizon,forecast_grid_rmse,82.19353798650572,0.44271978754793384,30,30,30,0,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy_rps,exploratory,horizon,forecast_mape,0.5131896291710171,0.0019510297776634416,30,30,30,0,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy_rps,exploratory,horizon,forecast_rmse,211.024057348628,1.3574951132174304,30,30,30,0,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M2:greedy_rps,exploratory,horizon,norm_cum_regret_all,0.006562404736513165,0.0001402312325301865,30,30,30,0,available
@@ -1111,7 +1111,7 @@ six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy,exploratory,horizo
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy,exploratory,horizon,failure_share,0.0,0.0,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,30,available
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy,exploratory,horizon,forecast_grid_rmse,48.08312717474642,3.790524138712209,30,30,30,30,available
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy,exploratory,horizon,forecast_grid_rmse,50.29844288078242,4.011325837804114,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy,exploratory,horizon,forecast_mape,0.5560512012579562,0.008197458894008143,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy,exploratory,horizon,forecast_rmse,202.80386548820408,1.7460357648435338,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy,exploratory,horizon,norm_cum_regret_all,0.009287160364267888,0.0004996751577601213,30,30,30,30,available
@@ -1144,7 +1144,7 @@ six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,ho
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,horizon,failure_share,0.0,0.0,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,30,available
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,horizon,forecast_grid_rmse,46.74810523662573,3.489954850696746,30,30,30,30,available
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,horizon,forecast_grid_rmse,48.831399463787534,3.6855629109724513,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,horizon,forecast_mape,0.553129115878994,0.007503767099440122,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,horizon,forecast_rmse,202.35459834442125,1.7363535646191872,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,horizon,norm_cum_regret_all,0.009253127069658171,0.0005009431246954878,30,30,30,30,available
@@ -1157,48 +1157,48 @@ six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,ho
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,horizon,reliable_regret,1.0,0.0,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,horizon,reliable_sign,0.6333333333333333,0.08948554539839962,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,M3:greedy_rps,exploratory,horizon,seconds,68.15001605686557,0.4707635225971336,30,30,30,30,available
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,censored_share,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_all,8234.175836342274,227.19930287764754,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_all_rec,12706.811333113827,391.18082918046775,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_model,4144.898115683947,142.23123003159503,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_model_rec,6387.4286966115515,250.9640382091097,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,failure_share,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,forecast_grid_rmse,,,0,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,forecast_mape,0.5102674522479947,0.0018056684782507123,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,forecast_rmse,201.56198081806343,1.3971489530659522,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_all,0.006175611581174106,0.0001783557891492658,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_all_rec,0.009527136315500966,0.0003025548397646849,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_model,0.006176775764859639,0.00019874293982873907,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_model_rec,0.009506692285886199,0.00034331034968867037,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,positive_slope_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,price_sd_26,0.07707241253849512,0.001656366525024429,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,reliable,1.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,reliable_regret,1.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,reliable_sign,1.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,seconds,0.6453566925053261,0.015888293211745636,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,censored_share,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_all,0.004664690255352374,0.004664690255352372,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_all_rec,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_model,0.004664690255322057,0.004664690255322057,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_model_rec,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,failure_share,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,forecast_grid_rmse,,,0,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,forecast_mape,0.5102674522479947,0.0018056684782507102,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,forecast_rmse,207.606800406855,1.1338245041126798,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_all,3.5828441536162017e-09,3.5828441536162017e-09,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_all_rec,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_model,6.6386855370854795e-09,6.638685537085478e-09,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_model_rec,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,positive_slope_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,price_sd_26,9.299434876890344e-06,9.299434876890346e-06,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,reliable,1.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,reliable_regret,1.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,reliable_sign,1.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,seconds,0.5837051644653305,0.018803699150632017,30,30,30,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,censored_share,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_all,8234.175836342274,227.19930287764754,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_all_rec,12706.811333113827,391.18082918046775,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_model,4144.898115683947,142.23123003159503,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_model_rec,6387.4286966115515,250.9640382091097,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,extreme_rate,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,failure_share,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,fallback_rate,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,forecast_grid_rmse,,,0,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,forecast_mape,0.5102674522479947,0.0018056684782507123,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,forecast_rmse,201.56198081806343,1.3971489530659522,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_all,0.006175611581174106,0.0001783557891492658,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_all_rec,0.009527136315500966,0.0003025548397646849,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_model,0.006176775764859639,0.00019874293982873907,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_model_rec,0.009506692285886199,0.00034331034968867037,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,positive_slope_rate,,,0,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,price_sd_26,0.07707241253849512,0.001656366525024429,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,reliable,,,0,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,reliable_regret,1.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,reliable_sign,,,0,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,legacy:legacy,exploratory,horizon,seconds,0.6453566925053261,0.015888293211745636,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,censored_share,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_all,0.004664690255352374,0.004664690255352372,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_all_rec,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_model,0.004664690255322057,0.004664690255322057,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_model_rec,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,extreme_rate,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,failure_share,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,fallback_rate,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,forecast_grid_rmse,,,0,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,forecast_mape,0.5102674522479947,0.0018056684782507102,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,forecast_rmse,207.606800406855,1.1338245041126798,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_all,3.5828441536162017e-09,3.5828441536162017e-09,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_all_rec,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_model,6.6386855370854795e-09,6.638685537085478e-09,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_model_rec,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,positive_slope_rate,,,0,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,price_sd_26,9.299434876890344e-06,9.299434876890346e-06,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,reliable,,,0,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,reliable_regret,1.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,reliable_sign,,,0,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.00:phi=0.5,oracle:oracle,exploratory,horizon,seconds,0.5837051644653305,0.018803699150632017,30,30,0,0,not applicable
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,78,bias,1.5683404481876435,0.03715007252972565,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,78,empirical_se,0.20347932737483748,0.026718144638285604,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,78,rmse,1.581048851301367,0.037199491891292374,30,30,30,30,available
@@ -1219,7 +1219,7 @@ six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,horizo
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,horizon,failure_share,0.0,0.0,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,30,available
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,horizon,forecast_grid_rmse,69.51011624077475,1.1573207499096065,30,30,30,30,available
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,horizon,forecast_grid_rmse,70.68967420821791,1.1948331112197421,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,horizon,forecast_mape,0.528654476063865,0.002971864235293829,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,horizon,forecast_rmse,184.73135191087826,1.05535103684437,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy,exploratory,horizon,norm_cum_regret_all,0.010990164795403238,8.765607935170876e-05,30,30,30,30,available
@@ -1252,7 +1252,7 @@ six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy_rps,exploratory,ho
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy_rps,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy_rps,exploratory,horizon,failure_share,0.0,0.0,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy_rps,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,30,available
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy_rps,exploratory,horizon,forecast_grid_rmse,69.45378631101002,1.181078382015224,30,30,30,30,available
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy_rps,exploratory,horizon,forecast_grid_rmse,70.6395495639434,1.2205990645612634,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy_rps,exploratory,horizon,forecast_mape,0.5284890669761632,0.002963003864407948,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy_rps,exploratory,horizon,forecast_rmse,184.72511229577017,1.0521523177941539,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M1:greedy_rps,exploratory,horizon,norm_cum_regret_all,0.010945996796716236,8.750821059168237e-05,30,30,30,30,available
@@ -1285,7 +1285,7 @@ six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy,exploratory,horizo
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy,exploratory,horizon,extreme_rate,0.0019230769230769232,0.000967048755712969,30,30,30,0,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy,exploratory,horizon,failure_share,0.0,0.0,30,30,30,0,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,0,available
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy,exploratory,horizon,forecast_grid_rmse,107.64193586345318,1.114605143204275,30,30,30,0,available
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy,exploratory,horizon,forecast_grid_rmse,109.24296491271375,1.0995433807666923,30,30,30,0,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy,exploratory,horizon,forecast_mape,0.5007334485481475,0.0032441588557677718,30,30,30,0,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy,exploratory,horizon,forecast_rmse,190.7932521114237,1.1395531913386188,30,30,30,0,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy,exploratory,horizon,norm_cum_regret_all,0.010664390023198493,9.451683725806487e-05,30,30,30,0,available
@@ -1318,7 +1318,7 @@ six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy_rps,exploratory,ho
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy_rps,exploratory,horizon,extreme_rate,0.0009615384615384616,0.0005356596293568804,30,30,30,0,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy_rps,exploratory,horizon,failure_share,0.0,0.0,30,30,30,0,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy_rps,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,0,available
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy_rps,exploratory,horizon,forecast_grid_rmse,107.43579414072256,1.1416963737235315,30,30,30,0,available
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy_rps,exploratory,horizon,forecast_grid_rmse,109.00573874025714,1.1342804564272442,30,30,30,0,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy_rps,exploratory,horizon,forecast_mape,0.5013301247649047,0.003070301907375916,30,30,30,0,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy_rps,exploratory,horizon,forecast_rmse,190.79514405543566,1.1096295346431921,30,30,30,0,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M2:greedy_rps,exploratory,horizon,norm_cum_regret_all,0.01062778194528216,9.234627970593269e-05,30,30,30,0,available
@@ -1351,7 +1351,7 @@ six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy,exploratory,horizo
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy,exploratory,horizon,failure_share,0.0,0.0,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,30,available
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy,exploratory,horizon,forecast_grid_rmse,41.648549770862886,2.3450794942139175,30,30,30,30,available
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy,exploratory,horizon,forecast_grid_rmse,43.41227289514924,2.4751020219332642,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy,exploratory,horizon,forecast_mape,0.5268138855637993,0.0032647323070623653,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy,exploratory,horizon,forecast_rmse,195.1653469574107,2.0026204751995933,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy,exploratory,horizon,norm_cum_regret_all,0.008461550788778435,0.0004213933161702761,30,30,30,30,available
@@ -1384,7 +1384,7 @@ six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,ho
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,horizon,failure_share,0.0,0.0,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,30,available
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,horizon,forecast_grid_rmse,41.58752775785202,2.323392810331643,30,30,30,30,available
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,horizon,forecast_grid_rmse,43.3491814442558,2.449534867065076,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,horizon,forecast_mape,0.5266129695982361,0.0032358276572061937,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,horizon,forecast_rmse,195.1021738669928,1.9979067087590492,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,horizon,norm_cum_regret_all,0.008443690416961448,0.0004191768565159839,30,30,30,30,available
@@ -1397,45 +1397,45 @@ six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,ho
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,horizon,reliable_regret,1.0,0.0,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,horizon,reliable_sign,0.8333333333333334,0.06920456654478331,30,30,30,30,available
 six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,M3:greedy_rps,exploratory,horizon,seconds,67.85136011519886,0.35299968501263934,30,30,30,30,available
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,censored_share,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_all,8600.845444162218,204.15148090863286,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_all_rec,12706.811333113827,391.18082918046775,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_model,4328.52716164976,129.7247816266995,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_model_rec,6387.4286966115515,250.9640382091097,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,failure_share,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,forecast_grid_rmse,,,0,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,forecast_mape,0.5102674522479947,0.0018056684782507112,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,forecast_rmse,196.89687270081356,1.2580905965910647,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_all,0.006449667255281544,0.00016078700914242888,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_all_rec,0.009527136315500966,0.0003025548397646849,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_model,0.006449928848076825,0.00017972314321987795,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_model_rec,0.009506692285886199,0.00034331034968867037,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,positive_slope_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,price_sd_26,0.08210510051029878,0.0012610950119792256,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,reliable,1.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,reliable_regret,1.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,reliable_sign,1.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,seconds,0.6260495670657595,0.012780416195464064,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,censored_share,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_all,2207.6659558806655,13.08418593450058,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_all_rec,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_model,1113.2175919414256,12.971037880776084,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_model_rec,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,extreme_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,failure_share,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,fallback_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,forecast_grid_rmse,,,0,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,forecast_mape,0.5102674522479949,0.0018056684782507132,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,forecast_rmse,200.6698354550346,0.976073061656146,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_all,0.001654213217479975,8.021121725336453e-06,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_all_rec,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_model,0.0016584470517059693,1.3151303184453356e-05,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_model_rec,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,positive_slope_rate,0.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,price_sd_26,0.0545174163064697,0.0002078092598603953,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,reliable,1.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,reliable_regret,1.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,reliable_sign,1.0,0.0,30,30,30,0,not applicable
-six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,seconds,0.5467197529331316,0.010680887849957165,30,30,30,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,censored_share,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_all,8600.845444162218,204.15148090863286,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_all_rec,12706.811333113827,391.18082918046775,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_model,4328.52716164976,129.7247816266995,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,cum_loss_model_rec,6387.4286966115515,250.9640382091097,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,extreme_rate,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,failure_share,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,fallback_rate,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,forecast_grid_rmse,,,0,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,forecast_mape,0.5102674522479947,0.0018056684782507112,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,forecast_rmse,196.89687270081356,1.2580905965910647,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_all,0.006449667255281544,0.00016078700914242888,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_all_rec,0.009527136315500966,0.0003025548397646849,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_model,0.006449928848076825,0.00017972314321987795,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,norm_cum_regret_model_rec,0.009506692285886199,0.00034331034968867037,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,positive_slope_rate,,,0,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,price_sd_26,0.08210510051029878,0.0012610950119792256,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,reliable,,,0,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,reliable_regret,1.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,reliable_sign,,,0,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,legacy:legacy,exploratory,horizon,seconds,0.6260495670657595,0.012780416195464064,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,censored_share,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_all,2207.6659558806655,13.08418593450058,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_all_rec,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_model,1113.2175919414256,12.971037880776084,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,cum_loss_model_rec,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,extreme_rate,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,failure_share,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,fallback_rate,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,forecast_grid_rmse,,,0,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,forecast_mape,0.5102674522479949,0.0018056684782507132,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,forecast_rmse,200.6698354550346,0.976073061656146,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_all,0.001654213217479975,8.021121725336453e-06,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_all_rec,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_model,0.0016584470517059693,1.3151303184453356e-05,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,norm_cum_regret_model_rec,0.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,positive_slope_rate,,,0,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,price_sd_26,0.0545174163064697,0.0002078092598603953,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,reliable,,,0,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,reliable_regret,1.0,0.0,30,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,reliable_sign,,,0,30,0,0,not applicable
+six-cell-20261015,tti:eta=-1.06:kappa=+0.05:phi=0.5,oracle:oracle,exploratory,horizon,seconds,0.5467197529331316,0.010680887849957165,30,30,0,0,not applicable

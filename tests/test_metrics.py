@@ -70,12 +70,16 @@ def test_reliability_joint_criterion(cal, dgm):
     result["regret_dep_all"] = 0.01
     result["eta_hat"] = -1.0
     cfg = {"tau": 0.02, "window": 2}
-    assert replication_summary(result, cfg).reliable.eq(1).all()
+    summary = replication_summary(result, cfg)
+    model = ~summary.arm.str.startswith(("oracle:", "legacy:", "data:"))
+    assert summary.loc[model, "reliable"].eq(1).all()
+    assert summary.loc[~model, "reliable"].isna().all()
     result.loc[result.cycle.eq(2), "eta_hat"] = np.nan
     summary = replication_summary(result, cfg)
     assert summary.reliable_regret.eq(1).all()
-    assert summary.reliable_sign.eq(0).all()
-    assert summary.reliable.eq(0).all()
+    assert summary.loc[model, "reliable_sign"].eq(0).all()
+    assert summary.loc[model, "reliable"].eq(0).all()
+    assert summary.loc[~model, "reliable_sign"].isna().all()
     perf = performance(result, reliability=cfg)
     assert (perf.n_estimated <= perf.n_total).all()
     assert (perf.n_with_interval <= perf.n_estimated).all()

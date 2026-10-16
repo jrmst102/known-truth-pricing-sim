@@ -15,14 +15,11 @@ import numpy as np
 import pandas as pd
 import yaml
 
-from ktsim.cli import read_config
 from ktsim.config import Calibration, CellConfig, DGMConfig
 from ktsim.io import load_table, sha256, week_table
-from ktsim.metrics import mcse_mean
-from ktsim.pilot import atomic_json, run_pilot
+from ktsim.metrics import mcse_mean, performance, replication_summary
 from ktsim.report import environment
 from ktsim.rng import STAGES
-from ktsim.validation import check_run
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = ROOT / "configs/exploratory.yaml"
@@ -43,6 +40,7 @@ def study_config():
 
 
 def inputs(cfg, *, timing=False):
+    from ktsim.cli import read_config
     if cfg["reference_arms"] != ["legacy", "oracle"]:
         raise ValueError("Exploratory reference arms must be legacy and oracle")
     dgm = DGMConfig(**read_config(ROOT / "configs/dgm_base.yaml"))
@@ -133,6 +131,7 @@ def manifest(cfg, cells, calibrations, dgm, est_cfg, checksums, *, timing):
 
 
 def benchmark():
+    from ktsim.pilot import atomic_json, run_pilot
     cfg = study_config()
     cells, calibrations, dgm, est_cfg, checksums = inputs(cfg, timing=True)
     record = manifest(cfg, cells, calibrations, dgm, est_cfg, checksums, timing=True)
@@ -189,6 +188,7 @@ def benchmark():
 
 
 def production():
+    from ktsim.pilot import run_pilot
     cfg = study_config()
     projection_path = TIMING / "runtime_projection.json"
     if not projection_path.exists():
@@ -234,47 +234,54 @@ def _mcse_rmse(errors):
 
 
 def _replication_metrics(estimates):
+    # Use the same definitions as performance.csv; reference truth placeholders
+    # are not estimates and cannot satisfy an estimated-sign criterion.
+    rep = replication_summary(estimates).rename(columns={
+        "forecast_grid_rmse": "common_grid_forecast_rmse",
+        "forecast_rmse": "deployed_price_forecast_rmse",
+        "positive_slope_rate": "positive_slope_frequency",
+        "failure_share": "failure_rate",
+        "norm_cum_regret_all": "normalized_cumulative_deployed_regret",
+        "cum_loss_all": "cumulative_revenue_loss",
+        "reliable": "decision_reliability",
+        "reliable_regret": "regret_reliability",
+    })
+    metadata = estimates[["cell", "environment"]].drop_duplicates()
+    rep = rep.merge(metadata, on="cell", validate="many_to_one")
+    rep["kappa"] = rep.cell.str.extract(r"kappa=([^:]+)")[0].astype(float)
+    rep["estimator"] = rep.arm.str.split(":").str[0]
+    rep["policy"] = rep.arm.str.split(":").str[1]
+    return rep[[
+        "cell", "environment", "kappa", "arm", "estimator", "policy", "rep",
+        "terminal_error", "common_grid_forecast_rmse", "deployed_price_forecast_rmse",
+        "positive_slope_frequency", "failure_rate", "fallback_rate",
+        "normalized_cumulative_deployed_regret", "cumulative_revenue_loss",
+        "decision_reliability", "regret_reliability",
+    ]]
+
+
+def paired_comparisons(rep):
+    """Within-cell differences, paired by replication, in percentage points."""
     rows = []
-    for (cell, environment_name, arm, rep), group in estimates.groupby(
-        ["cell", "environment", "arm", "rep"]
-    ):
-        group = group.sort_values("cycle")
-        star = group.R_star_all.sum()
-        loss = (group.R_star_all - group.R_dep_all).sum()
-        last = group.tail(26)
-        rows.append(
-            dict(
-                cell=cell,
-                environment=environment_name,
-                kappa=float(cell.split("kappa=")[1].split(":")[0]),
-                arm=arm,
-                estimator=arm.split(":")[0],
-                policy=arm.split(":")[1],
-                rep=rep,
-                terminal_error=group.eta_hat.iloc[-1] - group.eta_true.iloc[-1],
-                common_grid_forecast_rmse=(
-                    float(np.sqrt(np.mean(group.forecast_grid_rmse.dropna().to_numpy() ** 2)))
-                    if group.forecast_grid_rmse.notna().any()
-                    else np.nan
-                ),
-                deployed_price_forecast_rmse=(
-                    float(np.sqrt(np.mean(group.forecast_rmse.dropna().to_numpy() ** 2)))
-                    if group.forecast_rmse.notna().any()
-                    else np.nan
-                ),
-                positive_slope_frequency=group.positive_slope.mean(),
-                failure_rate=group.numerical_failure.mean(),
-                fallback_rate=group.fallback_used.mean(),
-                normalized_cumulative_deployed_regret=loss / star,
-                cumulative_revenue_loss=loss,
-                decision_reliability=float(
-                    len(last) == 26
-                    and last.regret_dep_all.le(0.02).all()
-                    and np.isfinite(last.eta_hat).all()
-                    and last.eta_hat.lt(0).all()
-                ),
-            )
-        )
+    for (cell, env, kappa), group in rep.groupby(["cell", "environment", "kappa"]):
+        wide = group.pivot(index="rep", columns="arm",
+                           values="normalized_cumulative_deployed_regret")
+        model_arms = sorted(a for a in wide if a.startswith(("M1:", "M2:", "M3:")))
+        contrasts = [(arm, "legacy:legacy") for arm in model_arms]
+        contrasts += [(f"M3:{policy}", f"M1:{policy}")
+                      for policy in ("greedy", "greedy_rps")]
+        for treatment, comparator in contrasts:
+            paired = wide[[treatment, comparator]]
+            if paired.isna().any().any():
+                raise ValueError(f"Incomplete paired outcomes: {cell}, {treatment}, {comparator}")
+            differences = 100 * (paired[treatment] - paired[comparator])
+            rows.append(dict(
+                cell=cell, environment=env, kappa=kappa,
+                treatment_arm=treatment, comparator_arm=comparator,
+                n_pairs=len(differences),
+                mean_regret_difference_pp=differences.mean(),
+                mcse_pp=mcse_mean(differences),
+            ))
     return pd.DataFrame(rows)
 
 
@@ -313,6 +320,7 @@ def tables(estimates, output):
             "normalized_cumulative_deployed_regret",
             "cumulative_revenue_loss",
             "decision_reliability",
+            "regret_reliability",
         ):
             row[column] = group[column].mean()
             row[column + "_mcse"] = mcse_mean(group[column])
@@ -333,8 +341,18 @@ def tables(estimates, output):
         table2.append(row)
     table2 = pd.DataFrame(table2)
     table2.to_csv(output / "table2_pricing_performance.csv", index=False)
+    paired_comparisons(rep).to_csv(output / "table3_paired_comparisons.csv", index=False)
     rep.to_parquet(output / "replication_metrics.parquet", index=False)
     return table1, table2, rep
+
+
+ARM_LABELS = {
+    "M1:greedy": "OLS: greedy", "M1:greedy_rps": "OLS: exploration",
+    "M2:greedy": "GBM: greedy", "M2:greedy_rps": "GBM: exploration",
+    "M3:greedy": "IV: greedy", "M3:greedy_rps": "IV: exploration",
+    "legacy:legacy": "Legacy",
+    "oracle:oracle": "Oracle recommendation + deployment adjustments",
+}
 
 
 def figures(estimates, output):
@@ -352,14 +370,15 @@ def figures(estimates, output):
         frame = model[model.cell.eq(cell)]
         for arm, group in frame.groupby("arm"):
             summary = group.groupby("cycle").eta_hat.agg(["mean", "sem"])
-            axis.plot(summary.index, summary["mean"], label=arm, linewidth=1.2)
+            axis.plot(summary.index, summary["mean"], label=ARM_LABELS[arm], linewidth=1.2,
+                      linestyle="--" if arm.endswith("greedy_rps") else "-")
             axis.fill_between(
                 summary.index,
                 summary["mean"] - summary["sem"],
                 summary["mean"] + summary["sem"],
                 alpha=0.12,
             )
-        axis.axhline(-1.06, color="black", linestyle="--", linewidth=1, label="truth")
+        axis.axhline(-1.06, color="black", linestyle="--", linewidth=1, label="True reference-price elasticity")
         axis.set_title(panel_title(cell))
     fig.supxlabel("Pricing cycle", y=0.055)
     fig.supylabel("Elasticity estimate")
@@ -370,118 +389,160 @@ def figures(estimates, output):
     fig.savefig(output / "figure1_elasticity_trajectories.png", dpi=180)
     plt.close(fig)
 
-    working = estimates.copy()
+    working = estimates.sort_values(["cell", "arm", "rep", "cycle"]).copy()
     working["loss"] = working.R_star_all - working.R_dep_all
     working["cum_loss"] = working.groupby(["cell", "arm", "rep"]).loss.cumsum()
     working["cum_star"] = working.groupby(["cell", "arm", "rep"]).R_star_all.cumsum()
-    working["cum_regret"] = working.cum_loss / working.cum_star
+    working["cum_regret"] = 100 * working.cum_loss / working.cum_star
     fig, axes = plt.subplots(3, 2, figsize=(13, 12), sharex=True, sharey=True)
     for axis, cell in zip(axes.flat, cells):
         frame = working[working.cell.eq(cell)]
         for arm, group in frame.groupby("arm"):
             summary = group.groupby("cycle").cum_regret.agg(["mean", "sem"])
-            axis.plot(summary.index, summary["mean"], label=arm, linewidth=1.2)
+            axis.plot(summary.index, summary["mean"], label=ARM_LABELS[arm], linewidth=1.2,
+                      linestyle="--" if arm.endswith("greedy_rps") else "-")
             axis.fill_between(
                 summary.index,
                 summary["mean"] - summary["sem"],
                 summary["mean"] + summary["sem"],
                 alpha=0.12,
             )
+        axis.axhline(0, color="black", linestyle=":", linewidth=1,
+                     label="Constrained oracle benchmark")
         axis.set_title(panel_title(cell))
     fig.supxlabel("Pricing cycle", y=0.055)
-    fig.supylabel("Cumulative normalized deployed regret")
+    fig.supylabel("Cumulative normalized deployed regret (%)")
     fig.suptitle("Cumulative normalized deployed regret (mean ± Monte Carlo SE)", fontsize=14)
     handles, labels = axes.flat[0].get_legend_handles_labels()
-    fig.legend(handles, labels, loc="lower center", bbox_to_anchor=(0.5, 0.005), ncol=4, fontsize=8)
-    fig.tight_layout(rect=(0.03, 0.085, 1, 0.96))
+    fig.legend(handles, labels, loc="lower center", bbox_to_anchor=(0.5, 0.005), ncol=3, fontsize=8)
+    fig.tight_layout(rect=(0.03, 0.105, 1, 0.96))
     fig.savefig(output / "figure2_cumulative_regret.png", dpi=180)
     plt.close(fig)
 
 
 def chapter(table1, table2, checks, manifest_record, output):
-    labels = {"sna": "snack crackers", "tna": "canned tuna", "tti": "bathroom tissue"}
-    best = table2[table2.estimator.isin(["M1", "M2", "M3"])].sort_values(
-        ["environment", "kappa", "normalized_cumulative_deployed_regret"]
-    ).groupby(["environment", "kappa"]).first().reset_index()
-    best_text = "; ".join(
-        f"{labels[row.environment]}, κ={row.kappa:+.2f}: {row.estimator} {row.policy} "
-        f"({row.normalized_cumulative_deployed_regret:.3f})"
-        for row in best.itertuples()
+    labels = {"sna": "Snack crackers", "tna": "Canned tuna", "tti": "Bathroom tissue"}
+    paired = pd.read_csv(output / "table3_paired_comparisons.csv")
+    selected = paired[
+        (paired.kappa.eq(0) & paired.treatment_arm.eq("M1:greedy")
+         & paired.comparator_arm.eq("legacy:legacy"))
+        | (paired.kappa.eq(0.05) & paired.treatment_arm.eq("M3:greedy")
+           & paired.comparator_arm.eq("M1:greedy"))
+        | (paired.kappa.eq(0.05) & paired.treatment_arm.eq("M3:greedy_rps")
+           & paired.comparator_arm.eq("legacy:legacy"))
+    ].sort_values(["kappa", "treatment_arm", "environment"])
+    paired_rows = "\n".join(
+        f"| {labels[r.environment]} | {r.kappa:.2f} | {ARM_LABELS[r.treatment_arm]} minus "
+        f"{ARM_LABELS[r.comparator_arm]} | {r.mean_regret_difference_pp:+.4f} | {r.mcse_pp:.4f} |"
+        for r in selected.itertuples()
     )
-    calibration_text = "; ".join(
-        f"{labels[env]}: {values['n_stores']} stores, p̄={values['p_bar']:.3f}"
-        for env, values in manifest_record["calibration"].items()
-    )
-    recovery = table1.groupby(["kappa", "estimator"])[
-        ["terminal_elasticity_bias", "terminal_elasticity_rmse", "positive_slope_frequency"]
-    ].mean()
-    recovery_text = "; ".join(
-        f"κ={kappa:+.2f} {estimator}: bias {row.terminal_elasticity_bias:.3f}, "
-        f"RMSE {row.terminal_elasticity_rmse:.3f}, positive-slope frequency "
-        f"{row.positive_slope_frequency:.1%}"
-        for (kappa, estimator), row in recovery.iterrows()
-    )
-    paired_column = "paired_exploration_minus_greedy_normalized_cumulative_deployed_regret"
-    paired = table2[
-        table2.estimator.isin(["M1", "M2", "M3"]) & table2.policy.eq("greedy")
-    ][paired_column]
-    failures = pd.read_csv(output / "failures.csv")
+    endogenous = table2[table2.kappa.eq(0.05)]
+    regret_rows = []
+    for env in labels:
+        g = endogenous[endogenous.environment.eq(env)]
+        def value(estimator, policy, column):
+            return g.loc[g.estimator.eq(estimator) & g.policy.eq(policy), column].iloc[0]
+        regret_rows.append(
+            f"| {labels[env]} | {100 * value('M1', 'greedy', 'normalized_cumulative_deployed_regret'):.3f} | "
+            f"{100 * value('M3', 'greedy_rps', 'normalized_cumulative_deployed_regret'):.3f} | "
+            f"{100 * value('legacy', 'legacy', 'normalized_cumulative_deployed_regret'):.3f} | "
+            f"{100 * value('M3', 'greedy_rps', 'decision_reliability'):.1f} |"
+        )
+    regret_rows = "\n".join(regret_rows)
+    exploration = table2[table2.estimator.isin(["M1", "M2", "M3"]) & table2.policy.eq("greedy")][
+        "paired_exploration_minus_greedy_normalized_cumulative_deployed_regret"
+    ] * 100
+    tuna = table1[table1.environment.eq("tna") & table1.kappa.eq(0.05) & table1.policy.eq("greedy")]
+    grid_ols = tuna.loc[tuna.estimator.eq("M1"), "common_grid_forecast_rmse"].iloc[0]
+    grid_iv = tuna.loc[tuna.estimator.eq("M3"), "common_grid_forecast_rmse"].iloc[0]
     text = f"""# Exploratory known-truth pricing experiment
 
 ## Methodology
 
-The completed study is a six-cell exploratory Monte Carlo experiment calibrated to snack crackers, canned tuna, and bathroom tissue. The cells cross those environments with κ = 0 and +0.05 while fixing the true reference-price elasticity at −1.06 and model adoption at 0.5. Each cell contains 30 independent replications, 52 initial-history weeks, and 104 pricing cycles. The eight arms are M1 OLS, M2 GBM, and M3 2SLS under greedy and greedy-with-exploration pricing, plus legacy and direct-oracle references. GBM uses the accepted 500-tree configuration. DML and the M3 control-function variant are retained only as supplementary Deliverable 2 evidence.
+The completed study is a six-cell exploratory Monte Carlo experiment calibrated to snack crackers, canned tuna, and bathroom tissue. It crosses these environments with κ = 0 and 0.05, holding the true reference-price elasticity at −1.06 and model adoption at 0.5. Each cell contains 30 independent replications, 52 initial-history weeks, and 104 pricing cycles. Each calibrated environment contains 67 stores. The eight arms are M1 OLS, M2 GBM, and M3 IV (2SLS), each under greedy and greedy-with-exploration pricing, plus legacy and an oracle-recommendation reference. GBM uses the accepted 500-tree configuration. DML and the M3 control-function variant remain supplementary diagnostic evidence and are not part of this experiment.
 
-Within a replication, all arms use the same initial history and exogenous draws. Each method-policy arm then maintains its own evolving data history. Production seeds are distinct from diagnostic and timing seeds. Failures remain in the dataset and deploy legacy fallback prices when predictions are unavailable. Monte Carlo standard errors use independent replication-level quantities. Policy-difference uncertainty uses the 30 paired exploration-minus-greedy differences for the same replication seeds. Common-grid forecast RMSE evaluates predictions over the feasible price ladder and is reported separately from error at deployed prices.
+Within a cell and replication, arms share initial history and exogenous draws, then maintain their own evolving data histories. Production seeds differ from diagnostic and timing seeds. Failures remain in the dataset, with legacy fallback prices used when predictions are unavailable. The original 81-cell precision pilot and main experiment are deferred; this reduced study does not claim their precision targets or factorial coverage.
 
-The originally planned 81-cell precision pilot and main experiment are deferred because measured computation exceeded the retained budget. The present 30-replication design provides exploratory evidence with uncertainty; it does not claim the original Monte Carlo precision targets.
+### Outcome definitions and uncertainty
+
+**Elasticity recovery.** Terminal error is the final-cycle estimate minus −1.06. Bias is its mean across replications; terminal elasticity RMSE is the square root of mean squared terminal error across replications. For GBM, the reported elasticity is a local finite contrast in predicted log demand between prices 1% below and 1% above the reference price, divided by the corresponding log-price difference and averaged over recent observed contexts. It is a local response summary, not a globally constant GBM coefficient. Positive-slope frequency is the share of cycles with an estimate strictly above zero; a zero estimate does not count as positive but also does not meet the negative-sign reliability criterion. Legacy and oracle reference arms do not estimate elasticity, so recovery, estimated-sign outcomes, and joint decision reliability are not applicable to them.
+
+**Forecast accuracy.** Common-grid RMSE evaluates predicted demand against known expected demand at every feasible ladder price using common current observable contexts across arms. Deployed-price RMSE evaluates predictions against realized sales at the prices actually deployed and therefore reflects both the policy's price path and realized demand noise. Within each replication, horizon RMSE is the square root of the mean of the 104 squared weekly RMSE values. Weekly evaluation sets are equally sized. The tables then report the mean and Monte Carlo standard error (MCSE) of these replication-level horizon RMSEs. This definition is used in both Table 1 and `performance.csv`; it is not the arithmetic mean of weekly RMSEs. Demand-scale RMSE levels should be compared within a calibrated environment.
+
+**Pricing performance.** For each replication, normalized cumulative deployed regret is total expected revenue loss relative to the constrained oracle divided by total constrained-oracle expected revenue, summed over all stores and 104 cycles. Thus, it is revenue weighted rather than an unweighted average of weekly regret ratios. Cumulative revenue loss is the numerator of this ratio. CSV regret levels are fractions; the chapter and Figure 2 express levels as percentages and paired regret differences as percentage points. Lower regret is better.
+
+**Reliability.** Model decision reliability is the fraction of replications in which every one of the final 26 cycles has deployed regret at most 2% and a finite, strictly negative estimated elasticity. Regret-only reliability omits the estimated-sign requirement and is reported separately for all arms, including references. Neither measure is an elasticity confidence-interval coverage rate.
+
+**Oracle references.** The constrained oracle benchmark chooses the feasible ladder price maximizing known expected revenue and defines the regret denominator and zero-regret baseline. The simulated oracle-recommendation arm passes its optimal recommendation through the implementation's deployment adjustments, including cost pass-through and the managerial component. Its deployed prices can therefore depart from the optimum and incur positive regret. The saved direct-oracle zero-regret check is a separate controlled validation condition, not evidence that the adjusted oracle arm must have zero deployed regret in every production cell.
+
+**Monte Carlo uncertainty and pairing.** MCSEs are calculated from independent replication-level outcomes, not from repeated store-weeks. A paired comparison subtracts the comparator's outcome from the treatment's outcome within the same cell and replication, then reports the mean difference and its sample standard deviation divided by √30. This applies to exploration versus greedy pricing, fitted-model arms versus legacy, and IV versus OLS under the same pricing policy. A negative paired regret difference favors the first-named arm. Figures show mean ± one MCSE, not 95% confidence intervals. Terminal elasticity RMSE uses a delta-method MCSE. All comparisons are exploratory; no multiple-comparison-adjusted significance claims are made.
 
 ## Findings
 
-### Calibration and implementation checks
+### Completed runs and implementation checks
 
-All six cells contain 30 completed replications and eight arms over 104 cycles. The saved-run audit acceptance record is `{json.dumps(checks['acceptance'], sort_keys=True)}`. It verifies constrained cycle prices, uncensored core demand, adoption assignments, revenue identities, and direct-oracle zero regret. The run used commit `{manifest_record['commit']}` and calibration identifiers recorded in the manifest.
+All six cells completed 30 replications with eight arms and 104 pricing cycles, yielding 149,760 arm-cycle records. The saved mechanical audit passed all applicable checks, including feasible ladder prices, uncensored core demand, adoption assignments, and revenue identities. No numerical failure or fallback was recorded. These checks support implementation integrity; they do not establish estimator accuracy or economic superiority.
 
-Each retained calibration contains 67 stores. The reference prices differ sharply across categories ({calibration_text}), so revenue loss and demand-scale forecast RMSE should be compared within environment. The failure record contains {len(failures)} rows: no estimator failure or fallback occurred in the 149,760 saved arm-cycle records, and the empty file retains the required schema.
+### Elasticity recovery and prediction
 
-### Elasticity recovery and prediction accuracy
+Table 1 reports recovery and prediction outcomes separately for each environment, endogeneity condition, estimator, and policy. Figure 1 shows the estimated trajectories against the known reference-price elasticity. Under κ = 0, greedy OLS terminal biases were approximately −0.006, −0.012, and −0.013 for snack crackers, canned tuna, and bathroom tissue, with RMSEs of 0.062, 0.100, and 0.075. OLS therefore recovered the reference elasticity closely in these exogenous cells.
 
-Table 1 reports terminal elasticity bias and RMSE, common-grid and deployed-price forecast RMSE, positive-slope frequency, failures, and fallbacks for every environment, endogeneity condition, estimator, and policy. Figure 1 shows full elasticity trajectories against the known value −1.06. All uncertainty is calculated across 30 independent replications rather than repeated weeks.
+Under κ = 0.05, greedy OLS terminal biases increased to approximately 1.344, 1.241, and 1.549, respectively. Mean terminal estimates consequently became positive despite the negative known elasticity. Corresponding IV biases were approximately 0.254, 0.452, and 0.338. IV substantially reduced OLS bias in these cells, but it did not eliminate it.
 
-Without endogeneity, M1 recovered the elasticity most closely on average across environments. Positive endogeneity produced severe positive bias and frequent sign reversals for M1, while M3 was materially more stable. M2 had larger terminal dispersion than M1 under κ=0 and remained variable under κ=+0.05. Averaged across environments and the two policies, the numerical summaries were: {recovery_text}. Common-grid RMSE and deployed-price RMSE are kept in separate columns because a policy's deployed-price errors reflect its endogenous price path.
+GBM's reported local contrast was zero at the terminal cycle in all 30 canned-tuna replications under both endogeneity conditions and both pricing policies. Its terminal bias and RMSE there were consequently 1.06. This result is consistent with locally flat tree predictions over the narrow ±1% interval. It does not establish that GBM learned no price response elsewhere on the feasible ladder.
 
-### Pricing losses and exploration
+Prediction accuracy and pricing performance did not yield interchangeable conclusions. For endogenous canned tuna, common-grid RMSE under greedy pricing was {grid_ols:.3f} for OLS and {grid_iv:.3f} for IV, while IV reduced normalized cumulative regret relative to OLS by approximately 0.363 percentage points. These numerically similar RMSE means do not establish formal predictive equivalence. They show why forecast accuracy and decision outcomes must be reported separately.
 
-Table 2 reports normalized cumulative deployed regret, cumulative revenue loss, decision reliability, and paired exploration-minus-greedy differences. Figure 2 shows cumulative normalized deployed regret over all 104 cycles. Lower regret is better; a negative paired difference favors exploration. The lowest mean model-arm regret in each cell was: {best_text}.
+### Pricing performance and verified paired comparisons
 
-Exploration effects were small relative to total regret: the 18 estimator-cell paired mean changes ranged from {paired.min():.6f} to {paired.max():.6f} in normalized cumulative regret. Exploration tended to reduce regret for M3 and in the endogenous cells, but it was not uniformly beneficial. The paired Monte Carlo standard errors in Table 2, rather than unpaired policy-arm errors, govern those comparisons.
+Table 2 reports regret, revenue loss, joint model decision reliability, and regret-only reliability. Table 3 reports all 48 within-cell paired contrasts: six model arms versus legacy and IV versus OLS under each of the two policies in each cell. The selected comparisons below summarize the principal findings; each uses 30 paired replications.
 
-### Differences across calibrated environments
+| Environment | κ | Paired contrast | Mean regret difference (percentage points) | Paired MCSE (percentage points) |
+|---|---:|---|---:|---:|
+{paired_rows}
 
-Results are kept separate by environment and κ in both tables and figures. The best no-endogeneity arm was M1 in all three environments. Under κ=+0.05, M3 with exploration had the lowest mean regret in all three, but decision reliability varied: {', '.join(f'{labels[row.environment]} {row.decision_reliability:.1%}' for row in best[best.kappa.eq(0.05)].itertuples())}. Forecast RMSE levels were largest for bathroom tissue and smallest for snack crackers, consistent with different calibrated demand scales; the within-environment estimator comparisons are the interpretable ones.
+Without endogeneity, greedy OLS reduced mean regret relative to legacy in all three environments. Under endogeneity, greedy IV reduced mean regret relative to greedy OLS in every environment. Nevertheless, every fitted-model arm had higher mean regret than legacy in each endogenous cell. IV with exploration had the lowest mean regret among the fitted-model arms there, but this within-model ranking does not make it the best available pricing policy overall.
+
+| Environment, κ = 0.05 | OLS greedy regret (%) | IV exploration regret (%) | Legacy regret (%) | IV exploration joint reliability (%) |
+|---|---:|---:|---:|---:|
+{regret_rows}
+
+Joint model reliability varied substantially across environments even for the lowest-regret fitted-model arm. The separate regret-only column in Table 2 permits pricing-threshold comparisons with reference policies without treating their stored truth placeholders as estimated elasticities.
+
+### Exploration and environmental variation
+
+Across the 18 estimator-cell comparisons, mean exploration-minus-greedy regret differences ranged from {exploration.min():.4f} to {exploration.max():+.4f} percentage points. Exploration reduced mean regret in all six IV cells and all nine endogenous estimator-cell comparisons, but it was not uniformly beneficial across the experiment. These effects were small relative to the regret levels. Their precision is given by the paired MCSEs in Table 2; small magnitude should not be confused with an absence of statistical precision.
+
+Results remain stratified by environment and κ. Differences in demand scales, price ladders, and calibration parameters make within-environment comparisons the interpretable basis for estimator and policy assessment. The canned-tuna local GBM result and variation in IV reliability also caution against treating a cross-environment average as a universal ranking.
 
 ## Discussion
 
-The experiment compares estimation, prediction, and pricing outcomes under one moderate elasticity, one adoption share, two endogeneity conditions, and a two-year pricing horizon. The paired design gives a direct estimate of the incremental effect of exploration for each estimator while holding the replication's exogenous draws fixed. Common-grid prediction error supports comparisons of predictive recovery across the feasible decision set; deployed-price error describes the endogenous data path actually generated by each policy.
+The exploratory evidence separates three objectives: recovering the known reference-price elasticity, predicting demand, and choosing prices with low revenue loss. OLS performed well in the exogenous cells but became strongly biased under endogeneity. IV improved both elasticity recovery and regret relative to OLS under endogeneity, yet legacy pricing retained lower mean regret than all fitted-model arms in those cells. A more accurate estimator relative to another fitted method therefore did not, in this design, guarantee improvement over the operational reference policy. Exploration produced modest, condition-dependent changes over the 104-cycle horizon.
 
 ## Limitations
 
-The evidence is exploratory. Thirty replications quantify Monte Carlo uncertainty but do not satisfy the original precision targets. The study does not identify behavior at elasticities −0.8 or −2.5, adoption shares 0 or 1, negative endogeneity, alternative horizons, censored demand, or the full 81-cell interaction structure. DML confidence-interval coverage remains withheld. Repeated store-weeks are not counted as independent replications.
+These conclusions apply to three calibrations, one reference elasticity, one adoption share, two endogeneity conditions, and the specified learner and policy settings. Thirty replications permit MCSE reporting but do not establish the originally planned precision targets or a general estimator ranking. The experiment does not cover other elasticities, adoption shares, negative endogeneity, alternative horizons, censored demand, or the full 81-cell interaction structure. GBM's local contrast is sensitive to the chosen price interval. Observed zero failures, or empirical reliability of 0% or 100%, do not establish corresponding population probabilities, even when a plug-in MCSE is zero. DML inference and M4 confidence-interval coverage remain withheld pending separate validation. No confirmatory hypothesis-testing or generalization beyond this design is claimed.
 
 ## Reproducibility appendix
 
-The production manifest, configuration hashes, calibration identifiers, seed states, replication checkpoints, failure records, execution history, and audit results are stored with the run at `{output.relative_to(ROOT)}`. Timing artifacts are separate under `{TIMING.relative_to(ROOT)}`. Deliverable 1 and 2 acceptance dates, the cloud-to-local transfer, and checkpoint verification remain in `docs/DELIVERABLE_2.md` and are excluded from the substantive Findings.
+Production used commit `{manifest_record['commit']}`. The original manifest, configurations, calibration identifiers, seeds, checkpoints, runtime records, and saved mechanical audit remain under `{output.relative_to(ROOT)}`. The audit acceptance record is `{json.dumps(checks['acceptance'], sort_keys=True)}`. The direct-oracle validation has the restricted interpretation described above. Timing artifacts remain separate under `{TIMING.relative_to(ROOT)}`.
 
-The reproducible chapter outputs are `table1_estimation_prediction.csv`, `table2_pricing_performance.csv`, `figure1_elasticity_trajectories.png`, and `figure2_cumulative_regret.png`.
+Reporting revisions regenerate derived summaries and figures from saved estimates without rerunning simulations. `reporting_revision.json` records the source checksums, reporting-source hashes, environment, and output hashes. Original production and analysis provenance remains in the manifest. Run `PYTHONPATH=src python scripts/run_exploratory.py report` to regenerate reporting from the saved artifacts; this command reuses the saved audit and does not rerun simulation-based validation. The `analyze` command additionally performs the full audit in the project's supported environment.
+
+Publication files are `table1_estimation_prediction.csv`, `table2_pricing_performance.csv`, `table3_paired_comparisons.csv`, `figure1_elasticity_trajectories.png`, `figure2_cumulative_regret.png`, and `replication_metrics.parquet`. In Figure 1, the dashed horizontal line is the true reference elasticity. In Figure 2, the dotted zero line is the constrained oracle benchmark and the separately labeled oracle-recommendation curve includes deployment adjustments. Shaded bands show one MCSE across replications. CSV blanks in reference-arm recovery and joint-reliability fields mean not applicable.
 """
     (ROOT / "docs/CHAPTER_EXPLORATORY_STUDY.md").write_text(text)
     (output / "chapter.md").write_text(text)
 
 
-def analyze():
+def analyze(*, reporting_only=False):
     if not (PRODUCTION / "estimates.parquet").exists():
         raise ValueError("Production results are incomplete")
-    checks = check_run(PRODUCTION)
+    if reporting_only:
+        checks = json.loads((PRODUCTION / "checks.json").read_text())
+    else:
+        from ktsim.validation import check_run
+        checks = check_run(PRODUCTION)
     required = ["AC-C1", "AC-C2", "AC-C3", "AC-C5", "AC-C6", "AC-A6", "run_complete"]
     if not all(checks["acceptance"].get(key) for key in required):
         raise ValueError(f"Production audit failed: {checks['acceptance']}")
@@ -499,27 +560,47 @@ def analyze():
     estimates[estimates.numerical_failure | estimates.fallback_used.fillna(0).gt(0)].to_csv(
         PRODUCTION / "failures.csv", index=False
     )
+    if estimates.duplicated(["cell", "arm", "rep", "cycle"]).any():
+        raise ValueError("Duplicate arm-cycle observations")
+    cycle_sets = estimates.groupby(["cell", "arm", "rep"]).cycle.agg(set)
+    if len(cycle_sets) != 6 * 30 * 8 or not cycle_sets.map(lambda x: x == set(range(1, 105))).all():
+        raise ValueError("Expected 104 cycles for every cell, arm, and replication")
     table1, table2, _ = tables(estimates, PRODUCTION)
+    performance(estimates, stage="exploratory").to_csv(PRODUCTION / "performance.csv", index=False)
     figures(estimates, PRODUCTION)
     record = json.loads((PRODUCTION / "manifest.json").read_text())
-    record["analysis_commit"] = git_state()[0]
-    record["execution_history"].append(
-        dict(event="analysis_and_audit_complete", at=datetime.now().astimezone().isoformat())
-    )
-    record["analysis_outputs"] = [
-        "table1_estimation_prediction.csv", "table2_pricing_performance.csv",
-        "figure1_elasticity_trajectories.png", "figure2_cumulative_regret.png",
-        "replication_metrics.parquet", "failures.csv", "checks.json", "chapter.md",
-    ]
-    record["analysis_machine"] = dict(platform=platform.platform(), python=platform.python_version())
-    atomic_json(record, PRODUCTION / "manifest.json")
+    # Preserve original run/analysis provenance; record reporting-only changes separately.
     chapter(table1, table2, checks, record, PRODUCTION)
+    outputs = [
+        "table1_estimation_prediction.csv", "table2_pricing_performance.csv",
+        "table3_paired_comparisons.csv", "figure1_elasticity_trajectories.png",
+        "figure2_cumulative_regret.png", "replication_metrics.parquet", "performance.csv", "chapter.md",
+    ]
+    revision = dict(
+        reporting_version="1.2", generated_at=datetime.now().astimezone().isoformat(),
+        base_commit=git_state()[0], working_tree_dirty=git_state()[1],
+        simulation_rerun=False,
+        audit="reused saved checks.json" if reporting_only else "full audit rerun",
+        source_sha256={name: sha256(PRODUCTION / name) for name in
+                       ("estimates.parquet", "states.parquet", "checks.json", "manifest.json")},
+        reporting_source_sha256={name: sha256(ROOT / name) for name in
+                                 ("scripts/run_exploratory.py", "src/ktsim/metrics.py")},
+        output_sha256={name: sha256(PRODUCTION / name) for name in outputs},
+        environment=dict(platform=platform.platform(), python=platform.python_version(),
+                         numpy=np.__version__, pandas=pd.__version__),
+        definitions=dict(horizon_rmse="sqrt(mean(weekly_rmse ** 2))",
+                         reference_joint_reliability="not applicable",
+                         reference_regret_reliability="last 26 cycles each at most 2% regret",
+                         paired_difference="treatment minus comparator, percentage points",
+                         paired_mcse="sample SD of paired differences / sqrt(n_pairs)"),
+    )
+    (PRODUCTION / "reporting_revision.json").write_text(json.dumps(revision, indent=2) + "\n")
     print(f"Completed analysis: {PRODUCTION}")
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("command", choices=["benchmark", "run", "analyze", "check"])
+    parser.add_argument("command", choices=["benchmark", "run", "analyze", "report", "check"])
     args = parser.parse_args()
     if args.command == "benchmark":
         benchmark()
@@ -527,7 +608,10 @@ def main():
         production()
     elif args.command == "analyze":
         analyze()
+    elif args.command == "report":
+        analyze(reporting_only=True)
     else:
+        from ktsim.validation import check_run
         print(json.dumps(check_run(PRODUCTION), indent=2))
 
 

@@ -37,16 +37,27 @@ def mcse_coverage(covered):
     return float(np.sqrt(rate * (1 - rate) / len(values)))
 
 
+def is_reference(arm):
+    return arm.startswith(("oracle:", "legacy:", "data:"))
+
+
+def horizon_rmse(weekly_rmse):
+    """Pool equal-sized weekly evaluation sets before taking the square root."""
+    values = finite(weekly_rmse)
+    return float(np.sqrt(np.mean(values**2))) if len(values) else np.nan
+
+
 def replication_summary(estimates, reliability=None):
     reliability = reliability or {"tau": 0.02, "window": 26}
     rows = []
     for (cell, arm, rep), group in estimates.groupby(["cell", "arm", "rep"]):
         group = group.sort_values("cycle")
+        reference = is_reference(arm)
         row = dict(
             cell=cell,
             arm=arm,
             rep=rep,
-            terminal_error=group.eta_hat.iloc[-1] - group.eta_true.iloc[-1],
+            terminal_error=np.nan if reference else group.eta_hat.iloc[-1] - group.eta_true.iloc[-1],
         )
         for suffix in ("all", "model"):
             for kind in ("dep", "rec"):
@@ -64,11 +75,12 @@ def replication_summary(estimates, reliability=None):
         )
         row["reliable_sign"] = (
             float(complete and np.isfinite(last.eta_hat).all() and last.eta_hat.lt(0).all())
-            if complete
+            if complete and not reference
             else np.nan
         )
         row["reliable"] = (
-            float(row["reliable_regret"] == 1 and row["reliable_sign"] == 1) if complete else np.nan
+            float(row["reliable_regret"] == 1 and row["reliable_sign"] == 1)
+            if complete and not reference else np.nan
         )
         for measure, column in (
             ("fallback_rate", "fallback_used"),
@@ -76,11 +88,13 @@ def replication_summary(estimates, reliability=None):
             ("positive_slope_rate", "positive_slope"),
             ("failure_share", "numerical_failure"),
             ("forecast_mape", "forecast_mape"),
-            ("forecast_grid_rmse", "forecast_grid_rmse"),
             ("censored_share", "censored_share"),
         ):
             row[measure] = group[column].mean() if column in group else np.nan
-        row["forecast_rmse"] = np.sqrt(np.mean(group.forecast_rmse**2))
+        if reference:
+            row["positive_slope_rate"] = np.nan
+        row["forecast_grid_rmse"] = horizon_rmse(group.get("forecast_grid_rmse", []))
+        row["forecast_rmse"] = horizon_rmse(group.forecast_rmse)
         row["seconds"] = group.seconds.sum()
         row["price_sd_26"] = group.price_sd_26.iloc[-1]
         rows.append(row)
@@ -97,10 +111,12 @@ def performance(estimates: pd.DataFrame, truth=None, *, reliability=None, stage=
         def emit(checkpoint, measure, values, at, mcse=mcse_mean, transform=None):
             values = finite(values)
             n_total = len(at)
-            n_estimated = int(np.isfinite(at.eta_hat).sum())
+            n_estimated = 0 if is_reference(arm) else int(np.isfinite(at.eta_hat).sum())
             n_interval = int(
                 (np.isfinite(at.eta_hat) & np.isfinite(at.ci_low) & np.isfinite(at.ci_high)).sum()
             )
+            if is_reference(arm):
+                n_interval = 0
             estimate = (
                 (np.mean(values) if transform is None else transform(values))
                 if len(values)
